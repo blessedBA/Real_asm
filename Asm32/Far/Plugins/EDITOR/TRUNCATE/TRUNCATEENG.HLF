@@ -1,0 +1,11 @@
+.Language=English,English
+.PluginContents=Truncating file v1.4
+
+@Contents
+$ #Truncating file v1.4#
+    This command allows to delete superfluous spaces and tabulation at the end of strings. And also it allows to delete the empty strings at the end of the file.
+
+
+
+ Copyright (á) 1999-2001  Aleksey Firsakov
+ ~mailto:avfir@@mailru.com~@mailto:avfir@@mailru.com@

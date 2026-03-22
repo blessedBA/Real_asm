@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="Windows-1251"?>
+<!DOCTYPE hrc SYSTEM "../hrc.dtd">
+<?xml-stylesheet type="text/xsl" href="../hrc.xsl"?>
+<!--
+   Fortran Syntax
+With Help of
+   Cyrill Panov <Cyrill.Panov@usu.ru>
+   Mike Golub   <golub@aha.ru>
+-->
+<hrc>
+
+<define name="ftString"   value="dString"/>
+<define name="ftComment"  value="dComment"/>
+<define name="ftSymb"     value="dSymbol"/>
+<define name="ftWord"     value="dKeyword"/>
+<define name="ftNumb"     value="dNumber"/>
+
+<scheme name="Fortran">
+   <!-- Linear Comments -->
+   <regexp match="/!.*$/" region0="ftComment"/>
+   <regexp match="/^C|\*.*$/i" region0="ftComment"/>
+   <!-- Numbers -->
+   <regexp match="/\b0x|X[\da-fA-F]+\B/" region0="ftNumb"/>
+   <regexp match="/\b[0-9.]+([eEdD][\-+]?\d+)?\B/" region0="ftNumb"/>
+   <!-- Strings -->
+   <regexp match='/"((\\.)|[^\\"])*?"/' region0="ftString"/>
+   <regexp match="/'((\\.)|[^\\'])*?'/" region0="ftString"/>
+
+   <regexp match="/\bcommon\s*(\/\s*\w+\s*\/)/i" region1="ftWord"/>
+
+   <keywords ignorecase="ignorecase" region="ftSymb">
+      <symb name=";"/>
+      <symb name="&lt;"/>
+      <symb name="&gt;"/>
+      <symb name="="/>
+      <symb name="("/>
+      <symb name=")"/>
+      <symb name=","/>
+      <symb name=".ge."/>
+      <symb name=".le."/>
+      <symb name=".lt."/>
+      <symb name=".ne."/>
+      <symb name=".eq."/>
+      <symb name=".or."/>
+      <symb name=".and."/>
+      <symb name=".not."/>
+      <symb name=".false."/>
+      <symb name=".true."/>
+      <symb name="%"/>
+      <symb name="*"/>
+      <symb name="/"/>
+      <symb name="+"/>
+      <symb name="-"/>
+   </keywords>
+   <keywords ignorecase="ignorecase" region="ftWord">
+      <word name="admit"/>
+      <word name="allocatable"/>
+      <word name="allocate"/>
+      <word name="assign"/>
+      <word name="atend"/>
+      <word name="backspace"/>
+      <word name="blockdata"/>
+      <word name="call"/>
+      <word name="case"/>
+      <word name="character"/>
+      <word name="close"/>
+      <word name="common"/>
+      <word name="complex"/>
+      <word name="continue"/>
+      <word name="cycle"/>
+      <word name="data"/>
+      <word name="deallocate"/>
+      <word name="default"/>
+      <word name="dimension"/>
+      <word name="do"/>
+      <word name="double"/>
+      <word name="doublecomplex"/>
+      <word name="doubleprecision"/>
+      <word name="dowhile"/>
+      <word name="else"/>
+      <word name="elseif"/>
+      <word name="end"/>
+      <word name="endatend"/>
+      <word name="endblock"/>
+      <word name="enddo"/>
+      <word name="enddo"/>
+      <word name="endfile"/>
+      <word name="endguess"/>
+      <word name="endif"/>
+      <word name="endloop"/>
+      <word name="endmap"/>
+      <word name="endselect"/>
+      <word name="endstructure"/>
+      <word name="endunion"/>
+      <word name="endwhile"/>
+      <word name="entry"/>
+      <word name="equivalence"/>
+      <word name="execute"/>
+      <word name="exit"/>
+      <word name="external"/>
+      <word name="format"/>
+      <word name="function"/>
+      <word name="goto"/>
+      <word name="guess"/>
+      <word name="if"/>
+      <word name="if"/>
+      <word name="implicit"/>
+      <word name="include"/>
+      <word name="inquire"/>
+      <word name="integer"/>
+      <word name="interface"/>
+      <word name="intrinsic"/>
+      <word name="logical"/>
+      <word name="loop"/>
+      <word name="map"/>
+      <word name="namelist"/>
+      <word name="open"/>
+      <word name="otherwise"/>
+      <word name="parameter"/>
+      <word name="pause"/>
+      <word name="precision"/>
+      <word name="print"/>
+      <word name="program"/>
+      <word name="quit"/>
+      <word name="read"/>
+      <word name="real"/>
+      <word name="record"/>
+      <word name="remoteblock"/>
+      <word name="return"/>
+      <word name="rewind"/>
+      <word name="save"/>
+      <word name="select"/>
+      <word name="stop"/>
+      <word name="structure"/>
+      <word name="subroutine"/>
+      <word name="then"/>
+      <word name="type"/>
+      <word name="union"/>
+      <word name="until"/>
+      <word name="value"/>
+      <word name="while"/>
+      <word name="write"/>
+   </keywords>
+</scheme>
+
+</hrc>

@@ -1,0 +1,142 @@
+<!--   DTD description for colorer hrc format -->
+
+<!ELEMENT hrc (scheme | include | define | type)*>
+
+<!ATTLIST hrc
+  version CDATA #IMPLIED>
+
+<!ELEMENT include EMPTY>
+<!ATTLIST include
+  scheme CDATA #IMPLIED
+  name CDATA #IMPLIED>
+
+
+<!ELEMENT define EMPTY>
+<!ATTLIST define
+  name NMTOKEN #REQUIRED
+  value NMTOKEN #REQUIRED>
+
+
+<!ELEMENT scheme (inherit | regexp | block | keywords)*>
+<!ATTLIST scheme
+  name NMTOKEN #REQUIRED>
+
+<!ELEMENT inherit (virtual)*>
+<!ATTLIST inherit
+  scheme NMTOKEN #REQUIRED>
+
+<!ELEMENT virtual EMPTY>
+<!ATTLIST virtual
+  scheme NMTOKEN #REQUIRED
+  subst  NMTOKEN #REQUIRED>
+
+<!ELEMENT regexp EMPTY>
+<!ATTLIST regexp
+  match CDATA #REQUIRED
+  lowpriority NMTOKEN #FIXED "lowpriority"
+
+  region0 NMTOKEN #IMPLIED
+  region1 NMTOKEN #IMPLIED
+  region2 NMTOKEN #IMPLIED
+  region3 NMTOKEN #IMPLIED
+  region4 NMTOKEN #IMPLIED
+  region5 NMTOKEN #IMPLIED
+  region6 NMTOKEN #IMPLIED
+  region7 NMTOKEN #IMPLIED
+  region8 NMTOKEN #IMPLIED
+  region9 NMTOKEN #IMPLIED
+  regiona NMTOKEN #IMPLIED
+  regionb NMTOKEN #IMPLIED
+  regionc NMTOKEN #IMPLIED
+  regiond NMTOKEN #IMPLIED
+  regione NMTOKEN #IMPLIED
+  regionf NMTOKEN #IMPLIED>
+
+<!ELEMENT block EMPTY>
+<!ATTLIST block
+  start CDATA #REQUIRED
+  end   CDATA #REQUIRED
+  scheme NMTOKEN #REQUIRED
+
+  lowpriority NMTOKEN #FIXED "lowpriority"
+
+  region NMTOKEN #IMPLIED
+  region00 NMTOKEN #IMPLIED
+  region01 NMTOKEN #IMPLIED
+  region02 NMTOKEN #IMPLIED
+  region03 NMTOKEN #IMPLIED
+  region04 NMTOKEN #IMPLIED
+  region05 NMTOKEN #IMPLIED
+  region06 NMTOKEN #IMPLIED
+  region07 NMTOKEN #IMPLIED
+  region08 NMTOKEN #IMPLIED
+  region09 NMTOKEN #IMPLIED
+  region0a NMTOKEN #IMPLIED
+  region0b NMTOKEN #IMPLIED
+  region0c NMTOKEN #IMPLIED
+  region0d NMTOKEN #IMPLIED
+  region0e NMTOKEN #IMPLIED
+  region0f NMTOKEN #IMPLIED
+
+  region10 NMTOKEN #IMPLIED
+  region11 NMTOKEN #IMPLIED
+  region12 NMTOKEN #IMPLIED
+  region13 NMTOKEN #IMPLIED
+  region14 NMTOKEN #IMPLIED
+  region15 NMTOKEN #IMPLIED
+  region16 NMTOKEN #IMPLIED
+  region17 NMTOKEN #IMPLIED
+  region18 NMTOKEN #IMPLIED
+  region19 NMTOKEN #IMPLIED
+  region1a NMTOKEN #IMPLIED
+  region1b NMTOKEN #IMPLIED
+  region1c NMTOKEN #IMPLIED
+  region1d NMTOKEN #IMPLIED
+  region1e NMTOKEN #IMPLIED
+  region1f NMTOKEN #IMPLIED>
+
+
+<!ELEMENT keywords (word | symb)*>
+<!ATTLIST keywords
+  ignorecase NMTOKEN #FIXED "ignorecase"
+  region NMTOKEN #IMPLIED
+  worddiv NMTOKEN #IMPLIED>
+
+<!ELEMENT word EMPTY>
+<!ATTLIST word
+  name CDATA #REQUIRED
+  region NMTOKEN #IMPLIED>
+
+<!ELEMENT symb EMPTY>
+<!ATTLIST symb
+  name CDATA #REQUIRED
+  region NMTOKEN #IMPLIED>
+
+<!ELEMENT type (scheme | load | switch | colors | params)+ >
+<!ATTLIST type
+  name CDATA #REQUIRED
+  descr CDATA #REQUIRED
+  exts CDATA #REQUIRED
+  separator NMTOKEN #FIXED "separator">
+
+<!ELEMENT load EMPTY>
+<!ATTLIST load
+  name CDATA #REQUIRED>
+
+<!ELEMENT switch EMPTY>
+<!ATTLIST switch
+  type CDATA #REQUIRED
+  match CDATA #REQUIRED>
+
+<!ELEMENT colors EMPTY>
+<!ATTLIST colors
+  row CDATA #IMPLIED
+  col CDATA #IMPLIED
+  useht NMTOKEN #FIXED "useht"
+  color CDATA #IMPLIED>
+
+<!ELEMENT params EMPTY>
+<!ATTLIST params
+  fullback NMTOKEN #FIXED "fullback"
+  maxlinelen CDATA #IMPLIED
+  backparse CDATA #IMPLIED>

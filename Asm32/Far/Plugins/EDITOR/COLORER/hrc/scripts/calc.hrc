@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="Windows-1251"?>
+<!DOCTYPE hrc SYSTEM "../hrc.dtd">
+<?xml-stylesheet type="text/xsl" href="../hrc.xsl"?>
+<!--
+    Calc's Defines
+With Help of:
+-->
+
+<hrc>
+
+<scheme name="calcsets">
+   <block start="/&lt;!--/" end="/-->/" scheme="Comment"
+          region="dComment" region00="dpOpenStruct" region10="dpCloseStruct"/>
+   <inherit scheme="mStdStr"/>
+   <inherit scheme="mCHexNumb"/>
+   <inherit scheme="mFloatNumb"/>
+   <regexp match="/ \b (0x|X[\da-fA-F]+) \B /x" region0="dNumber"/>
+   <regexp match="/ \b ([0-9\.]+) \B /x" region0="dNumber"/>
+   <inherit scheme="mNetAddresses"/>
+   <keywords ignorecase="ignorecase" region="dKeyword">
+      <word name="Calc"/>
+      <word name="/Calc"/>
+      <word name="Set"/>
+      <word name="/Set"/>
+      <word name="Use"/>
+      <word name="Use"/>
+      <word name="Const"/>
+      <word name="Func"/>
+      <word name="Op"/>
+      <word name="Text"/>
+      <word name="Field"/>
+      <word name="Dialog"/>
+      <word name="/Dialog"/>
+      <symb name="/"/>
+      <symb name="&lt;"/>
+      <symb name="&gt;"/>
+   </keywords>
+   <keywords region="dParam" ignorecase="ignorecase">
+      <word name="Name"/><word name="Syntax"/>
+      <word name="scale"/><word name="Mean"/>
+      <word name="Ver"/>
+      <symb name="="/>
+   </keywords>
+</scheme>
+
+</hrc>

@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html style="cursor: auto;" dir="ltr" lang="en-US"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
+<title>Kernel debugging with IDA Pro / Windbg plugin and VirtualKd | Hex Blog</title>
+<link rel="profile" href="http://gmpg.org/xfn/11">
+<link rel="stylesheet" type="text/css" media="all" href="Kernel%20debugging%20with%20IDA%20Pro_files/style.css">
+<link href="Kernel%20debugging%20with%20IDA%20Pro_files/css.css" rel="stylesheet" type="text/css">
+<link rel="pingback" href="http://www.hexblog.com/xmlrpc.php">
+<link rel="alternate" type="application/rss+xml" title="Hex Blog » Feed" href="http://www.hexblog.com/?feed=rss2">
+<link rel="alternate" type="application/rss+xml" title="Hex Blog » Comments Feed" href="http://www.hexblog.com/?feed=comments-rss2">
+<link rel="stylesheet" id="wp-syntax-css-css" href="Kernel%20debugging%20with%20IDA%20Pro_files/wp-syntax.css" type="text/css" media="all">
+<script type="text/javascript" src="Kernel%20debugging%20with%20IDA%20Pro_files/comment-reply.js"></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.hexblog.com/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.hexblog.com/wp-includes/wlwmanifest.xml"> 
+<link rel="prev" title="Book Review: The Art of Assembly Language, 2nd Edition" href="http://www.hexblog.com/?p=122">
+<link rel="next" title="ARM decompiler beta is coming" href="http://www.hexblog.com/?p=124">
+<meta name="generator" content="WordPress 3.4.2">
+<link rel="canonical" href="http://www.hexblog.com/?p=123">
+<link rel="stylesheet" type="text/css" href="Kernel%20debugging%20with%20IDA%20Pro_files/recaptcha.css"><style type="text/css">
+	#bsbm_form { clear:both; margin:20px 0; }
+	#bsbm_form label { font-size: 16px; font-weight:bold; color: #999; margin:0; padding:10px 0;}
+	#bsbm_form .question { font-size: 14px; font-weight:normal; margin:0; padding:5px 0;}
+	#bsbm_form .answer { font-size: 12px; font-weight:normal;}
+	#bsbm_form .notice { font-size: 11px; font-weight:normal;}	
+</style>
+<style type="text/css">a.gootranslink:link {color: #0000FF !important; text-decoration: underline !important;}a.gootranslink:visited {color: #0000FF !important; text-decoration: underline !important;}a.gootranslink:hover {color: #0000FF !important; text-decoration: underline !important;}a.gootranslink:active {color: #0000FF !important; text-decoration: underline !important;}#dict table {font-size:13px; line-height:1.5em; margin-left:5px; border:0px; background-color:#FFFFAA; color:black; }#dict td {padding-right:29px; vertical-align:top; border:0px; color:black; background-color:#FFFFAA;}</style></head>
+
+<body class="single single-post postid-123 single-format-standard">
+<div id="wrapper" class="hfeed">
+	<div id="header" style="background:url(http://www.hexblog.com/wp-content/themes/third-style/images/headers/abstract2.jpg) no-repeat top left;">
+		<div id="masthead">
+			<div id="branding" role="banner">
+	                <div id="pao_search"><form role="search" method="get" id="searchform" action="http://www.hexblog.com/">
+	<div><label class="screen-reader-text" for="s">Search for:</label>
+	<input name="s" id="s" type="text">
+	<input id="searchsubmit" value="Search" type="submit">
+	</div>
+	</form></div>
+								<div id="site-title">
+					<span>
+						<a href="http://www.hexblog.com/" title="Hex Blog" rel="home">Hex Blog</a>
+					</span>
+				</div>
+				<div id="site-description">State-of-the-art code analysis</div>
+			</div><!-- #branding -->
+
+			<div id="access" role="navigation">
+			  				<div class="skip-link screen-reader-text"><a href="#content" title="Skip to content">Skip to content</a></div>
+								<div class="menu"><ul><li><a href="http://www.hexblog.com/" title="Home">Home</a></li><li class="page_item page-item-2"><a href="http://www.hexblog.com/?page_id=2">About</a></li></ul></div>
+			</div><!-- #access -->
+		</div><!-- #masthead -->
+<div style="clear:both;"></div>
+	</div>
+<!-- #header -->
+
+	<div id="main">
+
+		<div id="container">
+			<div id="content" role="main">
+
+
+				<div id="nav-above" class="navigation">
+					<div class="nav-previous"><a href="http://www.hexblog.com/?p=122" rel="prev"><span class="meta-nav">←</span> Book Review: The Art of Assembly Language, 2nd Edition</a></div>
+					<div class="nav-next"><a href="http://www.hexblog.com/?p=124" rel="next">ARM decompiler beta is coming <span class="meta-nav">→</span></a></div>
+				</div><!-- #nav-above -->
+
+				<div id="post-123" class="post-123 post type-post status-publish format-standard hentry category-ida-pro">
+					<h1 class="entry-title">Kernel debugging with IDA Pro / Windbg plugin and VirtualKd</h1>
+
+					<div class="entry-meta">
+						<span class="meta-prep meta-prep-author">Posted on</span> <a href="http://www.hexblog.com/?p=123" title="11:54" rel="bookmark"><span class="entry-date">April 30, 2010</span></a> <span class="meta-sep">by</span> <span class="author vcard"><a class="url fn n" href="http://www.hexblog.com/?author=3" title="View all posts by Elias Bachaalany">Elias Bachaalany</a></span>					</div><!-- .entry-meta -->
+
+					<div class="entry-content">
+						<p>The other day we received an email support question asking if IDA Pro / Windbg debugger plugin works with <a href="http://virtualkd.sysprogs.org/" target="_blank">VirtualKd</a>, a tool <i>that allows speeding up (up to 45x) Windows kernel module debugging using VMWare and VirtualBox virtual machines</i>.
+ After we installed and experimented with VirtualKd, our answer was 
+“yes, certainly”. This blog entry aims at illustrating how to configure 
+VirtualKd to be used with IDA Pro / Windbg plugin and VMWare.</p>
+<p><img ilo-full-src="http://hexblog.com/ida_pro/pix/kd_cover.gif" src="Kernel%20debugging%20with%20IDA%20Pro_files/kd_cover.gif"><br></p>
+<p><span id="more-123"></span></p>
+<h2>Installing VirtualKd</h2>
+<p>First download the VirtualKd <a href="http://virtualkd.sysprogs.org/#installation" target="_blank">package</a>,
+ unzip its contents and copy the contents of the ‘target’ folder to the 
+VMWare guest OS and run ‘vminstall.exe’. After this step, reboot the 
+guest and run the ‘vmmon.exe’ (or ‘vmmon64.exe’) inside the host. If 
+everything is successful, you should see something like this:</p>
+<p><img ilo-full-src="http://hexblog.com/ida_pro/pix/kd_vmon.png" src="Kernel%20debugging%20with%20IDA%20Pro_files/kd_vmon.png"><br></p>
+<p>Please take note of the ‘Pipe name’ value as shown in the screenshot. We will use this value when configuring the Windbg plugin.</p>
+<h2>Configuring IDA Pro / Windbg plugin</h2>
+<p>First, run IDA Pro without an input database and select Debugger / Attach / Windbg plugin:</p>
+<p><img ilo-full-src="http://hexblog.com/ida_pro/pix/kd_attach.png" src="Kernel%20debugging%20with%20IDA%20Pro_files/kd_attach.png"><br></p>
+<p>Next, we get this screen:</p>
+<p><img ilo-full-src="http://hexblog.com/ida_pro/pix/kd_connstr.png" src="Kernel%20debugging%20with%20IDA%20Pro_files/kd_connstr.png"><br></p>
+<p>Here we enter a connection string (designating that the com port is a
+ pipe). The pipe name is the same value we read from the ‘vmmon’ tool 
+from the above steps.</p>
+<p>Before pressing OK, we need to make sure that the Windbg plugin is 
+properly configured. Let us verify that by pressing on the ‘Debug 
+options’ button:</p>
+<p><img ilo-full-src="http://hexblog.com/ida_pro/pix/kd_dbgsetup.png" src="Kernel%20debugging%20with%20IDA%20Pro_files/kd_dbgsetup.png"><br></p>
+<p>This dialog is used to configure the debugger in general, it is 
+common to all debugger modules. Since we don’t need to change any of 
+those settings now, let us instead select ‘Set specific options’:</p>
+<p><img ilo-full-src="http://hexblog.com/ida_pro/pix/kd_specopt.png" src="Kernel%20debugging%20with%20IDA%20Pro_files/kd_specopt.png"><br></p>
+<p>Make sure that these two options are properly configured:</p>
+<ol>
+<li>Kernel debugging is selected
+</li><li>Debugging tools path is correctly entered. Please note that 
+even if you’re debugging an x64 kernel you still need to point to the 
+x86 version of the debugging tools.
+</li></ol>
+<p>After we configured everything, simply press OK all the way until the attach dialog shows up:</p>
+<p><img ilo-full-src="http://hexblog.com/ida_pro/pix/kd_attaching.png" src="Kernel%20debugging%20with%20IDA%20Pro_files/kd_attaching.png"><br></p>
+<p>Pressing OK one last time will start the debugging session:</p>
+<p><img ilo-full-src="http://hexblog.com/ida_pro/pix/kd_dbg.gif" src="Kernel%20debugging%20with%20IDA%20Pro_files/kd_dbg.gif"><br></p>
+<p>After debugging for a while, we were really amazed at the speed 
+improvement achieved with the help of VirtualKd (nice work VirtualKd 
+team). Kernel debugging speed using the Windbg plugin is almost 
+comparable to the local win32 debugger plugin.</p>
+<p>For a more elaborate tutorial on configuring and using the Windbg plugin please check our <a href="http://www.hex-rays.com/idapro/idasupport.htm" target="_blank">support</a> page.</p>
+											</div><!-- .entry-content -->
+
+
+					<div class="entry-utility">
+						This entry was posted in <a href="http://www.hexblog.com/?cat=3" title="View all posts in IDA Pro" rel="category">IDA Pro</a>. Bookmark the <a href="http://www.hexblog.com/?p=123" title="Permalink to Kernel debugging with IDA Pro / Windbg plugin and VirtualKd" rel="bookmark">permalink</a>.											</div><!-- .entry-utility -->
+				</div><!-- #post-## -->
+
+				<div id="nav-below" class="navigation">
+					<div class="nav-previous"><a href="http://www.hexblog.com/?p=122" rel="prev"><span class="meta-nav">←</span> Book Review: The Art of Assembly Language, 2nd Edition</a></div>
+					<div class="nav-next"><a href="http://www.hexblog.com/?p=124" rel="next">ARM decompiler beta is coming <span class="meta-nav">→</span></a></div>
+				</div><!-- #nav-below -->
+
+				
+			<div id="comments">
+
+
+	<p class="nocomments">Comments are closed.</p>
+
+
+								
+</div><!-- #comments -->
+
+
+			</div><!-- #content -->
+		</div><!-- #container -->
+
+
+		<div id="primary" class="widget-area" role="complementary">
+			<ul class="xoxo">
+
+<li id="text-4" class="widget-container widget_text"><h3 class="widget-title">Team</h3>			<div class="textwidget"><ul>
+<li><a href="http://hexblog.com/about.html">Ilfak Guilfanov</a></li>
+<li><a href="http://hexblog.com/elias.html">Elias Bachaalany</a></li>
+<li>Igor Skochinsky</li>
+<li><a href="http://hexblog.com/daniel.html">Daniel Pistelli</a></li>
+</ul>
+</div>
+		</li><li id="text-5" class="widget-container widget_text"><h3 class="widget-title">The IDA Pro Book (2nd Ed)</h3>			<div class="textwidget"><center><a href="http://nostarch.com/idapro2.htm">
+<img ilo-full-src="http://hexblog.com/ida_pro/pix/idabook_small.jpg" src="Kernel%20debugging%20with%20IDA%20Pro_files/idabook_small.jpg" align="middle"></a></center>
+</div>
+		</li>		<li id="recent-posts-2" class="widget-container widget_recent_entries">		<h3 class="widget-title">Recent Posts</h3>		<ul>
+				<li><a href="http://www.hexblog.com/?p=704" title="Recon 2012: Compiler Internals">Recon 2012: Compiler Internals</a></li>
+				<li><a href="http://www.hexblog.com/?p=695" title="Calling IDA APIs from IDAPython with ctypes">Calling IDA APIs from IDAPython with ctypes</a></li>
+				<li><a href="http://www.hexblog.com/?p=669" title="The trace replayer">The trace replayer</a></li>
+				<li><a href="http://www.hexblog.com/?p=536" title="Code viewer, forms &amp; timers">Code viewer, forms &amp; timers</a></li>
+				<li><a href="http://www.hexblog.com/?p=544" title="New features in Hex-Rays Decompiler 1.6">New features in Hex-Rays Decompiler 1.6</a></li>
+				</ul>
+		</li><li id="recent-comments-2" class="widget-container widget_recent_comments"><h3 class="widget-title">Recent Comments</h3><ul id="recentcomments"><li class="recentcomments">Joxean on <a href="http://www.hexblog.com/?p=669#comment-6309">The trace replayer</a></li><li class="recentcomments">Jonas on <a href="http://www.hexblog.com/?p=669#comment-6304">The trace replayer</a></li><li class="recentcomments">Darmawan on <a href="http://www.hexblog.com/?p=704#comment-1657">Recon 2012: Compiler Internals</a></li><li class="recentcomments">Joxean on <a href="http://www.hexblog.com/?p=669#comment-1652">The trace replayer</a></li><li class="recentcomments">Xing on <a href="http://www.hexblog.com/?p=669#comment-1638">The trace replayer</a></li></ul></li><li id="categories-2" class="widget-container widget_categories"><h3 class="widget-title">Categories</h3>		<ul>
+	<li class="cat-item cat-item-5"><a href="http://www.hexblog.com/?cat=5" title="View all posts filed under Decompilation">Decompilation</a>
+</li>
+	<li class="cat-item cat-item-3"><a href="http://www.hexblog.com/?cat=3" title="View all posts filed under IDA Pro">IDA Pro</a>
+</li>
+	<li class="cat-item cat-item-8"><a href="http://www.hexblog.com/?cat=8" title="View all posts filed under IDAPython">IDAPython</a>
+</li>
+	<li class="cat-item cat-item-6"><a href="http://www.hexblog.com/?cat=6" title="View all posts filed under Programming">Programming</a>
+</li>
+	<li class="cat-item cat-item-4"><a href="http://www.hexblog.com/?cat=4" title="View all posts filed under Security">Security</a>
+</li>
+	<li class="cat-item cat-item-1"><a href="http://www.hexblog.com/?cat=1" title="View all posts filed under Uncategorized">Uncategorized</a>
+</li>
+		</ul>
+</li><li id="archives-2" class="widget-container widget_archive"><h3 class="widget-title">Archives</h3>		<ul>
+			<li><a href="http://www.hexblog.com/?m=201206" title="June 2012">June 2012</a></li>
+	<li><a href="http://www.hexblog.com/?m=201204" title="April 2012">April 2012</a></li>
+	<li><a href="http://www.hexblog.com/?m=201201" title="January 2012">January 2012</a></li>
+	<li><a href="http://www.hexblog.com/?m=201110" title="October 2011">October 2011</a></li>
+	<li><a href="http://www.hexblog.com/?m=201109" title="September 2011">September 2011</a></li>
+	<li><a href="http://www.hexblog.com/?m=201108" title="August 2011">August 2011</a></li>
+	<li><a href="http://www.hexblog.com/?m=201107" title="July 2011">July 2011</a></li>
+	<li><a href="http://www.hexblog.com/?m=201105" title="May 2011">May 2011</a></li>
+	<li><a href="http://www.hexblog.com/?m=201104" title="April 2011">April 2011</a></li>
+	<li><a href="http://www.hexblog.com/?m=201102" title="February 2011">February 2011</a></li>
+	<li><a href="http://www.hexblog.com/?m=201101" title="January 2011">January 2011</a></li>
+	<li><a href="http://www.hexblog.com/?m=201012" title="December 2010">December 2010</a></li>
+	<li><a href="http://www.hexblog.com/?m=201010" title="October 2010">October 2010</a></li>
+	<li><a href="http://www.hexblog.com/?m=201008" title="August 2010">August 2010</a></li>
+	<li><a href="http://www.hexblog.com/?m=201007" title="July 2010">July 2010</a></li>
+	<li><a href="http://www.hexblog.com/?m=201006" title="June 2010">June 2010</a></li>
+	<li><a href="http://www.hexblog.com/?m=201005" title="May 2010">May 2010</a></li>
+	<li><a href="http://www.hexblog.com/?m=201004" title="April 2010">April 2010</a></li>
+	<li><a href="http://www.hexblog.com/?m=201003" title="March 2010">March 2010</a></li>
+	<li><a href="http://www.hexblog.com/?m=201002" title="February 2010">February 2010</a></li>
+	<li><a href="http://www.hexblog.com/?m=201001" title="January 2010">January 2010</a></li>
+	<li><a href="http://www.hexblog.com/?m=200911" title="November 2009">November 2009</a></li>
+	<li><a href="http://www.hexblog.com/?m=200910" title="October 2009">October 2009</a></li>
+	<li><a href="http://www.hexblog.com/?m=200909" title="September 2009">September 2009</a></li>
+	<li><a href="http://www.hexblog.com/?m=200908" title="August 2009">August 2009</a></li>
+	<li><a href="http://www.hexblog.com/?m=200907" title="July 2009">July 2009</a></li>
+	<li><a href="http://www.hexblog.com/?m=200906" title="June 2009">June 2009</a></li>
+	<li><a href="http://www.hexblog.com/?m=200905" title="May 2009">May 2009</a></li>
+	<li><a href="http://www.hexblog.com/?m=200904" title="April 2009">April 2009</a></li>
+	<li><a href="http://www.hexblog.com/?m=200902" title="February 2009">February 2009</a></li>
+	<li><a href="http://www.hexblog.com/?m=200901" title="January 2009">January 2009</a></li>
+	<li><a href="http://www.hexblog.com/?m=200811" title="November 2008">November 2008</a></li>
+	<li><a href="http://www.hexblog.com/?m=200810" title="October 2008">October 2008</a></li>
+	<li><a href="http://www.hexblog.com/?m=200809" title="September 2008">September 2008</a></li>
+	<li><a href="http://www.hexblog.com/?m=200808" title="August 2008">August 2008</a></li>
+	<li><a href="http://www.hexblog.com/?m=200807" title="July 2008">July 2008</a></li>
+	<li><a href="http://www.hexblog.com/?m=200806" title="June 2008">June 2008</a></li>
+	<li><a href="http://www.hexblog.com/?m=200804" title="April 2008">April 2008</a></li>
+	<li><a href="http://www.hexblog.com/?m=200803" title="March 2008">March 2008</a></li>
+	<li><a href="http://www.hexblog.com/?m=200802" title="February 2008">February 2008</a></li>
+	<li><a href="http://www.hexblog.com/?m=200801" title="January 2008">January 2008</a></li>
+	<li><a href="http://www.hexblog.com/?m=200711" title="November 2007">November 2007</a></li>
+	<li><a href="http://www.hexblog.com/?m=200710" title="October 2007">October 2007</a></li>
+	<li><a href="http://www.hexblog.com/?m=200709" title="September 2007">September 2007</a></li>
+	<li><a href="http://www.hexblog.com/?m=200708" title="August 2007">August 2007</a></li>
+	<li><a href="http://www.hexblog.com/?m=200706" title="June 2007">June 2007</a></li>
+	<li><a href="http://www.hexblog.com/?m=200705" title="May 2007">May 2007</a></li>
+	<li><a href="http://www.hexblog.com/?m=200704" title="April 2007">April 2007</a></li>
+	<li><a href="http://www.hexblog.com/?m=200703" title="March 2007">March 2007</a></li>
+	<li><a href="http://www.hexblog.com/?m=200702" title="February 2007">February 2007</a></li>
+	<li><a href="http://www.hexblog.com/?m=200701" title="January 2007">January 2007</a></li>
+	<li><a href="http://www.hexblog.com/?m=200612" title="December 2006">December 2006</a></li>
+	<li><a href="http://www.hexblog.com/?m=200610" title="October 2006">October 2006</a></li>
+	<li><a href="http://www.hexblog.com/?m=200609" title="September 2006">September 2006</a></li>
+	<li><a href="http://www.hexblog.com/?m=200608" title="August 2006">August 2006</a></li>
+	<li><a href="http://www.hexblog.com/?m=200606" title="June 2006">June 2006</a></li>
+	<li><a href="http://www.hexblog.com/?m=200605" title="May 2006">May 2006</a></li>
+	<li><a href="http://www.hexblog.com/?m=200604" title="April 2006">April 2006</a></li>
+	<li><a href="http://www.hexblog.com/?m=200603" title="March 2006">March 2006</a></li>
+	<li><a href="http://www.hexblog.com/?m=200602" title="February 2006">February 2006</a></li>
+	<li><a href="http://www.hexblog.com/?m=200601" title="January 2006">January 2006</a></li>
+	<li><a href="http://www.hexblog.com/?m=200512" title="December 2005">December 2005</a></li>
+	<li><a href="http://www.hexblog.com/?m=200511" title="November 2005">November 2005</a></li>
+	<li><a href="http://www.hexblog.com/?m=200510" title="October 2005">October 2005</a></li>
+		</ul>
+</li>			</ul>
+		</div><!-- #primary .widget-area -->
+
+	</div><!-- #main -->
+
+	<div id="footer" role="contentinfo">
+		<div id="colophon">
+
+
+
+			<div id="site-info">
+				<a href="http://www.hexblog.com/" title="Hex Blog" rel="home">
+					Hex Blog				</a>
+			</div><!-- #site-info -->
+
+			<div id="site-generator">
+								<a href="http://www.paomedia.com/">
+					Web design by paomedia.				</a>
+			</div><!-- #site-generator -->
+
+		</div><!-- #colophon -->
+	</div><!-- #footer -->
+
+</div><!-- #wrapper -->
+
+
+
+</body></html>

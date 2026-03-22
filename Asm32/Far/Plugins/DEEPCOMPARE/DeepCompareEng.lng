@@ -1,0 +1,36 @@
+.Language=English,English
+
+"Ok"
+"Cancel"
+"Error"
+
+"Deep Compare"
+
+"Process..."
+"Sub&folders"
+"S&elected items only"
+"I&gnore cached results"
+"Only with &mask"
+"Onl&y with mask"
+
+"Compare..."
+"Filenames Cas&e-sensitively"
+"&Time"
+"Two seconds &precision"
+"Ignore exactly one-&hour difference"
+"&Size"
+"&Attributes"
+"&Contents"
+"&Up to"
+
+"Display message..."
+"When &no differences found"
+"C&lear all cache"
+
+"  Comparing file/folder"
+"  with file/folder"
+"Comparing files..."
+"The compared files seem to be identical"
+"Specified mask is invalid"
+
+"&Disable cache completely"

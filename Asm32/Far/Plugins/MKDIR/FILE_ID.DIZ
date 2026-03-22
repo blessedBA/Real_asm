@@ -1,0 +1,14 @@
+MkDir Plugin 1.20 for Far Manager.
+Multiple directories creation in one call.
+Copyright (C) 1999 by Igor Grabelnikov
+
+Эта команда позволяет создать одним вызовом
+сразу несколько директорий. Примеры списков:
+
+DISK1;DISK2;DISK3
+DISK{1-10}.DSK
+{Beta;Release}\Disk{01-15}
+
+Для контактов с автором: Игорь Грабельников,
+Netmail: 2:5063/3@fidonet
+E-mail: igg@iname.com

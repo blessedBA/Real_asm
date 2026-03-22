@@ -1,0 +1,86 @@
+REGEDIT4
+
+[HKEY_CURRENT_USER\Software\Far\KeyMacros\Shell]
+
+[HKEY_CURRENT_USER\Software\Far\KeyMacros\Vars]
+"%%wlx2far_QView"=dword:00000000
+
+[HKEY_CURRENT_USER\Software\Far\KeyMacros\Common\AltG]
+"Sequence"="F11 $If (CheckHotkey(\"G\")) G $Else Esc AltG $End"
+"Description"="wlx2far: Main menu"
+"DisableOutput"=dword:00000001
+
+[HKEY_CURRENT_USER\Software\Far\KeyMacros\Common\CtrlW]
+"Sequence"="F11 $If (CheckHotkey(\"G\")) G 5 $Else Esc CtrlW $End"
+"Description"="wlx2far: Show lister"
+"DisableOutput"=dword:00000001
+
+[HKEY_CURRENT_USER\Software\Far\KeyMacros\Shell\CtrlE]
+"Sequence"="F11 $If (CheckHotkey(\"G\")) G 4 $Else Esc CtrlE $End"
+"Description"="wlx2far: Open lister"
+"DisableOutput"=dword:00000001
+
+[HKEY_CURRENT_USER\Software\Far\KeyMacros\Shell\CtrlQ]
+"Sequence"="$If (%%wlx2far_QView==0) $If (!PPanel.Visible) $If (APanel.Left) CtrlF2 $Else CtrlF1 $End $End Tab $If (QView) Tab Ctrl2 Tab CtrlClear $Else Tab Ctrl6 Tab $If (APanel.Left) $Rep (APanel.Width-15) CtrlRight $End $Else $Rep (APanel.Width-15) CtrlLeft $End $End $End Tab F11 $If (CheckHotkey(\"G\")) G 1 $Else Esc CtrlQ $End %%wlx2far_QView=1; $Else F11 $If (CheckHotkey(\"G\")) G 1 $Else Esc $End Tab CtrlClear $If (!PPanel.Visible) $If (APanel.Left) CtrlF2 $Else CtrlF1 $End $End Tab Ctrl2 %%wlx2far_QView=0; $End"
+"Description"="wlx2far: Toggle QViewer"
+"DisableOutput"=dword:00000001
+
+[HKEY_CURRENT_USER\Software\Far\KeyMacros\Shell\CtrlTab]
+"Sequence"="$If (%%wlx2far_QView==1) F11 $If (CheckHotkey(\"G\")) G 2 $Else Esc CtrlTab $End $Else CtrlTab $End"
+"Description"="wlx2far: Focus QViewer"
+"DisableOutput"=dword:00000001
+
+[HKEY_CURRENT_USER\Software\Far\KeyMacros\Shell\Tab]
+"Sequence"="$If (%%wlx2far_QView==1) F11 $If (CheckHotkey(\"G\")) G 2 $Else Esc Tab $End $Else Tab $End"
+"Description"="wlx2far: Focus QViewer"
+"DisableOutput"=dword:00000001
+
+[HKEY_CURRENT_USER\Software\Far\KeyMacros\Shell\Down]
+"Sequence"="Down $If (%%wlx2far_QView==1) F11 $If (CheckHotkey(\"G\")) G 3 $Else Esc $End $End"
+"Description"="wlx2far: Update QViewer"
+"DisableOutput"=dword:00000001
+
+[HKEY_CURRENT_USER\Software\Far\KeyMacros\Shell\End]
+"Sequence"="End $If (%%wlx2far_QView==1) F11 $If (CheckHotkey(\"G\")) G 3 $Else Esc $End $End"
+"Description"="wlx2far: Update QViewer"
+"DisableOutput"=dword:00000001
+
+[HKEY_CURRENT_USER\Software\Far\KeyMacros\Shell\Enter]
+"Sequence"="Enter $If (%%wlx2far_QView==1) F11 $If (CheckHotkey(\"G\")) G 3 $Else Esc $End $End"
+"Description"="wlx2far: Update QViewer"
+"DisableOutput"=dword:00000001
+
+[HKEY_CURRENT_USER\Software\Far\KeyMacros\Shell\Home]
+"Sequence"="Home $If (%%wlx2far_QView==1) F11 $If (CheckHotkey(\"G\")) G 3 $Else Esc $End $End"
+"Description"="wlx2far: Update QViewer"
+"DisableOutput"=dword:00000001
+
+[HKEY_CURRENT_USER\Software\Far\KeyMacros\Shell\Left]
+"Sequence"="$If (CmdLine.Empty) Left $If (%%wlx2far_QView==1) F11 $If (CheckHotkey(\"G\")) G 3 $Else Esc $End $End $Else CtrlS $End"
+"Description"="wlx2far: Update QViewer"
+"DisableOutput"=dword:00000001
+
+[HKEY_CURRENT_USER\Software\Far\KeyMacros\Shell\PgDn]
+"Sequence"="PgDn $If (%%wlx2far_QView==1) F11 $If (CheckHotkey(\"G\")) G 3 $Else Esc $End $End"
+"Description"="wlx2far: Update QViewer"
+"DisableOutput"=dword:00000001
+
+[HKEY_CURRENT_USER\Software\Far\KeyMacros\Shell\PgUp]
+"Sequence"="PgUp $If (%%wlx2far_QView==1) F11 $If (CheckHotkey(\"G\")) G 3 $Else Esc $End $End"
+"Description"="wlx2far: Update QViewer"
+"DisableOutput"=dword:00000001
+
+[HKEY_CURRENT_USER\Software\Far\KeyMacros\Shell\Right]
+"Sequence"="$If (CmdLine.Empty) Right $If (%%wlx2far_QView==1) F11 $If (CheckHotkey(\"G\")) G 3 $Else Esc $End $End $Else CtrlD $End"
+"Description"="wlx2far: Update QViewer"
+"DisableOutput"=dword:00000001
+
+[HKEY_CURRENT_USER\Software\Far\KeyMacros\Shell\Space]
+"Sequence"="$If (CmdLine.Empty) $If (%%wlx2far_QView==1) F11 $If (CheckHotkey(\"G\")) G 3 $Else Esc Space $End $Else Space $End $Else Space $End"
+"Description"="wlx2far: Update QViewer"
+"DisableOutput"=dword:00000001
+
+[HKEY_CURRENT_USER\Software\Far\KeyMacros\Shell\Up]
+"Sequence"="Up $If (%%wlx2far_QView==1) F11 $If (CheckHotkey(\"G\")) G 3 $Else Esc $End $End"
+"Description"="wlx2far: Update QViewer"
+"DisableOutput"=dword:00000001

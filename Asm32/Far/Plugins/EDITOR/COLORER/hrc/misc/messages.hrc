@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="Windows-1251"?>
+<!DOCTYPE hrc SYSTEM "../hrc.dtd">
+<?xml-stylesheet type="text/xsl" href="../hrc.xsl"?>
+<!--
+Messages highlighting for colorer
+    Changed by ANR Daemon, Hell Corp
+    <anrdaemon@hell.corp.mtu-net.ru>  2:5020/877.24@FIDO
+    honeyman <honeyman@uic.nnov.ru>
+-->
+
+<hrc>
+
+<define name="pktB"    value="dKeyword"/>   <!--    *Bold* -->
+<define name="pktI"    value="dComment"/>   <!--    /Italic/ -->
+<define name="pktBI"   value="dComment2"/>  <!--   /*BoldItalic*/ -->
+<define name="pktU"    value="dVar"/>       <!--    _Underline_ -->
+<define name="pktBU"   value="dNumber"/>    <!--   _*BoldUnderline*_ -->
+<define name="pktIU"   value="dParam"/>     <!--   /_ItalicUnderline_/ -->
+<define name="pktBIU"  value="dLabel"/>     <!--  _/*BoldItalicUnderline*/_ -->
+<define name="pktR"    value="dString"/>       <!--    #Reverse# -->
+<define name="pktRB"   value="dString2"/>      <!--   *#ReverseBold#* -->
+<define name="pktRI"   value="dStringQuote"/>  <!--   /#ReverseItalic#/ -->
+<define name="pktRBI"  value="dVar2"/>         <!--  /*#ReverseBoldItalic#*/ -->
+<define name="pktRU"   value="dString"/>       <!--   _#ReverseUnderline#_ -->
+<define name="pktRBU"  value="dString2"/>      <!--  _*#ReverseBoldUnderline#*_ -->
+<define name="pktRIU"  value="dStringQuote"/>  <!--  _/#ReverseItalicUnderline#/_ -->
+<define name="pktRBIU" value="dParam"/>        <!-- #*/_ReverseBoldItalicUnderline#/_ -->
+<define name="pktKludge" value="dString"/>
+<define name="pktQuote"  value="dSymbol"/>
+<define name="pktQuote2" value="dDirective"/>
+<define name="pktAddr"   value="dString"/>
+<define name="pktTagL"   value="dString"/>
+<define name="pktTearL"  value="pktKludge"/>
+<define name="pktOrigL"  value="pktKludge"/>
+
+<define name="pktUUE" value="dComment"/>
+
+<scheme name="messages">
+
+  <!-- kludges -->
+  <regexp match="/^(\x01.*$)/" region0="pktKludge"/>
+  <regexp match="/^(SEEN-BY\:.*$)/" region0="pktKludge"/>
+
+  <!-- uue code filter -->
+  <regexp match="/(^\S{61,})/" region0="pktUUE"/>
+
+  <!-- Quotes -->
+  <regexp match="/^(\s?.[^\s\>]+(>>)+[^>].*)/" region0="pktQuote2"/>
+  <regexp match="/^(\s?.[^\s\>]+(>)+.*)/" region0="pktQuote"/>
+  <regexp match="/^(\>.*)/" region0="pktQuote2"/>
+
+<!-- (C) by Honeyman starts-->
+
+  <regexp match="/^(X\-FTN\-Origin\:)\s(.*)$/" region0="dComment2" region2="pktQuote"/>
+  <regexp match="/^(From\s\-)\s(.*)$/" region0="dComment2" region2="dComment" region3="dComment"/>
+  <regexp match="/^(Approved\:)\s(.*)$/" region0="dComment2" region2="dComment"/>
+  <regexp match="/^(Cache\-Post\-Path\:)\s(.*)$/" region0="dComment2" region2="dComment"/>
+  <regexp match="/^(Content\:)\s(.*)$/" region0="dComment2" region2="dComment"/>
+  <!--regexp match="/^(Content\-.*?\B\:)\s(.*)$/" region0="dComment2" region2="dComment"-->
+  <regexp match="/^(Distribution\:)\s(.*)$/" region0="dComment2" region2="dComment"/>
+  <regexp match="/^(Followup\-To\:)\s(.*)$/" region0="dComment2" region2="dComment"/>
+  <regexp match="/^(In\-Reply\-To\:)\s(.*)$/" region0="dComment2" region2="dComment"/>
+  <regexp match="/^(Lines\:)\s(.*)$/" region0="dComment2" region2="dComment"/>
+  <regexp match="/^(Mime\-Version\:)\s(.*)$/" region0="dComment2" region2="dComment"/>
+  <regexp match="/^(NNTP\-Posting\-.*?\B\:)\s(.*)$/" region0="dComment2" region2="dComment"/>
+  <regexp match="/^(Newsgroups\:)\s(.*)$/" region0="dComment2" region2="dComment"/>
+  <regexp match="/^(Organization\:)\s(.*)$/" region0="dComment2" region2="dComment"/>
+  <regexp match="/^(Path\:)\s(.*)$/" region0="dComment2" region2="dComment"/>
+  <regexp match="/^(References\:)\s(.*)$/" region0="dComment2" region2="dComment"/>
+  <regexp match="/^(Reply\-To\:)\s(.*)$/" region0="dComment2" region2="dComment"/>
+  <regexp match="/^(Return\-Receipt\-To\:)\s(.*)$/" region0="dComment2" region2="dComment"/>
+  <regexp match="/^(Sender\:)\s(.*)$/" region0="dComment2" region2="dComment"/>
+  <regexp match="/^(Xref\:)\s(.*)$/" region0="dComment2" region2="dComment"/>
+  <regexp match="/^(X\-[\w\-]+\:)\s(.*)$/" region0="dComment2" region2="dComment"/>
+
+<!-- (C) by Honeyman ends-->
+
+  <regexp match="/\b(To\s*:)(.*)$/i" region0="dKeyword" region2="dString"/>
+  <regexp match="/^(Date:)(.*)$/i" region0="dKeyword" region2="dString"/>
+  <regexp match="/^(From:)(.*)$/i" region0="dFunction" region1="dKeyword" region2="dString"/>
+  <regexp match="/^(Subject:)(.*)$/i" region0="dKeyword" region2="dString"/>
+  <block  start="/^(Received:)/i" end="/^\M\S\S/ix" scheme="mNetAddresses" region="dComment2" region01="dComment"/>
+  <regexp match="/^(X-Mailer:)(.*)$/i" region0="dComment2" region2="dComment"/>
+  <regexp match="/^(Message-Id:)(.*)$/i" region0="dComment2" region2="dComment"/>
+  <regexp match="/^(X-UIDL:)(.*)$/i" region0="dComment2" region2="dComment"/>
+  <regexp match="/^(Status:)(.*)$/i" region0="dComment2" region2="dComment"/>
+  <!-- cail: really it is better to use scheme "empty" -
+       it much faster than "Comment" :) -->
+  <block start="/^Content-Type: (text)?!/i" end="/------/" scheme="empty" region="dComment"/>
+
+<!-- Http,EMail & Fido Addresses -->
+  <inherit scheme="mNetAddresses"/>
+  <inherit scheme="mApost"/>
+  <inherit scheme="mStdStr"/>
+  <inherit scheme="mDecNumb"/>
+
+<!-- tearline (Colorer 2.8+) -->
+  <regexp match="/(^\.\.\.\x20\M.*$)/" region0="pktTagL"/>
+  <regexp match="/(^---\x20\M.*$)/" region0="pktTearL"/>
+  <regexp match="/(^\x20?\*\x20Origin:\x20\M.*$)/" region0="pktOrigL"/>
+
+  <!-- speedup by
+       Andrzej Novosiolov <andrzej.Novosiolov@p4.f201.n463.z2.fidonet.org> :)
+  -->
+  <regexp match="/([A-Za-z\x80-\xFF][A-Za-z\x80-\xFF\s]+) \M [\s;=+-*&amp;|^\(\)\[\],\.\-!\~%\{\}?_]|$/x"
+          region1="dSyntax"/>
+
+<!-- Style colors -->
+
+<!-- More powerful FOUR-stylecoded regexp :) -
+It not work.  :(
+­г Ё§ўа йҐ­жл :)
+  <regexp match="/(#\*\/_)|(#\*_\/)|(#_\*\/)|(#\/\*_)|(#_\/\*)|(#\/_\*)|(\*#\/_)|(\*#_\/)|(\*_#\/)|(\*\/#_)|(\*_\/#)|(\*\/_#)|(\/#\*_)|(\/_\*#)|(\/\*#_)|(\/\*_#)|(\/#_\*)|(\/_#\*)|(_\/#\*)|(_#\/\*)|(_\/\*#)|(_#\*\/)|(_\*\/#)|(_\*#\/)[^\s][^\_\*\#\/]+[^\s](#\*\/_)|(#\*_\/)|(#_\*\/)|(#\/\*_)|(#_\/\*)|(#\/_\*)|(\*#\/_)|(\*#_\/)|(\*_#\/)|(\*\/#_)|(\*_\/#)|(\*\/_#)|(\/#\*_)|(\/_\*#)|(\/\*#_)|(\/\*_#)|(\/#_\*)|(\/_#\*)|(_\/#\*)|(_#\/\*)|(_\/\*#)|(_#\*\/)|(_\*\/#)|(_\*#\/)/"
+          region0="pktRBIU"/>
+-->
+
+<!-- Triple stylecodes -
+too slow...
+  <regexp match="/(  \*\_\/ \S [^\*\_\/]+ \S \/\_\* )/x" region0="pktBIU"/>
+  <regexp match="/(  \_\*\/ \S [^\*\_\/]+ \S \/\*\_ )/x" region0="pktBIU"/>
+  <regexp match="/(  \_\/\* \S [^\*\_\/]+ \S \*\/\_ )/x" region0="pktBIU"/>
+  <regexp match="/(  \/\_\* \S [^\*\_\/]+ \S \*\_\/ )/x" region0="pktBIU"/>
+  <regexp match="/(  \/\*\_ \S [^\*\_\/]+ \S \_\*\/ )/x" region0="pktBIU"/>
+  <regexp match="/(  \*\/\_ \S [^\*\_\/]+ \S \_\/\* )/x" region0="pktBIU"/>
+
+  <regexp match="/(  \*\#\/ \S [^\*\#\/]+ \S \/\#\* )/x" region0="pktRBI"/>
+  <regexp match="/(  \#\*\/ \S [^\*\#\/]+ \S \/\*\# )/x" region0="pktRBI"/>
+  <regexp match="/(  \#\/\* \S [^\*\#\/]+ \S \*\/\# )/x" region0="pktRBI"/>
+  <regexp match="/(  \/\#\* \S [^\*\#\/]+ \S \*\#\/ )/x" region0="pktRBI"/>
+  <regexp match="/(  \/\*\# \S [^\*\#\/]+ \S \#\*\/ )/x" region0="pktRBI"/>
+  <regexp match="/(  \*\/\# \S [^\*\#\/]+ \S \#\/\* )/x" region0="pktRBI"/>
+
+  <regexp match="/(  \*\#\_ \S [^\*\#\_]+ \S \_\#\* )/x" region0="pktRBU"/>
+  <regexp match="/(  \#\*\_ \S [^\*\#\_]+ \S \_\*\# )/x" region0="pktRBU"/>
+  <regexp match="/(  \#\_\* \S [^\*\#\_]+ \S \*\_\# )/x" region0="pktRBU"/>
+  <regexp match="/(  \_\#\* \S [^\*\#\_]+ \S \*\#\_ )/x" region0="pktRBU"/>
+  <regexp match="/(  \_\*\# \S [^\*\#\_]+ \S \#\*\_ )/x" region0="pktRBU"/>
+  <regexp match="/(  \*\_\# \S [^\*\#\_]+ \S \#\_\* )/x" region0="pktRBU"/>
+
+  <regexp match="/(  \/\#\_ \S [^\/\_\#]+ \S \_\#\/ )/x" region0="pktRIU"/>
+  <regexp match="/(  \#\/\_ \S [^\/\_\#]+ \S \_\/\# )/x" region0="pktRIU"/>
+  <regexp match="/(  \#\_\/ \S [^\/\_\#]+ \S \/\_\# )/x" region0="pktRIU"/>
+  <regexp match="/(  \_\#\/ \S [^\/\_\#]+ \S \/\#\_ )/x" region0="pktRIU"/>
+  <regexp match="/(  \_\/\# \S [^\/\_\#]+ \S \#\/\_ )/x" region0="pktRIU"/>
+  <regexp match="/(  \/\_\# \S [^\/\_\#]+ \S \#\_\/ )/x" region0="pktRIU"/>
+-->
+<!-- Binary stylecodes -->
+  <regexp match="/((\/\*)|(\*\/)[^\s][^\_\*\#\/]+[^\s](\/\*)|(\*\/))/"
+          region0="pktBI"/>
+  <regexp match="/((\_\*)|(\*\_)[^\s][^\_\*\#\/]+[^\s](\_\*)|(\*\_))/"
+          region0="pktBU"/>
+  <regexp match="/((\/\_)|(\_\/)[^\s][^\_\*\#\/]+[^\s](\/\_)|(\_\/))/"
+          region0="pktIU"/>
+  <regexp match="/((\#\*)|(\*\#)[^\s][^\_\*\#\/]+[^\s](\#\*)|(\*\#))/"
+          region0="pktRB"/>
+  <regexp match="/((\#\/)|(\/\#)[^\s][^\_\*\#\/]+[^\s](\#\/)|(\/\#))/"
+          region0="pktRI"/>
+  <regexp match="/((\#\/)|(\/\#)[^\s][^\_\*\#\/]+[^\s](\#\/)|(\/\#))/"
+          region0="pktRU"/>
+
+<!-- Unary stylecodes -->
+  <regexp match="/(  \* \S [^\*]+ \S \* )/x" region0="pktB"/>
+  <regexp match="/(  \/ \S [^\/]+ \S \/ )/x" region0="pktI"/>
+  <regexp match="/(  \_ \S [^\_]+ \S \_ )/x" region0="pktU"/>
+  <regexp match="/(  \# \S [^\#]+ \S \# )/x" region0="pktR"/>
+
+</scheme>
+
+</hrc>

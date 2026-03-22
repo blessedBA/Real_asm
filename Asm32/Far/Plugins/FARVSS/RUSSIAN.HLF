@@ -1,0 +1,10 @@
+.Language=Russian, Russian (Русский)
+.PluginContents=FarVss PlugIn
+
+@Contents
+$ #Помощь по Far PlugIn для Vss#
+  Здесь когда-нибудь будет вспомогательная информация
+
+@Config
+$ #Помощь по конфигурации Far PlugIn для Vss#
+  Здесь тоже когда-нибудь будет вспомогательная информация

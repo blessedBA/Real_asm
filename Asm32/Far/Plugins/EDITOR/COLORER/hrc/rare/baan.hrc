@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="Windows-1251"?>
+<!DOCTYPE hrc SYSTEM "../hrc.dtd">
+<?xml-stylesheet type="text/xsl" href="../hrc.xsl"?>
+<!--
+   Baan 4GL (.cln) Syntax.
+   Based on
+   C/C++ Syntax description
+-->
+<hrc>
+
+<scheme name="Baan">
+   <!-- Numbers -->
+   <regexp match="/\b(0x|X[\da-fA-F]+)\B/" region0="dNumber"/>
+   <regexp match="/\b([0-9.]+(e|E[\-+]?\d+)?)\B/" region0="dNumber"/>
+   <!-- Strings -->
+   <regexp match='/("((\\.)|[^\\"])*?")/' region0="dString"/>
+   <regexp match="/('..??.??.??')/" region0="dString"/>
+   <!-- Linear Comments-->
+   <regexp match="/(\|.*$)/" region0="dComment"/>
+   <!-- Standard C/C++ Symbols -->
+   <keywords region="dSymbol">
+      <symb name=";"/><symb name="="/><symb name="+"/><symb name="-"/>
+      <symb name="/"/><symb name="*"/><symb name="&amp;"/>
+      <symb name="^"/><symb name="("/><symb name=")"/><symb name="["/>
+      <symb name="]"/><symb name=","/><symb name=":"/>
+      <symb name="!"/><symb name="~"/><symb name="&lt;"/><symb name="&gt;"/>
+      <symb name="%"/><symb name="{"/><symb name="}"/><symb name="?"/>
+   </keywords>
+   <!-- C/C++ Directives -->
+   <keywords ignorecase="ignorecase" region="dDirective">
+      <word name="#define"/>
+      <word name="#ifdef"/>
+      <word name="#else"/>
+      <word name="#ifndef"/>
+      <word name="#if"/>
+      <word name="#elif"/>
+      <word name="#endif"/>
+      <word name="#pragma"/>
+      <word name="#include"/>
+      <word name="#error"/>
+      <word name="#line"/>
+      <word name="#undef"/>
+   </keywords>
+   <!-- C/C++ KeyWords -->
+   <keywords ignorecase="ignorecase" region="dKeyword">
+      <word name="table"/>
+      <word name="domain"/>
+      <word name="auto"/>
+      <word name="break"/>
+      <word name="bool"/>
+      <word name="case"/>
+      <word name="catch"/>
+      <word name="cdecl"/>
+      <word name="_cdecl"/>
+      <word name="__cdecl"/>
+      <word name="char"/>
+      <word name="class"/>
+      <word name="const"/>
+      <word name="strip$"/>
+      <word name="continue"/>
+      <word name="__declspec"/>
+      <word name="default"/>
+      <word name="defined"/>
+      <word name="delete"/>
+      <word name="do"/>
+      <word name="double"/>
+      <word name="else"/>
+      <word name="enum"/>
+      <word name="__except"/>
+      <word name="explicit"/>
+      <word name="export"/>
+      <word name="endif"/>
+      <word name="sql.close"/>
+      <word name="extern"/>
+      <word name="false"/>
+      <word name="fastcall"/>
+      <word name="_fastcall"/>
+      <word name="__fastcall"/>
+      <word name="finally"/>
+      <word name="float"/>
+      <word name="for"/>
+      <word name="friend"/>
+      <word name="goto"/>
+      <word name="if"/>
+      <word name="import"/>
+      <word name="_import"/>
+      <word name="__import"/>
+      <word name="inline"/>
+      <word name="interrupt"/>
+      <word name="int"/>
+      <word name="__int8"/>
+      <word name="__int16"/>
+      <word name="__int32"/>
+      <word name="__int64"/>
+      <word name="long"/>
+      <word name="mutable"/>
+      <word name="namespace"/>
+      <word name="new"/>
+      <word name="NULL"/>
+      <word name="operator"/>
+      <word name="pascal"/>
+      <word name="_pascal"/>
+      <word name="__pascal"/>
+      <word name="private"/>
+      <word name="protected"/>
+      <word name="public"/>
+      <word name="register"/>
+      <word name="reinterpret_cast"/>
+      <word name="return"/>
+      <word name="__rtti"/>
+      <word name="short"/>
+      <word name="signed"/>
+      <word name="sizeof"/>
+      <word name="static"/>
+      <word name="static_cast"/>
+      <word name="stdcall"/>
+      <word name="_stdcall"/>
+      <word name="__stdcall"/>
+      <word name="struct"/>
+      <word name="switch"/>
+      <word name="template"/>
+      <word name="this"/>
+      <word name="__thread"/>
+      <word name="throw"/>
+      <word name="true"/>
+      <word name="try"/>
+      <word name="__try"/>
+      <word name="typedef"/>
+      <word name="typename"/>
+      <word name="typeid"/>
+      <word name="union"/>
+      <word name="unsigned"/>
+      <word name="using"/>
+      <word name="virtual"/>
+      <word name="void"/>
+      <word name="volatile"/>
+      <word name="wchar_t"/>
+      <word name="while"/>
+      <word name="string"/>
+      <word name="function"/>
+      <word name="__fastcall"/>
+      <word name="__self"/>
+      <word name="__segment"/>
+      <word name="__based"/>
+      <word name="__segname"/>
+      <word name="__fortran"/>
+      <word name="__cdecl"/>
+      <word name="SELECTDO"/>
+      <word name="__far"/>
+      <word name="ENDSELECT"/>
+      <word name="__export"/>
+      <word name="__pascal"/>
+      <word name="__near"/>
+      <word name="__loadds"/>
+      <word name="__interrupt"/>
+      <word name="_export"/>
+      <word name="SELECT"/>
+      <word name="FROM"/>
+      <word name="WHERE"/>
+   </keywords>
+   <!-- functions -->
+   <keywords ignorecase="ignorecase" region="dVar">
+      <word name="date.num"/>
+      <word name="brp.open"/>
+   </keywords>
+</scheme>
+
+</hrc>

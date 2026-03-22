@@ -1,0 +1,18 @@
+descript.ion :-)
+ctrlshiftf11.reg Macros for open menu of plugin commands
+dir2file_scheme.reg Example of schemes for Dir2File.srp
+FATypes.reg Example of setting for some file types
+newnamescheme.reg Example of schemes for NewName.srp
+other_macro.reg Example of macros for use S&R in the editor
+sr_editor_macro.reg Macros for replace with S&R standard search&replace in the editor
+sr_editor_macro_like_msword.reg Macros for search&replace in the editor (like MS Word)
+sr_filepanel_macro.reg Macros for file panels
+sr_infopanel_macro.reg Macros for replace with S&R standard search in the info panel
+sr_infopanel_macro_like_msword.reg Macros for replace with S&R standard search in the info panel (like MS Word)
+sr_quickview_macro.reg Macros for replace with S&R standard search in the quick view panel
+sr_quickview_macro_like_msword.reg Macros for replace with S&R standard search in the quick view panel (like MS Word)
+sr_viewer_macro.reg Macros for replace with S&R standard search in the viewer
+sr_viewer_macro_like_msword.reg Macros for search in the viewer (like MS Word)
+uninstall.reg For uninstallation purpose
+sr_editor_macro_like_MSVC.reg Macros for search&replace in the editor (like MS VC)
+sr_viewer_macro_like_MSVC.reg Macros for search in the viewer (like MS VC)

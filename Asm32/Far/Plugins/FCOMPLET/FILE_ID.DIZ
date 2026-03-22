@@ -1,0 +1,4 @@
+Filename Completion Plugin for FAR
+Version 1.3
+Expands file, host and network resource names
+in command line and editor.

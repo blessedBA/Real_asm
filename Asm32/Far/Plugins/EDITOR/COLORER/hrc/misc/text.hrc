@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="Windows-1251"?>
+<!DOCTYPE hrc SYSTEM "../hrc.dtd">
+<?xml-stylesheet type="text/xsl" href="../hrc.xsl"?>
+<!--
+    Text Files   -  I like it - really! :)
+-->
+<hrc>
+
+<scheme name="Text">
+
+   <!-- inet address -->
+   <inherit scheme="mNetAddresses"/>
+   <inherit scheme="mApost"/>
+
+   <regexp match="/^\s{,8} \M \d[\d\.\-]* \s[^\d.]+ /x" region0="dFunction"/>
+
+   <!-- speedup by
+        Andrzej Novosiolov <andrzej.Novosiolov@p4.f201.n463.z2.fidonet.org> :)
+   -->
+   <regexp match="/([A-Za-z\x80-\xFF][A-Za-z\x80-\xFF\s]+)\M [\s;=+-*&amp;|^\(\)\[\],\.\-!\~%\{\}?_]|$/x"
+           region1="dSyntax"/>
+
+   <!-- Date, Time -->
+   <inherit scheme="mDate"/>
+   <inherit scheme="mTime"/>
+   <!-- Numbers -->
+   <regexp match="/(\d*[\,\.]?\d+(e|E[\-\+]?\d+)?)\B/" region0="dNumber"/>
+
+   <regexp match="/``.*?''/" region0="dString"/>
+   <inherit scheme="mStdStr"/>
+
+   <keywords region="dSymbol">
+      <symb name=";"/><symb name="="/><symb name="+"/><symb name="-"/>
+      <symb name="/"/><symb name="*"/><symb name="&amp;"/><symb name="|"/>
+      <symb name="^"/><symb name="("/><symb name=")"/><symb name="["/>
+      <symb name="]"/><symb name=","/><symb name="."/><symb name=":"/>
+      <symb name="!"/><symb name="~"/><symb name="&lt;"/><symb name="&gt;"/>
+      <symb name="%"/><symb name="{"/><symb name="}"/><symb name="?"/>
+      <symb name="_"/><symb name="\"/>
+   </keywords>
+</scheme>
+
+</hrc>

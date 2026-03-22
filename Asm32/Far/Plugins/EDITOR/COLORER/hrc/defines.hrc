@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="Windows-1251"?>
+<!DOCTYPE hrc SYSTEM "hrc.dtd">
+<?xml-stylesheet type="text/xsl" href="hrc.xsl"?>
+<!-- Copyright (c) Cail Lomecb (Igor Ruskih) 1999-2001 <ruiv@uic.nnov.ru>
+     This and any other HRC file is part of colorer library.
+     You can use, modify, distribute this code or any other part
+     of colorer library in sources or in binaries only according
+     to Colorer License (see /doc/\w+/license.txt for more information) -->
+<!--
+     shared macroses
+-->
+
+<hrc>
+
+<scheme name="empty">
+</scheme>
+
+<scheme name="mCString">
+   <regexp match='/ " ( (\\.) | [^\\"] )* " /x' region0="dString"/>
+</scheme>
+
+<scheme name="mCHexNumb">
+   <regexp match="/\b 0[xX][\da-fA-F]+  ( [UuLl]{1,2}|(i64)|(i128) )? \B/x"
+           region0="dNumHex" region1="dNumSuffix"/>
+</scheme>
+<scheme name="mFloatNumb">
+   <regexp match="/\c \. \d+ ([eE][\-+]?\d+)? ([lLfF]?)/x"
+           region0="dNumFloat" region2="dNumSuffix"/>
+   <regexp match="/\b \d+\.\d* ([eE][\-+]?\d+)? ([lLfF]?)\B/x"
+           region0="dNumFloat" region2="dNumSuffix"/>
+   <regexp match="/\b \d+ ([eE][\-+]?\d+) ([lLfF]?)\B/x"
+           region0="dNumFloat" region2="dNumSuffix"/>
+</scheme>
+<scheme name="mDecNumb">
+   <regexp match="/\b\d+ (([UuLl]{1,2})|(i64)|(i128))?\B/x"
+           region0="dNumDec" region1="dNumSuffix"/>
+</scheme>
+
+<scheme name="mStdStr">
+   <regexp match='/".*?"/' region0="dString"/>
+   <regexp match="/'.*?'/" region0="dString"/>
+</scheme>
+
+<scheme name="mApost">
+   <regexp match="/\w(')[ vDLSTMdstml]/" region1="dString"/>
+</scheme>
+
+<scheme name="mNetURL">
+   <!-- Inet address (URL) -->
+   <regexp match="/\b(((https?)|(ftp)|(news)|(nntp)|(wais)|(wysiwyg)|(gopher)|(javascript)|(castanet)|(about))\:\/\/)|((www)|(ftp)|(news)|(fido)[0-9]*\.)[\@\%\:\+\w\.\/\~\?\-=_#&amp;]+\M\W|$/i"
+           lowpriority="lowpriority" region0="dURL"/>
+</scheme>
+<scheme name="mNetEMail">
+   <!-- Mail address -->
+   <regexp match="/((\cmailto\s*\:\s*)?(&lt;?)[\w\.\~\-_#]+@[\w\~\-_#]+?\.[\w\.\~\-_#]+)(\>?)/"
+           region1="dEMail" region3="dString" region4="dString" lowpriority="lowpriority"/>
+   <regexp match="/p\d{,3}\.f\d\.n\d{,4}\.z\d\.fidonet\.org/" region0="dEMail"/>
+</scheme>
+<scheme name="mNetFTN">
+   <!-- FTN address -->
+   <regexp match="/\b((\d+\:)?\d+\/\d+(.\d+)?(@[\w\.]+)?)\B/"
+           region0="dEMail" lowpriority="lowpriority"/>
+</scheme>
+
+<scheme name="mNetAddresses">
+   <inherit scheme="mNetEMail"/>
+   <inherit scheme="mNetURL"/>
+   <inherit scheme="mNetFTN"/>
+</scheme>
+
+<scheme name="mPath">
+   <!-- full path -->
+   <regexp match="/\b((([A-Za-z]\:)|([\w_\~\-\.`'!@#&amp;\$\^\{\}]*\\))[\w_\~\-\\\.`'!@#&amp;\$\^\{\}]+)/" region0="dPath"/>
+   <!-- file name only - disabled
+   <regexp match="/\b([A-Za-z0-9_\~\-`'!#&\$\^\{\}]+\.[A-Za-z0-9_\~\-`'!@#&\$\^\{\}]{1,5})\B/" region0="dPath"/-->
+   <!-- unix path
+   <regexp match="/\.?\/?([\w\.\-]+\/)+[\w\.\-]*/" region0="dPath"/ -->
+</scheme>
+
+<scheme name="mDate">
+  <regexp match="/\b[0-3]?\d[\/\.\-][0-1]?\d[\/\.\-]\d\d(\d\d)?\B/" region0="dDate"/>
+</scheme>
+
+<scheme name="mTime">
+  <regexp match="/\b[0-2]?\d:[0-5]\d(:[0-5]\d)?(\s?(am)|(pm))?\B/i" region0="dTime"/>
+</scheme>
+
+<scheme name="Comment">
+   <!-- Please, don't laugh - it is almost empty!  -->
+   <!-- just add http and e-mail colorization -->
+   <inherit scheme="mNetEMail"/>
+   <inherit scheme="mNetURL"/>
+   <regexp  match="/(\!\!+)|(\?\?+)/" region0="dTodo"/>
+</scheme>
+
+<scheme name="cNestComm_internal">
+   <inherit scheme="Comment"/>
+   <block start="/\/\*/" end="/\*\//" scheme="cNestComm_internal" region="dComment"
+          region00="dpOpenStruct" region10="dpCloseStruct"/>
+</scheme>
+
+<scheme name="cNestComm">
+   <block start="/\/\*/" end="/\*\//" scheme="cNestComm_internal" region="dComment"
+          region00="dpOpenStruct" region10="dpCloseStruct"/>
+</scheme>
+
+<scheme name="mPairedBrackets">
+   <!-- paired block -->
+   <block start="/(\{)/" end="/(\})/" scheme="mPairedBrackets"
+          region00="dSymbol2" region01="dpOpenStruct"
+          region10="dSymbol2" region11="dpCloseStruct"/>
+   <block start="/(\()/" end="/(\))/" scheme="mPairedBrackets"
+          region00="dSymbol" region01="dpOpenStruct"
+          region10="dSymbol" region11="dpCloseStruct"/>
+   <block start="/(\[)/" end="/(\])/" scheme="mPairedBrackets"
+          region00="dSymbol" region01="dpOpenStruct"
+          region10="dSymbol" region11="dpCloseStruct"/>
+</scheme>
+
+</hrc>

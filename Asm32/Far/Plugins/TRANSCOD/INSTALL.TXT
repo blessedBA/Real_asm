@@ -1,0 +1,10 @@
+
+	To install "FarTrans" plugin:
+
+        1. Go to FAR root folder (i.e. "C:\Program Files\Far\" )
+        2. Go to "Plugins" folder
+        3. Create "FarTrans" folder
+        4. Copy files from the archive into this folder
+        5. Restart FAR manager;
+        6. Have a nice plugin :-)
+

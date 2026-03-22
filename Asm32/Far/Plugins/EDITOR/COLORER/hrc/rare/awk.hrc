@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="Windows-1251"?>
+<!DOCTYPE hrc SYSTEM "../hrc.dtd">
+<?xml-stylesheet type="text/xsl" href="../hrc.xsl"?>
+<!--
+    AWK Syntax description
+With help of:
+    Valentin Skirdin <skirda@halyava.ru>
+-->
+<hrc>
+
+<define name="awkComment"    value="dComment"/>
+<define name="awkArg"        value="dParam"/>
+<define name="awkNumb"       value="dNumber"/>
+<define name="awkString"     value="dString"/>
+<define name="awkSymb"       value="dSymbol"/>
+<define name="awkStructOp"   value="dSymbol2"/>
+<define name="awkPatterns"   value="dLabel"/>
+<define name="awkConst"      value="dParam"/>
+<define name="awkControl"    value="dKeyword"/>
+<define name="awkIOstat"     value="dKeyword"/>
+<define name="awkIOredir"    value="dKeyword"/>
+<define name="awkArithmetic" value="dKeyword"/>
+<define name="awkStrFunc"    value="dKeyword"/>
+<define name="awkFunctions"  value="dKeyword"/>
+
+<scheme name="awk">
+   <!-- Linear Comments -->
+   <regexp match="/(\#.*$)/" region0="awkComment"/>
+   <!-- Argument -->
+   <regexp match="/(\$\w+?)\B/" region0="awkArg"/>
+   <!-- Numbers -->
+   <inherit scheme="mCHexNumb"/>
+   <inherit scheme="mFloatNumb"/>
+   <inherit scheme="mDecNumb"/>
+   <!-- Strings -->
+   <inherit scheme="mCString"/>
+   <regexp match="/('((\\.)|[^\\'])*?')/" region0="awkString"/>
+   <regexp match="/(\/) (([^\\])|(\\.))*? (\/)/x" region0="awkString" region1="dStringQuote" region5="dStringQuote"/>
+   <!-- paired block -->
+   <block start="/(\{)/" end="/(\})/" scheme="awk"
+          region00="awkStructOp" region01="dpOpenStruct"
+          region10="awkStructOp" region11="dpCloseStruct"/>
+   <block start="/(\()/" end="/(\))/" scheme="awk"
+          region00="awkSymb" region01="dpOpenStruct"
+          region10="awkSymb" region11="dpCloseStruct"/>
+   <block start="/(\[)/" end="/(\])/" scheme="awk"
+          region00="awkSymb" region01="dpOpenStruct"
+          region10="awkSymb" region11="dpCloseStruct"/>
+
+   <keywords region="awkSymb">
+      <symb name=";"/><symb name="="/><symb name="+"/><symb name="-"/>
+      <symb name="/"/><symb name="*"/><symb name="&amp;"/><symb name="|"/>
+      <symb name="^"/><symb name="("/><symb name=")"/><symb name="["/>
+      <symb name="]"/><symb name=","/><symb name="."/><symb name=":"/>
+      <symb name="!"/><symb name="~"/><symb name="&lt;"/><symb name="&gt;"/>
+      <symb name="%"/><symb name="{"/><symb name="}"/><symb name="?"/>
+      <symb name='""' region="awkString"/>
+      <symb name='$' region="awkArg"/>
+   </keywords>
+   <keywords region="awkPatterns">
+<!-- two special kinds of  patterns -->
+      <word name="BEGIN"/>
+      <word name="END"/>
+   </keywords>
+   <keywords region="awkConst">
+<!-- built-in variables -->
+      <word name="ARGC"/>
+      <word name="ARGV"/>
+      <word name="ENVIRON"/>
+      <word name="FILENAME"/>
+      <word name="FNR"/>
+      <word name="FS"/>
+      <word name="IGNORECASE"/>
+      <word name="NR"/>
+      <word name="NF"/>
+      <word name="OFMT"/>
+      <word name="OFS"/>
+      <word name="ORS"/>
+      <word name="RS"/>
+      <word name="RSTART"/>
+      <word name="RLENGTH"/>
+      <word name="SUBSEP"/>
+
+      <word name="ARGIND"/>
+      <word name="CONVFMT"/>
+      <word name="FIELDWIDTHS"/>
+    </keywords>
+    <keywords region="awkControl">
+<!-- control statements -->
+      <word name="if"/>
+      <word name="else"/>
+      <word name="while"/>
+      <word name="do"/>
+      <word name="for"/>
+      <word name="in"/>
+      <word name="break"/>
+      <word name="continue"/>
+      <word name="delete"/>
+      <word name="exit"/>
+    </keywords>
+    <keywords region="awkIOstat">
+<!-- input/output statements -->
+         <word name="close"/>
+         <word name="getline"/>
+         <word name="nextfile"/>
+         <word name="next"/>
+         <word name="prev"/>
+         <word name="print"/>
+         <word name="printf"/>
+         <word name="system"/>
+    </keywords>
+    <keywords region="awkIOredir">
+<!-- I/O redirection -->
+         <word name="/dev/stdin"/>
+         <word name="/dev/stdot"/>
+         <word name="/dev/stderr"/>
+    </keywords>
+    <keywords  region="awkArithmetic">
+<!-- pre-defined arithmetic functions -->
+         <word name="atan2"/>
+         <word name="cos"/>
+         <word name="exp"/>
+         <word name="int"/>
+         <word name="log"/>
+         <word name="rand"/>
+         <word name="sin"/>
+         <word name="sqrt"/>
+         <word name="srand"/>
+    </keywords>
+    <keywords  region="awkStrFunc">
+       <!-- pre-defined string functions -->
+         <word name="gsub"/>
+         <word name="index"/>
+         <word name="length"/>
+         <word name="match"/>
+         <word name="split"/>
+         <word name="sprintf"/>
+         <word name="sub"/>
+         <word name="substr"/>
+         <word name="sysftime"/>
+         <word name="tolower"/>
+         <word name="toupper"/>
+    </keywords>
+    <keywords  region="awkFunctions">
+<!-- Functions -->
+         <word name="function"/>
+         <word name="func"/>
+         <word name="return"/>
+    </keywords>
+</scheme>
+</hrc>

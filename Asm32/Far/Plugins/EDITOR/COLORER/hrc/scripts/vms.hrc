@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="Windows-1251"?>
+<!DOCTYPE hrc SYSTEM "../hrc.dtd">
+<?xml-stylesheet type="text/xsl" href="../hrc.xsl"?>
+<!--
+    VMS
+With help of:
+    Andy <brablc@yahoo.com>
+-->
+
+<hrc>
+
+<define name="vmsText"      value="dText"/>
+<define name="vmsString"    value="dString"/>
+<define name="vmsComment"   value="dComment"/>
+<define name="vmsSymb"      value="dSymbol"/>
+<define name="vmsWord"      value="dKeyword"/>
+<define name="vmsOther"     value="dKeyword"/>
+<define name="vmsNumb"      value="dNumber"/>
+<define name="vmsFunc"      value="dURL"/>
+<define name="vmsSymbol"    value="dNumber"/>
+<define name="vmsLogical"   value="dNumber"/>
+<define name="vmsFirstChar" value="dErrortext"/>
+
+<scheme name="vms">
+   <!-- ?? inherit scheme="mLineRest"/-->
+
+   <!-- Linear Comments -->
+   <regexp match="/\$?(!.*)$/" region0="VMSComment"/>
+   <regexp match="/^\${1}/" region0="VMSFirstChar"/>
+   <!-- numbers -->
+   <regexp match="/\b([0-9\.]+(e|E[-+]?\d+)?)\B/" region0="VMSNumb"/>
+   <regexp match="/\b(0x|X[\da-fA-F]+)\B/" region0="VMSNumb"/>
+   <!-- strings -->
+   <regexp match='/("((\\.)|[^\\"])*?")/' region0="VMSString"/>
+   <regexp match="/(''\w+')/" region0="VMSSymbol"/>
+   <regexp match="/(f\$[\w_]+)/" region0="VMSFunc"/>
+   <regexp match="/([\w_]+\$[\w_]+)/" region0="VMSLogical"/>
+   <regexp match="/(\w{3}[_\$]\w{3}:)/" region0="VMSLogical"/>
+   <regexp match="/(\.[\w]+\.)/" region0="VMSWord"/>
+
+   <keywords region="VMSSymb">
+      <symb name=";"/><symb name="="/><symb name="+"/><symb name="-"/>
+      <symb name="/"/><symb name="*"/><symb name="&amp;"/><symb name="|"/>
+      <symb name="^"/><symb name="("/><symb name=")"/><symb name="["/>
+      <symb name="]"/><symb name=","/><symb name=":"/><symb name="?"/>
+      <symb name="!"/><symb name="~"/><symb name="&lt;"/><symb name="&gt;"/>
+      <symb name="%"/><symb name="{"/><symb name="}"/><symb name="@"/>
+   </keywords>
+   <!-- Key words-->
+   <keywords ignorecase="ignorecase" region="VMSWord">
+     <word name="APPEND"/>
+     <word name="ATTACH"/>
+     <word name="CO"/>
+     <word name="COMMIT"/>
+     <word name="COPY"/>
+     <word name="CLS"/>
+     <word name="CREATE"/>
+     <word name="DATE"/>
+     <word name="DEASSIGN"/>
+     <word name="DEFAULT"/>
+     <word name="DEFINE"/>
+     <word name="DELETE"/>
+     <word name="DEVICE"/>
+     <word name="DIR"/>
+     <word name="DO"/>
+     <word name="ECHO"/>
+     <word name="ELSE"/>
+     <word name="ELSIF"/>
+     <word name="END"/>
+     <word name="ENDIF"/>
+     <word name="EOF"/>
+     <word name="ERROR"/>
+     <word name="EXIT"/>
+     <word name="EXPAND"/>
+     <word name="GET_SYMBOL"/>
+     <word name="GOTO"/>
+     <word name="HELP"/>
+     <word name="HOME"/>
+     <word name="IF"/>
+     <word name="IMAGE"/>
+     <word name="INCLUDE"/>
+     <word name="LOGOUT"/>
+     <word name="LOOP"/>
+     <word name="MC"/>
+     <word name="MMS"/>
+     <word name="MODULE"/>
+     <word name="ON"/>
+     <word name="OPEN"/>
+     <word name="PRINT"/>
+     <word name="PROCEDURE"/>
+     <word name="PROGRAM"/>
+     <word name="PROMPT"/>
+     <word name="PUT"/>
+     <word name="QUEUE"/>
+     <word name="READ"/>
+     <word name="RETURN"/>
+     <word name="RUN"/>
+     <word name="SELECT"/>
+     <word name="SET"/>
+     <word name="SET_SYMBOL"/>
+     <word name="SS"/>
+     <word name="SM"/>
+     <word name="SL"/>
+     <word name="SH"/>
+     <word name="SU"/>
+     <word name="SV"/>
+     <word name="CD"/>
+     <word name="SD"/>
+     <word name="SHOW"/>
+     <word name="SPAWN"/>
+     <word name="SQL"/>
+     <word name="STATUS"/>
+     <word name="SUBMIT"/>
+     <word name="THEN"/>
+     <word name="TO"/>
+     <word name="TYPE"/>
+     <word name="WARNING"/>
+     <word name="WAIT"/>
+     <word name="WRITE"/>
+     <word name="."/>
+   </keywords>
+   <!-- Other key words-->
+   <keywords ignorecase="ignorecase" region="VMSOther">
+     <word name="/PRIVILEGES"/>
+     <word name="/PROCESS"/>
+     <word name="/OUTPUT"/>
+     <word name="/NOWAIT"/>
+     <word name="/WAIT"/>
+     <word name="/JOB"/>
+     <word name="/GROUP"/>
+   </keywords>
+</scheme>
+</hrc>

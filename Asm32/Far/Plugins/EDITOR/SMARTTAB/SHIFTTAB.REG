@@ -1,0 +1,8 @@
+REGEDIT4
+
+[HKEY_CURRENT_USER\SOFTWARE\Far\KeyMacros\Editor\ShiftTAB]
+@=""
+"Sequence"="F11 -"
+"Description"="SmartTab"
+"DisableOutput"=dword:00000001
+

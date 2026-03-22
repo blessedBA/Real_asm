@@ -1,0 +1,15 @@
+
+  1.  create folder
+        c:\program files\far\plugins\colorer\
+  2.  extract plugin (colorer.4ever.far.rar) archive into it.
+  3.  extract library(colorer.4ever.lib.rar) archive into it.
+  4.  run
+        c:\program files\far\plugins\colorer\bin\install.exe
+  5.  restart FAR.
+  6.  edit any file.
+  7.  enjoy.
+  8.  close FAR.
+  9.  close Windows.
+  10. turn power off.
+  11. run for your life.
+  12. die!

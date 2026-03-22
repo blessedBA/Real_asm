@@ -1,0 +1,612 @@
+<?xml version="1.0" encoding="Windows-1251"?>
+<!DOCTYPE hrc SYSTEM "../hrc.dtd">
+<?xml-stylesheet type="text/xsl" href="../hrc.xsl"?>
+<!--
+   R-Style MACros Syntax description
+With help of:
+   TSW (Nikolas Tuzhilin) <tsw@glasnet.ru>
+   Andrzej Novosiolov <anovos@rs-ukraine.kiev.ua>
+-->
+
+<hrc>
+
+<scheme name="StringInBrackets">
+   <!-- [...###...]  -->
+   <keywords region="dSymbol">
+      <symb name="#"/>
+   </keywords>
+</scheme>
+
+<scheme name="FileDeclaration">
+   <!-- FILE aaa (bbb) parameters... -->
+   <!-- Numbers -->
+   <regexp match="/\b(\d+)\B/" region0="dNumber"/>
+   <!-- Strings -->
+   <regexp match='/(\(\"?.*\"?\))/' region0="dString"/>
+   <!-- Linear Comments-->
+   <block start="/\/\*/" end="/\*\//" scheme="Comment"
+          region="dComment" region00="dpOpenStruct" region10="dpCloseStruct"/>
+   <!-- Symbols -->
+   <keywords region="dSymbol">
+      <symb name=";"/><symb name="-"/>
+   </keywords>
+</scheme>
+
+<scheme name="RSSpecVars">
+   <keywords ignorecase="ignorecase" region="dDirective">
+     <word name="BASECASH"/>
+     <word name="BatchMode"/>
+     <word name="CALCRATE"/>
+     <word name="CASHDEP"/>
+     <word name="CORAC_Bank"/>
+     <word name="curdate"/>
+     <word name="DEBETRATE"/>
+     <word name="FIO_Book"/>
+     <word name="FIO_Boss"/>
+     <word name="KREDITRATE"/>
+     <word name="IOBAccount"/>
+     <word name="KU_Bank"/>
+     <word name="KU_RCC"/>
+     <word name="MFO_Bank"/>
+     <word name="MFO_RCC"/>
+     <word name="Name_Bank"/>
+     <word name="Name_Boss"/>
+     <word name="NumDprt"/>
+     <word name="OBalance_Index1"/>
+     <word name="OBalance_Index2"/>
+     <word name="OBalance_Index3"/>
+     <word name="OBalance_IndexU"/>
+     <word name="OBalance_Sys"/>
+     <word name="oper"/>
+     <word name="Post_Addr"/>
+     <word name="TRANDEP"/>
+   </keywords>
+</scheme>
+
+<scheme name="RSKeywords">
+   <keywords ignorecase="ignorecase" region="dKeyword2">
+     <word name="Ѓ « ­б®ўл©‘зҐв"/>
+     <word name="‚Ґа­гвмбп_ў_­ з «®_д ©« "/>
+     <word name="‚­ҐЎ «„®Єг¬Ґ­в"/>
+     <word name="‚­ҐЎ «‘зҐв"/>
+     <word name="‚­Ґи­пп‘¤Ґ«Є "/>
+     <word name="‚бв ўЁвм_„®ЄЉ‚"/>
+     <word name="‚бв ўЁвм_„®Єг¬Ґ­в"/>
+     <word name="‚бв ўЁвм_§ Їа®б"/>
+     <word name="‚бв ўЁвм_®иЁЎЄ "/>
+     <word name="‚бв ўЁвм_” ©«Љ‚"/>
+     <word name="‚бв ўЁвм_н«ҐЄва®­­го_Ї®¤ЇЁбм"/>
+     <word name="‚бв ўЁвм‚” ©«л‚­Ґи­оо‘¤Ґ«Єг"/>
+     <word name="‚лўҐбвЁЌ §ў ­ЁҐѓ« ўл"/>
+     <word name="‚л¤ з _бв вЁбвЁЄЁ"/>
+     <word name="„®Ў ўЁвм‚ «ов­л©ЃҐ§Џ®Єа‚­ҐЎ «„®Єг¬Ґ­в"/>
+     <word name="„®Ў ўЁвм‚ «ов­л©ЃҐ§Џ®Єа„®Єг¬Ґ­в"/>
+     <word name="„®Ў ўЁвм‚ «ов­л©‚­ҐЎ «„®Єг¬Ґ­в"/>
+     <word name="„®Ў ўЁвм‚ «ов­л©„®Єг¬Ґ­в"/>
+     <word name="„®Ў ўЁвмЏ а ¬Ґва‚­Ґи­Ґ©‘¤Ґ«ЄЁ"/>
+     <word name="„®Ў ўЁвмЏ а ¬Ґва‘¤Ґ«ЄЁ"/>
+     <word name="„®Ў ўЁвмђгЎ«Ґўл©‚­ҐЎ «„®Єг¬Ґ­в"/>
+     <word name="„®Ў ўЁвмђгЎ«Ґўл©„®Єг¬Ґ­в"/>
+     <word name="‡ Ј®«®ў®ЄЋвзҐв ЋЄагЈ«Ґ­Ёп"/>
+     <word name="‡ Є«озҐ­ЁҐђ бе®¦¤Ґ­Ёп‘ва®ЄЁ"/>
+     <word name="‡ Єалвм” ©«Ѓ « ­б "/>
+     <word name="‡ ЇЁбм_­г«Ґўле_Ў ©в®ў"/>
+     <word name="€§¬Ґ­ЁвмЏ а ¬Ґва‘¤Ґ«ЄЁ"/>
+     <word name="€§¬Ґ­Ёвм‘®бв®п­ЁҐ‘¤Ґ«ЄЁ"/>
+     <word name="ЉўЁв®ўЄ „®Єг¬Ґ­в "/>
+     <word name="Љ®­ва®«м_Ї®_ЄўЁв ­жЁЁ"/>
+     <word name="Љ®ЇЁа®ў вмЏ а ¬Ґвал"/>
+     <word name="Љ®ааҐЄвЁа®ўЄ ‘зҐв "/>
+     <word name="Љ®абзҐв_Ј®«®ў­®Ј®_Ў ­Є "/>
+     <word name="‹Ё¬Ёв_вЄб"/>
+     <word name="Њ”Ћ_Ё§_Є®аабеҐ¬л"/>
+     <word name="Ќ ©вЁ„®Єг¬Ґ­в‘¤Ґ«ЄЁ"/>
+     <word name="Ќ «®¦Ёвм_Ї®¤ЇЁбм_ЎгеЈ «вҐа "/>
+     <word name="Ќ ЇҐз в вм‘ва®Єг‘®®ЎйҐ­Ёп"/>
+     <word name="Ќ®ўл©_¤®Єг¬Ґ­в"/>
+     <word name="Ќ®ўл©_Љ«ЁҐ­в"/>
+     <word name="Ќ®ўл©_бзҐв"/>
+     <word name="Ќ®ўл©‘зҐвЏа®жҐ­в®ў"/>
+     <word name="ЋЎ­®ўЁвм_в Ў«Ёжг_Є«озҐ©"/>
+     <word name="ЋЄагЈ«Ёвм” ©«Ѓ « ­б "/>
+     <word name="Ћбв в®Є_­ _Є®абзҐвҐ"/>
+     <word name="ЋвЄ влў вм‘в алҐ„®Єг¬Ґ­вл"/>
+     <word name="ЋвЄалвм” ©«Ѓ « ­б "/>
+     <word name="ЋвЇа ўЄ _¤®Єг¬Ґ­в "/>
+     <word name="Џ ­Ґ«мЋвзҐв"/>
+     <word name="Џ а ¬ҐвалЃ « ­б "/>
+     <word name="Џ а ¬ҐвалЃ « ­б ‚"/>
+     <word name="ЏҐ­ЁЏ®Џ« ­ЁагҐ¬®©ЋЇ« вҐ"/>
+     <word name="Џ« ­ЁагҐ¬л©_®бв в®Є"/>
+     <word name="Џ®¤Ј®в®ўЁвм_д ©«"/>
+     <word name="Џ®«гзЁвм_¤ вг_®ЇҐа¤­п"/>
+     <word name="Џ®«гзЁвм_бва®Єг"/>
+     <word name="Џ®«гзЁвм_бзҐв_«®а®"/>
+     <word name="Џ®«гзЁвм_бзҐв_­Ґўлпб­Ґ­­ле"/>
+     <word name="Џ®«гзЁвм_бзҐв_­®бва®"/>
+     <word name="ЏаҐ®Ўа §®ў вм_гз бв­ЁЄ "/>
+     <word name="ЏаЁўп§ вм„®Єг¬Ґ­вЉ‘¤Ґ«ЄҐ"/>
+     <word name="Џа®ўҐаЁвм_¤®Єг¬Ґ­в"/>
+     <word name="Џа®ўҐаЁвм_Љ«ЁҐ­в "/>
+     <word name="Џа®ўҐаЁвм_бзҐв"/>
+     <word name="Џа®ўҐаЁвм‘зҐвЏ®ЄалвЁп"/>
+     <word name="Џа®ўҐаЁвм‘зҐвЏа®жҐ­в®ў"/>
+     <word name="Џа®ўҐаЄ _бгйҐбвў®ў ­Ёп"/>
+     <word name="Џа®Ј­®§Џа®жҐ­в®ў"/>
+     <word name="Џа®жҐ­в­ п‘в ўЄ "/>
+     <word name="Џа®жҐ­в­ п‘в ўЄ Џа®бв п"/>
+     <word name="Џа®зЁв вмЏ а ¬Ґва‚­Ґи­Ґ©‘¤Ґ«ЄЁ"/>
+     <word name="Џа®зЁв вмЏ а ¬Ґва‘¤Ґ«ЄЁ"/>
+     <word name="Џа®зЁв вм‘®бв®п­ЁҐ‘¤Ґ«ЄЁ"/>
+     <word name="ђ ббзЁв вмЃ « ­б‚"/>
+     <word name="ђ ббзЁв вмЃ « ­б‚ў®¤"/>
+     <word name="ђ ббзЁв вмЃ « ­б‚€"/>
+     <word name="ђ ббзЁв вмЃ « ­бЏ"/>
+     <word name="ђ ббзЁв вмЃ « ­бЏ‚"/>
+     <word name="ђ ббзЁв вмЃ « ­бЏ‚€"/>
+     <word name="ђ ббзЁв вмЃ « ­бЏ€"/>
+     <word name="ђ ббзЁв вмЃ « ­бЏ®ѓ« ўҐ"/>
+     <word name="ђ ббзЁв вмЃ « ­бЏ®ѓ« ўҐ‚ «"/>
+     <word name="ђ ббзЁв вмЃ « ­б’"/>
+     <word name="ђ ббзЁв вмЃ « ­б’€"/>
+     <word name="ђ ббзЁв вм‚­ҐЎ « ­б®ўлҐ"/>
+     <word name="ђ бе®¦¤Ґ­ЁҐ‘ва"/>
+     <word name="ђ бзҐвЏа®жҐ­в®ў"/>
+     <word name="ђ бзҐвЏа®жҐ­в®ўЃҐ§ѓа дЁЄ "/>
+     <word name="‘¤Ґ« вм„®Єг¬Ґ­вЉ®ааҐЄвЁа®ўЄЁ"/>
+     <word name="‘¤Ґ« вм„®Єг¬Ґ­вЌ зЁб«Ґ­Ёп"/>
+     <word name="‘¤Ґ« вм„®Єг¬Ґ­вЏҐаҐ­®б "/>
+     <word name="‘®§¤ ­ЁҐ_§ ЇЁбЁ"/>
+     <word name="‘®§¤ ­ЁҐ_и ЇЄЁ"/>
+     <word name="‘®§¤ вм‚­Ґи­оо‘¤Ґ«Єг"/>
+     <word name="‘®®ЎйҐ­ЁҐ_ЌҐв„ ­­ле"/>
+     <word name="‘®еа ­Ёвм_Ї®¤ЇЁбм"/>
+     <word name="‘а ў­Ёвм"/>
+     <word name="‘в ўЄ ђҐдЁ­ ­бЁа®ў ­Ёп–Ѓ"/>
+     <word name="‘в ал©Ѓ « ­б®ўл©‘зҐв"/>
+     <word name="‘в ал©‚­ҐЎ «„®Єг¬Ґ­в"/>
+     <word name="‘в ал©‚­ҐЎ «‘зҐв"/>
+     <word name="‘в ал©„®Єг¬Ґ­в"/>
+     <word name="‘в ал©Љ«ЁҐ­в"/>
+     <word name="‘в ал©‘зҐв"/>
+     <word name="‘в ал©‘зҐвЏа®жҐ­в®ў"/>
+     <word name="‘ва®Є ЋвзҐв "/>
+     <word name="‘ва®Є ‘®ўҐаиҐ­®Ќ зЁб«Ґ­ЁҐ"/>
+     <word name="‘ва®Є “¦Ґ‘®ўҐаиҐ­®Ќ зЁб«Ґ­ЁҐ"/>
+     <word name="‘г¬¬л‚…¤Ё­Ёж е"/>
+     <word name="‘г¬¬л‚’лбпз е"/>
+     <word name="‘д®а¬Ёа®ў вм_Z_д ©«"/>
+     <word name="‘зҐвЏа®жҐ­в®ў"/>
+     <word name="‘зЁв вм_Ї®¤ЇЁбм"/>
+     <word name="“¤ «ЁвмЏ а ¬Ґва‘¤Ґ«ЄЁ"/>
+     <word name="“¤ «Ёвм‘¤Ґ«Єг"/>
+     <word name="“з бв­ЁЄ_Ё§_Є®аабеҐ¬л"/>
+     <word name="“з бв­ЁЄ_Ё§_Њ”Ћ"/>
+     <word name="”г­ЄжЁп_Џ®«м§®ў вҐ«п"/>
+     <word name="”г­ЄжЁпЏ®«м§®ў вҐ«п"/>
+     <word name="”г­ЄжЁпЏ®«м§®ў вҐ«п‘зҐв"/>
+     <word name="”г­ЄжЁпЏ®«м§®ў вҐ«п‘зҐвЏа®жҐ­в®ў"/>
+     <word name=" ЇЄ ђ бе®¦¤Ґ­Ёп‘ва®ЄЁ"/>
+   </keywords>
+   <keywords ignorecase="ignorecase" region="dSymbol">
+      <word name="null"/>
+      <word name="true"/>
+      <word name="false"/>
+   </keywords>
+   <keywords ignorecase="ignorecase" region="dDirective">
+     <word name="CM_CANCEL"/>
+     <word name="CM_DEFAULT"/>
+     <word name="CM_IGNORE"/>
+     <word name="CM_SAVE"/>
+     <word name="DLG_BUTTON"/>
+     <word name="DLG_DESTROY"/>
+     <word name="DLG_INIT"/>
+     <word name="DLG_KEY"/>
+     <word name="DLG_MOUSE"/>
+     <word name="DLG_REMFOCUS"/>
+     <word name="DLG_SAVE"/>
+     <word name="DLG_SETFOCUS"/>
+     <word name="DLG_TIMER"/>
+     <word name="V_ARRAY"/>
+     <word name="V_BOOL"/>
+     <word name="V_DATE"/>
+     <word name="V_DBFFILE"/>
+     <word name="V_DOUBLE"/>
+     <word name="V_DOUBLEL"/>
+     <word name="V_FILE"/>
+     <word name="V_GENOBJ"/>
+     <word name="V_INTEGER"/>
+     <word name="V_MONEY"/>
+     <word name="V_MONEYL"/>
+     <word name="V_STRING"/>
+     <word name="V_STRUC"/>
+     <word name="V_TIME"/>
+     <word name="V_TXTFILE"/>
+     <word name="V_UNDEF"/>
+   </keywords>
+   <keywords ignorecase="ignorecase" region="dType">
+     <word name="ArrayInst"/>
+     <word name="ArrayRef"/>
+     <word name="Bool"/>
+     <word name="BtFileInst"/>
+     <word name="BtFileRef"/>
+     <word name="Date"/>
+     <word name="DateTime"/>
+     <word name="DbfFileInst"/>
+     <word name="DbfFileRef"/>
+     <word name="Double"/>
+     <word name="DoubleL"/>
+     <word name="Integer"/>
+     <word name="MemAddr"/>
+     <word name="Money"/>
+     <word name="MoneyL"/>
+     <word name="Object"/>
+     <word name="ProcRef"/>
+     <word name="String"/>
+     <word name="StrucInst"/>
+     <word name="StrucRef"/>
+     <word name="Time"/>
+     <word name="TxtFileInst"/>
+     <word name="TxtFileRef"/>
+     <word name="Variant"/>
+   </keywords>
+   <keywords ignorecase="ignorecase" region="dKeyword">
+     <word name="and"/>
+     <word name="append"/>
+     <word name="array"/>
+     <word name="blob"/>
+     <word name="btr"/>
+     <word name="class"/>
+     <word name="const"/>
+     <word name="dbf"/>
+     <word name="dialog"/>
+     <word name="file"/>
+     <word name="if"/>
+     <word name="import"/>
+     <word name="key"/>
+     <word name="macro"/>
+     <word name="mem"/>
+     <word name="normal"/>
+     <word name="not"/>
+     <word name="onError"/>
+     <word name="or"/>
+     <word name="record"/>
+     <word name="return"/>
+     <word name="sort"/>
+     <word name="this"/>
+     <word name="txt"/>
+     <word name="var"/>
+     <word name="while"/>
+     <word name="with"/>
+     <word name="write"/>
+   </keywords>
+   <keywords ignorecase="ignorecase" region="dKeyword">
+     <word name="AbortTrn"/>
+     <word name="Abs"/>
+     <word name="ansi_to_oem"/>
+     <word name="ASize"/>
+     <word name="BtrError"/>
+     <word name="btrieve"/>
+     <word name="Clear"/>
+     <word name="ClearColumn"/>
+     <word name="ClearRecord"/>
+     <word name="clone"/>
+     <word name="close"/>
+     <word name="CmdArgs"/>
+     <word name="CodeFor"/>
+     <word name="copy"/>
+     <word name="create"/>
+     <word name="createEnum"/>
+     <word name="CreateEnumObject"/>
+     <word name="CurrentLine"/>
+     <word name="CvtToSafeArray"/>
+     <word name="date"/>
+     <word name="DateShift"/>
+     <word name="datesplit"/>
+     <word name="delete"/>
+     <word name="DelFile"/>
+     <word name="DicName"/>
+     <word name="DisableFields"/>
+     <word name="double"/>
+     <word name="doubleL"/>
+     <word name="DtTm"/>
+     <word name="DtTmSplit"/>
+     <word name="filename"/>
+     <word name="fldindex"/>
+     <word name="fldname"/>
+     <word name="fldnumber"/>
+     <word name="fldoffset"/>
+     <word name="floor"/>
+     <word name="FlushColumn"/>
+     <word name="GenAttach"/>
+     <word name="GenClassName"/>
+     <word name="GenEnum"/>
+     <word name="GenGetProp"/>
+     <word name="GenObject"/>
+     <word name="GenPropID"/>
+     <word name="GenRun"/>
+     <word name="GenSetProp"/>
+     <word name="getdate"/>
+     <word name="getdirect"/>
+     <word name="getdouble"/>
+     <word name="getenv"/>
+     <word name="getEQ"/>
+     <word name="getGE"/>
+     <word name="getGT"/>
+     <word name="getint"/>
+     <word name="getLE"/>
+     <word name="getLT"/>
+     <word name="getmoney"/>
+     <word name="getparm"/>
+     <word name="getpos"/>
+     <word name="GetProp"/>
+     <word name="GetRecordSize"/>
+     <word name="getstring"/>
+     <word name="getstringr"/>
+     <word name="gettrue"/>
+     <word name="GetVarSize"/>
+     <word name="index"/>
+     <word name="InDouble"/>
+     <word name="InitProgress"/>
+     <word name="InMoney"/>
+     <word name="insert"/>
+     <word name="int"/>
+     <word name="IsEqClass"/>
+     <word name="IsGUI"/>
+     <word name="IsRef"/>
+     <word name="IsStandAlone"/>
+     <word name="item"/>
+     <word name="KeyNum"/>
+     <word name="Log"/>
+     <word name="Log10"/>
+     <word name="Max"/>
+     <word name="MemSize"/>
+     <word name="Menu"/>
+     <word name="Message"/>
+     <word name="Min"/>
+     <word name="mkstr"/>
+     <word name="money"/>
+     <word name="moneyL"/>
+     <word name="MonName"/>
+     <word name="MsgBox"/>
+     <word name="next"/>
+     <word name="nrecords"/>
+     <word name="oem_to_ansi"/>
+     <word name="open"/>
+     <word name="PackVarBuff"/>
+     <word name="par1"/>
+     <word name="Pow"/>
+     <word name="prev"/>
+     <word name="print"/>
+     <word name="PrintGlobs"/>
+     <word name="println"/>
+     <word name="PrintLocs"/>
+     <word name="PrintProps"/>
+     <word name="PrintStack"/>
+     <word name="ProcessTrn"/>
+     <word name="Random"/>
+     <word name="ReadBlob"/>
+     <word name="rec"/>
+     <word name="RecSize"/>
+     <word name="RemProgress"/>
+     <word name="ReplaceMacro"/>
+     <word name="rewind"/>
+     <word name="Round"/>
+     <word name="rubtostr"/>
+     <word name="run"/>
+     <word name="RunDialog"/>
+     <word name="runerror"/>
+     <word name="RunMenu"/>
+     <word name="SelectFile"/>
+     <word name="setbuff"/>
+     <word name="SetColumn"/>
+     <word name="SetDefPrec"/>
+     <word name="SetDelim"/>
+     <word name="SetFocus"/>
+     <word name="SetOutHandler"/>
+     <word name="SetOutput"/>
+     <word name="setparm"/>
+     <word name="SetProp"/>
+     <word name="SetRecordAddr"/>
+     <word name="SetTimer"/>
+     <word name="Size"/>
+     <word name="Sqrt"/>
+     <word name="status"/>
+     <word name="strbrk"/>
+     <word name="StrFor"/>
+     <word name="string"/>
+     <word name="strlen"/>
+     <word name="strlwr"/>
+     <word name="StrSet"/>
+     <word name="StrSplit"/>
+     <word name="StrSubst"/>
+     <word name="strupr"/>
+     <word name="substr"/>
+     <word name="System"/>
+     <word name="TArray"/>
+     <word name="TBFile"/>
+     <word name="TblName"/>
+     <word name="TEnumArray"/>
+     <word name="TestEvent"/>
+     <word name="time"/>
+     <word name="timesplit"/>
+     <word name="ToANSI"/>
+     <word name="ToOEM"/>
+     <word name="TRecHandler"/>
+     <word name="TRecord"/>
+     <word name="trim"/>
+     <word name="UnPackVarBuff"/>
+     <word name="update"/>
+     <word name="UpdateFields"/>
+     <word name="UseProgress"/>
+     <word name="UserNumber"/>
+     <word name="valtype"/>
+     <word name="Value"/>
+     <word name="VarSize"/>
+     <word name="Version"/>
+     <word name="ViewFile"/>
+     <word name="WriteBlob"/>
+   </keywords>
+   <keywords ignorecase="ignorecase" region="dKeyword2">
+     <word name="ActivA"/>
+     <word name="ActivAC"/>
+     <word name="ActivB"/>
+     <word name="ActivBC"/>
+     <word name="BankInter"/>
+     <word name="CalcPerc"/>
+     <word name="CarryAccount"/>
+     <word name="CarryBankDprt"/>
+     <word name="CarryClient"/>
+     <word name="CarryDoc"/>
+     <word name="CashSymbSum"/>
+     <word name="CashSymbSumAcc"/>
+     <word name="Conclusion"/>
+     <word name="ConsRub"/>
+     <word name="ConvSum"/>
+     <word name="CreateAccount"/>
+     <word name="CreateEKDoc"/>
+     <word name="CreateEKDocC"/>
+     <word name="CurrInter"/>
+     <word name="CurrRate"/>
+     <word name="CurToStrAlt"/>
+     <word name="DateAfterCalenDays"/>
+     <word name="DateAfterCalenMonths"/>
+     <word name="DateAfterWorkDays"/>
+     <word name="DateAfterWorkMonths"/>
+     <word name="DebetA"/>
+     <word name="DebetAC"/>
+     <word name="DebetB"/>
+     <word name="DebetBC"/>
+     <word name="DetailedReport"/>
+     <word name="GetAccountKey"/>
+     <word name="GetBankName"/>
+     <word name="GetBankNameC"/>
+     <word name="GetCmdLineParm"/>
+     <word name="GetDocumentId"/>
+     <word name="GetIniString"/>
+     <word name="GetKey"/>
+     <word name="GetRegistryValue"/>
+     <word name="InsertCurDocument"/>
+     <word name="InsertCurNRubDocument"/>
+     <word name="InsertDepDocument"/>
+     <word name="InsertDepDocumentCarAcnt"/>
+     <word name="InsertOutBalCurDocument"/>
+     <word name="InsertOutBalCurNRubDocument"/>
+     <word name="InsertOutBalRubDocument"/>
+     <word name="InsertRubDocument"/>
+     <word name="InsertZeroRecalc"/>
+     <word name="IsAccessToAc"/>
+     <word name="IsAccessToAcAlt"/>
+     <word name="IsAccessToCl"/>
+     <word name="IsAccessToOperInf"/>
+     <word name="IsHoliday"/>
+     <word name="IsWorkday"/>
+     <word name="KreditA"/>
+     <word name="KreditAC"/>
+     <word name="KreditB"/>
+     <word name="KreditBC"/>
+     <word name="KvitInter"/>
+     <word name="MakePostDoc"/>
+     <word name="MarkRate"/>
+     <word name="MoveAccount"/>
+     <word name="MoveAccountData"/>
+     <word name="NDays"/>
+     <word name="NDays30"/>
+     <word name="OBMoveAccount"/>
+     <word name="OBRunBackout"/>
+     <word name="OBRunCarry"/>
+     <word name="PassivA"/>
+     <word name="PassivAC"/>
+     <word name="PassivB"/>
+     <word name="PassivBC"/>
+     <word name="PercPostDoc"/>
+     <word name="PeriodTotals"/>
+     <word name="prevdate"/>
+     <word name="PrintDeal"/>
+     <word name="RatePeriodAlg"/>
+     <word name="RegPairedAccounts"/>
+     <word name="RegPairedAccountsC"/>
+     <word name="RestA"/>
+     <word name="RestAC"/>
+     <word name="RestB"/>
+     <word name="RestBC"/>
+     <word name="RubToStrAlt"/>
+     <word name="RunBackout"/>
+     <word name="RunCarry"/>
+     <word name="RunVisual"/>
+     <word name="SeansInter"/>
+     <word name="SendToKvit"/>
+     <word name="SetApplicationKey"/>
+     <word name="ShowDealParametrs"/>
+     <word name="SizeSum"/>
+     <word name="SplitRecalc"/>
+     <word name="SumSymbC"/>
+     <word name="ViewPercDoc"/>
+     <word name="Workdays"/>
+     <word name="WorkDeal"/>
+     <word name="WorkExtDeal"/>
+   </keywords>
+</scheme>
+
+<scheme name="RSCore">
+   <regexp match="/\c([\x24]?[\d\.]+)\B/" region0="dNumber"/>
+   <inherit scheme="mFloatNumb"/>
+   <inherit scheme="CNestComm"/>
+   <inherit scheme="mCString"/>
+   <block start="/\[/" end="/\]/" scheme="StringInBrackets"
+          region="dString" region00="dpOpenStruct" region10="dpCloseStruct"/>
+   <block start="/\{/" end="/\}/" scheme="RSSpecVars" region="dDirective2"
+          region00="dpOpenStruct" region10="dpCloseStruct"/>
+
+   <inherit scheme="RSKeywords"/>
+
+   <keywords ignorecase="ignorecase" region="dSymbol">
+      <symb name=";"/><symb name="="/><symb name="+"/><symb name="-"/>
+      <symb name="/"/><symb name="*"/><symb name="&amp;"/><symb name="|"/>
+      <symb name="^"/><symb name="$"/>
+      <symb name=","/><symb name="."/><symb name=":"/>
+      <symb name="!"/><symb name="~"/><symb name="&lt;"/><symb name="&gt;"/>
+      <symb name="%"/><symb name="?"/>
+   </keywords>
+   <keywords ignorecase="ignorecase" region="dKeyword">
+     <word name="elif"/>
+     <word name="else"/>
+     <word name="end"/>
+   </keywords>
+   <keywords ignorecase="ignorecase" region="dKeyword2">
+     <word name="ExecExp"/>
+     <word name="execmacro"/>
+     <word name="execmacro2"/>
+     <word name="ExecMacroFile"/>
+     <word name="ExistFile"/>
+     <word name="Exit"/>
+     <word name="Exp"/>
+   </keywords>
+</scheme>
+
+<scheme name="RSBrackets">
+   <inherit scheme="RSCore"/>
+   <block start="/(\()/" end="/(\))/" scheme="RSBrackets"
+          region00="dSymbol" region01="dpOpenStruct"
+          region10="dSymbol" region11="dpCloseStruct"/>
+</scheme>
+
+<scheme name="RSBlockStruct">
+   <block start="/\b((if)|(while)|(with))\B/i" end="/\b(end)\B/i"
+          scheme="RSBlockStruct"
+          region00="dKeyword" region10="dKeyword"
+          region01="dpOpenStruct" region11="dpCloseStruct"/>
+   <inherit scheme="RSBrackets"/>
+</scheme>
+
+<scheme name="RSMac">
+   <regexp match="/\b((file)|(record))\s+([^ \t\(]+)\s*((\()(.*?)(,(.*?))?(\)))?/i"
+           region1="dKeyword" region4="dVar" region5="dSymbol" region7="dString"
+           region9="dString"/>
+   <block start="/\b((((macro)|(class))))\B/i" end="/\b(end)\B/i" scheme="RSMac"
+          region01="dKeyword" region10="dKeyword"
+          region02="dpOpenStruct" region00="dFunction" region11="dpCloseStruct"/>
+   <inherit scheme="RSBlockStruct"/>
+</scheme>
+
+</hrc>

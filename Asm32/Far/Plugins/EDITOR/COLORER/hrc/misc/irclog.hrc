@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="Windows-1251"?>
+<!DOCTYPE hrc SYSTEM "../hrc.dtd">
+<?xml-stylesheet type="text/xsl" href="../hrc.xsl"?>
+<!--
+   IRC Logs - for easier reading ;)
+   Written by berk <berk@nm.ru>
+-->
+
+<hrc>
+
+<scheme name="irclog">
+
+   <!-- Server messages -->
+   <regexp match="/\M(\*\*\*.*$)/" region1="dComment"/>
+
+   <!-- Join/split messages -->
+   <regexp match="/^ .*? (has (joined)|(quit)|(left).*?$)/ix" region0="dParam"/>
+
+   <!-- Nick highlight -->
+   <!-- TODO: need to use only non-whitespace chars within <> -->
+   <regexp match="/(&lt;.*?&gt;)/i" region0="dString"/>
+
+   <!-- Time marker -->
+   <inherit scheme="mTime"/>
+   <inherit scheme="mDate"/>
+
+   <!-- Standard stuff: web/email/paths -->
+   <inherit scheme="mNetAddresses"/>
+   <inherit scheme="mPath"/>
+</scheme>
+
+</hrc>

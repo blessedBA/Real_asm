@@ -1,0 +1,32 @@
+.Language=English,English
+
+"Ok"
+"Cancel"
+"&0 Reset"
+"Advanced select"
+"Mas&k:"
+
+"&1 Set"
+"&2 Clear"
+"&3 Invert"
+"C&lear selection first"
+ 
+"Include attributes:"
+"&Archive"
+"&ReadOnly"
+"&Hidden"
+"&System"
+"&Directory"
+"&Compressed"
+
+"S&ize:"
+"Da&te:"
+"Tim&e:"
+
+"Exclude attributes:"
+"Archi&ve"
+"ReadOnl&y"
+"Hidde&n"
+"Syste&m"
+"Direct&ory"
+"Com&pressed"

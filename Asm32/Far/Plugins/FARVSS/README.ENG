@@ -1,0 +1,47 @@
+--- FAR <-> Visual Source Safe Plugin --- version 1.00
+
+The purpose of FarVss plugin is to make simple interface from Far file 
+panels or Far editor to Microsoft Visual Source Safe. Plugin provide 
+some basics Vss features for file/selected files:
+ - Check In.
+ - Check Out.
+ - Get Last Version.
+ - Add file.
+ - Show difference.
+
+Easy configuration utitlity 
+(F9->"Options"->"Plugins configuration"->"Vss configure" in Far panel mode)
+parameters:
+ - Full path to ss.exe.
+ - Vss user name.
+ - Vss user password.
+ - Size of text block (in rows) to output when mismatch found (Show difference command)
+ - Beep on (turn off to silent mode).
+ - Ask for additional agreement.
+
+Plugin consists of:
+ - FarVss.dll (plugin library file).
+ - *.hlf (help files)
+ - *.lng (message files)
+ - FarVss.reg (registry file for "hot" keys:
+				Ctrl+Alt+O  - Check Out,
+				Ctrl+Alt+I  - Check In,
+				Ctrl+Alt+G  - Get Last Version,
+				Ctrl+Alt+A  - Add file to project,
+				Ctrl+Alt+D  - Show difference).
+
+To install plugin you will have to make following steps:
+ - Create subdir named FarVss in ..Far\Plugins\.
+ - Copy plugin contents there.
+ - Execute file FarVss.reg (if you want to use "hot" keys).
+ - Reload Far.
+
+Requirements:
+You need to have Vss client software installed.
+
+Additional information: 
+Plugin tested for VSS 6.0 and FAR 1.64.
+
+Andrew Zvekov.
+mailto:zvekov@mail.ru
+Thank you for comments!

@@ -1,0 +1,317 @@
+.Language=English,English
+
+""
+
+"Ok"
+"Cancel"
+"&Retry"
+"Ignore"
+"&Yes"
+"No"
+"&Copy"
+"&Move"
+"Delete"
+"&Skip"
+"&Overwrite"
+"&Save"
+"Abort"
+"&Default"
+"&Connect"
+
+"Looking up host"
+"Connecting to host"
+"Disconnecting from host"
+
+"Changing folder"
+"Reading folder"
+"Create folder"
+"Directory not exist: '%s'"
+"Can't make directory: '%s'"
+"Preparing files"
+"Invalid file format '%s'"
+"Press SHIFT+F4 to edit new URL"
+"Public hosts"
+"Private hosts"
+
+"&UserName"
+"Pass&word"
+
+"Select character table"
+"Far Navigator"
+
+"Copy file(s)"
+"Copy file "%s" to"
+"Copy %d selected file(s) to"
+"Move file(s)"
+"Move file "%s" to"
+"Move %d selected file(s) to"
+
+"Destination already exists"
+"&Newer"
+"A&ppend"
+"Accept choice for &all files"
+"&Resume"
+
+"Source            %10d  %10s  %8s"
+"Destination       %10d  %10s  %8s"
+
+"Do you wish to delete %d selected files"
+"Delete file(s)"
+
+"NewURL"
+"CopURL"
+"Move"
+
+""
+
+""
+""
+""
+""
+""
+""
+
+"%s (%s)"
+
+""
+""
+""
+
+"Operation canceled by user"
+
+"Set as a default values"
+;---------------------------------------------------------------------------
+;---------------------------------------------------------------------------
+;---------------------------------------------------------------------------
+"&Rename"
+"&Advanced"
+"&Queue"
+"&Debug"
+
+"Function not available on this server"
+"Resuming file(s) not available on this server"
+"Uploading file(s) not available on this server"
+"Removing file(s) not available on this server"
+"Creating directory not available on this server"
+"Renaming directory not available on this server"
+"Operation failed"
+
+"%s"
+"for %d selected file(s)"
+
+"&View modes"
+
+"Far Navigator configuration"
+"Far Navigator - Interface options"
+"Far Navigator - Connection options"
+"Far Navigator - Proxy options"
+"Far Navigator - Default options"
+"About Far Navigator..."
+
+"Name"
+"Description"
+
+"Add to Disks &menu"
+"Disks menu &hotkey ('1'-'9'). Set 0 to autoassign"
+"&Description list names delimited with commas"
+"&Read descriptions"
+"&Update descriptions"
+"Interternal &cache size"
+"&Exchange File name and Description in Hosts panel"
+"[Connect] as default &button"
+"&Replace View mode 0 in File panel"
+"Upload uppercase files in &lowercase"
+"Show &progress indicator on View/Edit"
+"Show &total copy progress indicator"
+
+"&Log file with full path name"
+"Create log &file"
+"Log file le&vel"
+"Connection &timeout (in seconds)"
+"Idle t&imeout (in seconds)"
+"Maximum &Retries count (0 - infinitely)"
+"Ti&meout between two Retries group (in seconds)"
+
+"&http"
+"&ftp"
+"s&ocks"
+":"
+"ÃÄ &Username"
+"ÀÄ Pass&word"
+"Advanced options for http proxy"
+"Advanced options for socks proxy"
+"My proxy requires aut&horization"
+"Use HTTP proxy c&ache"
+"Use HTTP &version 1.1"
+"Http proxy &type"
+"Select type of Http proxy" 
+"Use Socks &version 5"
+
+"Host configuration"
+"&Host [ftp|http://][user@]<host>[:port][/path]"
+"User &account"
+"&Description"
+"As&k password before connection"
+"FTP &passive mode"
+"ASC&II transfer mode"
+"Connect via pro&xy server"
+
+"Enter user &name"
+"Enter user &password"
+"Account required for user %s"
+"Enter password for user '%s'"
+
+"SavURL"
+"Table"
+"ExCopy"
+
+"Sending username and password"
+"Getting server information"
+
+"Resolving link"
+
+"Rename file(s)"
+"Rename file "%s" to"
+"Rename %d selected files to"
+
+"              Copied     Total      Time     Left     CPS     "
+"Current file: %6d%sb  %6d%sb  %8s %8s %5d %sb/s"
+"All files:    %6d%sb  %6d%sb  %8s %8s %5d %sb/s"
+"%s%s %3d%%"
+
+"Copying files using Server To Server transfer mode"
+"Advanced copy"
+"Advanced move"
+"Advanced delete"
+"&Include mask"
+"E&xclude mask
+"Copy only first"
+"Kbyte(s)"
+"Use &quick renaming for folders"
+
+"Change &access mode"
+"Change access mode"
+"Owner permissions"
+"Group permissions"
+"Public permissions"
+"                          R    W    X"
+
+"Change file(s) o&wner"
+"Change file(s) owner"
+"Owner name"
+"Owner group"
+
+"Character &table"
+"Http Proxy type"
+
+"FTP Server report"
+"Server info"
+"Host"
+"Home"
+"Path"
+"Syst"
+"Welcome message"
+
+"Enter filename to copy"
+
+"&Decode/Encode files (delimeted with commas)"
+"&Remote character table"
+"&Local character table "
+
+"&Quick logout"
+"Waiting for termination of idle process..."
+"Retry timeout in progress..."
+
+"Show 'pri&vate hosts' in Hosts panel"
+"Use &CaseSensitive host names"
+"Retries count in group"
+"Retries ti&meout in group (in seconds)"
+"You have %d item(s) in download queue."
+"Do you wish to continue?"
+"This operation not allowed on this level"
+
+"Queue"
+"FTP server t&ype"
+"Select FTP server type"
+" - Advanced interface options"
+"Column &types"
+"Column &widths"
+"St&atus line column types"
+"Status l&ine column widths"
+
+"Access"
+"Owner"
+"Group"
+"Link"
+"B&eep after operations"
+"Show '&Upload options' dialogue"
+"&Write ftp cache to the disk"
+
+"Far Navigator - Synchronization"
+"Can't obtain panel information."
+"Synchronization available only on local panel or ftp server."
+"Can't synchronize between two plugins."
+"Can't find initialization file: 'proxyftp.mnu'"
+"You are found above of the 'root' folder" 
+"Enter new [$DISK.]SUBVOLUME name for TANDEM server"
+
+"Cache l&ife time (in hours. 0 - never expired)"
+" Default action "
+"Ask &user"
+"Restore download queue?"
+"&Clear"
+"Save download queue"
+"Load download queue"
+"Enter filename for download queue"
+
+"Set '&HIDDEN' attribute to the partial downloaded files"
+"Add e&xtension to partial downloaded files"
+
+"Special &format for LIST command"
+"Copy without &paths"
+
+"File synchronization"
+"Can't synchronize files with plugin panel"
+"Select synchronization mode"
+"Plugin to local"
+"Local to plugin"
+"During synchronization some files on the target panel"
+"may be deleted or overwritten!"
+
+"Edit parameters for f&tp connections"
+"Edit parameters for &http connections"
+"Parameters for ftp connections"
+"Parameters for http connections"
+"Show e&xternal links"
+
+"Save files tree to the disk"
+"Enter file name"
+
+"En&code a file names on download"
+
+"Add to &plugins menu"
+"Add to plugins menu the 'S&ynchronization' item"
+
+"&Reset connection"
+"if CPS does not exceed"
+"bytes during"
+"seconds"
+
+"Ma&x. connection speed"
+"KBytes"
+
+"Far Navigator - View mode configuration"
+"View mode 0 for Hosts panel"
+"View mode 0 for FTP/HTTP panels"
+"Advanced options for FTP connection"
+"Advanced options for"
+"&FTP connection"
+"&HTTP connection"
+"&Local directory"
+
+"Enter login information for proxy server"
+"'ASCII' extentions"
+"Us&e cache for this host"
+
+"Custom localization"
+"&Months names"

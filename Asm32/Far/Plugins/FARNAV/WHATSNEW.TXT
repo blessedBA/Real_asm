@@ -1,0 +1,201 @@
+                         ProxyKit for FAR manager.
+                     Far Navigator (ProxyFtp) plugin.
+
+                Copyright (c) 1998-2002, Vasily V. Moshninov.
+
+    Please visit to PlugRinG site and vote for Far Navigator (ProxyFtp):
+    http://plugring.farmanager.com/cgi-bin/voter.cgi?ID=39
+
+   I. Legend:
+       [+] - Feature is added
+       [*] - Feature is modifyed
+       [-] - Bug fixed
+
+  II. Whats new:
+
+    Far Navigator (ProxyFtp) version 1.9.b4
+
+  --- Jun 03 2003 ---
+
+    [-] - Plugin did not work properly with long filenames (over 58 chars).
+    [-] - Plugin cause crashes on long filenames when used FSF.TruncPathStr.
+    [-] - The lags on directory reading was fixed.
+
+
+    Far Navigator (ProxyFtp) version 1.9.b3
+
+  --- May 14 2003 ---
+
+    [-] - Socks-proxy did not work properly. Fixed.
+
+
+    Far Navigator (ProxyFtp) version 1.9.b2
+
+  --- May 06 2003 ---
+
+    [+] - New option in the "Connection options" dialogue: "ASCII extenstions".
+          All matched files will be downloaded in the ASCII mode.
+    [+] - New option in the "Host configuration" dialogue:
+          "Use cache for this host"
+    [-] - Socks-proxy did not work properly. Fixed.
+
+
+    Far Navigator (ProxyFtp) version 1.9.b1
+
+  --- May 05 2003 ---
+
+    [+] - New option in the "Connection options" dialogue:
+          "Max. connection speed"
+    [+] - You can redefine a view mode 0 for the hosts panel:
+          Next additional columns are availabe:
+          C0 - Full URL
+          C1 - Host name
+          C2 - User name
+          C3 - Home directory on the server
+          C4 - Connection protocol (ftp|http)
+    [+] - New option in the "Host configuration" dialogue: "Local path".
+          When you press CTRL+ALT+HOME on the server panel, plugin
+          will change a path on the passive panel to the specified directory.
+
+        
+    Far Navigator (ProxyFtp) version 1.8.r5
+
+  --- Oct 19 2002 ---
+
+    [-] - Plugin did not work under FAR 1.65.
+
+
+    Far Navigator (ProxyFtp) version 1.8.r4
+
+  --- Oct 09 2002 ---
+
+    [+] - Plugin uses the system function for file masks processing when works
+          under FAR 1.70
+    [+] - After returning on the hosts panel the plugin will be located on 
+          the last visitted host.
+    [+] - New option in "Connection options" dialogue:
+          "Reset connection if CPS does not exceed XXX bytes during XXX seconds"
+
+
+    Far Navigator (ProxyFtp) version 1.8.r3
+
+  --- Sep 28 2002 ---
+
+    [+] - New option in the dialogs "Set as a default values".
+          If checked on exit, plugin will restore all dialog options on 
+          next time.
+    [+] - New option for HTTP connections "Encode a file names on download"
+          Plugin will encode all file names to hexadecimal codes on download.
+          May be used to avoid a proxy-server restrictions.
+
+        
+    Far Navigator (ProxyFtp) version 1.8.r2
+
+  --- May 06 2002 ---
+
+    [-] - Fixed bug with TANDEM ftp;
+    [-] - Fixed bug when nonstandard port number was selected in ftp-proxy;
+    [-] - Unexpected "EAccessViolation" has fixed; 
+    [-] - Descriptions were not updated on ftp-server. Fixed.
+
+
+    Far Navigator (ProxyFtp) version 1.8.r1
+
+  --- Mar 12 2002 ---
+
+    [*] - When you define a equal http- and ftp-proxy, plugin will work over
+          http-proxy server. (Like Internet Explorer)
+    [-] - Bug with editing of links with '?' or '#' has fixed
+    [-] - HTML-parsing function has fixed.
+
+    
+    Far Navigator (ProxyFtp) version 1.8.b8
+
+  --- Nov 22 2001 ---
+
+    [-] - Some bugs has fixed.
+
+    
+    Far Navigator (ProxyFtp) version 1.8.b7
+
+  --- Aug 17 2001 ---
+
+    [+] - New ftp servers support: OS/390 and OS/400
+    [-] - Bug with defining the proxy port has fixed.
+    [-] - FarNav crashes has fixed, I hope ;)
+
+    
+    Far Navigator (ProxyFtp) version 1.8.b6
+
+  --- May 12 2001 ---
+
+    [+] - <CTRL+ALT+R> reconnect and reload current directory.
+    [+] - <CTRL+ALT+T> will create files list for all subfolders in selected folders ;)
+    [+] - <CTRL+ALT+H>: for VMS system you may show all versions of files
+    [*] - Shows size of files when downloading from http-servers.
+    [-] - Fixed another bugs with parsing of http listing. :)
+    [-] - <CTRL+F> bug fixed.
+
+    
+    Far Navigator (ProxyFtp) version 1.8.b5
+
+  --- Apr 28 2001 ---
+
+    [-] - Fixed bugs with parsing of http listing.
+
+    
+    Far Navigator (ProxyFtp) version 1.8.b4
+
+  --- Apr 23 2001 ---
+
+    [+] - New option: you can define own data for the 'User-Agent' field 
+          of HTTP header. See 'doc\techinfo.txt' for details.
+    [+] - HTTP servers: you may press <F3> on ".." and see the source of current document
+    [+] - HTTP servers: <ALT+BackSpace> shows history.
+    [-] - HTTP servers: <BackSpace> shows history only if commandline is empty.
+    [-] - HTTP servers: <CTRL+F> now works properly.
+    [-] - Bugs fixed.
+
+    
+    Far Navigator (ProxyFtp) version 1.8.b3
+
+  --- Mar 28 2001 ---
+
+    [*] - Dialogue of proxy configuration was changed. Now you can define
+          all proxies simultaneously: HTTP, FTP, SOCKS
+    [-] - Bugs fixed.
+
+    
+    Far Navigator (ProxyFtp) version 1.8.b2
+
+  --- Mar 14 2001 ---
+
+    [-] - Bugs fixed.
+
+    
+    Far Navigator (ProxyFtp) version 1.8.b1
+
+  --- Feb 25 2001 ---
+
+    [!] - Plugin name is changed to "Far Navigator"
+    [+] - Two new dialogs:
+          "Connection options"/"Edit parameters for ftp connections"
+          "Connection options"/"Edit parameters for http connections"
+    [+] - If you want to add http server in hosts panel, you must add
+          "http://" prefix for host name.
+    [+] - "Show external links" in "Edit parameters for http connections"
+          dialogue. (Set this option "on" if you want to show links outside
+          of original http server)
+    [-] - Did not work with ftp.narod.ru
+
+
+
+ III. Summary:
+
+  All bugs reports and your wishes send to: proxykit@newmail.ru
+                                   fido is: 2:5004/18.32@fidonet.org
+                                       ICQ: 17217849
+
+  ProxyFtp Home page:                     http://proxykit.newmail.ru
+
+  Vasily V. Moshninov                              september 20 1999

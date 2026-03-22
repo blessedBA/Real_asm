@@ -1,0 +1,74 @@
+System Parameters Editor
+
+ ! Major change
+ + Feature added
+ - Bug fixed
+ * Minor change
+
+Version 1.1496 (23.08.2002)
+All features from Far 1.70 beta4 build 1496 added
+
+Version 1.1282 (13.03.2002)
+All features from Far 1.70 beta4 build 1282 added
+	- 'Restart Far' warning show fixed
+
+Version 1.1206 (1.02.2002) Developers only
+All features from Far 1.70 beta4 build 1206 added
+	* 'Restart Far' warning shows every 16th time
+	* Both Local and Global disabled options available
+	- Memory leaks removed
+
+Version 1.1077 (24.11.2001) Developers only
+All features from Far 1.70 beta4 build 1077 added
+	- Some typos fixed
+	* All key-related options moved to separate page
+	* Finished help translating to Russian
+	* Added quick-buttons in dialogs
+
+Version 1.851 (25.04.2001) Developers only
+All features from Far 1.70 beta4 build 851 added
+
+Version 1.75 (25.04.2001) Developers only
+All features from Far 1.70 beta3 and beta4 build 622 added
+	* Parameters not available for current OS are hidden
+
+Version 1.70 (04.04.2001) Developers only
+All features from Far 1.70.555 added
+	+ Statically linked version included
+
+Version 1.65 (03.03.2001) Developers only
+All features from Far 1.70.490 added
+	* "Esc" and "Enter" key are now not used in key enter lines
+
+Version 1.60 (31.12.2000) Developers only
+All features from Far 1.70.429 added
+	* Added hotkeys to Next ('>>') and Prev ('<<') buttons
+	* Added message telling to restart Far
+	* Full support for Russian
+	* (internal) Now uses class library for dialogs - bugs possible
+
+Version 1.50 (31.12.2000) Developers only
+All features from Far 1.70.343 added
+	* Dialog titles now always differ
+	- Fixed problems with hotkeys
+
+Version 1.40 (08.12.2000) Developers only
+All features from Far 1.70.297 added
+
+Version 1.30 (25.11.2000)
+All features from Far 1.70 beta 1
+	! First public release
+
+Version 1.20 (09.11.2000) Developers only
+All features from Far 1.70.265 alpha-release
+	+ Checking for Far previous to 1.70 added
+
+Version 1.10 (31.10.2000) Developers only
+All features from Far 1.70.254 alpha-release
+	+ Added multiple-user support (registry keys used depend on what Far passed)
+	+ Key name displayed in XLat keys set
+	+ Full Russian language support
+	- Minor interface fixes
+
+Version 1.00 (23.10.2000) Developers only
+All features from Far 1.70.143 alpha-release

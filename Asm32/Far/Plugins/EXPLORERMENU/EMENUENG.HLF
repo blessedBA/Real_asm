@@ -1,0 +1,24 @@
+.Language=English,English
+.PluginContents=Windows Explorer context menu
+
+@Contents
+$ #Windows Explorer context menu#
+    This command allows you to execute command from
+Windows Explorer context menu.
+
+    ~EMENU configuration~@Configure@
+
+@Configure
+$ #Configuration#
+    Select this option if you want EMENU to show message box after EMENU
+finished its work
+
+@Close
+$ #Press "OK" to continue...#
+
+    For some obscure reason certain commands can not be executed in parallel
+with FAR. This is especially noticeable on Win95/98 and almost never happens
+on Windows NT. Don't press #OK# until such command returns. (Don't
+ask me for more reasonable explanation - I don't understand this myself)
+
+    You can turn this option on and off from ~EMENU configuration~@Configure@

@@ -1,0 +1,115 @@
+
+enum { DnTmenu0,  DnTmenu1,  DnTmenu2,   DnTmenu3,   DnTmenu4, DnTtitle,
+       DnTdialog, DnTformat, DnTind,    DnTtimeout, DnThistory, DnTedit,
+       DnTpedit,  DnTborder, DnTinsert, DnTput,     DnTdlg,     DnTsep,
+       DnTtit,    DnTok,     DnTsave,    DnTcancel,  DnTColBut,DnTTestBtn,
+       DnTColor,  DnTForgr,  DnTBackgr,  DnTusedef,  DnTusedefF,DnTusrfrm,
+       DnTpause,  DnTusetit, DnTusectrl, DnTsmode,
+       DnTweekday,DnTweekend,DnTjan,     DnTfeb,     DnTmar,
+       DnTapr,    DnTmay,    DnTjun,     DnTjul,     DnTaug,   DnTsen,
+       DnToct,    DnTnov,    DnTdec,     DnTCalen,   DnTsetyear,DnTsetmon,
+       DnTdlg2,   DnTsu,     DnTmo,	 DnTtu,	     DnTwe,	DnTth,
+       DnTfr,	  DnTsa ,    DnTscript};
+
+;enum { DnTmenu0,  DnTmenu1,  DnTmenu2,   DnTmenu3,   DnTtitle, DnTdialog,
+;       DnTformat, DnTind,    DnTtimeout, DnThistory, DnTedit,  DnTpedit,
+;       DnTborder, DnTinsert, DnTput,     DnTdlg,     DnTsep,
+;       DnTtit,    DnTok,     DnTsave,    DnTcancel,  DnTColBut,DnTTestBtn,
+;       DnTColor,  DnTForgr,  DnTBackgr,  DnTusedef,  DnTusedefF,DnTusrfrm,
+;       DnTpause,  DnTusetit, DnTusectrl, DnTsmode ,
+;       DnTweekday,DnTweekend,DnTjan,     DnTfeb,     DnTmar,
+;       DnTapr,    DnTmay,    DnTjun,     DnTjul,     DnTaug,
+;       DnToct,    DnTnov,    DnTdec};
+
+;name id x1 y1 x2 y2 focus(T/F|0/1) selected(T/F) Flags DefButton(T/F|0/1) Data
+enum { ConfNul=0, ConfTit, ConfDef, ConfUser, ConfForm=4, ConfOk, ConfTitle,
+       ConfDelay, ConfX, ConfY, ConfSwitch, ConfColor, ConfColBt, ConfTxt,
+       ConfCtrl
+     };
+
+name "Auto"
+help "AutoDialog"
+DOUBLEBOX   ConfTit  3  1 40  8 F F          0               0 %LNG% DnTmenu1
+RADIOBUTTON ConfDef  4  2  0  0 F T          0               0 %LNG% DnTusedefF
+RADIOBUTTON ConfUser 4  3  0  0 F F          0               0 %LNG% DnTusrfrm
+TEXT        ConfTxt  4  4  0  0 F F          0               0 %LNG% DnTtit
+EDIT        ConfForm 4  5 38  0 F DnThistory DIF_HISTORY     0 %REG% "Date-n-Time\Auto\Format" "No key"
+
+TEXT        ConfTxt  5  6  0  0 F F DIF_SEPARATOR    0 NULL
+BUTTON      ConfOk   5  7  0  0 T F DIF_CENTERGROUP  1 %LNG% DnTok
+BUTTON     -1  5  7  0  0 F F DIF_CENTERGROUP  0 %LNG% DnTcancel
+
+name "Menu"
+help "MenuDialog"
+DOUBLEBOX   ConfTit   3  1 40  8 F F          0            0 %LNG% DnTmenu2
+RADIOBUTTON ConfDef   4  2  0  0 F T          0            0 %LNG% DnTusedefF
+RADIOBUTTON ConfUser  4  3  0  0 F F          0            0 %LNG% DnTusrfrm
+TEXT        ConfTxt   4  4  0  0 F F          0            0 %LNG% DnTtit
+EDIT        ConfForm  4  5 38  0 F DnThistory DIF_HISTORY  0 %REG% "Date-n-Time\Menu\Format" "No key"
+
+TEXT        ConfTxt   5  6  0  0 F F DIF_SEPARATOR    0 NULL
+BUTTON      ConfOk 5  7  0  0 T F DIF_CENTERGROUP  1 %LNG% DnTok
+BUTTON     -1  5  7  0  0 F F DIF_CENTERGROUP  0 %LNG% DnTcancel
+
+name "Indicator"
+help "IndDialog"
+DOUBLEBOX   ConfTit    3  1 40 12 F F          0                0 %LNG% DnTmenu3
+RADIOBUTTON ConfDef    4  2  0  0 F T          0                0 %LNG% DnTusedefF
+RADIOBUTTON ConfUser   4  3  0  0 F F          0                0 %LNG% DnTusrfrm
+CHECKBOX    ConfCtrl   4  4  0  0 F F          0                0 %LNG% DnTusectrl
+CHECKBOX    ConfSwitch 4  5  0  0 F F          0                0 %LNG% DnTsmode
+CHECKBOX    ConfTitle  4  6  0  0 F T          0                0 %LNG% DnTusetit
+;TEXT        ConfTxt   26  3  0  0 F F          0                0 Co&lor
+;FIXEDIT     ConfColor 32  3 38  0 F F          0                0 %REG% "Date-n-Time\Indicator\Color"  000
+TEXT        ConfTxt   26  4  0  0 F F          0                0 %LNG% DnTpause
+FIXEDIT     ConfDelay 32  4 38  0 F F          0                0 %REG% "Date-n-Time\Indicator\Pause" 1000
+TEXT        ConfTxt   26  5  0  0 F F          0                0 &Xÿpos
+FIXEDIT     ConfX     32  5 38  0 F F          0                0 %REG% "Date-n-Time\Indicator\Xcoord" 5
+TEXT        ConfTxt   26  6  0  0 F F          0                0 &Yÿpos
+FIXEDIT     ConfY     32  6 38  0 F F          0                0 %REG% "Date-n-Time\Indicator\Ycoord" 0
+TEXT        ConfTxt    4  7  0  0 F F          DIF_SEPARATOR    0 NULL
+TEXT        ConfTxt    4  8  0  0 F F          0                0 %LNG% DnTtit
+TEXT        ConfTxt   14 12  0  0 F F          0                0 " DG Ver:"
+TEXT        ConfTxt   22 12  0  0 F F          0                0 %VER%
+EDIT        ConfForm   4  9 38  0 F DnThistory DIF_HISTORY      0 %REG% "Date-n-Time\Indicator\Format" "No key"
+
+TEXT        ConfTxt    5 10  0  0 F F DIF_SEPARATOR    0 NULL
+BUTTON      ConfOk     5 11  0  0 T F DIF_CENTERGROUP  1 %LNG% DnTok
+BUTTON      ConfColBt  5 11   0  0  F  F DIF_CENTERGROUP      0 %LNG% DnTColBut
+BUTTON      -1  5 11   0  0  F  F DIF_CENTERGROUP      0 %LNG% DnTcancel
+
+enum{db1,rb1,rb2,cb1,fe1,tx1,ed1,bt1,bt2,bt3,bt4,cb2}
+name "Main"
+;help "Contents"
+help "MainDialog"
+
+DOUBLEBOX   db1   3  1 40 10 F F          0               0 %LNG% DnTborder
+RADIOBUTTON rb1   5  2  0 0  F F          0               0 %LNG% DnTinsert
+RADIOBUTTON rb2   5  3  0 0  F T          0               0 %LNG% DnTput
+CHECKBOX    cb1  24  2  0 0  F F          0               0 %LNG% DnTdlg
+TEXT          0   5  4  0 0  F F          DIF_SEPARATOR   0 %LNG% DnTsep
+FIXEDIT     fe1   4  5 38 0  F "DnTname"  DIF_HISTORY     0 NULL
+TEXT        tx1   5  6  0 0  F F          0               0 %LNG% DnTtit
+EDIT        ed1   4  7 38 0  T DnThistory DIF_HISTORY     0 NULL
+TEXT          0   0  8  0 0  F F          DIF_SEPARATOR   0 NULL
+BUTTON      bt1   5  9  0 0  F F          DIF_CENTERGROUP 1 %LNG% DnTok
+BUTTON      bt2  15  9  0 0  F F          DIF_CENTERGROUP 0 %LNG% DnTsave
+BUTTON       -1  27  9  0 0  F F          DIF_CENTERGROUP 0 %LNG% DnTcancel
+
+name "Main2"
+help "CalDialog"
+
+DOUBLEBOX   db1   3  1 40 10 F F          0               0 %LNG% "DnTborder"
+RADIOBUTTON rb1   5  2  0 0  F F          0               0 %LNG% DnTinsert
+RADIOBUTTON rb2   5  3  0 0  F T          0               0 %LNG% DnTput
+;CHECKBOX    cb1  24  2  0 0  F F          0               0 %LNG% DnTdlg
+CHECKBOX    cb2  24  2  0 0  F F          0               0 %LNG% DnTdlg2
+TEXT          0   5  4  0 0  F F          DIF_SEPARATOR   0 %LNG% DnTsep
+FIXEDIT     fe1   4  5 38 0  F "DnTname"  DIF_HISTORY     0 %REG% "Date-n-Time\Format11\Name"
+TEXT        tx1   5  6  0 0  F F          0               0 %LNG% DnTtit
+EDIT        ed1   4  7 38 0  T DnThistory DIF_HISTORY     0 %REG% "Date-n-Time\Format11\Format"
+TEXT          0   0  8  0 0  F F          DIF_SEPARATOR   0 NULL
+BUTTON      bt1   5  9  0 0  F F          DIF_CENTERGROUP 1 %LNG% DnTok
+BUTTON      bt2  15  9  0 0  F F          DIF_CENTERGROUP 0 %LNG% DnTsave
+BUTTON       -1  27  9  0 0  F F          DIF_CENTERGROUP 0 %LNG% DnTcancel
+

@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="Windows-1251"?>
+<!DOCTYPE hrc SYSTEM "../hrc.dtd">
+<?xml-stylesheet type="text/xsl" href="../hrc.xsl"?>
+<!--
+    Active Server Pages
+With Help of:
+    cail: yea - it really cool - too difficult to understand how it works :)
+-->
+<hrc>
+
+<define name="aspText" value="dInsert"/>
+
+<include name="net/html.hrc"/>
+<include name="main/java.hrc"/>
+
+<!-- meta asp schemes - for asp includes -->
+<scheme name="aspBlock">
+   <block start="/(&lt;\%)/" end="/(\%\>)/" scheme="asp_VBScript"
+          region="aspText" region00="dOpenTag" region10="dCloseTag"
+          region01="dpOpenStruct" region11="dpCloseStruct"/>
+</scheme>
+<scheme name="aspInverseBlock">
+   <block start="/(\%&gt;)/" end="/(&lt;\%)/" scheme="asp_html" lowpriority="lowpriority"
+          region="dText" region00="aspText" region10="aspText"/>
+</scheme>
+
+<!-- asp languages schemes -->
+<scheme name="asp_VBScript">
+   <regexp match="/'|(\brem\B).*? \M ((\%&gt;)|$) /ix" region0="dComment"/>
+   <inherit scheme="aspInverseBlock"/>
+   <inherit scheme="VBScript">
+     <virtual scheme="VBScript" subst="asp_VBScript"/>
+   </inherit>
+</scheme>
+<scheme name="asp_JScript">
+   <regexp match="/\/\/.*? \M ((\%&gt;)|$)/ix" region0="dComment"/>
+   <inherit scheme="aspInverseBlock">
+     <virtual scheme="asp_VBScript" subst="asp_JScript"/>
+   </inherit>
+   <inherit scheme="jScript">
+     <virtual scheme="jScript" subst="asp_JScript"/>
+   </inherit>
+</scheme>
+<scheme name="asp_PerlScript">
+   <regexp match="/\/\/.*? \M ((\%&gt;)|$)/ix" region0="dComment"/>
+   <regexp match="/\#.*? \M ((\%&gt;)|$)/ix" region0="dComment"/>
+   <inherit scheme="aspInverseBlock">
+     <virtual scheme="asp_VBScript" subst="asp_PerlScript"/>
+   </inherit>
+   <inherit scheme="perl">
+     <virtual scheme="perl" subst="asp_PerlScript"/>
+   </inherit>
+</scheme>
+<scheme name="asp_Java">
+   <inherit scheme="aspInverseBlock">
+     <virtual scheme="asp_VBScript" subst="asp_Java"/>
+   </inherit>
+   <inherit scheme="Java">
+     <virtual scheme="Java" subst="asp_Java"/>
+   </inherit>
+</scheme>
+<scheme name="jsp_CoreTags">
+   <keywords ignorecase="ignorecase" region="htmlOpenTag">
+     <word name="jsp:include"/>
+     <word name="jsp:forward"/>
+     <word name="jsp:getproperty"/>
+     <word name="jsp:setproperty"/>
+     <word name="jsp:useBean"/>
+     <word name="jsp:param"/>
+     <word name="jsp:"/>
+   </keywords>
+   <inherit scheme="htmlCoreTags"/>
+</scheme>
+
+
+<!-- html scripts virtualizations -->
+<scheme name="asp_html_ps">
+   <inherit scheme="aspBlock"/>
+   <inherit scheme="perl">
+     <virtual scheme="perlMETA" subst="aspBlock"/>
+     <virtual scheme="perl" subst="asp_html_ps"/>
+   </inherit>
+</scheme>
+<scheme name="asp_html_js">
+   <inherit scheme="aspBlock"/>
+   <inherit scheme="jscript">
+     <virtual scheme="jsMETA" subst="aspBlock"/>
+     <virtual scheme="jscript" subst="asp_html_js"/>
+   </inherit>
+</scheme>
+<scheme name="asp_html_vbs">
+   <inherit scheme="aspBlock"/>
+   <inherit scheme="vbscript">
+     <virtual scheme="vbMETA" subst="aspBlock"/>
+     <virtual scheme="vbscript" subst="asp_html_vbs"/>
+   </inherit>
+</scheme>
+<!-- html redefinition -->
+<scheme name="asp_htmlString">
+   <inherit scheme="aspBlock"/>
+   <inherit scheme="htmlString"/>
+</scheme>
+<scheme name="aspScripts">
+   <inherit scheme="htmlScripts">
+     <virtual scheme="perl" subst="asp_html_ps"/>
+     <virtual scheme="jscript" subst="asp_html_js"/>
+     <virtual scheme="vbscript" subst="asp_html_vbs"/>
+   </inherit>
+</scheme>
+<scheme name="asp_html">
+   <inherit scheme="html">
+     <virtual scheme="htmlString" subst="asp_htmlString"/>
+     <virtual scheme="htmlScripts" subst="aspScripts"/>
+     <virtual scheme="html" subst="aspInclude"/>
+   </inherit>
+</scheme>
+<scheme name="aspInclude">
+   <inherit scheme="aspBlock"/>
+   <inherit scheme="asp_html"/>
+</scheme>
+
+
+<!--  asp scripts  -->
+<scheme name="asp">
+   <inherit scheme="AspInclude"/>
+</scheme>
+<scheme name="aspJS">
+   <inherit scheme="AspInclude">
+     <virtual scheme="asp_VBScript" subst="asp_JScript"/>
+   </inherit>
+</scheme>
+<scheme name="aspPS">
+   <inherit scheme="AspInclude">
+     <virtual scheme="asp_VBScript" subst="asp_PerlScript"/>
+   </inherit>
+</scheme>
+<scheme name="jsp">
+   <inherit scheme="AspInclude">
+     <virtual scheme="asp_VBScript" subst="asp_Java"/>
+     <virtual scheme="htmlCoreTags" subst="jsp_CoreTags"/>
+   </inherit>
+</scheme>
+
+</hrc>

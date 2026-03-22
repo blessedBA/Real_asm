@@ -1,0 +1,216 @@
+                                  
+            SHELL FILE AND FOLDER LINK SUPPORT FAR PLUGIN
+                                  
+              Version 1.15 (Tempora mutantur) 05.09.99
+                                  
+                          License agreement
+                                  
+     This  product  is  distributed AS IS. The author  will  not  be
+liable for any kind of loss while using or misusing the software.
+     This  product  can  be  FREELY  distributed,  but  the  product
+package  and  this  text should be left unchanged according  to  the
+package description.
+                                  
+                               Package
+                                  
+     File_Id.Diz - short product description for BBS/sites operators
+     History.Eng - English development history
+     History.Rus - Russian development history
+     SHELLINK.DLL - FAR plugin itself
+     shellink.inf - installation script
+     ReadMe.Eng - English manual (this file)
+     LinkEng.hlf - English help file
+     LinkRus.hlf - Russian help file
+     LinkEng.lng - plugins' messages in English
+     LinkRus.lng - plugins' messages in Russian
+     ReadMe.Rus - Russian manual
+     Here  and  further the term "English" only means  the  language
+that  the  author used writing those documents and, therefore,  this
+language  version can be different from classic one. The  author  is
+not a writer, but reader.
+                                  
+                      Installation and running
+                                  
+     First  of  all, if the product package is an archive file,  you
+should extract that archive into a temporary folder. Then choose  an
+appropriate way of installation, one of described below.
+     
+Standard installation
+     
+     Close  all active copies of FAR. Use Windows Explorer to  enter
+to  the folder containing package files. Click right mouse button on
+shellink.inf file, then choose "Install" item of popup  menu.  Shell
+link     support    plugin    files    will    be    copied     into
+Program   Files\Far\Plugins\SHELLINK   directory.   Default   plugin
+settings     will    be    placed    into    the    registry     key
+HKEY_CURRENT_USER\Software\Far\Plugins\OS\ShellLinker.
+     
+Manual installation
+     
+     Create  the subfolder ShelLink in the folder Plugins  that,  in
+its  turn,  should  be  placed  in your  FAR  folder.  Copy  to  the
+Far\Plugins\ShelLink  directory  all  the  files  mentioned  in  the
+package description above.
+     You  can  give  another name to the shell link  support  plugin
+folder,  and  you not must to create it; but all the  components  of
+this plugin should be visible to FAR.
+     In  this  case, default plugin settings are stored  in  program
+body  until a first change when they are imported into the  registry
+key    HKEY_CURRENT_USER\Software\Far\Plugins\OS\ShellLinker.   Then
+plugin uses values kept under this key.
+     
+Running
+     
+     When  you  installed the plugin, restart FAR. New  item  "Shell
+link  creation"  will  appear in "Plugin commands"  list  called  by
+pressing  <F11>  key,  and item "Shell link  support  options"  will
+appear in "Options/Plugin configuration" menu.
+                                  
+                            Uninstalling
+                                  
+     Close all active copies of FAR before you uninstall shell  link
+support plugin. Then do your did using one of next ways.
+     
+Standard uninstalling
+     
+     If  you  installed plugin with installation script, go  to  the
+Control  Panel and choose "Add/Remove program" item.  Then  find  in
+installed applications list "FAR plugin - Shell file and folder link
+support"  string,  mark it and press "Add/Remove"  button.  All  the
+plugin files and registry keys will be deleted.
+     
+Manual uninstalling
+     
+     Delete  the  folder where you placed shell link support  plugin
+files.                         Registry                          key
+HKEY_CURRENT_USER\Software\Far\Plugins\OS\ShellLinker also  must  be
+deleted. You are responsible to do this work correctly.
+                                  
+                               Basics
+                                  
+     A shell link is a data object that contains information used to
+access  another  object  in  the shell's namespace  such  as  files,
+folders,  disk drives, and printers. Shell link itself, in the  most
+cases,  is  a  file  system object or, simply, file,  and  its  name
+includes  .lnk extension; at this point, terms "link" and "shortcut"
+are equal.
+     To  gain  access to linked object shell link must  be  resolved
+using  either  MS  Windows Explorer or any other file  manager  that
+should  call  suitable Windows API functions.  When  the  object  is
+found,  file manager can perfom some actions associated with  object
+of this type.
+     Shell  link  have some standart properties such as  icon,  work
+directory,  command  string arguments (link to  executable  module),
+description - that can be changed, and the set can be extended; file
+manager should do this work too.
+     Shell link support FAR plugin is intended to create shell links
+to  objects  visible  in FAR file panels, i.e.  files  and  folders.
+Additional  feature is the changing current panel folder  to  linked
+one, when link resolved is a folder shortcut. Shell link file can be
+created  either on desktop (in its folder), or in another FAR  panel
+current folder.
+     It  is  impossible to create shortcut to an emulated by another
+plugin file system object with help of this plugin because such link
+is definitly unresolvable. However shell link to a network resource -
+  file or folder - represented by the network browser plugin can  be
+created.
+     Shell   link  support  FAR  plugin  performs  no  any   editing
+facilities for already existing shell links, so Explorer do it  much
+better.  At least, the author had not found any arguments  for  this
+idea.
+                                  
+                               Reasons
+                                  
+     It  is often necessary to create shortcut on desktop or in main
+menu  to  a file in a big depth situated (from 4th level and deeper)
+subfolder.  Sure,  you  can  switch to desktop,  press  right  mouse
+button,  call  shortcut  creation wizard... and  again,  you  should
+search the file that is already under cursor in FAR panel!
+     Make the task more complex. A group of shortcuts to a few files
+from one subfolder is to be created on desktop. It means you have to
+repeat  the set of same routine operations for a few times.  Or  you
+can create one shortcut, when copy and change, change, change...
+     Laziness makes the world go around, ain't it?
+                                  
+                                Using
+                                  
+Configuration
+     
+     When  you  enter  the  menu "Options/Plugin configuration"  and
+choose the item "Shell link support options", the dialog appears and
+you can change these parameters.
+Resolve folder links            This   checkbox   defines,   is   it
+                                possible  to  change  current  panel
+                                folder  to  linked one  by  pressing
+                                <Enter> on shell link file or not
+                                
+Folder link mask                File  mask  or set of masks  divided
+                                by   commas.  Plugin  considers  any
+                                file  matched  as a  shell  link  to
+                                folder  and,  therefore,  tries   to
+                                resolve it.
+                                
+Description prefix              This  text  is  a constant  part  of
+                                description  of newly created  shell
+                                link
+                                
+Create shell links by default:  This buttons define default path  to
+                                newly created shell link file:
+                                
+On panel                        in another panel current folder
+                                
+On desktop                      in desktop folder
+     
+     These   parameters   are   kept   under   the   registry    key
+HKEY_CURRENT_USER\Software\Far\Plugins\OS\ShellLinker,    but    you
+should not correct them there without special necessity.
+     
+Shell link creation
+     
+     Set the file panel cursor to the object you need or select some
+object,  press  <F11>  key  or  choose  menu  item  "Commands/Plugin
+commands",  then choose list item "Shell link creation". Before  the
+shortcut  (or  group of shortcuts) will be created, you  can  change
+these its properties.
+     
+Where                           Path  to  shell link file -  desktop
+                                or    another   panel   folder    by
+                                default  -  and its name  consisting
+                                of object name and .lnk extension
+                                
+Description                     Shell  link  description  consisting
+                                of  configuration  defined  constant
+                                part and object name
+     
+     Default  values  of these fields are defined in  dialog  "Shell
+link support options".
+     When  group of shortcuts is created, field {Where} must contain
+path only and field {Description} must contain constant part only.
+     Press  <Create> button when you agree with values entered,  and
+shell link will be created in {Where} placeholder.
+     If  link file supposed to be created on desktop by default, you
+can create it in another panel folder by pressing <On panel> button.
+Vice  versa,  pressing <On desktop> button changes destination  path
+from another panel folder to desktop one.
+     You  can  change link file name case by pressing <Case> button.
+The order is "File name.Ext" -> "File Name.Ext" -> "FILE NAME.EXT" -
+> "file name.ext", one step by time.
+     If  shell  link file with such name already exists,  you'll  be
+asked to overwrite it or to cancel operation.
+     
+Folder link resolution
+     
+     Shell link support plugin allows to change current panel folder
+to  linked one by pressing <Enter> key on shell link file,  if  it's
+not a link to another type object.
+     This  feature can be turned off , if you wish, in dialog "Shell
+link support options".
+                                  
+                               Author
+                                  
+     Oscar Sacaev, Novosibirsk, Russia.
+     Addresses:
+     Oscar Sacaev 2:5000/72.511@fidonet
+     E-mail: oos@chat.ru
+     
+     

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="Windows-1251"?>
+<!DOCTYPE hrc SYSTEM "../hrc.dtd">
+<?xml-stylesheet type="text/xsl" href="../hrc.xsl"?>
+<!--
+    GPSS (general purpose simulating system)
+    cail lomecb <ruiv@uic.nnov.ru>
+-->
+
+<hrc>
+
+<scheme name="gpss">
+  <!-- Strings -->
+  <inherit scheme="mDecNumb"/>
+  <regexp match="/\;|\*.*$/" region0="dComment"/>
+  <keywords region="dSymbol">
+    <symb name="="/> <symb name=":"/> <symb name="&lt;"/> <symb name="&gt;"/>
+    <symb name="["/> <symb name="]"/> <symb name="{"/> <symb name="}"/>
+    <symb name="+"/><symb name="-"/><symb name=","/><symb name="."/>
+  </keywords>
+
+  <keywords ignorecase="ignorecase" region="dKeyword">
+    <word name="GENERATE"/>
+    <word name="TERMINATE"/>
+  </keywords>
+</scheme>
+
+</hrc>

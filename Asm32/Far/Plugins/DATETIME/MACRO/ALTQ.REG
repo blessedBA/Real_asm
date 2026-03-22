@@ -1,0 +1,14 @@
+REGEDIT4
+
+[HKEY_CURRENT_USER\Software\Far\KeyMacros\Shell\AltQ]
+"Sequence"="ShiftF4 c : BackSlash s m a r t p a d Enter CtrlPgDn End Enter Home Ä Ä Ä ( F11 D D ) Ä Ä Ä Enter F2"   
+"DisableOutput"=dword:00000001
+
+[HKEY_CURRENT_USER\Software\Far\KeyMacros\Editor\AltQ]
+"Sequence"="F12 0 ShiftF4 c : BackSlash s m a r t p a d Enter CtrlPgDn End Enter Home Ä Ä Ä ( F11 D D ) Ä Ä Ä Enter F2"
+"DisableOutput"=dword:00000001
+
+[HKEY_CURRENT_USER\Software\Far\KeyMacros\Viewer\AltQ]
+"Sequence"="F12 0 ShiftF4 c : BackSlash s m a r t p a d Enter CtrlPgDn End Enter Home Ä Ä Ä ( F11 D D ) Ä Ä Ä Enter F2"
+"DisableOutput"=dword:00000001
+

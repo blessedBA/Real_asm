@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="Windows-1251"?>
+<!DOCTYPE hrc SYSTEM "../hrc.dtd">
+<?xml-stylesheet type="text/xsl" href="../hrc.xsl"?>
+<!--
+   TeX Defs
+With help of:
+   Vasily Bublik  <bublik@itam.nsc.ru>
+   Sergei Remizov <remizov@mail.cplire.ru>
+   Mike Golub     <golub@aha.ru>
+-->
+
+<hrc>
+
+<define name="texFormula"  value="dInsert"/>
+<define name="texFormula1" value="dInverseLabel"/>
+<define name="texComment"  value="dComment"/>
+<define name="texSymb"     value="dSymbol"/>
+<define name="texSymb1"    value="dSymbol"/>
+<define name="texWord"     value="dKeyword"/>
+<define name="texWord1"    value="dKeyword"/>
+<define name="texBrk"      value="dParam"/>
+<define name="texNumb"     value="dNumber"/>
+<define name="texBracket"  value="default"/>
+<define name="texBracket1" value="default"/>
+<define name="texError"    value="dError"/>
+<define name="texLargeBracket" value="dLabel"/>
+
+<scheme name="Tex_Symbols">
+   <keywords  region="texSymb">
+      <symb name="\"/><symb name="#"/><symb name="/" region="texWord"/>
+      <symb name="&amp;"/><symb name="{"/><symb name="}"/>
+      <symb name="_"/><symb name="^"/><symb name="~"/>
+   </keywords>
+</scheme>
+
+<scheme name="Tex_eqn">
+   <!-- cail: nothing difficult :)) -->
+   <block start="/(\\(begin)\{((equation)|(eqnarray))\})/" end="/( \\(end) \{((equation)|(eqnarray))\} )/x"
+          scheme="Tex_Formula" region="texFormula"
+          region00="dpOpenStruct" region10="dpCloseStruct"
+          region01="texSymb" region02="texWord" region03="texBracket"
+          region11="texSymb" region12="texWord" region13="texBracket"/>
+</scheme>
+
+<scheme name="Tex_quoters">
+   <!-- quoted -->
+   <regexp match="/(\\)([\w@]+)/" region1="texSymb" region2="texWord" lowpriority="lowpriority"/>
+   <!-- \% is not a comment! \$ is not a math shift! -->
+   <regexp match="/(\\\$)/"  region0="texSymb"/>
+   <regexp match="/(\\\%)/"  region0="texSymb"/>
+   <!-- Highlight Russian letters? -->
+   <!--regexp match="/([Ђ-џ -прс]+)/" region0="dVar"-->
+   <!-- comment -->
+   <regexp match="/(\%.*$)/" region0="texComment"/>
+   <!-- AMS-TeX block comment -->
+   <block start="/(^\\comment.*$)/" end="/(^\\endcomment.*$)/"
+          scheme="Comment" region="texComment"/>
+   <!-- numbers -->
+   <regexp match="/\c(\-?\d*\.?\d+)/" region0="texNumb"/>
+
+   <regexp match='/(\\) ( [  \{\}\,\:\;\!\\\|\"\]\-  ] )/x'  region1="texSymb" region2="texWord"/>
+   <regexp match="/(\\) ([\'\/])/x" region1="texSymb" region2="texWord"/>
+   <!-- error -->
+   <regexp match="/(\\)/" region0="texError" lowpriority="lowpriority"/>
+</scheme>
+
+<scheme name="Tex_Formula">
+   <inherit scheme="Tex_eqn"/>
+   <block
+     start="/(\\) (left) ( [\s\t]* [\,\|\{\}\(\)\[\]] ) | ( [\s\t]+ [\,\|\{\}\(\)\[\]] {0,1} )/x"
+     end="/ (\\) (right) ( [\s\t]* [\,\|\{\}\(\)\[\]] {0,1} ) /x" scheme="Tex_Formula"
+     region="texLargeBracket" region00="dpOpenStruct" region10="dpCloseStruct"
+     region01="texSymb" region02="texLargeBracket" region03="texBrk" region04="texWord"
+     region11="texSymb" region12="texLargeBracket" region13="texBrk"/>
+   <inherit scheme="Tex_quoters"/>
+   <!-- cail: this (\\end)?~4 cracks collision with \end{equation} -->
+   <block start="/(\\end)?~4(\{)/" end="/(\})/" scheme="Tex_Formula"
+          region="texBracket" region00="dpOpenStruct" region10="dpCloseStruct"
+          region02="texSymb" region11="texSymb"/>
+   <block start="/(\[)/" end="/(\])/" scheme="Tex"
+          region="texBracket" region00="dpOpenStruct" region10="dpCloseStruct"
+          region01="texSymb" region11="texSymb"/>
+   <inherit scheme="Tex_Symbols"/>
+
+   <keywords  region="texSymb">
+      <symb name="$" region="texError"/>
+   </keywords>
+</scheme>
+
+<scheme name="Tex">
+   <inherit scheme="Tex_eqn"/>
+   <inherit scheme="Tex_quoters"/>
+
+   <block start="/(\$\$)/" end="/(\$\$)/" scheme="Tex_Formula"
+          region="texFormula" region01="texSymb" region10="texSymb"/>
+   <block start="/(\$)/" end="/(\$)/" scheme="Tex_Formula"
+          region="texFormula" region00="dpOpenStruct" region10="dpCloseStruct"
+          region01="texSymb" region11="texSymb"/>
+
+   <block start="/(\{)/" end="/(\})/" scheme="Tex"
+          region="texBracket" region00="dpOpenStruct" region10="dpCloseStruct"
+          region01="texSymb" region11="texSymb"/>
+   <block start="/(\[)/" end="/(\])/" scheme="Tex"
+          region="texBracket" region00="dpOpenStruct" region10="dpCloseStruct"
+          region01="texSymb" region11="texSymb"/>
+
+   <inherit scheme="Tex_Symbols"/>
+   <keywords  region="texSymb">
+      <symb name="&lt;" region="texError"/>
+      <symb name="&gt;" region="texError"/>
+   </keywords>
+</scheme>
+</hrc>

@@ -1,0 +1,25 @@
+.Language=English,English
+
+"Cut file"
+"Cut file"
+"&OK"
+"&Cut"
+"&NO"
+"Enter a size of pieces:"
+"kbytes"
+"bytes"
+"Cutting file ..."
+
+"Error"
+"Bad size:"
+"Number of pices is out of range (1-1000):"
+"CAN'T ALLOCATE A MEMORY!"
+"CAN'T RELEASE THE MEMORY!"
+
+"NOTE"
+"To gather the original file"
+"you may use the command:"
+"COPY /B FILE.EXT.000+FILE.EXT.001+...+FILE.EXT.NNN FILE.EXT"
+
+"Don't display NOTE"
+"Don't make BAT file"

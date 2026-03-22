@@ -1,0 +1,171 @@
+                                  LIB.FMT
+
+                           ver 1.21 20.09.1999
+
+               Archive support plugin for OMF- & COFF-Library
+               FMT-module for MultiArc plugin for FAR manager
+               ----------------------------------------------
+
+  Модуль LIB.FMT является плагинов второго уровня для плагина поддержки
+  архивов `MultiArc' и предназачен для отображения содержимого LIB-файлов
+  на файловой панели FAR Manager.
+
+  Модуль работает с двумя типами "архивов" - LIB-файлами.
+
+  OMF-Library
+  ~~~~~~~~~~~
+  Библиотеки формата OMF (Object Module Format) - это те библиотеки
+  с которыми работают C-компиляторы фирмы Borland Inc. и с которыми
+  работали все сишные DOS-компиляторы.
+  Самый первый байт в таком файле = F0h.
+  Библиотекари (managers):
+    tlib.exe - входит в комплект поставок компиляторов С фирмы Borland.
+    wlib.exe - это из Watcom Це
+
+  COFF-Library
+  ~~~~~~~~~~~~
+  Библиотеки формата COFF (Common Object File Format) перекочевали
+  в Windows из Unix`а. Microsoft использует данный формат бибилиотек в
+  Microsoft Visual C.
+  Такие файлы начинаются с сигнатуры: "!<arch>\n"
+  Библиотекари (managers):
+    ar.exe  - это портированная из Unix GNU-утилита (входит в BinUtil)
+    lib.exe - (или "link.exe /lib") из MSVC
+    wlib.exe - это из Watcom Це
+
+  Wlib.exe - этого библиотекаря очень рекомендую - справляется с
+  некоторыми граблями (на которые, кстати сказать, весьма часто
+  натыкаются и ar.exe и галиматья от MS).
+
+  Я постараюсь данную утилиту выложить на сайт 'FAR PlugRinG'
+
+    http://www.uic.nnov.ru/~ruiv/plugring/
+      или к себе
+    http://www.halyava.ru/skirda/
+
+  Кстати, для любителей компиляторов от фимы Borland: COFF-библиотеки
+  можно использовать в своих проектах, но сначала необходимо совершить
+  несколько манипуляций. Есть такая утилита - COFF2OMF.EXE (в 3 и 4-м
+  Билдере она точно есть) - вот этой утилитой и надо воспользоваться:
+
+  -- 8< ---------
+  COFF to OMF Converter ...
+  Syntax:   COFF2OMF [options] InputFile OutputFile
+    -h, -?  Display help
+    -q      Quiet mode
+    -v      Dump of selected symbols
+    -r      Remove (delete) output file if empty
+    -lib:xx Specify options for OMF import library generation:
+         ms - Allow entries that have MS C++ name mangling (default: no)
+         st - Normalize names instead of aliasing MS stdcall mangling
+         ca - Don't perform MS cdecl aliasing (default is to alias)
+
+  COFF2OMF will convert a COFF import library file (InputFile)
+  to the corresponding OMF type import library file (OutputFile).
+  -- >8 ---------
+
+  Обратите внимание, что эта утилита будет полезна только для библиотек
+  импорта. Если, например, в DLL имеется функция с декларацией cdecl, но
+  без символа подчеркивания (а так же имется соответсвующая COFF-библиотека),
+  то эта утилита как раз для Вас.
+
+
+  Замечания по OMF-Library:
+  ~~~~~~~~~~~~~~~~~~~~~~~~~
+
+1. В библиотеки могут встречаться по несколько модулей с одинаковыми
+   именами. С чем это связано я не знаю, но они существуют и Lib16 честно
+   эти штуки показывает. Можете проверить (если у вас есть BC 5.02,
+   библиотека cl.lib - memccpy,...)
+
+2. Иногда в библиотеке импорта попадаются такия записи:
+
+   Publics by module
+
+   @$blsh$qr7ostreamrx11TFileStatus	size = 0
+  	  operator <<(ostream&,const TFileStatus&)
+
+   Модуль тоже честно все показывает, но при этом, естественно "выципить"
+   эту "хрень" не сможет...
+
+3. Дата и время модификации OBJ-модулей устанавливаются в те величины,
+   которые имеет сам LIB-файл.
+
+4. Размер OBJ-файла - файловый размер, а не тот, который выдает TLIB в
+   листинге...
+
+5. Если немного подкорректировать multiarc.dll в сторону добавления шаблона
+   создаваемого листинга для макроса %%l, то появится возможность "выуживать"
+   и вставлять OBJ-файлы с использованием списка. В данный момен список - это
+   простое перечисление файлов - каждое имя в отдельной строке:
+
+     memcpy.obj
+     strcpy.obj
+
+   что, естественно, TLIB`ом не воспринимается :-(
+
+
+  Замечания по COFF-Library:
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~
+1. Допустим в библиотеки встречается модуль с именем:
+
+    ./Release/tag_base.obj
+
+   ни ar.exe ни lib.exe не смогут "вытащить" данный файл из библиотеки.
+   Это связано с некоторым несовершенным механизмом плагина MultiArc.
+   Модуль LIB.FMT честно передает любое имя объекта как есть, но MultiArc
+   в момент распаковки/удаления объекта из библиотеки подставляет такую
+   строку:
+
+    Release/tag_base.obj
+
+   Естественно ar.exe такого имени не находит (т.к. верно будет имя
+   `./Release/tag_base.obj') - данное замечание не относится к wlib.exe :-)
+
+   Чтобы увидеть настоящее имя объекта в библиотеки нажните Ctrl-7 на
+   панели FAR.
+
+
+2. Атрибуты объектов в библиотеке представлены в POSIX формате (конкретно
+   см. Discription). Однозначно сопоставить их с атрибутами Windows я
+   затрудняюсь - поэтому ставлю FILE_ATTRIBUTE_NORMAL. Если у кого есть
+   соображения по этому поводу, то обязательно напишите мне.
+
+
+  Сопутствующие документы:
+  ~~~~~~~~~~~~~~~~~~~~~~~~
+    "RELOCATABLE OBJECT MODULE FORMAT"
+       http://www.neutralzone.org/home/faqsys/docs/ss0288_1.txt
+
+    "the format of object files"
+       http://www.neutralzone.org/home/faqsys/docs/object.fmt
+
+    "Object File - Symbol Table Format Specification" (COFF)
+       http://www.partner.digital.com/www-swdev/pages/Home/TECH/dunix/ofst/build/src/d.ofst_specs/OBJSPEC/DOCU_008.HTM
+
+    "Analysis Of Object File Formats For Embedded Systems"
+       http://www.unibest.ru/~ig/obj/objdoc.html
+
+
+  Благодарности
+  ~~~~~~~~~~~~~
+  Хочу выразить благодарность за поддержку, тестирование и помощь в реализации
+  данного модуля:
+   - Alex Miller <asm@som.kiev.ua>
+      по-поводу AR.EXE
+
+   - Edward Sultanov <s12serv@online.nsk.su>
+      за классный библиотекарь wlib (от Watcom)
+
+  ---
+  Автор:
+    Валентин Скирдин
+
+  FIDO   2:5025/3.69, 2:5025/10.14
+
+  Email  vskirdin@mail.ru
+
+  Web
+         http://www.halyava.ru/skirda/
+         http://www.uic.nnov.ru/~ruiv/plugring/
+

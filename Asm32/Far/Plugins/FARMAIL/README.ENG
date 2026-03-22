@@ -1,0 +1,202 @@
+FARMail v2.0 (SMTP/POP3/IMAP4 FAR plugin)
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+
+This plugin can work with Internet mail messages from FAR.
+
+
+Installation
+ÄÄÄÄÄÄÄÄÄÄÄÄ
+
+1. Create subdirectory "FARMail" in "Far\Plugins\" directory.
+2. Copy files from this archive to this subdirectory.
+3. Restart FAR.
+
+
+
+How to work
+ÄÄÄÄÄÄÄÄÄÄÄ
+
+Please read Help for details.
+
+
+
+Contact & credits
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+
+Author : Serge Alexandrov
+FidoNet: 2:5020/975.21, 2:5020/1610.26
+email  : poseidon@mtu-net.ru
+HP     : http://alsea.euro.ru/
+
+Special thanks to: Valentin Skirdin, Sergey Vasil'ev,
+Konstantin Gusev for help and advices; Eugene Roshal for FAR.
+
+
+History
+ÄÄÄÄÄÄÄ
+
+
+v0.5 (27.07.99)
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+
+First working version. 
+
+
+v1.0 (16.08.99)
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+
+That's something like a real plug-in :-) New interface, new settings,
+SMTP,...
+
+
+v1.1 (20.08.99)
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+
+Fixed: work with mailboxes under Windows NT, correct <CRLF> sequence
+ in messages;
+New: password encryption, connection status messages, sending HTML files,
+ charset processing and reencoding, history of subjects, reconnect at Shift-F7,
+ exception handling.
+
+
+v1.11 (21.08.99)
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+
+Fixed: memory corruption in previous versions; message list retrieving error
+ in an empty mailbox;
+
+
+v1.2 (29.08.99)
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+
+New:
+ - Fully configurable messages panel: column types and widths are taken
+   from program settings;
+ - Displaying date and subject in messages panel;
+ - Decoding subjects in base64 and quoted-printable according to RFC 1522;
+ - Decoding subjects in KOI-8 and Windows-1251 codepages;
+ - Message names can have leading zeros for correct sorting;
+ - Background activity maintenance in POP3 sessions;
+ - Reconnect at Ctrl-R
+ - Now mail can be sent without connecting to POP3-server.
+Fixed:
+ - Correct receiving of server responces;
+
+
+v1.3a (03.10.99)
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+
+New:
+ - Multiple recipients;
+ - Something like an address book;
+ - "Organisation" field in header;
+ - Support for "X-Sun-Text-Type" field in incoming messages;
+ - Default mailbox;
+Fixed:
+ - Zero time difference from GMT processing;
+ - Decoding sender names in base64/quoted-printable;
+ - Processing charset in quotation marks;
+ - Correct message names with empty extension;
+ - Some other minor bugs and features;
+
+
+v1.3b (24.10.99)
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+
+New:
+ - Default charset for incoming mail;
+Fixed:
+ - "organisation" -> "organization". Sorry :)
+ - Always prompt for login/password if they were not saved in mailbox settings;
+ - Move focus to empty field in login panel;
+ - Information from login panel now doesn't move to mailbox settings;
+ - User name and organization can be in 8-bit characters;
+ - Correct encoding of recipients' names, organisation and
+   user name in 8-bit characters;
+ - Some fixes in log file output;
+ - Port numbers can have up to 5 digits;
+
+
+v1.3 (release) (29.10.99)
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+
+New:
+ - Sending mail from FAR editor;
+ - Quoting in editor;
+Fixed:
+ - Added FAR version check;
+
+
+v1.4a (13.11.99)
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+
+New:
+ - Altered work with windows sockets. Now connection can be broken at
+   any time by pressing Ctrl-Break. Connection timeout can be modified
+   in program settings. Also there can be some new bugs :)
+ - IMAP4 support;
+
+Fixed:
+ - Sometimes POP3 server responses were read incompletely, this caused
+   a shift in received data, illegal response processing etc..
+
+
+v1.5 (10.01.00)
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+
+New:
+ - Sending more than one file attached to one message;
+ - Quick view and quick edit (retrieving just a little part of message);
+ - Message date and time are stored also as file date and time, so
+   You can use standard FAR column types for date and time;
+ - Work with address book from all plugin panels (Shift-F1);
+ - Optional carbon copy and blind carbon copy fields;
+
+Fixed:
+ - Ctrl-Brk now works much more stable, closing all open sockets. Though
+   from time to time it still doesn't work...
+ - A lot of interface improvements (correct function keys description,
+   copy/move dialog, status line etc) and some little bugfixes;
+
+Note:
+ - If You work with FARMail and need to extract attached files or
+   view encoded text, You can try to use a console mail viewer - MailView.
+   It can be downloaded from my homepage (http://alsea.euro.ru/).
+
+
+v1.51 (23.01.00)
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+
+Fixed:
+ - Problem with SMTP session failure on Windows 95 - after a short period
+   of time session was aborted. This was caused by a bug in Windows sockets
+   under Windows 95. Theoretically POP3 and IMAP4 had the same problem.
+
+
+v2.0 (27.02.00)
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+
+New:
+ - Script processing: You can write Your own script files to
+   process messages;
+ - Now You can place some technical information, such as recipient,
+   subject etc. directly in message text;
+ - Support for user-defined header fields;
+ - Resuming broken message download (IMAP4 only);
+ - Support for other text encodings (up to 3 additional encodings);
+ - Possibility to set file date and time to message date and time;
+ - Saving all sent messages in one folder;
+ - Possibility to automatically assign unique names to incoming
+   messages while copying;
+
+Fixed:
+ - Garbage in panel name after launching FARMail in editor;
+ - Log files are writing to disk immediately, so there is always
+   something in log even if the program hangs up;
+
+
+
+May be in future versions:
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+
+... A lot of interesting ideas ...

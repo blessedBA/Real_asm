@@ -1,0 +1,523 @@
+REGEDIT4
+
+[HKEY_CURRENT_USER\Software\Far\Associations]
+
+[HKEY_CURRENT_USER\Software\Far\Associations\Type16]
+"Mask"="+++ wlx2far +++"
+"Description"=""
+"Execute"=""
+"AltExec"=""
+"View"=""
+"AltView"=""
+"Edit"=""
+"AltEdit"=""
+
+[HKEY_CURRENT_USER\Software\Far\Associations\Type17]
+"Mask"="*.*"
+"Description"="wlx2far: Autosearch"
+"Execute"=""
+"AltExec"=""
+"View"=""
+"AltView"="wlx:\"!\\!.!\""
+"Edit"=""
+"AltEdit"=""
+
+[HKEY_CURRENT_USER\Software\Far\Associations\Type18]
+"Mask"="*.snp"
+"Description"="wlx2far: ActiveSnapView"
+"Execute"=""
+"AltExec"=""
+"View"=""
+"AltView"="wlx2far:lister_open ActiveSnapView.wlx \"!\\!.!\""
+"Edit"=""
+"AltEdit"=""
+
+[HKEY_CURRENT_USER\Software\Far\Associations\Type19]
+"Mask"="*.mp3,*.mp2,*.mp1,*.ogg,*.wav,*.mo3,*.it,*.xm,*.s3m,*.mtm,*.mod,*.midi,*.mid,*.umx,*.m3u,*.pls"
+"Description"="wlx2far: AmpView"
+"Execute"=""
+"AltExec"=""
+"View"=""
+"AltView"="wlx2far:lister_open AmpView.wlx \"!\\!.!\""
+"Edit"=""
+"AltEdit"=""
+
+[HKEY_CURRENT_USER\Software\Far\Associations\Type20]
+"Mask"="*.aac,*.ape,*.flac,*.mp3,*.mp4,*.mpc,*.ofr,*.ofs,*.ogg,*.spx,*.tta,*.wma,*.wv"
+"Description"="wlx2far: AnyTag"
+"Execute"=""
+"AltExec"=""
+"View"=""
+"AltView"="wlx2far:lister_open AnyTag.wlx \"!\\!.!\""
+"Edit"=""
+"AltEdit"=""
+
+[HKEY_CURRENT_USER\Software\Far\Associations\Type21]
+"Mask"="*.ace,*.arc,*.arj,*.bh,*.bz,*.bz2,*.bzip,*.cab,*.cpio,*.dwc,*.gz,*.ha,*.jar,*.lha,*.lzh,*.ppm,*.rar,*.sqz,*.tar,*.z,*.zip,*.zoo"
+"Description"="wlx2far: ArchView"
+"Execute"=""
+"AltExec"=""
+"View"=""
+"AltView"="wlx2far:lister_open ArchView.wlx \"!\\!.!\""
+"Edit"=""
+"AltEdit"=""
+
+[HKEY_CURRENT_USER\Software\Far\Associations\Type22]
+"Mask"="*.dxf,*.dwg,*.hpgl,*.hpgl2"
+"Description"="wlx2far: CADView"
+"Execute"=""
+"AltExec"=""
+"View"=""
+"AltView"="wlx2far:lister_open CADView.wlx \"!\\!.!\""
+"Edit"=""
+"AltEdit"=""
+
+[HKEY_CURRENT_USER\Software\Far\Associations\Type23]
+"Mask"="*.asf,*.avi,*.dat,*.kar,*.mid,*.mp1,*.mp2,*.mp3,*.mpeg,*.mpg,*.ogg,*.wav,*.wma"
+"Description"="wlx2far: DSView"
+"Execute"=""
+"AltExec"=""
+"View"=""
+"AltView"="wlx2far:lister_open DSView.wlx \"!\\!.!\""
+"Edit"=""
+"AltEdit"=""
+
+[HKEY_CURRENT_USER\Software\Far\Associations\Type24]
+"Mask"="*.eml,*.msg"
+"Description"="wlx2far: Eml"
+"Execute"=""
+"AltExec"=""
+"View"=""
+"AltView"="wlx2far:lister_open Eml.wlx \"!\\!.!\""
+"Edit"=""
+"AltEdit"=""
+
+[HKEY_CURRENT_USER\Software\Far\Associations\Type25]
+"Mask"="*.evt"
+"Description"="wlx2far: EventLog"
+"Execute"=""
+"AltExec"=""
+"View"=""
+"AltView"="wlx2far:lister_open EventLog.wlx \"!\\!.!\""
+"Edit"=""
+"AltEdit"=""
+
+[HKEY_CURRENT_USER\Software\Far\Associations\Type26]
+"Mask"="*.xls"
+"Description"="wlx2far: Excellence"
+"Execute"=""
+"AltExec"=""
+"View"=""
+"AltView"="wlx2far:lister_open Excellence.wlx \"!\\!.!\""
+"Edit"=""
+"AltEdit"=""
+
+[HKEY_CURRENT_USER\Software\Far\Associations\Type27]
+"Mask"="*.mp3,*.mp2,*.mp1,*.ogg,*.wav,*.mo3,*.it,*.xm,*.s3m,*.mtm,*.mod,*.umx"
+"Description"="wlx2far: Factory"
+"Execute"=""
+"AltExec"=""
+"View"=""
+"AltView"="wlx2far:lister_open Factory.wlx \"!\\!.!\""
+"Edit"=""
+"AltEdit"=""
+
+[HKEY_CURRENT_USER\Software\Far\Associations\Type28]
+"Mask"="*.exe,*.dll,*.ocx"
+"Description"="wlx2far: FileInfo"
+"Execute"=""
+"AltExec"=""
+"View"=""
+"AltView"="wlx2far:lister_open FileInfo.wlx \"!\\!.!\""
+"Edit"=""
+"AltEdit"=""
+
+[HKEY_CURRENT_USER\Software\Far\Associations\Type29]
+"Mask"="*.class,*.dll,*.eps,*.exe,*.pdf,*.ps"
+"Description"="wlx2far: Filter"
+"Execute"=""
+"AltExec"=""
+"View"=""
+"AltView"="wlx2far:lister_open Filter.wlx \"!\\!.!\""
+"Edit"=""
+"AltEdit"=""
+
+[HKEY_CURRENT_USER\Software\Far\Associations\Type30]
+"Mask"="*.ttf"
+"Description"="wlx2far: Font"
+"Execute"=""
+"AltExec"=""
+"View"=""
+"AltView"="wlx2far:lister_open Font.wlx \"!\\!.!\""
+"Edit"=""
+"AltEdit"=""
+
+[HKEY_CURRENT_USER\Software\Far\Associations\Type31]
+"Mask"="*.gdb"
+"Description"="wlx2far: GDBView"
+"Execute"=""
+"AltExec"=""
+"View"=""
+"AltView"="wlx2far:lister_open GDBView.wlx \"!\\!.!\""
+"Edit"=""
+"AltEdit"=""
+
+[HKEY_CURRENT_USER\Software\Far\Associations\Type32]
+"Mask"="*.gdb"
+"Description"="wlx2far: GDBViewer"
+"Execute"=""
+"AltExec"=""
+"View"=""
+"AltView"="wlx2far:lister_open GDBViewer.wlx \"!\\!.!\""
+"Edit"=""
+"AltEdit"=""
+
+[HKEY_CURRENT_USER\Software\Far\Associations\Type33]
+"Mask"="*.mif,*.mid,*.tab,*.wor,*.shp,*.dxf"
+"Description"="wlx2far: GisLister"
+"Execute"=""
+"AltExec"=""
+"View"=""
+"AltView"="wlx2far:lister_open GisLister.wlx \"!\\!.!\""
+"Edit"=""
+"AltEdit"=""
+
+[HKEY_CURRENT_USER\Software\Far\Associations\Type34]
+"Mask"="*.acm,*.bpl,*.cpl,*.dll,*.exe,*.icl,*.ico,*.ocx,*.scr,*.wcx,*.wdx,*.wfx,*.wlx"
+"Description"="wlx2far: ICLView"
+"Execute"=""
+"AltExec"=""
+"View"=""
+"AltView"="wlx2far:lister_open ICLView.wlx \"!\\!.!\""
+"Edit"=""
+"AltEdit"=""
+
+[HKEY_CURRENT_USER\Software\Far\Associations\Type35]
+"Mask"="*.htm,*.html,*.shtml,*.txt,*.plg,*.mht,*.xml,*.xsl,*.php,*.php2,*.php3,*.xhtml,*.pl,*.asp,*.htt,*.chm,*.doc,*.dot,*.wbk,*.wps,*.xls,*.csv,*.ppt,*.pdf,*.djvu,*.djv,*.swf,*.dwg,*.dxf,*.dwf,*.rml,*.ipt,*.iam,*.idw,*.vsd,*.drw,*.lwp,*.prz,*.wpd,*.qpw,*.uue,*.123,*.gz,*.tar,*.zip"
+"Description"="wlx2far: IEView"
+"Execute"=""
+"AltExec"=""
+"View"=""
+"AltView"="wlx2far:lister_open IEView.wlx \"!\\!.!\""
+"Edit"=""
+"AltEdit"=""
+
+[HKEY_CURRENT_USER\Software\Far\Associations\Type36]
+"Mask"="*.ani,*.anm,*.bmp,*.bw,*.cdr,*.cdt,*.clp,*.cmx,*.cur,*.dcx,*.dds,*.flc,*.fli,*.gif,*.ico,*.iff,*.j2k,*.jbg,*.jbig,*.jp2,*.jpc,*.jpeg,*.jpg,*.lbm,*.lbm,*.pat,*.pbm,*.pcd,*.pcx,*.pgm,*.pic,*.png,*.ppm,*.psd,*.psp,*.ras,*.rgb,*.rle,*.sel,*.sgi,*.spr,*.tga,*.tif,*.tiff,*.wap,*.wbm,*.wbmp,*.xbm,*.xpm"
+"Description"="wlx2far: Imagine"
+"Execute"=""
+"AltExec"=""
+"View"=""
+"AltView"="wlx2far:lister_open Imagine.wlx \"!\\!.!\""
+"Edit"=""
+"AltEdit"=""
+
+[HKEY_CURRENT_USER\Software\Far\Associations\Type37]
+"Mask"="*.ini,*.inf,*.reg"
+"Description"="wlx2far: IniEd"
+"Execute"=""
+"AltExec"=""
+"View"=""
+"AltView"="wlx2far:lister_open IniEd.wlx \"!\\!.!\""
+"Edit"=""
+"AltEdit"=""
+
+[HKEY_CURRENT_USER\Software\Far\Associations\Type38]
+"Mask"="*.jcc"
+"Description"="wlx2far: JccView"
+"Execute"=""
+"AltExec"=""
+"View"=""
+"AltView"="wlx2far:lister_open JccView.wlx \"!\\!.!\""
+"Edit"=""
+"AltEdit"=""
+
+[HKEY_CURRENT_USER\Software\Far\Associations\Type39]
+"Mask"="*.doc"
+"Description"="wlx2far: ListDoc"
+"Execute"=""
+"AltExec"=""
+"View"=""
+"AltView"="wlx2far:lister_open ListDoc.wlx \"!\\!.!\""
+"Edit"=""
+"AltEdit"=""
+
+[HKEY_CURRENT_USER\Software\Far\Associations\Type40]
+"Mask"="*.md2"
+"Description"="wlx2far: MD2wlx"
+"Execute"=""
+"AltExec"=""
+"View"=""
+"AltView"="wlx2far:lister_open MD2wlx.wlx \"!\\!.!\""
+"Edit"=""
+"AltEdit"=""
+
+[HKEY_CURRENT_USER\Software\Far\Associations\Type41]
+"Mask"="*.mdl"
+"Description"="wlx2far: MDLViewer"
+"Execute"=""
+"AltExec"=""
+"View"=""
+"AltView"="wlx2far:lister_open MDLViewer.wlx \"!\\!.!\""
+"Edit"=""
+"AltEdit"=""
+
+[HKEY_CURRENT_USER\Software\Far\Associations\Type42]
+"Mask"="*.mp2,*.mp3,*.m3u,*.ogg,*.mpg,*.m1v,*.asf,*.wmv,*.avi,*.mpeg,*.aiff,*.wav,*.au,*.snd,*.aifc,*.rmi,*.midi,*.mid,*.cda,*.wvx,*.wax,*.asx,*.wma,*.avs,*.vob,*.ifo"
+"Description"="wlx2far: MMedia"
+"Execute"=""
+"AltExec"=""
+"View"=""
+"AltView"="wlx2far:lister_open MMedia.wlx \"!\\!.!\""
+"Edit"=""
+"AltEdit"=""
+
+[HKEY_CURRENT_USER\Software\Far\Associations\Type43]
+"Mask"="*.diz,*.nfo"
+"Description"="wlx2far: NFOView"
+"Execute"=""
+"AltExec"=""
+"View"=""
+"AltView"="wlx2far:lister_open NFOView.wlx \"!\\!.!\""
+"Edit"=""
+"AltEdit"=""
+
+[HKEY_CURRENT_USER\Software\Far\Associations\Type44]
+"Mask"="*.doc,*.htm,*.html,*.wri,*.xls"
+"Description"="wlx2far: Office"
+"Execute"=""
+"AltExec"=""
+"View"=""
+"AltView"="wlx2far:lister_open Office.wlx \"!\\!.!\""
+"Edit"=""
+"AltEdit"=""
+
+[HKEY_CURRENT_USER\Software\Far\Associations\Type45]
+"Mask"="*.opj,*.ogg"
+"Description"="wlx2far: OriginView"
+"Execute"=""
+"AltExec"=""
+"View"=""
+"AltView"="wlx2far:lister_open OriginView.wlx \"!\\!.!\""
+"Edit"=""
+"AltEdit"=""
+
+[HKEY_CURRENT_USER\Software\Far\Associations\Type46]
+"Mask"="*.pdb,*.prc"
+"Description"="wlx2far: PDBView"
+"Execute"=""
+"AltExec"=""
+"View"=""
+"AltView"="wlx2far:lister_open PDBView.wlx \"!\\!.!\""
+"Edit"=""
+"AltEdit"=""
+
+[HKEY_CURRENT_USER\Software\Far\Associations\Type47]
+"Mask"="*.pdf,*.ps,*.eps"
+"Description"="wlx2far: PDFView"
+"Execute"=""
+"AltExec"=""
+"View"=""
+"AltView"="wlx2far:lister_open PDFView.wlx \"!\\!.!\""
+"Edit"=""
+"AltEdit"=""
+
+[HKEY_CURRENT_USER\Software\Far\Associations\Type48]
+"Mask"="*.dll,*.exe,*.icl,*.ocx,*.scr,*.wcx,*.wdx,*.wfx,*.wlx"
+"Description"="wlx2far: PEViewer"
+"Execute"=""
+"AltExec"=""
+"View"=""
+"AltView"="wlx2far:lister_open PEViewer.wlx \"!\\!.!\""
+"Edit"=""
+"AltEdit"=""
+
+[HKEY_CURRENT_USER\Software\Far\Associations\Type49]
+"Mask"="*.ani,*.art,*.bmp,*.crw,*.cur,*.dib,*.dcx,*.djvu,*.emf,*.fpx,*.gif,*.icl,*.icn,*.ico,*.iff,*.ilbm,*.jfif,*.jif,*.jpe,*.jpeg,*.jpg,*.kdc,*.lbm,*.mag,*.pbm,*.pcd,*.pcx,*.pct,*.pgm,*.pic,*.pict,*.pix,*.png,*.ppm,*.psd,*.psp,*.ras,*.rgb,*.rgba,*.rle,*.rsb,*.sgi,*.tga,*.thm,*.tif,*.tiff,*.ttc,*.wmf,*.xbm,*.xif,*.xpm"
+"Description"="wlx2far: Picture viewer"
+"Execute"=""
+"AltExec"=""
+"View"=""
+"AltView"="wlx2far:lister_open PictureViewer.wlx !\\!.!"
+"Edit"=""
+"AltEdit"=""
+
+[HKEY_CURRENT_USER\Software\Far\Associations\Type50]
+"Mask"="*.m3u,*.pls"
+"Description"="wlx2far: PlayList"
+"Execute"=""
+"AltExec"=""
+"View"=""
+"AltView"="wlx2far:lister_open Playlist.wlx \"!\\!.!\""
+"Edit"=""
+"AltEdit"=""
+
+[HKEY_CURRENT_USER\Software\Far\Associations\Type51]
+"Mask"="*.dwg"
+"Description"="wlx2far: ruDwgPreview"
+"Execute"=""
+"AltExec"=""
+"View"=""
+"AltView"="wlx2far:lister_open ruDwgPreview.wlx \"!\\!.!\""
+"Edit"=""
+"AltEdit"=""
+
+[HKEY_CURRENT_USER\Software\Far\Associations\Type52]
+"Mask"="*.bmp,*.emf,*.gif,*.jpeg,*.jpg,*.pcd,*.pcx,*.png,*.psd,*.psp,*.tga,*.tiff,*.wmf"
+"Description"="wlx2far: SGViewer"
+"Execute"=""
+"AltExec"=""
+"View"=""
+"AltView"="wlx2far:lister_open SGViewer.wlx \"!\\!.!\""
+"Edit"=""
+"AltEdit"=""
+
+[HKEY_CURRENT_USER\Software\Far\Associations\Type53]
+"Mask"="*.swf"
+"Description"="wlx2far: SWFLst"
+"Execute"=""
+"AltExec"=""
+"View"=""
+"AltView"="wlx2far:lister_open SWFLst.wlx \"!\\!.!\""
+"Edit"=""
+"AltEdit"=""
+
+[HKEY_CURRENT_USER\Software\Far\Associations\Type54]
+"Mask"="*.def,*.h,*.hpp,*.hxx,*.c,*.cpp,*.cxx,*.mak,*.rc"
+"Description"="wlx2far: SyntaxColorizer"
+"Execute"=""
+"AltExec"=""
+"View"=""
+"AltView"="wlx2far:lister_open SyntaxColorizer.wlx \"!\\!.!\""
+"Edit"=""
+"AltEdit"=""
+
+[HKEY_CURRENT_USER\Software\Far\Associations\Type55]
+"Mask"="*.asm,*.bas,*.bat,*.c,*.cgi,*.cmd,*.cpp,*.dfm,*.dml,*.dpk,*.dpr,*.dsp,*.dtd,*.for,*.gem,*.gws,*.h,*.hpp,*.htm,*.html,*.inc,*.java,*.js,*.pas,*.php,*.php3,*.php5,*.phtml,*.pl,*.pm,*.prg,*.py,*.rdf,*.rif,*.rmf,*.rxf,*.sml,*.sql,*.tcl,*.vbs,*.xfm,*.xml,*.xsd,*.xsl,*.xslt"
+"Description"="wlx2far: SynUs"
+"Execute"=""
+"AltExec"=""
+"View"=""
+"AltView"="wlx2far:lister_open SynUs.wlx \"!\\!.!\""
+"Edit"=""
+"AltEdit"=""
+
+[HKEY_CURRENT_USER\Software\Far\Associations\Type56]
+"Mask"="*.ttf"
+"Description"="wlx2far: TTFViewer"
+"Execute"=""
+"AltExec"=""
+"View"=""
+"AltView"="wlx2far:lister_open TTFViewer.wlx \"!\\!.!\""
+"Edit"=""
+"AltEdit"=""
+
+[HKEY_CURRENT_USER\Software\Far\Associations\Type57]
+"Mask"="*.exe,*.dll,*.obj,*.lib,*.dbg,*.sys,*.cpl,*.drv,*.ocx,*.ax,*.bpl,*.exp"
+"Description"="wlx2far: TxQuickView.Bin"
+"Execute"=""
+"AltExec"=""
+"View"=""
+"AltView"="wlx2far:lister_open TxQuickView.Bin.wlx \"!\\!.!\""
+"Edit"=""
+"AltEdit"=""
+
+[HKEY_CURRENT_USER\Software\Far\Associations\Type58]
+"Mask"="*.dfm,*.htm,*.html,*.rtf,*.wri,*.txt,*.pdf,*.doc,*.wk1,*.wk3,*.wk4,*.wps,*.xls"
+"Description"="wlx2far: TxQuickView.Doc"
+"Execute"=""
+"AltExec"=""
+"View"=""
+"AltView"="wlx2far:lister_open TxQuickView.Doc.wlx \"!\\!.!\""
+"Edit"=""
+"AltEdit"=""
+
+[HKEY_CURRENT_USER\Software\Far\Associations\Type59]
+"Mask"="*.ttf,*.fon"
+"Description"="wlx2far: TxQuickView.Fonts"
+"Execute"=""
+"AltExec"=""
+"View"=""
+"AltView"="wlx2far:lister_open TxQuickView.Fonts.wlx \"!\\!.!\""
+"Edit"=""
+"AltEdit"=""
+
+[HKEY_CURRENT_USER\Software\Far\Associations\Type60]
+"Mask"="*.awd,*.bmi,*.bmp,*.bw,*.cal,*.cals,*.cdr,*.cdt,*.cel,*.cit,*.clp,*.cmx,*.cot,*.cpt,*.cur,*.cut,*.dcx,*.dib,*.flc,*.fli,*.gem,*.gif,*.ham,*.hrz,*.icn,*.ico,*.iff,*.img,*.jff,*.jif,*.jmx,*.jpe,*.jpg,*.lbm,*.mil,*.mac,*.msp,*.ofx,*.pan,*.pat,*.pbm,*.pc2,*.pcd,*.pct,*.pcx,*.pgm,*.pic,*.png,*.pnm,*.ppm,*.psd,*.pyx,*.qfx,*.ras,*.rgb,*.rle,*.sam,*.scx,*.sep,*.sgi,*.st,*.stw,*.sun,*.tga,*.tiff,*.udi,*.wpg,*.zbr,*.zmf"
+"Description"="wlx2far: TxQuickView.Images"
+"Execute"=""
+"AltExec"=""
+"View"=""
+"AltView"="wlx2far:lister_open TxQuickView.Images.wlx \"!\\!.!\""
+"Edit"=""
+"AltEdit"=""
+
+[HKEY_CURRENT_USER\Software\Far\Associations\Type61]
+"Mask"="*.cda,*.aif,*.aifc,*.aiff,*.asf,*.asx,*.avi,*.wav,*.wax,*.wm,*.wma,*.wmd,*.wmp,*.wmv,*.wmx,*.wpl,*.wvx,*.mpeg,*.mpg,*.m1v,*.mp2,*.mp3,*.mpa,*.mpe,*.mp2v,*.mpv2,*.mid,*.midi,*.rmi,*.au,*.snd0,*.vob,*.swf,*.mov,*.qt,*.ram,*.rm"
+"Description"="wlx2far: TxQuickView.Media"
+"Execute"=""
+"AltExec"=""
+"View"=""
+"AltView"="wlx2far:lister_open TxQuickView.Media.wlx \"!\\!.!\""
+"Edit"=""
+"AltEdit"=""
+
+[HKEY_CURRENT_USER\Software\Far\Associations\Type62]
+"Mask"="*.wav"
+"Description"="wlx2far: WaveView"
+"Execute"=""
+"AltExec"=""
+"View"=""
+"AltView"="wlx2far:lister_open WaveView.wlx \"!\\!.!\""
+"Edit"=""
+"AltEdit"=""
+
+[HKEY_CURRENT_USER\Software\Far\Associations\Type63]
+"Mask"="*.3ds,*.dat,*.obj,*.pfz,*.ply,*.stl"
+"Description"="wlx2far: wcpfrep"
+"Execute"=""
+"AltExec"=""
+"View"=""
+"AltView"="wlx2far:lister_open wcpfrep.wlx \"!\\!.!\""
+"Edit"=""
+"AltEdit"=""
+
+[HKEY_CURRENT_USER\Software\Far\Associations\Type64]
+"Mask"="*.htm,*.html,*.shtml,*.txt,*.plg,*.mht,*.xml,*.xsl,*.php,*.php2,*.php3,*.xhtml,*.pl,*.asp,*.htt,*.chm,*.doc,*.dot,*.wbk,*.wps,*.xls,*.csv,*.ppt,*.pdf,*.djvu,*.djv,*.swf,*.dwg,*.dxf,*.dwf,*.rml,*.ipt,*.iam,*.idw,*.vsd,*.drw,*.lwp,*.prz,*.wpd,*.qpw,*.uue,*.123,*.gz,*.tar,*.zip"
+"Description"="wlx2far: WebBrowser"
+"Execute"=""
+"AltExec"=""
+"View"=""
+"AltView"="wlx2far:lister_open WebBrowser.wlx \"!\\!.!\""
+"Edit"=""
+"AltEdit"=""
+
+[HKEY_CURRENT_USER\Software\Far\Associations\Type65]
+"Mask"="*.htm,*.html"
+"Description"="wlx2far: WebView"
+"Execute"=""
+"AltExec"=""
+"View"=""
+"AltView"="wlx2far:lister_open WebView.wlx \"!\\!.!\""
+"Edit"=""
+"AltEdit"=""
+
+[HKEY_CURRENT_USER\Software\Far\Associations\Type66]
+"Mask"="*.669,*.amf,*.far,*.it,*.itz,*.mdz,*.mod,*.mtm,*.nst,*.okt,*.ptm,*.s3m,*.s3z,*.stm,*.stz,*.ult,*.xm,*.xmz"
+"Description"="wlx2far: WiseTracker"
+"Execute"=""
+"AltExec"=""
+"View"=""
+"AltView"="wlx2far:lister_open WiseTracker.wlx \"!\\!.!\""
+"Edit"=""
+"AltEdit"=""
+
+[HKEY_CURRENT_USER\Software\Far\Associations\Type67]
+"Mask"="*.dbf,*.dbf,*.dbf,*.dbc,*.db,*.mdb,*.myd,*.gdb,*.fdb,*.xls,*.csv,*.tab,*.xml,*.cds,*.bde,*.udl,*.dsn"
+"Description"="wlx2far: xBaseView"
+"Execute"=""
+"AltExec"=""
+"View"=""
+"AltView"="wlx2far:lister_open xBaseView.wlx \"!\\!.!\""
+"Edit"=""
+"AltEdit"=""

@@ -1,0 +1,69 @@
+.Language=English,English
+.PluginContents=Advanced Disk Catalog plugin
+
+@Contents
+$ #Advanced Disk Catalog plugin#
+   ~Browsing ADC databases~@ADCBrowse@
+
+   ~ADC plugin configuration~@ADCCfg@
+
+   ~Registering ADC plugin~@ADCReg@
+
+@ADCBrowse
+$ #Browsing ADC databases#
+    Using the ADC viewer you can browse contents of your
+ADC databases. Unregistered users of ADC can browse only first
+five disks due to ADC format limitations. Howewer, if yoy are
+registered user of ADC and wish to view your databases from
+another computer (for example via network), you will be able to
+do it if you have option 'Create IDX files' checked on computer
+with registered ADC version and .idx files already exist.
+This plugin have full support for categories. You can view them
+in full (LCtrl-3) mode.
+
+ Use <Ctrl-A> to toggle 'archives as folders' option while
+ viewing catalog
+
+ Use <Alt-F3>/<Alt-F4>/<F4> to display detailed information
+ about current item including full comments in standart
+ FAR viewer/editor window
+
+@ADCCfg
+$ #ADC plugin configuration#
+    In this dialog you can alter following options:
+
+ #Free memory#                 If this option is active, then
+                             memory allocated for directory structure
+                             would be released immediately, not on
+                             plugin shutdown. It greatly speeds up
+                             search/shutdown process
+
+ #Treat archives as folders#   Enables treating archives as
+                             ordinary folders
+
+ #Create IDX files#            Enable creating IDX files thus
+                             reducing time needed for opening
+                             databases and allowing to view large
+                             databases from another computer
+
+ #Startup mode#                Sets startup mode for plugin
+                             0 - no mode change, 1-9 - set
+                             corresponding mode (just like LCtrl 1-9)
+
+ #Thousands sep#               Specifies character that used when
+                             separating number fields in info/view
+                             panels. Leave this field blank if you
+                             do not want to separate them at all.
+
+@ADCReg
+$ #Registering ADC viewer plugin#
+You can read registartion issues in readme.txt file, supplied
+with this plugin
+
+     When you register ADC plugin you will get following features:
+       1. Ability to create index files for fast or remote
+          access to your databases
+       2. Full 'archives as folders' support (Shareware version
+          displays only first 10 archives as folders)
+
+Russian citizens can get full version of ADC viewer for free.

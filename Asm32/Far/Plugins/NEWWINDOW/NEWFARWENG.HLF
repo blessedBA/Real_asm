@@ -1,0 +1,6 @@
+.Language=English,English
+.PluginContents=Create a new Faw window
+
+@Contents
+$ #Create a new Faw window#
+    This command allows to open another Far windows.

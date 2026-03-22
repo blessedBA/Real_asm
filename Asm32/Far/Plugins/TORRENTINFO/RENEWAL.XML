@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<renewal>
+	<plugin guid="{7DE7CE15-8615-4A8E-A015-DB9BD8B1E7F7}">
+		<home arch="any">http://code.google.com/p/farplugs</home>
+		<url arch="any">http://code.google.com/p/farplugs/downloads/list</url>
+		<changelog arch="any">http://farplugs.googlecode.com/svn/trunk/TorrentInfo/dist/ChangeLog</changelog>
+		<regex arch="x64">//farplugs.googlecode.com/files/FarTorrentInfo_(\d+)\.(\d+)_x64\.zip</regex>
+		<regex arch="x86">//farplugs.googlecode.com/files/FarTorrentInfo_(\d+)\.(\d+)_x86\.zip</regex>
+		<srcpath arch="any">TorrentInfo</srcpath>
+	</plugin>
+</renewal>

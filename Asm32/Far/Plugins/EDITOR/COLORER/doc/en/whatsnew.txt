@@ -1,0 +1,103 @@
+
+                   ÄÄÄÍÍÍ whats new in colorer library ÍÍÍÄÄÄ
+
+
+ÄÄÍÍ colorer forever ÍÄÍ 18.03.2001 ÍÍÄÄ
+  0. src:
+    0.0. some keywords were ignored during parsing
+    0.05.removed different limitations to includes levels
+         and some other internal algoritms.
+    0.1. keywords are now has same priority as regular
+         expressions - so, the content of scheme is parsed
+         now lineary. But, keywords always has lowpriority
+         parameter set.
+    0.2. keywords order means nothing in one block - but different
+         <keywords .../> blocks are parsed as they were defined.
+    0.1. hrdsets has more visual registy error detection (before it
+         it had proudly crased).
+    0.4. icolorer.dll contains now interfaces to CSgmlEl class methods.
+    0.5. now strings, returned by u_getline service method must
+         stay correct during all parser method work.
+    0.6. method CColorData::loadfile() loads separate file. It can
+         contain as new schemes as new types.
+    0.2. regexp:
+         0.2.2. point (.) in regexps means all, but \r \n symbols - but
+                //s (singleline) parameter force it to include carriage
+                return symbols into class (.)
+         0.2.3. new operator ~ in regular expressions - means 'start of scheme'
+                it allows you to make scheme linking and produce structures as
+                "start-  scheme0  -re0-  scheme1  -re1-  scheme2  ...  -end"
+         0.2.3. some compilation directives were added into regexp
+                codes - they allows to disable colorer extended operators.
+         0.2.0. new optimized regexp parser. Also it now catches loop
+                constructions as  \b+  $*  x** and so on...
+         0.2.4. now localized defines works fine - colorer and cregexp
+                are use CLocale class.
+         0.2.6. new operator \YN - works like \yN - but ignores symbol
+                case.
+
+    0.6. meaning of 'virtual' schemes - you can redefine work logic of
+         any inherited scheme with virtualizing it subschemes...
+    0.0. <include ../> tag renamed into <inherit .../>
+    0.8. new 'worddiv' parameter in <keywords .../> tag - this regexp
+         is used as word divider class in keywords search...
+         ( /[\w_]/ by default)
+    0.9. hrc base compilation speedup.
+  -1. hrc:
+    1.-1. all hrc syntas is xml-compatible now. some changes in structure
+         because of it... also DTD and XSL written for hrc...
+    1.-1.!. now you must substitute special xml symbols through the
+         &amp; (&) &lt; (<) &gt; (>) &quot; (").
+    1.1. now you can use lowpriority regexps and blocks.
+         lowpriority means selecting parent's close tag rather then
+         this regexp or block
+    1.2. some pair structures fixes, additions in php, html, new Kixtart
+         script. Changes and fixes in perl.hrc. New rexx.hrc, IDL script,
+         irclog, z80asm, picasm.hrc, Registry, Paradox,
+         Standard ML, Ada, PvWave, RIB, RenderMan Shading.
+    1.4. matchcase="false" parameter changed to ignorecase="ignorecase".
+         Character case is matched by default.
+   +1.4. Any single parameters must be equated to themself:
+         lowpriority="lowpriority", ignorecase="ignorecase"
+         we need this for xml-compatibility...
+    1.0. some languages uses new 'worddiv' parameter now...
+    1.6. virtual schemes are applied in many hrc's.
+    1.2. fully rewritten html - changed logic; also asp, php - with
+         virtual schemes, new xsl, schema, based on modified xml...
+  2. misc:
+    2.2. small install.exe - writes paths into windows registry.
+    2.0. colorer uses Software/colorer/4ever/ branch in registry - it
+         lets to have multiple colorer versions installed in system.
+    2.0. colorer.exe with -á parameter doesn't show copyrights string
+         in output stream...
+    2.1. htmltag.hrd - generating text with <i>, <b>, <u>...
+    2.1. htmlb.hrd - 'black'(don't warn) html generator.
+    2.a. all color settings are placed in colorer/hrd/ now.
+    2.!. All documentation is fully rewritten (in english also).
+
+ÄÄÍÍ colorer for you ÍÄÍ 08.08.2000 ÍÍÄÄ
+  0. src:
+    0.0. Now colorer works under unix and, i hope, any ansi-compiler
+         It was tested under linux and FreeBSD.
+         Also works under dos (rtm16 bcc). thanx to
+         Anton Fedorov (DataCompBoy).
+    0.3. regexp: codepage support, removed some limitations, bugfixes...
+    0.1. Changes in color regions support.
+         Now they could be filled throgth external methods - old services
+         now optional. Also colors became regions now - and has more
+         complex structure...
+    0.2. deleted parsenum.cpp...
+  1. hrc:
+    0.3. some cosmetic changes in syntax.
+    1.0. changes in standard regions names...
+    1.1. assembler - addons for cyrix, amd, NASM...
+    1.2. Extended config.hrc, forth.hrc, optimized messages.hrc,
+         fixes in perl.hrc, c.hrc broken into c.hrc and cpp.hrc
+    1.3. Added olextend.hrc, is.hrc, clipper.hrc, rtf.hrc, vim.hrc,
+         xssi scheme.
+    1.1. name parameter in colorer.hrc now exist in all types - for
+         using colorer in external programs.
+  2. other:
+    2.0. added ansi.hrd - makes listings with ansi-escapes.
+    2.2. colorer.exe now reads info from config file - colorer.ini
+    2.2. faq changes.

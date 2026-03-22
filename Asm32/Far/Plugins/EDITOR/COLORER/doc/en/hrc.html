@@ -1,0 +1,238 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<title>hrc scripts of colorer library</title>
+<link rel="stylesheet" type="text/css" href="../core/styles.css">
+</head>
+<body>
+
+<h1>hrc scripts of colorer library</h1>
+
+
+<h2>preface</h2>
+<p>
+HRC is a script language for parsing target text files for syntax highlighting.
+It based on xml language, so you can find DTD and XSL files in colorer
+distribution.
+At first, hrc is based on colorer regular expressions. So, you may wish
+to read <a href="cregexp.html">cregexp.html</a> documentation also.
+</p>
+
+<h2>hrc format</h2>
+
+<p>There are many hrc files in colorer distribution, but all
+of them looks like
+<pre>
+<font color=#c4c400>&lt;?</font><font color=#0689ff>xml</font><font color=#c4c400> version</font><font color=#86cdd2>=</font><font color=#c4c400>"1.0"</font><font color=#c4c400> encoding</font><font color=#86cdd2>=</font><font color=#c4c400>"Windows-1251"</font><font color=#c4c400>?&gt;</font>
+<font color=#0689ff>&lt;!</font><font color=#9391ec>DOCTYPE</font> hrc <font color=#0c8164>SYSTEM</font> <font color=#c4c400>"hrc.dtd"</font><font color=#0084fb>&gt;</font>
+<font color=#c4c400>&lt;?</font><font color=#0689ff>xml-stylesheet</font><font color=#c4c400> type</font><font color=#86cdd2>=</font><font color=#c4c400>"text/xsl"</font><font color=#c4c400> href</font><font color=#86cdd2>=</font><font color=#c4c400>"hrc.xsl"</font><font color=#c4c400>?&gt;</font>
+<font color=#696969>&lt;!--</font>
+<font color=#696969>     creator comments</font>
+<font color=#696969>--&gt;</font>
+<font color=#6051e6>&lt;hrc</font> version<font color=#86cdd2>=</font><font color=#c4c400>"4ever"</font><font color=#6051e6>&gt;</font>
+
+<font color=#696969>&lt;!-- base content --&gt;</font>
+
+<font color=#6051e6>&lt;/hrc&gt;</font>
+</pre>
+
+<p>
+First three lines are standard xml includes, but block &lt;hrc> defines
+all base colorer definitions. note, that <code>version</code> parameter
+is optional - it exist only in base colorer.hrc file.
+</p>
+
+<h3>colorer.hrc</h3>
+<p>
+This file contains definitions of all types and schemes includes.
+All base schemes definitions are included here also.
+This is part of this file:
+<pre>
+<font color=#ee00ee>  </font><font color=#9391ec>&lt;include </font><font color=#0c8164>name</font><font color=#9391ec>=</font><font color=#ffae7d>"</font><font color=#c4c400>regions.hrc</font><font color=#ffae7d>"</font><font color=#9391ec>/&gt;</font><font color=#ee00ee></font>
+<font color=#ee00ee>  </font><font color=#9391ec>&lt;include </font><font color=#0c8164>name</font><font color=#9391ec>=</font><font color=#ffae7d>"</font><font color=#c4c400>defines.hrc</font><font color=#ffae7d>"</font><font color=#9391ec>/&gt;</font><font color=#ee00ee></font>
+<font color=#ee00ee></font>
+<font color=#ee00ee>  </font><font color=#9391ec>&lt;type</font><font color=#ee00ee> </font><font color=#0c8164>descr</font><font color=#9391ec>=</font><font color=#ffae7d>"</font><font color=#c4c400>c++</font><font color=#ffae7d>"</font><font color=#ee00ee> </font><font color=#0c8164>name</font><font color=#9391ec>=</font><font color=#ffae7d>"</font><font color=#c4c400>cpp</font><font color=#ffae7d>"</font><font color=#ee00ee> </font><font color=#0c8164>exts</font><font color=#9391ec>=</font><font color=#ffae7d>"/</font><font color=#808000>\.</font><font color=#ffae7d>(</font><font color=#c4c400>cpp</font><font color=#ffae7d>)</font><font color=#ffae7d>|</font><font color=#ffae7d>(</font><font color=#c4c400>cxx</font><font color=#ffae7d>)</font><font color=#ffae7d>|</font><font color=#ffae7d>(</font><font color=#c4c400>cc</font><font color=#ffae7d>)</font><font color=#ffae7d>|</font><font color=#ffae7d>(</font><font color=#c4c400>hpp</font><font color=#ffae7d>)</font><font color=#ffae7d>|</font><font color=#c4c400>h</font><font color=#ffae7d>$</font><font color=#ffae7d>/i"</font><font color=#9391ec>&gt;</font><font color=#ee00ee></font>
+<font color=#ee00ee>    </font><font color=#9391ec>&lt;load</font><font color=#ee00ee> </font><font color=#0c8164>name</font><font color=#9391ec>=</font><font color=#ffae7d>"</font><font color=#c4c400>base/cpp.hrc</font><font color=#ffae7d>"</font><font color=#9391ec>/&gt;</font><font color=#ee00ee></font>
+<font color=#ee00ee>    </font><font color=#9391ec>&lt;scheme</font><font color=#ee00ee> </font><font color=#0c8164>name</font><font color=#9391ec>=</font><font color=#ffae7d>"</font><font color=#c4c400>cpp</font><font color=#ffae7d>"</font><font color=#9391ec>/&gt;</font><font color=#ee00ee></font>
+<font color=#ee00ee>  </font><font color=#9391ec>&lt;/type&gt;</font><font color=#ee00ee></font>
+</pre>
+<p>Here you see
+<font color=#ee00ee>  </font><font color=#9391ec>&lt;include </font><font color=#0c8164>name</font><font color=#9391ec>=</font><font color=#ffae7d>"</font><font color=#c4c400>filename.hrc</font><font color=#ffae7d>"</font><font color=#9391ec>/&gt;</font><font color=#ee00ee></font>
+This tag tells colorer to include file "filename.hrc".
+
+<p>Next, &lt;type ../> tag creates separate file type
+In our case this is a C++ language.
+<code>exts</code> parameter sets regular expression to match needed file names.
+Name and desctioption are used to describe symbolic name of each type.
+
+<p>
+Inside of each type tag we has
+<font color=#ee00ee>    </font><font color=#9391ec>&lt;load</font><font color=#ee00ee> </font><font color=#0c8164>name</font><font color=#9391ec>=</font><font color=#ffae7d>"</font><font color=#c4c400>base/cpp.hrc</font><font color=#ffae7d>"</font><font color=#9391ec>/&gt;</font><font color=#ee00ee></font>
+It tells colorer where to search C++ language scheme.
+And, tag
+<font color=#9391ec>&lt;scheme</font><font color=#ee00ee> </font><font color=#0c8164>name</font><font color=#9391ec>=</font><font color=#ffae7d>"</font><font color=#c4c400>cpp</font><font color=#ffae7d>"</font><font color=#9391ec>/&gt;</font><font color=#ee00ee></font>
+sets scheme name to assign with C++ file type.
+<p>Also you can use switch tag in type block:
+<pre>
+<font color=#ee00ee>  </font><font color=#9391ec>&lt;type</font><font color=#ee00ee> </font><font color=#0c8164>descr</font><font color=#9391ec>=</font><font color=#ffae7d>"</font><font color=#c4c400>default</font><font color=#ffae7d>"</font><font color=#ee00ee> </font><font color=#0c8164>name</font><font color=#9391ec>=</font><font color=#ffae7d>"</font><font color=#c4c400>default</font><font color=#ffae7d>"</font><font color=#ee00ee> </font><font color=#0c8164>exts</font><font color=#9391ec>=</font><font color=#ffae7d>"/</font><font color=#ffae7d>/"</font><font color=#9391ec>&gt;</font><font color=#ee00ee></font>
+<font color=#ee00ee>    </font><font color=#9391ec>&lt;switch</font><font color=#ee00ee> </font><font color=#0c8164>type</font><font color=#9391ec>=</font><font color=#ffae7d>"</font><font color=#c4c400>messages</font><font color=#ffae7d>"</font><font color=#ee00ee> </font><font color=#0c8164>match</font><font color=#9391ec>=</font><font color=#ffae7d>"/</font><font color=#ffae7d>^</font><font color=#c4c400>from</font><font color=#ffae7d>/i"</font><font color=#9391ec>/&gt;</font><font color=#ee00ee></font>
+<font color=#ee00ee>    </font><font color=#9391ec>&lt;switch</font><font color=#ee00ee> </font><font color=#0c8164>type</font><font color=#9391ec>=</font><font color=#ffae7d>"</font><font color=#c4c400>diff</font><font color=#ffae7d>"</font><font color=#ee00ee>     </font><font color=#0c8164>match</font><font color=#9391ec>=</font><font color=#ffae7d>"/</font><font color=#ffae7d>^</font><font color=#ffae7d>(</font><font color=#c4c400>diff</font><font color=#ffae7d>)</font><font color=#ffae7d>|</font><font color=#ffae7d>(</font><font color=#c4c400>---</font><font color=#ffae7d>)</font><font color=#ffae7d>/i"</font><font color=#9391ec>/&gt;</font><font color=#ee00ee></font>
+<font color=#ee00ee>  </font><font color=#9391ec>&lt;/type&gt;</font><font color=#ee00ee></font>
+</pre>
+
+<p>It tells colorer to use regular expression and switch into new type, if
+it matches with first file line.
+We need this, because there are many types without extension, or multiple types with
+one extension.
+
+
+<h2>base hrc content</h2>
+<p>
+Tag
+<pre>
+<font color=#9391ec>&lt;define </font><font color=#0c8164>name</font><font color=#9391ec>=</font><font color=#ffae7d>"</font><font color=#c4c400>dNumber</font><font color=#ffae7d>"</font><font color=#ee00ee>    </font><font color=#0c8164>value</font><font color=#9391ec>=</font><font color=#ffae7d>"</font><font color=#c4c400>10</font><font color=#ffae7d>"</font><font color=#9391ec>/&gt;</font><font color=#ee00ee></font>
+</pre>
+defines region with name dNumber and with value 10. Syntax region defines one
+lexem it text. Also you can use it as
+<pre>
+<font color=#9391ec>&lt;define </font><font color=#0c8164>name</font><font color=#9391ec>=</font><font color=#ffae7d>"</font><font color=#c4c400>dNumHex</font><font color=#ffae7d>"</font><font color=#ee00ee>    </font><font color=#0c8164>value</font><font color=#9391ec>=</font><font color=#ffae7d>"</font><font color=#c4c400>dNumber</font><font color=#ffae7d>"</font><font color=#9391ec>/&gt;</font><font color=#ee00ee></font>
+</pre>
+Here new dNumHex region is defined as dNumber region.
+
+<p>
+So, the main block in any hrc file is <code>&lt;scheme></code> block.
+It defines language scheme. Scheme can contain different parameters, let's start with
+
+<h3>keywords</h3>
+
+<p>
+this block defines a set of keywords:
+<pre>
+  <font color=#9391ec>&lt;keywords</font><font color=#ee00ee> </font><font color=#0c8164>region</font><font color=#9391ec>=</font><font color=#ffae7d>"</font><font color=#c4c400>dKeyWord</font><font color=#ffae7d>"</font><font color=#ee00ee> </font><font color=#0c8164>ignorecase</font><font color=#9391ec>=</font><font color=#ffae7d>"</font><font color=#c4c400>ignorecase</font><font color=#ffae7d>"</font><font color=#ee00ee> </font><font color=#0c8164>worddiv</font><font color=#9391ec>=</font><font color=#ffae7d>"/</font><font color=#ffae7d>[</font><font color=#c4c400>^</font><font color=#808000>\w</font><font color=#c4c400>_</font><font color=#ffae7d>]</font><font color=#ffae7d>/"</font><font color=#9391ec>&gt;</font><font color=#ee00ee></font>
+  <font color=#ee00ee>   </font><font color=#9391ec>&lt;word</font><font color=#ee00ee> </font><font color=#0c8164>name</font><font color=#9391ec>=</font><font color=#ffae7d>"</font><font color=#c4c400>asm</font><font color=#ffae7d>"</font><font color=#9391ec>/&gt;</font><font color=#ee00ee></font>
+  <font color=#ee00ee>   </font><font color=#9391ec>&lt;word</font><font color=#ee00ee> </font><font color=#0c8164>name</font><font color=#9391ec>=</font><font color=#ffae7d>"</font><font color=#c4c400>auto</font><font color=#ffae7d>"</font><font color=#9391ec>/&gt;</font><font color=#ee00ee></font>
+  <font color=#ee00ee>   </font><font color=#9391ec>&lt;word</font><font color=#ee00ee> </font><font color=#0c8164>name</font><font color=#9391ec>=</font><font color=#ffae7d>"</font><font color=#c4c400>break</font><font color=#ffae7d>"</font><font color=#9391ec>/&gt;</font><font color=#ee00ee></font>
+  <font color=#ee00ee>   </font><font color=#9391ec>&lt;word</font><font color=#ee00ee> </font><font color=#0c8164>name</font><font color=#9391ec>=</font><font color=#ffae7d>"</font><font color=#c4c400>case</font><font color=#ffae7d>"</font><font color=#9391ec>/&gt;</font><font color=#ee00ee></font>
+  <font color=#ee00ee>   </font><font color=#9391ec>&lt;word</font><font color=#ee00ee> </font><font color=#0c8164>name</font><font color=#9391ec>=</font><font color=#ffae7d>"</font><font color=#c4c400>cdecl</font><font color=#ffae7d>"</font><font color=#9391ec>/&gt;</font><font color=#ee00ee></font>
+  <font color=#ee00ee>   </font><font color=#9391ec>&lt;word</font><font color=#ee00ee> </font><font color=#0c8164>name</font><font color=#9391ec>=</font><font color=#ffae7d>"</font><font color=#c4c400>char</font><font color=#ffae7d>"</font><font color=#9391ec>/&gt;</font><font color=#ee00ee></font>
+  <font color=#ee00ee>   </font><font color=#9391ec>&lt;word</font><font color=#ee00ee> </font><font color=#0c8164>name</font><font color=#9391ec>=</font><font color=#ffae7d>"</font><font color=#c4c400>const</font><font color=#ffae7d>"</font><font color=#9391ec>/&gt;</font><font color=#ee00ee></font>
+  <font color=#ee00ee>   </font><font color=#9391ec>&lt;symb</font><font color=#ee00ee> </font><font color=#0c8164>name</font><font color=#9391ec>=</font><font color=#ffae7d>"</font><font color=#c4c400>-&gt;</font><font color=#ffae7d>"</font><font color=#9391ec>/&gt;</font><font color=#ee00ee></font>
+  <font color=#9391ec>&lt;/keywords&gt;</font><font color=#ee00ee></font>
+</pre>
+
+<p>you can define as words as symbols. Also you can ingore symbol's case
+(ignorecase parameter), and redefine word dividers symbol class using regexp
+class syntax.
+
+<h3>regexp</h3>
+<p>
+This tag is used to define base regular expression for highlighting.
+It can parse any syntax constructions in one line:
+<pre>
+<font color=#ee00ee>   </font><font color=#9391ec>&lt;regexp</font><font color=#ee00ee> </font><font color=#0c8164>match</font><font color=#9391ec>=</font><font color=#ffae7d>'/</font><font color=#c4c400>"</font><font color=#ffae7d>.</font><font color=#ffae7d>*</font><font color=#ffae7d>?</font><font color=#c4c400>"</font><font color=#ffae7d>/'</font><font color=#ee00ee> </font><font color=#0c8164>region0</font><font color=#9391ec>=</font><font color=#ffae7d>"</font><font color=#c4c400>dString</font><font color=#ffae7d>"</font><font color=#9391ec>/&gt;</font><font color=#ee00ee></font>
+<font color=#ee00ee>   </font><font color=#9391ec>&lt;regexp</font><font color=#ee00ee> </font><font color=#0c8164>match</font><font color=#9391ec>=</font><font color=#ffae7d>"/</font><font color=#c4c400>'</font><font color=#ffae7d>.</font><font color=#ffae7d>*</font><font color=#ffae7d>$</font><font color=#ffae7d>/"</font><font color=#ee00ee>  </font><font color=#0c8164>region0</font><font color=#9391ec>=</font><font color=#ffae7d>"</font><font color=#c4c400>dComment</font><font color=#ffae7d>"</font><font color=#9391ec>/&gt;</font><font color=#ee00ee></font>
+<font color=#ee00ee>   </font><font color=#9391ec>&lt;regexp</font><font color=#ee00ee> </font><font color=#0c8164>match</font><font color=#9391ec>=</font><font color=#ffae7d>"/</font><font color=#ffae7d>\b</font><font color=#ffae7d>[</font><font color=#c4c400>0</font><font color=#ffae7d>-</font><font color=#c4c400>9.</font><font color=#ffae7d>]</font><font color=#c4c400>+</font><font color=#ffae7d>(</font><font color=#c4c400>e</font><font color=#ffae7d>|</font><font color=#c4c400>E</font><font color=#ffae7d>[</font><font color=#808000>\-</font><font color=#c4c400>+</font><font color=#ffae7d>]</font><font color=#ffae7d>?</font><font color=#ffae7d>\d</font><font color=#c4c400>+</font><font color=#ffae7d>)</font><font color=#ffae7d>?</font><font color=#ffae7d>\B</font><font color=#ffae7d>/"</font><font color=#ee00ee> </font><font color=#0c8164>region0</font><font color=#9391ec>=</font><font color=#ffae7d>"</font><font color=#c4c400>dNumber</font><font color=#ffae7d>"</font><font color=#9391ec>/&gt;</font><font color=#ee00ee></font>
+</pre>
+
+<p>regexp tries to find <code>match</code> in target text and
+highlight it with rules set (regionX).
+
+<h3>block</h3>
+<p>
+this tag lets you to parse multiline constructions.
+
+<pre>
+<font color=#ee00ee>   </font><font color=#9391ec>&lt;block</font><font color=#ee00ee> </font><font color=#0c8164>start</font><font color=#9391ec>=</font><font color=#ffae7d>"/</font><font color=#808000>\/</font><font color=#808000>\*</font><font color=#ffae7d>/"</font><font color=#ee00ee> </font><font color=#0c8164>end</font><font color=#9391ec>=</font><font color=#ffae7d>"/</font><font color=#808000>\*</font><font color=#808000>\/</font><font color=#ffae7d>/"</font><font color=#ee00ee> </font><font color=#0c8164>scheme</font><font color=#9391ec>=</font><font color=#ffae7d>"</font><font color=#c4c400>Comment</font><font color=#ffae7d>"</font><font color=#ee00ee></font>
+<font color=#ee00ee>          </font><font color=#0c8164>region</font><font color=#9391ec>=</font><font color=#ffae7d>"</font><font color=#c4c400>cComment</font><font color=#ffae7d>"</font><font color=#ee00ee> </font><font color=#0c8164>region00</font><font color=#9391ec>=</font><font color=#ffae7d>"</font><font color=#c4c400>dpOpenStruct</font><font color=#ffae7d>"</font><font color=#ee00ee> </font><font color=#0c8164>region10</font><font color=#9391ec>=</font><font color=#ffae7d>"</font><font color=#c4c400>dpCloseStruct</font><font color=#ffae7d>"</font><font color=#9391ec>/&gt;</font><font color=#ee00ee></font>
+</pre>
+
+<p>Two parameters - <code>start</code> and <code>end</code> are used to set
+regexps for start and end of block.
+Third parameter - <code>scheme</code> sets scheme to switch into.
+region0i and region1j are used to set each bracket's syntax region.
+<code>region</code> is used to set color of all block.
+
+<h3>inherit</h3>
+<p>
+This tag lets you to make hrc-coding more easie. It lets you to
+inherit one theme from other. It means, your scheme will inherit
+all keywords, regexps, blocks and other inheritance from pointed scheme.
+
+<pre>
+<font color=#9391ec>&lt;scheme</font><font color=#ee00ee> </font><font color=#0c8164>name</font><font color=#9391ec>=</font><font color=#ffae7d>"</font><font color=#c4c400>Comment</font><font color=#ffae7d>"</font><font color=#9391ec>&gt;</font><font color=#ee00ee></font>
+<font color=#ee00ee>   </font><font color=#9391ec>&lt;inherit </font><font color=#0c8164>scheme</font><font color=#9391ec>=</font><font color=#ffae7d>"</font><font color=#c4c400>mNetEMail</font><font color=#ffae7d>"</font><font color=#9391ec>/&gt;</font><font color=#ee00ee></font>
+<font color=#ee00ee>   </font><font color=#9391ec>&lt;inherit </font><font color=#0c8164>scheme</font><font color=#9391ec>=</font><font color=#ffae7d>"</font><font color=#c4c400>mNetURL</font><font color=#ffae7d>"</font><font color=#9391ec>/&gt;</font><font color=#ee00ee></font>
+<font color=#9391ec>&lt;/scheme&gt;</font><font color=#ee00ee></font>
+</pre>
+
+<p>
+Here you see definition of Comment scheme. We want to colorize in any
+comment scheme web and email addresses. So, we inherit appropriate schemes
+and everything will work.
+Note, that you can inherit big schemes - for example, you can inherit scheme
+"Cpp" from "C" and insert some new keywords - it is more easie then direct
+scheme coping.
+
+<h3>notes about schemes</h3>
+<p>
+There are some rules of using blocks and inheritance. You can call block of
+not yet defined scheme - so, you can make forward references. But you can't inherit
+undefined scheme. inherit tag works only with already defined schemes.
+
+
+<h2>virtual schemes</h2>
+
+<p>
+You can use scheme virtualization mechanizm. This is very powerful feature,
+that lets you to inherit schemes and redefine it's properties "inside".
+Look here:
+
+<pre>
+<font color=#ee00ee>   </font><font color=#9391ec>&lt;inherit </font><font color=#0c8164>scheme</font><font color=#9391ec>=</font><font color=#ffae7d>"</font><font color=#c4c400>c</font><font color=#ffae7d>"</font><font color=#9391ec>&gt;</font><font color=#ee00ee></font>
+<font color=#ee00ee>     </font><font color=#9391ec>&lt;virtual </font><font color=#0c8164>scheme</font><font color=#9391ec>=</font><font color=#ffae7d>"</font><font color=#c4c400>c</font><font color=#ffae7d>"</font><font color=#ee00ee> </font><font color=#0c8164>subst</font><font color=#9391ec>=</font><font color=#ffae7d>"</font><font color=#c4c400>cpp</font><font color=#ffae7d>"</font><font color=#9391ec>/&gt;</font><font color=#ee00ee></font>
+<font color=#ee00ee>   </font><font color=#9391ec>&lt;/inherit&gt;</font><font color=#ee00ee></font>
+</pre>
+
+<p>
+Here we inherits "C" scheme in "Cpp", but use extended "virtual" tag.
+this tag tells colorer to substitute needed scheme into new "subst" scheme.
+With this feature you can change work of any scheme as you wish.
+
+<h2>full structure</h2>
+<p>So, look at end full hrc syntax:
+<pre>
+<font color=#738000>&lt;?xml version="1.0" encoding="Windows-1251"?&gt;</font>
+<font color=#738000>&lt;!DOCTYPE hrc SYSTEM "hrc.dtd"&gt;</font>
+<font color=#738000>&lt;?xml-stylesheet type="text/xsl" href="hrc.xsl"?&gt;</font>
+<font color=#9391ec>&lt;hrc ver="4ever"&gt;</font><font color=#ee00ee></font>
+<font color=#ee00ee>  </font><font color=#9391ec>&lt;define </font><font color=#0c8164>name</font><font color=#9391ec>=</font><font color=#ffae7d>"</font><font color=#c4c400>rname</font><font color=#ffae7d>"</font><font color=#ee00ee> </font><font color=#0c8164>value</font><font color=#9391ec>=</font><font color=#ffae7d>"</font><font color=#c4c400>regid</font><font color=#ffae7d>"</font><font color=#9391ec>/&gt;</font><font color=#ee00ee></font>
+<font color=#ee00ee>  </font><font color=#9391ec>&lt;include </font><font color=#0c8164>name</font><font color=#9391ec>=</font><font color=#ffae7d>"</font><font color=#c4c400>fname</font><font color=#ffae7d>"</font><font color=#9391ec>/&gt;</font><font color=#ee00ee></font>
+<font color=#ee00ee>  </font><font color=#9391ec>&lt;scheme</font><font color=#ee00ee> </font><font color=#0c8164>name</font><font color=#9391ec>=</font><font color=#ffae7d>"</font><font color=#c4c400>sname</font><font color=#ffae7d>"</font><font color=#9391ec>&gt;</font><font color=#ee00ee></font>
+<font color=#ee00ee>    </font><font color=#9391ec>&lt;inherit </font><font color=#0c8164>scheme</font><font color=#9391ec>=</font><font color=#ffae7d>"</font><font color=#c4c400>sname</font><font color=#ffae7d>"</font><font color=#9391ec>&gt;</font><font color=#ee00ee></font>
+<font color=#ee00ee>      </font><font color=#9391ec>&lt;virtual </font><font color=#0c8164>scheme</font><font color=#9391ec>=</font><font color=#ffae7d>"</font><font color=#c4c400>sname</font><font color=#ffae7d>"</font><font color=#ee00ee> </font><font color=#0c8164>subst</font><font color=#9391ec>=</font><font color=#ffae7d>"</font><font color=#c4c400>sname</font><font color=#ffae7d>"</font><font color=#9391ec>/&gt;</font><font color=#ee00ee></font>
+<font color=#ee00ee>    </font><font color=#9391ec>&lt;/inherit&gt;</font><font color=#ee00ee></font>
+<font color=#ee00ee>    </font><font color=#9391ec>&lt;regexp</font><font color=#ee00ee> </font><font color=#0c8164>match</font><font color=#9391ec>=</font><font color=#ffae7d>"/</font><font color=#ffae7d>/"</font><font color=#ee00ee> </font><font color=#0c8164>regioni</font><font color=#9391ec>=</font><font color=#ffae7d>"</font><font color=#c4c400>rname</font><font color=#ffae7d>"</font><font color=#ee00ee> </font><font color=#0c8164>lowpriority</font><font color=#9391ec>=</font><font color=#ffae7d>"</font><font color=#c4c400>lowpriority</font><font color=#ffae7d>"</font><font color=#9391ec>/&gt;</font><font color=#ee00ee></font>
+<font color=#ee00ee>    </font><font color=#9391ec>&lt;block</font><font color=#ee00ee>  </font><font color=#0c8164>start</font><font color=#9391ec>=</font><font color=#ffae7d>"/</font><font color=#ffae7d>/"</font><font color=#ee00ee> </font><font color=#0c8164>end</font><font color=#9391ec>=</font><font color=#ffae7d>"/</font><font color=#ffae7d>/"</font><font color=#ee00ee> </font><font color=#0c8164>scheme</font><font color=#9391ec>=</font><font color=#ffae7d>"</font><font color=#c4c400>sname</font><font color=#ffae7d>"</font><font color=#ee00ee></font>
+<font color=#ee00ee>            </font><font color=#0c8164>region</font><font color=#9391ec>=</font><font color=#ffae7d>"</font><font color=#c4c400>rname</font><font color=#ffae7d>"</font><font color=#ee00ee> </font><font color=#0c8164>regionij</font><font color=#9391ec>=</font><font color=#ffae7d>"</font><font color=#c4c400>rname</font><font color=#ffae7d>"</font><font color=#ee00ee> </font><font color=#0c8164>lowpriority</font><font color=#9391ec>=</font><font color=#ffae7d>"</font><font color=#c4c400>lowpriority</font><font color=#ffae7d>"</font><font color=#9391ec>/&gt;</font><font color=#ee00ee></font>
+<font color=#ee00ee>    </font><font color=#9391ec>&lt;keywords</font><font color=#ee00ee> </font><font color=#0c8164>ignorecase</font><font color=#9391ec>=</font><font color=#ffae7d>"</font><font color=#c4c400>ignorecase</font><font color=#ffae7d>"</font><font color=#ee00ee> </font><font color=#0c8164>worddiv</font><font color=#9391ec>=</font><font color=#ffae7d>"/</font><font color=#ffae7d>[</font><font color=#ffae7d>]</font><font color=#ffae7d>/"</font><font color=#ee00ee> </font><font color=#0c8164>region</font><font color=#9391ec>=</font><font color=#ffae7d>"</font><font color=#c4c400>rname</font><font color=#ffae7d>"</font><font color=#9391ec>&gt;</font><font color=#ee00ee></font>
+<font color=#ee00ee>      </font><font color=#9391ec>&lt;word</font><font color=#ee00ee> </font><font color=#0c8164>name</font><font color=#9391ec>=</font><font color=#ffae7d>"</font><font color=#c4c400>wname</font><font color=#ffae7d>"</font><font color=#ee00ee> </font><font color=#0c8164>region</font><font color=#9391ec>=</font><font color=#ffae7d>"</font><font color=#c4c400>rname</font><font color=#ffae7d>"</font><font color=#9391ec>/&gt;</font><font color=#ee00ee></font>
+<font color=#ee00ee>      </font><font color=#9391ec>&lt;symb</font><font color=#ee00ee> </font><font color=#0c8164>name</font><font color=#9391ec>=</font><font color=#ffae7d>"</font><font color=#c4c400>wname</font><font color=#ffae7d>"</font><font color=#9391ec>/&gt;</font><font color=#ee00ee></font>
+<font color=#ee00ee>    </font><font color=#9391ec>&lt;/keywords&gt;</font><font color=#ee00ee></font>
+<font color=#ee00ee>  </font><font color=#9391ec>&lt;/scheme&gt;</font><font color=#ee00ee></font>
+<font color=#ee00ee>  </font><font color=#9391ec>&lt;type</font><font color=#ee00ee> </font><font color=#0c8164>descr</font><font color=#9391ec>=</font><font color=#ffae7d>"</font><font color=#c4c400>descr</font><font color=#ffae7d>"</font><font color=#ee00ee> </font><font color=#0c8164>name</font><font color=#9391ec>=</font><font color=#ffae7d>"</font><font color=#c4c400>tname</font><font color=#ffae7d>"</font><font color=#ee00ee> </font><font color=#0c8164>exts</font><font color=#9391ec>=</font><font color=#ffae7d>"/</font><font color=#ffae7d>/"</font><font color=#9391ec>&gt;</font><font color=#ee00ee></font>
+<font color=#ee00ee>    </font><font color=#9391ec>&lt;load</font><font color=#ee00ee> </font><font color=#0c8164>name</font><font color=#9391ec>=</font><font color=#ffae7d>"</font><font color=#c4c400>fname</font><font color=#ffae7d>"</font><font color=#9391ec>&gt;</font><font color=#ee00ee></font>
+<font color=#ee00ee>    </font><font color=#9391ec>&lt;scheme</font><font color=#ee00ee> </font><font color=#0c8164>name</font><font color=#9391ec>=</font><font color=#ffae7d>"</font><font color=#c4c400>sname</font><font color=#ffae7d>"</font><font color=#9391ec>&gt;</font><font color=#ee00ee></font>
+<font color=#ee00ee>    </font><font color=#9391ec>&lt;switch</font><font color=#ee00ee> </font><font color=#0c8164>type</font><font color=#9391ec>=</font><font color=#ffae7d>"</font><font color=#c4c400>tname</font><font color=#ffae7d>"</font><font color=#ee00ee> </font><font color=#0c8164>match</font><font color=#9391ec>=</font><font color=#ffae7d>"/</font><font color=#ffae7d>/"</font><font color=#9391ec>&gt;</font><font color=#ee00ee></font>
+<font color=#ee00ee>  </font><font color=#9391ec>&lt;/type&gt;</font><font color=#ee00ee></font>
+<font color=#9391ec>&lt;/hrc&gt;</font>
+</pre>
+
+<div align=right><small>
+It finally happened - happened<br>
+It finally happened - ooh oh<br>
+It finally happened - I'm slightly mad<br>
+Oh dear!
+</small></div>
+
+</body>
+</html>

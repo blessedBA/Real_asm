@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="Windows-1251"?>
+<!DOCTYPE hrc SYSTEM "../hrc.dtd">
+<?xml-stylesheet type="text/xsl" href="../hrc.xsl"?>
+<!--
+   Lex(flex) & YACC(Bison) Files Syntax
+
+   Made by Timur Safin <timur@lanit.ru>
+-->
+
+<hrc>
+
+<define name="lyText"      value="default"/>
+<define name="lyString"    value="dString"/>
+<define name="lyComment"   value="dComment"/>
+<define name="lyCommentEx" value="dComment2"/>
+<define name="lySymb"      value="dKeyword"/>
+<define name="lySymbEx"    value="dDirective"/>
+<define name="lySymbEx0"   value="dString2"/>
+<!--Define name="lyYaccName"  value="dDefText"-->
+<define name="lyYaccName"  value="dComment2"/>
+
+<include name="base/c.hrc"/>
+
+<scheme name="mLYComments">
+   <regexp match="/(\/\/.*$)/" region0="lyComment"/>
+   <block start="/\/\*/" end="/\*\//" scheme="Comment"
+          region="lyComment" region00="dpOpenStruct" region10="dpCloseStruct"/>
+</scheme>
+
+<!-- flex stuff -->
+<scheme name="lyOptionText">
+    <inherit scheme="mLYComments"/>
+    <regexp match='/("((\\.)|[^\\"])*?")/' region0="lyString"/>
+</scheme>
+
+<scheme name="LexSymbols">
+    <regexp match="/(\{(\w+)\})/" region1="lySymb" region2="lySymbEx"/>
+
+    <!-- POSIX char-classes -->
+    <keywords region="lySymb">
+       <symb name="[:alnum:]"/><symb name="[:alpha:]"/><symb name="[:blank:]"/>
+       <symb name="[:cntrl:]"/><symb name="[:digit:]"/><symb name="[:graph:]"/>
+       <symb name="[:lower:]"/><symb name="[:print:]"/><symb name="[:punct:]"/>
+       <symb name="[:space:]"/><symb name="[:upper:]"/><symb name="[:xdigit:]"/>
+    </keywords>
+
+    <!-- other flex regexp symbols -->
+    <keywords region="lySymb">
+       <symb name="."/>
+       <symb name="["/><symb name="]"/>
+       <symb name="-"/><symb name="+"/>
+       <symb name="*"/><symb name="?"/>
+       <!--symb name="{"/><symb name="}"/-->
+       <symb name="("/><symb name=")"/>
+       <symb name="\"/><symb name="/"/>
+       <symb name="|"/><symb name="^"/><symb name="$"/>
+       <symb name="&lt;&lt;EOF>>"/>
+    </keywords>
+</scheme>
+
+<scheme name="mLYLexC">
+    <inherit scheme="C"/>
+    <keywords  region="lySymbEx">
+        <word name="BEGIN"/>
+        <word name="ECHO"/>
+    </keywords>
+</scheme>
+
+<scheme name="lyCompoundCLex">
+    <block start="/(\{)/" end="/(\})/" scheme="lyCompoundCLex"
+           region00="dpOpenStruct" region10="dpCloseStruct" region01="lySymb" region11="lySymb"/>
+    <inherit scheme="mLYLexC"/>
+</scheme>
+
+<scheme name="lyLexRule">
+    <inherit scheme="mLYComments"/>
+    <inherit scheme="mCString"/>
+    <block start="/(\s+\{)/" end="/(\})/" scheme="lyCompoundCLex"
+           region00="dpOpenStruct" region10="dpCloseStruct" region01="lySymbEx" region11="lySymbEx"/>
+    <inherit scheme="LexSymbols"/>
+    <block start="/\s+/" end="/$/" scheme="mLYLexC" region="lyCommentEx"/>
+</scheme>
+
+<scheme name="lyLexStateRules">
+    <inherit scheme="mLYComments"/>
+    <block start="/^\s+/" end="/$/" scheme="lyLexRule"/>
+</scheme>
+
+<!-- Bison stuff -->
+<scheme name="lyCompoundC">
+    <regexp match="/\c(\$[\$\d]{,2})/" region0="lySymbEx"/>
+    <block start="/(\{)/" end="/(\})/" scheme="lyCompoundC"
+           region00="dpOpenStruct" region10="dpCloseStruct" region01="lySymb" region11="lySymb"/>
+    <inherit scheme="C"/>
+</scheme>
+
+<scheme name="lyYaccRule">
+    <inherit scheme="mLYComments"/>
+    <regexp match="/('..??.??.??')/" region0="lyString"/>
+    <regexp match="/\b ([a-zA-Z\d\.\_]+) \B|$/x" region0="lyYaccName"/>
+    <regexp match="/(\%prec)\s+([\w\.\_]+)/" region1="lySymb" region2="lySymbEx"/>
+    <block start="/(\{)/" end="/(\})/" scheme="lyCompoundC"
+           region00="dpOpenStruct" region10="dpCloseStruct" region01="lySymbEx" region11="lySymbEx"/>
+
+    <keywords region="lySymbEx">
+       <symb name=":"/>
+       <symb name="|"/>
+    </keywords>
+</scheme>
+
+<scheme name="lySecondPart">
+    <inherit scheme="mLYComments"/>
+    <block  start="/\s+/" end="/$/" scheme="C"/>
+    <!--  Last (third) C part.
+    TODO! What about Delphi Yacc/Lex ? They should embed Pascal-blocks
+          instead of C. How we could to recognise it ?... -->
+    <block start="/^(\%\%)/" end="/^NeVeRUseD$/" scheme="C" region01="lySymb"/>
+    <!-- embedded C-block -->
+    <block start="/^(\%\{)/" end="/(\%\})/"  scheme="C"
+           region00="dpOpenStruct" region10="dpCloseStruct" region01="lySymb" region11="lySymb"/>
+    <!-- LEX regexp at the start of line -->
+    <block start='/^([\{\[\\\"\(\d]|(\.\s+))?=/' end="/$/" scheme="lyLexRule"/>
+    <!-- Yacc rule -->
+    <block start="/(^[\w\.\_]+\s*\:?)?=/" end="/(;)/" scheme="lyYaccRule" region10="lySymbEx"/>
+    <!-- Mostly Buggy grammar may contain YACC-rules without left non-terminal.
+         See SWIG's parser.y for example -->
+    <block   start="/(^\s+\|)?=/" end="/(;)/" scheme="lyYaccRule" region10="lySymbEx"/>
+    <!-- lex compound conditional state -->
+    <block start="/^(&lt;[\w,\s\*]+\>)(\{)$/" end="/^(\})/" scheme="lyLexStateRules"
+           region00="dpOpenStruct" region10="dpCloseStruct" region01="lySymbEx" region02="lySymbEx0" region11="lySymbEx0"/>
+    <!-- lex single line rule prepended by conditional state -->
+    <block start="/^(&lt;[\w,\s\*]+\>)/" end="/$/" scheme="lyLexRule" region01="lySymbEx"/>
+    <!-- LEX regexp at the start of line #2 -->
+    <block start='/^(\S+[\?\-\+\*\{\[\\\"\(])?=/' end="/$/" scheme="lyLexRule"/>
+    <!-- C-block for lex rule -->
+    <block start="/(\{)$/" end="/(\})/" scheme="lyLexStateRules"
+           region00="dpOpenStruct" region10="dpCloseStruct" region01="lySymbEx" region11="lySymbEx"/>
+    <!--Block   start="/(^[\w\.\_]+)?=/" end="/(;)/" scheme="lyYaccRule" region10="lySymbEx"-->
+</scheme>
+
+<scheme name="lyPerCent">
+    <inherit scheme="mLYComments"/>
+    <regexp match="/('..??.??.??')/" region0="lyString"/>
+    <block  start="/(option)/" end="/$/" scheme="lyOptionText" region01="lySymb"/>
+    <!-- Timur: It's mine...-->
+    <regexp match="/\b (start-condition) \B/x" region0="lySymb"/>
+    <!-- YACC/Bison -->
+    <regexp match="/\b ((token)|(left)|(right)|(nonassoc)|(start)|(no_lines)|(pure_parser)|(type)|(expect)|(raw)|(token_table)) \B/x" region0="lySymb"/>
+    <!-- LEX/flex -->
+    <regexp match="/\b ([xsaceknopr]|(pointer)|(array)) \B/x" region0="lySymb"/>
+    <!-- flex++ -->
+    <regexp match="/\b ((name)|(define)) \B/x" region0="lySymb"/>
+</scheme>
+
+<scheme name="LexYacc">
+    <inherit scheme="mLYComments"/>
+    <!-- embedded  C block -->
+    <block start="/^(\%\{)/" end="/(\%\})/"  scheme="C"
+           region00="dpOpenStruct" region10="dpCloseStruct" region01="lySymb" region11="lySymb"/>
+    <!-- Timur's extensions -->
+    <block start="/^(\%(lex)|(syntax)\{)/" end="/(\%\})/"  scheme="C"
+           region00="dpOpenStruct" region10="dpCloseStruct" region01="lySymb" region11="lySymb"/>
+    <!-- flex++ specific -->
+    <block start="/^(\%header\{)/" end="/(\%\})/"  scheme="C"
+           region00="dpOpenStruct" region10="dpCloseStruct" region01="lySymb" region11="lySymb"/>
+
+    <!-- start second part -->
+    <block start="/^(\%\%)/" end="/^NeVeRUseD$/" scheme="lySecondPart" region01="lySymb"/>
+
+    <!-- other Lex/Yacc directives -->
+    <block start="/^(\%union\s*\{)/" end="/(\})/" scheme="C"
+           region00="dpOpenStruct" region10="dpCloseStruct" region01="lySymb" region11="lySymb"/>
+    <block start="/^(\%)/" end="/\M^%|\S/" scheme="lyPerCent"
+           region01="lyCommentEx" region11="lySymb"/>
+
+    <!-- flex macro definitions -->
+    <block start="/^(\w+)(\s+)?=/" end="/$/" scheme="LexSymbols" region="lyString" region01="lyText"/>
+</scheme>
+</hrc>

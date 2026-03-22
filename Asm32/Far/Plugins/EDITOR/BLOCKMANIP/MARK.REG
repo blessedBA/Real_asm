@@ -1,0 +1,11 @@
+REGEDIT4
+
+[HKEY_CURRENT_USER\Software\Far\KeyMacros\Editor\AltB]
+@="Vertical block"
+"Sequence"="F11 k v"
+"DisableOutput"=dword:00000001
+
+[HKEY_CURRENT_USER\Software\Far\KeyMacros\Editor\CtrlB]
+@="Stream block"
+"Sequence"="F11 k s"
+"DisableOutput"=dword:00000001

@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="Windows-1251"?>
+<!DOCTYPE hrc SYSTEM "../hrc.dtd">
+<?xml-stylesheet type="text/xsl" href="../hrc.xsl"?>
+<!--
+   Make Files Syntax
+With help of:
+   Vincent GUIGNOT <vguignot@ingenico.fr>
+   Timur Safin <timur@lanit.ru> CBuilder project stuff
+-->
+
+<hrc>
+
+<include name="config/config.hrc"/>
+
+<scheme name="mMakVars">
+  <regexp match="/(\$\l?\()([\@&lt;\*\^\?]?[\w\*\.\=\:]+)(\))/" region0="dStringQuote" region1="dpOpenStruct" region2="dString" region3="dpCloseStruct"/>
+  <regexp match="/\$[\@\%&lt;\?\^\+\*]/" region0="dStringQuote"/>
+</scheme>
+
+<scheme name="MakString">
+  <inherit scheme="mMakVars"/>
+</scheme>
+
+<scheme name="mMakCommon">
+  <!-- Linear Comments -->
+  <!-- regexp match="/^(\#.*$)/"  region0="dComments" -->
+  <block start="/([^\^]?#1)\#/" end="/$/" scheme="Comment" region="dComment"/>
+  <regexp match="/\/\/.*$/" region0="dComment"/>
+  <!-- Strings -->
+  <block start="/\'/" end="/\'/" scheme="MakString" region="dString"/>
+  <block start='/\"/' end='/\"/' scheme="MakString" region="dString"/>
+  <!--Block start="/\%/" end="/\%/" scheme="MakString" region0="dString"-->
+  <!-- Numbers -->
+  <regexp match="/\b0x|X[\da-fA-F]+\B/" region0="dNumber"/>
+  <regexp match="/\b[0-9]+\B/" region0="dNumber"/>
+  <!-- Variables -->
+  <inherit scheme="mMakVars"/>
+  <!-- ECHOed Strings -->
+  <!--regexp match="/(append\s+)(\S*)(.*$)/" region1="dKeywords" region2="Default" region3="dStrings"-->
+  <block start="/(echo)\M\s|\W/" end="/$/" scheme="MakString" region="dString" region00="dKeyword"/>
+
+  <keywords region="dSymbol">
+    <symb name=";"/><symb name="="/><symb name="+"/><symb name="-"/>
+    <symb name="/"/><symb name="*"/><symb name="&amp;"/><symb name="|"/>
+    <symb name="^"/><symb name="("/><symb name=")"/><symb name="["/>
+    <symb name="]"/><symb name=","/><symb name="."/><symb name=":"/>
+    <symb name="!"/><symb name="~"/><symb name="&lt;"/><symb name="&gt;"/>
+    <symb name="%"/><symb name="{"/><symb name="}"/><symb name="?"/>
+    <symb name="@"/>
+  </keywords>
+</scheme>
+
+<!-- Inline files -->
+<scheme name="mMakInlineFiles">
+  <!-- nmake version -->
+  <block  start="/.\m(&lt;&lt;)/" end="/^(&lt;&lt;)((NO)?KEEP)?/" region="dInsert"
+          region01="dDirective" region11="dDirective" region12="dKeyword"
+          region00="dpOpenStruct" region10="dpCloseStruct"
+          scheme="MakEx"/>
+  <!-- borland make -->
+  <block  start="/(&amp;&amp;)([^\s\#\\])/" end="/^(\y2)/" region="dInsert"
+          region01="dDirective" region02="dDirective" region11="dDirective"
+          region00="dpOpenStruct" region10="dpCloseStruct"
+          scheme="MakEx"/>
+</scheme>
+
+<scheme name="MakIf">
+  <inherit scheme="mMakCommon"/>
+
+  <regexp match="/\b (ERROR) (.*)/ix" region0="dKeyword" region2="dString"/>
+  <regexp match="/\b (MESSAGE) (.*)/ix" region0="dKeyword" region2="dString"/>
+  <block  start="/\b (exist) \s* (\()?=/x" end="/(\))?#1 | $/x"
+          region="dString" region01="dKeyword" scheme="MakString"/>
+  <block start="/&lt;/" end="/\>/" scheme="MakString"
+         region="dString" region00="dpOpenStruct" region10="dpCloseStruct"/>
+
+  <keywords ignorecase="ignorecase" region="dKeyword">
+      <word name="CMDSWITCHES"/>
+      <word name="define"/>
+      <word name="defined"/>
+      <word name="else"/>
+      <word name="elseif"/>
+      <word name="endif"/>
+      <word name="exist"/>
+      <word name="if"/>
+      <word name="ifdef"/>
+      <word name="ifeq"/>
+      <word name="ifndef"/>
+      <word name="ifneq"/>
+      <word name="include"/>
+      <word name="pragma"/>
+      <word name="undef"/>
+  </keywords>
+</scheme>
+
+<scheme name="MakRule">
+  <inherit scheme="mMakInlineFiles"/>
+
+  <block start="/^\M[^\s\#][^\=\:]+\:/" end="/(::?)/" scheme="MakGoal" region="dInsert"/>
+  <inherit scheme="mMakCommon"/>
+</scheme>
+
+<scheme name="MakGoal">
+    <inherit scheme="mMakCommon"/>
+</scheme>
+
+<scheme name="makefile">
+  <!--  Builder project options -->
+  <block start="/^((\!\s*ifdef) IDEOPTIONS)/"  end="/^(\!endif)/"
+         scheme="Config" region="dString"
+         region01="dComment2" region02="dKeyword" region11="dKeyword"
+         region00="dpOpenStruct" region10="dpCloseStruct"/>
+  <!-- ifXXX directives -->
+  <block start="/^(\!)/" end="/$/" scheme="MakIf"
+         region="dComment2" region01="dKeyword"/>
+
+  <block start="/^\M\S/" end="/^ | ([^\\]?#1) $/x" scheme="MakRule"/>
+  <block start="/^\M[\s\t]/" end="/$/" scheme="MakEx" region="dComment2"/>
+
+  <keywords  region="dKeyword">
+      <word name="%append"/>
+      <word name="%create"/>
+      <word name="%null"/>
+      <word name="%quit"/>
+      <word name="%stop"/>
+      <word name="%write"/>
+      <word name=".AFTER"/>
+      <word name=".AUTODEPEND"/>
+      <word name=".BEFORE"/>
+      <word name=".BLOCK"/>
+      <word name=".CONTINUE"/>
+      <word name=".DEFAULT"/>
+      <word name=".ERASE"/>
+      <word name=".ERROR"/>
+      <word name=".EXTENSIONS"/>
+      <word name=".HOLD"/>
+      <word name=".IGNORE"/>
+      <word name=".NOCHECK"/>
+      <word name=".OPTIMIZE"/>
+      <word name=".PATH"/>
+      <word name=".PRECIOUS"/>
+      <word name=".SILENT"/>
+      <word name=".SILENT"/>
+      <word name=".SUFFIXES"/>
+      <word name=".SYMBOLIC"/>
+      <word name="FAMILY"/>
+      <word name="INC_VERSION"/>
+      <word name="LANGUAGE"/>
+      <word name="loaddll"/>
+      <word name="VERSION"/>
+  </keywords>
+</scheme>
+
+<scheme name="MakEx">
+  <inherit scheme="mMakInlineFiles"/>
+  <inherit scheme="mMakCommon"/>
+</scheme>
+</hrc>

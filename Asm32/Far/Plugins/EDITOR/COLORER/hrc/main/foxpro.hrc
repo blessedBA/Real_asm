@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="Windows-1251"?>
+<!DOCTYPE hrc SYSTEM "../hrc.dtd">
+<?xml-stylesheet type="text/xsl" href="../hrc.xsl"?>
+<!--
+   FoxPro Extended v1.1 Syntax
+With help of:
+   Alexander Polosow/Ђ«ҐЄб ­¤а Џ®«®§®ў (2:5025/54.32aka2:5025/23.82)
+   build with 'FoxPro Syntax' by
+   Cyrill Panov/ЉЁаЁ«« Џ ­®ў <Cyrill.Panov@usu.ru>
+-->
+<hrc>
+
+<define name="foxString"   value="dString"/>
+<define name="foxComment"  value="dComment"/>
+<define name="foxSymb"     value="dSymbol"/>
+<define name="foxWord"     value="dKeyword"/>
+<define name="foxNumb"     value="dNumber"/>
+
+<include name="rare/olextend.hrc"/>
+
+<scheme name="foxpro">
+   <!-- Linear Comments -->
+   <regexp match="/&amp;&amp;.*$/"      region0="foxComment"/>
+   <regexp match="/\/\/.*$/"    region0="foxComment"/>
+   <regexp match="/^\s*\*.*$/"  region0="foxComment"/>
+   <!-- Strings -->
+   <regexp match='/\".*?\"/'    region0="foxString"/>
+   <regexp match="/\'.*?\'/"    region0="foxString"/>
+   <block  start="/(\{)(\|.*?\|)?/" end="/(\})/" scheme="foxpro"
+           region="dInsert" region00="foxSymb" region02="foxString" region10="foxSymb"
+           region01="dpOpenStruct" region11="dpCloseStruct"/>
+
+   <inherit scheme="mPairedBrackets">
+     <virtual scheme="mPairedBrackets" subst="foxpro"/>
+   </inherit>
+
+   <regexp match="/^\s* \M (procedure)|(function) \s+ ([_\w]+)/ix" region3="dFunction"/>
+
+   <!-- Numbers -->
+   <regexp match="/\b0x|X[\da-fA-F]+\B/" region0="foxNumb"/>
+   <regexp match="/\b[0-9]+\B/" region0="foxNumb"/>
+
+   <inherit scheme="ole"/>
+
+   <keywords region="foxSymb">
+      <symb name=";"/><symb name="="/><symb name="+"/><symb name="-"/>
+      <symb name="/"/><symb name="*"/><symb name="&amp;"/><symb name="|"/>
+      <symb name="^"/><symb name="("/><symb name=")"/><symb name="["/>
+      <symb name="]"/><symb name=","/><symb name="."/><symb name=":"/>
+      <symb name="!"/><symb name="~"/><symb name="&lt;"/><symb name="&gt;"/>
+      <symb name="%"/><symb name="?"/>
+      <symb name="{"/><symb name="}"/>
+   </keywords>
+
+   <keywords ignorecase="ignorecase" region="foxWord">
+      <symb name=".T."/>
+      <symb name=".F."/>
+      <word name="AND"/>
+      <symb name=".AND."/>
+      <word name="OR"/>
+      <symb name=".OR."/>
+      <word name="NOT"/>
+      <symb name=".NOT."/>
+   </keywords>
+
+   <keywords ignorecase="ignorecase" region="foxWord">
+      <word name="@"/>
+      <word name="_MSYSMENU"/>
+      <word name="_SCREEN"/>
+      <word name="ABS"/>
+      <word name="ACCEPT"/>
+      <word name="ACTI"/>
+      <word name="ACTIVATE"/>
+      <word name="AGAIN"/>
+      <word name="ALIAS"/>
+      <word name="ALL"/>
+      <word name="ALLTRIM"/>
+      <word name="ALTERNATE"/>
+      <word name="ANSI"/>
+      <word name="ANSITOOEM"/>
+      <word name="APLABOUT"/>
+      <word name="APPE"/>
+      <word name="APPEND"/>
+      <word name="ARRAY"/>
+      <word name="ASC"/>
+      <word name="AT"/>
+      <word name="ATAN"/>
+      <word name="ATLINE"/>
+      <word name="AUTOSAVE"/>
+      <word name="BACKCOLOR"/>
+      <word name="BAR"/>
+      <word name="BARCOUNT"/>
+      <word name="BARPROMPT"/>
+      <word name="BEGIN"/>
+      <word name="BELL"/>
+      <word name="BETWEEN"/>
+      <word name="BLAN"/>
+      <word name="BLANK"/>
+      <word name="BLINK"/>
+      <word name="BLOCKSIZE"/>
+      <word name="BOF"/>
+      <word name="BORDER"/>
+      <word name="BOTT"/>
+      <word name="BOTTOM"/>
+      <word name="BOX"/>
+      <word name="BROW"/>
+      <word name="BROWSE"/>
+      <word name="BRSTATUS"/>
+      <word name="BUILD"/>
+      <word name="CALL"/>
+      <word name="CANCEL"/>
+      <word name="CAPSLOCK"/>
+      <word name="CAPTION"/>
+      <word name="CARRY"/>
+      <word name="CASE"/>
+      <word name="CENTURY"/>
+      <word name="CHR"/>
+      <word name="CLASS"/>
+      <word name="CLASSLIB"/>
+      <word name="CLEAR"/>
+      <word name="CLOCK"/>
+      <word name="CLOS"/>
+      <word name="CLOSE"/>
+      <word name="COLLATE"/>
+      <word name="COLOR"/>
+      <word name="COMM"/>
+      <word name="COMMAND"/>
+      <word name="COMMANDS"/>
+      <word name="COMPATIBLE"/>
+      <word name="CONFIRM"/>
+      <word name="CONSOLE"/>
+      <word name="COPY"/>
+      <word name="CREATE"/>
+      <word name="CURDIR"/>
+      <word name="CURRENCY"/>
+      <word name="CURSOR"/>
+      <word name="DATABASE"/>
+      <word name="DATABASES"/>
+      <word name="DATE"/>
+      <word name="DEBUG"/>
+      <word name="DECIMALS"/>
+      <word name="DEFAULT"/>
+      <word name="DEFINE"/>
+      <word name="DELE"/>
+      <word name="DELETE"/>
+      <word name="DELETED"/>
+      <word name="DELIMITE"/>
+      <word name="DELIMITERS"/>
+      <word name="DEVELOPMENT"/>
+      <word name="DEVICE"/>
+      <word name="DIM"/>
+      <word name="DIMENSION"/>
+      <word name="DISPLAY"/>
+      <word name="DO"/>
+      <word name="DOHISTORY"/>
+      <word name="ECHO"/>
+      <word name="EDIT"/>
+      <word name="ELSE"/>
+      <word name="EMPTY"/>
+      <word name="ENDCASE"/>
+      <word name="ENDDO"/>
+      <word name="ENDFOR"/>
+      <word name="ENDIF"/>
+      <word name="ENDPROC"/>
+      <word name="ENDSCAN"/>
+      <word name="EOF"/>
+      <word name="ESCAPE"/>
+      <word name="EXACT"/>
+      <word name="EXCLUSIVE"/>
+      <word name="EVENT"/>
+      <word name="EVENTS"/>
+      <word name="FCLOSE"/>
+      <word name="FCOUNT"/>
+      <word name="FCREATE"/>
+      <word name="FIELD"/>
+      <word name="FIELDS"/>
+      <word name="FILE"/>
+      <word name="FILES"/>
+      <word name="FILL"/>
+      <word name="FILTER"/>
+      <word name="FIXED"/>
+      <word name="FOPEN"/>
+      <word name="FOR"/>
+      <word name="FORMAT"/>
+      <word name="FPUTS"/>
+      <word name="FROM"/>
+      <word name="FULLPATH"/>
+      <word name="FUNC"/>
+      <word name="FUNCTI"/>
+      <word name="FUNCTION"/>
+      <word name="FWRITE"/>
+      <word name="GATH"/>
+      <word name="GATHER"/>
+      <word name="GET"/>
+      <word name="GO"/>
+      <word name="HEADINGS"/>
+      <word name="HELP"/>
+      <word name="HELPFILTER"/>
+      <word name="HOURS"/>
+      <word name="IF"/>
+      <word name="INDEX"/>
+      <word name="INSERT"/>
+      <word name="INTENSITY"/>
+      <word name="INTO"/>
+      <word name="KEY"/>
+      <word name="KEYCOMP"/>
+      <word name="LIBRARY"/>
+      <word name="LOCAL"/>
+      <word name="LOCATE"/>
+      <word name="LOCK"/>
+      <word name="LOGERRORS"/>
+      <word name="MACDESKTOP"/>
+      <word name="MACHELP"/>
+      <word name="MACKEY"/>
+      <word name="MARGIN"/>
+      <word name="MARK"/>
+      <word name="MEMO"/>
+      <word name="MEMOWIDTH"/>
+      <word name="MEMVAR"/>
+      <word name="MENU"/>
+      <word name="MESSAGE"/>
+      <word name="MODAL"/>
+      <word name="MODI"/>
+      <word name="MODIFY"/>
+      <word name="MOUSE"/>
+      <word name="MULTILOCKS"/>
+      <word name="NEAR"/>
+      <word name="NEXT"/>
+      <word name="NOCPTRANS"/>
+      <word name="NOTIFY"/>
+      <word name="NOWAIT"/>
+      <word name="ODOMETER"/>
+      <word name="OF"/>
+      <word name="OFF"/>
+      <word name="ON"/>
+      <word name="OPTIMIZE"/>
+      <word name="ORDER"/>
+      <word name="OTHERWISE"/>
+      <word name="PALETTE"/>
+      <word name="PARA"/>
+      <word name="PARAMETER"/>
+      <word name="PARAMETERS"/>
+      <word name="PATH"/>
+      <word name="PDSETUP"/>
+      <word name="POINT"/>
+      <word name="PRINTER"/>
+      <word name="PRIVATE"/>
+      <word name="PROC"/>
+      <word name="PROCED"/>
+      <word name="PROCEDURE"/>
+      <word name="PROMPT"/>
+      <word name="PUBLIC"/>
+      <word name="PUSH"/>
+      <word name="QUIT"/>
+      <word name="READ"/>
+      <word name="READBORDER"/>
+      <word name="RECNO"/>
+      <word name="REFRESH"/>
+      <word name="REGION"/>
+      <word name="REGIONAL"/>
+      <word name="RELA"/>
+      <word name="RELATI"/>
+      <word name="RELATION"/>
+      <word name="RELEASE"/>
+      <word name="REPL"/>
+      <word name="REPLA"/>
+      <word name="REPLACE"/>
+      <word name="REPROCESS"/>
+      <word name="RESOURCE"/>
+      <word name="RETU"/>
+      <word name="RETURN"/>
+      <word name="RGB"/>
+      <word name="SAFETY"/>
+      <word name="SAY"/>
+      <word name="SCAN"/>
+      <word name="SCAT"/>
+      <word name="SCATT"/>
+      <word name="SCATTER"/>
+      <word name="SCHEME"/>
+      <word name="SCHEMES"/>
+      <word name="SCOREBOARD"/>
+      <word name="SCREEN"/>
+      <word name="SEEK"/>
+      <word name="SELE"/>
+      <word name="SELECT"/>
+      <word name="SEPARATOR"/>
+      <word name="SET"/>
+      <word name="SHADOWS"/>
+      <word name="SKIP"/>
+      <word name="SPACE"/>
+      <word name="STATUS"/>
+      <word name="STEP"/>
+      <word name="STICKY"/>
+      <word name="STORE"/>
+      <word name="STR"/>
+      <word name="SYSMENU"/>
+      <word name="TABLE"/>
+      <word name="TAG"/>
+      <word name="TALK"/>
+      <word name="TEXT"/>
+      <word name="TEXTMERGE"/>
+      <word name="THIS"/>
+      <word name="THISFORM"/>
+      <word name="TO"/>
+      <word name="TOP"/>
+      <word name="TOPIC"/>
+      <word name="TRBETWEEN"/>
+      <word name="TYPEAHEAD"/>
+      <word name="UDFPARMS"/>
+      <word name="UNIQUE"/>
+      <word name="USE"/>
+      <word name="VAL"/>
+      <word name="VIEW"/>
+      <word name="VOLUME"/>
+      <word name="WAIT"/>
+      <word name="WHILE"/>
+      <word name="WINDOW"/>
+      <word name="WITH"/>
+      <word name="XCMDFILE"/>
+      <word name="YEAR"/>
+   </keywords>
+</scheme>
+
+</hrc>

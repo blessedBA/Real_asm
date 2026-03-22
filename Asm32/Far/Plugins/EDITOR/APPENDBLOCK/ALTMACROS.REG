@@ -1,0 +1,17 @@
+REGEDIT4
+
+[HKEY_CURRENT_USER\Software\Far\KeyMacros\Editor\AltF10]
+"Sequence"="F11 e"
+"Description"="Append block"
+"DisableOutput"=dword:00000001
+
+[HKEY_CURRENT_USER\Software\Far\KeyMacros\Editor\AltF5]
+"Sequence"="F11 n"
+"Description"="Insert file"
+"DisableOutput"=dword:00000001
+
+[HKEY_CURRENT_USER\Software\Far\PluginHotkeys\Plugins/AppendBlock/appendblock.dll]
+"Hotkey"="e"
+
+[HKEY_CURRENT_USER\Software\Far\PluginHotkeys\Plugins/Editor/AppendBlock/AppendBlock.dll%1]
+"Hotkey"="n"

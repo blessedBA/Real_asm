@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="Windows-1251"?>
+<!DOCTYPE hrc SYSTEM "../hrc.dtd">
+<?xml-stylesheet type="text/xsl" href="../hrc.xsl"?>
+<!--
+    Standard ML Syntax (for Colorer 4ever)
+With help of:
+    Eugene Kotlyarov 2:5058/26.9@fidonet.org, ek@oris.ru
+    http://esk.nm.ru/far
+-->
+<hrc>
+
+<define name="smlString"    value="dString"/>
+<define name="smlComment"   value="dComment"/>
+<define name="smlDirective" value="dDirective2"/>
+<define name="smlSymb"      value="dSymbol"/>
+<define name="smlWord"      value="dKeyword"/>
+<define name="smlNumb"      value="dNumber"/>
+
+<scheme name="sml">
+   <!-- Comments -->
+   <block start="/\(\*/" end="/\*\)/" scheme="Comment"
+          region="smlComment" region00="dpOpenStruct" region10="dpCloseStruct"/>
+   <!-- paired -->
+   <block start="/(\()/" end="/(\))/" scheme="sml"
+          region00="smlSymb" region01="dpOpenStruct"
+          region10="smlSymb" region11="dpCloseStruct"/>
+   <block start="/(\[)/" end="/(\])/" scheme="sml"
+          region00="smlSymb" region01="dpOpenStruct"
+          region10="smlSymb" region11="dpCloseStruct"/>
+   <block start="/(\{)/" end="/(\})/" scheme="sml"
+          region00="smlSymb" region01="dpOpenStruct"
+          region10="smlSymb" region11="dpCloseStruct"/>
+
+   <block start="/\b((let)|(local))\B/" end="/\b(in)\B/" scheme="sml"
+          region00="smlSymb" region01="dpOpenStruct"
+          region10="smlSymb" region11="dpCloseStruct"/>
+   <block start="/\b((signature)|(while)|(local)|(structure))\B/" end="/\b(end)\B/" scheme="sml"
+          region00="smlSymb" region01="dpOpenStruct"
+          region10="smlSymb" region11="dpCloseStruct"/>
+
+   <regexp match="/^ \s* \M (fun)|(fn) \s+ ([_\w]+)/ix" region3="dFunction"/>
+   <!-- Strings -->
+   <regexp match='/ "( (\\.) | [^\\"] )*" /x' region0="smlString"/>
+   <!-- Character constants  -->
+   <regexp match='/ #"( (\\.) | [^\\"] )" /x' region0="smlString"/>
+   <!-- Integer constants  0 ~0 4 ~04 999999 0xffff -->
+   <regexp match="/\b(\d+ | 0x[\da-fA-F]+)\B/x" region0="smlNumb"/>
+   <!-- Real constants  0.7 ~0.7 3.32E5 3E~7 ~3E~7 3e~7 ~3e~7 -->
+   <regexp match="/\b([0-9.]+(E|e[\~+]?\d+)?)\B/" region0="smlNumb"/>
+   <!-- Word constants  0w0 0w4 0w999999 0wxFFFF 0wx1ff -->
+   <regexp match="/\b(0w\d+|x[\da-fA-F]+)\B/x" region0="smlNumb"/>
+   <!-- Symbols -->
+   <keywords region="smlSymb">
+     <!-- reserved -->
+     <symb name=","/><symb name=":"/><symb name=":>"/><symb name=";"/>
+     <symb name="..."/><symb name="_"/><symb name="|"/><symb name="="/>
+     <symb name="=>"/><symb name="->"/><symb name="#"/><symb name="*"/>
+     <!-- other -->
+     <symb name="+"/><symb name="-"/><symb name="~"/><symb name="/"/>
+     <symb name="("/><symb name=")"/><symb name="["/><symb name="]"/>
+     <symb name="{"/><symb name="}"/><symb name="&lt;"/><symb name=">"/>
+   </keywords>
+
+   <keywords region="smlWord">
+     <!-- reserved words -->
+     <word name="abstype"/>
+     <word name="and"/>
+     <word name="andalso"/>
+     <word name="as"/>
+     <word name="case"/>
+     <word name="do"/>
+     <word name="datatype"/>
+     <word name="else"/>
+     <word name="end"/>
+     <word name="exception"/>
+     <word name="fn"/>
+     <word name="fun"/>
+     <word name="handle"/>
+     <word name="if"/>
+     <word name="in"/>
+     <word name="infix"/>
+     <word name="infixr"/>
+     <word name="let"/>
+     <word name="local"/>
+     <word name="nonfix"/>
+     <word name="of"/>
+     <word name="op"/>
+     <word name="open"/>
+     <word name="orelse"/>
+     <word name="raise"/>
+     <word name="rec"/>
+     <word name="sig"/>
+     <word name="signature"/>
+     <word name="struct"/>
+     <word name="structure"/>
+     <word name="then"/>
+     <word name="type"/>
+     <word name="val"/>
+     <word name="with"/>
+     <word name="withtype"/>
+     <word name="while"/>
+
+     <!-- Built-in types -->
+     <word name="array"/>
+     <word name="bool"/>
+     <word name="char"/>
+     <word name="int"/>
+     <word name="list"/>
+     <word name="real"/>
+     <word name="string"/>
+     <word name="unit"/>
+     <word name="vector"/>
+     <word name="word"/>
+     <word name="word8"/>
+     <word name="true"/>
+     <word name="false"/>
+   </keywords>
+<!--   <regexp match="/[ \(\)]([A-Za-z'][0-9A-Za-z_']*)[ \(\)]/i"
+           region1="smlNumb">
+    <regexp match="/((,)|(:>)|(:)|(;)|(\.\.\.)|(\|)|(=>)|(=)|(->)|(#))/x"
+           region0="smlNumb"> -->
+</scheme>
+</hrc>

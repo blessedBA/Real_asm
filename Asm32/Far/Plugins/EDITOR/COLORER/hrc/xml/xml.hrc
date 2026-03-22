@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="Windows-1251"?>
+<!DOCTYPE hrc SYSTEM "../hrc.dtd">
+<?xml-stylesheet type="text/xsl" href="../hrc.xsl"?>
+<!--
+    xml syntax
+With Help of:
+    Max Belugin <belugin@mail.ru>
+    Alexey Vasilyev <servent@fis.lv>
+
+    cail: added paired structures, changed work logic
+    c4ever: total scheme reconstruction
+    thanx for ideas:
+      Yury Finkel <yura@mv.ru>
+      Alexander Gutman <gutman@math.nsc.ru>
+      Dmitry Kirsanov <dmitry@kirsanov.com>
+-->
+<hrc>
+
+<define name="xmlString"    value="dString"/>
+<define name="xmlComment"   value="dComment"/>
+<define name="xmlNumb"      value="dNumber"/>
+<define name="xmlSymb"      value="dSymbol"/>
+
+<define name="xmlBaseParam" value="dParam2"/>
+<define name="xmlParam"     value="dParam"/>
+
+<define name="xmlBaseTag"   value="dTag"/>
+<define name="xmlOpenTag"   value="dOpenTag"/>
+<define name="xmlCloseTag"  value="dCloseTag"/>
+<define name="xmlNameSpace" value="dOpenTag"/>
+
+<include name="xml/dtd.hrc"/>
+
+<scheme name="xmlComment">
+   <block start="/&lt;!--/" end="/-->/" scheme="Comment"
+          region="xmlComment" region00="dpOpenStruct" region10="dpCloseStruct"/>
+</scheme>
+<scheme name="xmlCDATA">
+   <block start="/(&lt;!\[CDATA\[)/" end="/(\]\]>)/" scheme="empty"
+          region="dComment"
+          region00="xmlOpenTag" region01="dpOpenTag"
+          region10="xmlCloseTag" region11="dpCloseTag"/>
+</scheme>
+<scheme name="xmlCore">
+   <regexp match="/&amp;\#?\w+\;/" region0="dDirective"/>
+   <regexp match="/[&lt;&amp;]/" region0="dError" lowpriority="lowpriority"/>
+</scheme>
+<scheme name="xmlString">
+   <inherit scheme="xmlCore"/>
+</scheme>
+<scheme name="xmlTagList">
+   <keywords region="xmlOpenTag">
+     <word name="xml"/>
+     <word name="xml-stylesheet"/>
+   </keywords>
+</scheme>
+<scheme name="xmlParamList">
+   <regexp match="/(xmlns)\:(\w+)/ix" region1="xmlParam" region2="xmlParam"/>
+   <keywords region="xmlParam">
+     <word name="xmlns"/>
+   </keywords>
+</scheme>
+
+<scheme name="xmlParams">
+   <!-- open tag name -->
+   <block start="/~/ix" end="/~[\x41-\xFF\:_][\x41-\xFF\d_\:\-\.]*\m/ix"
+          scheme="xmlTagList"/>
+   <inherit scheme="xmlComment"/>
+   <block start="/([\x22\x27])/" end="/\y1/" scheme="xmlString" region="xmlString"/>
+   <inherit scheme="xmlCore"/>
+   <inherit scheme="xmlParamList"/>
+   <regexp match="/\=/" region0="xmlSymb"/>
+</scheme>
+<scheme name="xmlTag">
+   <block start="/\M &lt; ([\x41-\xFF\:_][\x41-\xFF\d_\:\-\.]* [\s\/&gt;]|$ )/ix"
+          end="/ \> /ix" scheme="xmlTagContent"/>
+</scheme>
+<scheme name="xmlTagContent">
+   <block start="/~(( &lt; \M ([\x41-\xFF\:_][\x41-\xFF\d_\:\-\.]*) \>? )) /ix"
+          end="/(( \M (&lt;\/  (\y3)) | (\/)  \> ))/ix" scheme="xmlTagContent2"
+          region01="dpOpenStruct" region11="dpCloseStruct"
+          region02="xmlBaseTag" region12="xmlBaseTag"/>
+   <!-- closing tag name -->
+   <inherit scheme="xmlTagList"/>
+</scheme>
+<scheme name="xmlTagContent2">
+   <block start="/~/" end="/\M((\/?\>))/ix" scheme="xmlParams"
+          region12="xmlBaseTag"/>
+   <inherit scheme="xmlTag"/>
+   <inherit scheme="xmlComment"/>
+   <inherit scheme="xmlCDATA"/>
+   <inherit scheme="xmlCore"/>
+</scheme>
+
+<scheme name="xmlPreprocess">
+   <block start="/&lt;\?/" end="/\?>/" scheme="xmlParams"
+          region="xmlString" region00="dpOpenStruct" region10="dpCloseStruct"/>
+   <block start="/(&lt;\!)/"  end="/(>)/"  scheme="dtdCore"
+          region00="xmlOpenTag" region10="xmlCloseTag"
+          region01="dpOpenStruct" region11="dpCloseStruct"/>
+</scheme>
+
+<scheme name="xmlFstTag">
+   <inherit scheme="xmlPreprocess"/>
+   <block start="/~\M &lt; ([\x41-\xFF\:_][\x41-\xFF\d_\:\-\.]* )/ix"
+          end="/ \> /ix" scheme="xmlTagContent"/>
+   <regexp match="/[^\s&lt;]+/" region0="dError"/>
+</scheme>
+
+<scheme name="xml">
+   <!-- processing instructions -->
+   <inherit scheme="xmlComment"/>
+   <inherit scheme="xmlPreprocess"/>
+   <!-- first tag - always single -->
+   <block start="/\M(&lt; ([\x41-\xFF\:_][\x41-\xFF\d_\:\-\.]* [\s\/&gt;]|$ ) )/ix"
+          end="/$ nevermore ^/ix" scheme="xmlFstTag"/>
+</scheme>
+
+</hrc>

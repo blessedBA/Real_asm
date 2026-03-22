@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="Windows-1251"?>
+<!DOCTYPE hrc SYSTEM "../hrc.dtd">
+<?xml-stylesheet type="text/xsl" href="../hrc.xsl"?>
+<!--
+    Icon Syntax Description
+With Help of:
+    Victor P Zhumatii <viz@rl.odessa.ua> <viz@mail.od.ua> <viz@ibis.odessa.ua>
+-->
+<hrc>
+
+<define name="iconString"   value="dString"/>
+<define name="iconComment"  value="dComment"/>
+<define name="iconSymb"     value="dSymbol"/>
+<define name="iconStructOp" value="dSymbol2"/>
+<define name="iconWord"     value="dKeyword"/>
+<define name="iconOther"    value="dDirective"/>
+<define name="iconNumb"     value="dNumber"/>
+<define name="iconPreProc"  value="dDirective"/>
+
+<scheme name="iconPrePro">
+   <regexp match="/(\#.*$)/" region0="iconComment"/>
+   <regexp match='/([Ll]?"((\\.)|[^\\"])*?")/' region0="iconString"/>
+
+   <keywords region="iconSymb">
+      <symb name=";"/><symb name="="/><symb name="+"/><symb name="-"/>
+      <symb name="/"/><symb name="*"/><symb name="&amp;"/><symb name="|"/>
+      <symb name="^"/><symb name="("/><symb name=")"/><symb name="["/>
+      <symb name="]"/><symb name=","/><symb name="."/><symb name=":"/>
+      <symb name="!"/><symb name="~"/><symb name="&lt;"/><symb name="&gt;"/>
+      <symb name="%"/><symb name="{"/><symb name="}"/><symb name="?"/>
+      <symb name="\"/><symb name="@"/>
+   </keywords>
+</scheme>
+
+<scheme name="icon">
+   <!-- comments -->
+   <regexp match="/\#.*$/" region0="iconComment"/>
+
+   <inherit scheme="mPath"/>
+   <inherit scheme="mNetAddresses"/>
+
+   <regexp match="/^ \s* \M procedure \s+ ([\w_]+)/ix" region1="dFunction"/>
+   <!-- paired block -->
+   <block start="/\b(procedure)\B/" end="/\b(end)\B/" scheme="icon"
+          region00="iconWord" region01="dpOpenStruct"
+          region10="iconWord" region11="dpCloseStruct"/>
+
+   <inherit scheme="mPairedBrackets">
+     <virtual scheme="mPairedBrackets" subst="icon"/>
+   </inherit>
+
+   <!-- Numbers -->
+   <regexp match="/\b\d*[\,\.]?\d+(e|E[\-\+]?\d+)?\B/" region0="iconNumb"/>
+
+   <block start="/^\s*\$/" end="/^ | ([^\\]?#1) $/x" scheme="iconPrePro" region="iconPreProc"/>
+
+   <inherit scheme="mApost"/>
+   <inherit scheme="mStdStr"/>
+
+   <keywords region="iconSymb">
+      <symb name=";"/><symb name="="/><symb name="+"/><symb name="-"/>
+      <symb name="/"/><symb name="*"/><symb name="&amp;"/><symb name="|"/>
+      <symb name="^"/><symb name="("/><symb name=")"/><symb name="["/>
+      <symb name="]"/><symb name=","/><symb name="."/><symb name=":"/>
+      <symb name="!"/><symb name="~"/><symb name="&lt;"/><symb name="&gt;"/>
+      <symb name="%"/><symb name="{"/><symb name="}"/><symb name="?"/>
+      <symb name="\"/><symb name="@"/>
+   </keywords>
+
+   <keywords  region="iconWord">
+      <word name="link"/>
+      <word name="procedure"/>
+      <word name="end"/>
+      <word name="global"/>
+      <word name="local"/>
+      <word name="static"/>
+      <word name="not"/>
+      <word name="break"/>
+      <word name="case"/>
+      <word name="of"/>
+      <word name="default"/>
+      <word name="every"/>
+      <word name="do"/>
+      <word name="fail"/>
+      <word name="if"/>
+      <word name="then"/>
+      <word name="else"/>
+      <word name="next"/>
+      <word name="repeat"/>
+      <word name="return"/>
+      <word name="suspend"/>
+      <word name="until"/>
+      <word name="while"/>
+   </keywords>
+
+   <keywords  region="iconWord">
+      <word name="null"/>
+      <word name="string"/>
+      <word name="co-expression"/>
+      <word name="table"/>
+      <word name="integer"/>
+      <word name="cset"/>
+      <word name="procedure"/>
+      <word name="set"/>
+      <word name="real"/>
+      <word name="file"/>
+      <word name="list"/>
+      <word name="record"/>
+   </keywords>
+
+   <keywords  region="iconWord">
+      <word name="&amp;allocated"/>
+      <word name="&amp;ascii"/>
+      <word name="&amp;clock"/>
+      <word name="&amp;collections"/>
+      <word name="&amp;cset"/>
+      <word name="&amp;current"/>
+      <word name="&amp;date"/>
+      <word name="&amp;dateline"/>
+      <word name="&amp;digits"/>
+      <word name="&amp;dump"/>
+      <word name="&amp;e"/>
+      <word name="&amp;error"/>
+      <word name="&amp;errornumber"/>
+      <word name="&amp;errortext"/>
+      <word name="&amp;errorvalue"/>
+      <word name="&amp;errout"/>
+      <word name="&amp;fail"/>
+      <word name="&amp;features"/>
+      <word name="&amp;file"/>
+      <word name="&amp;host"/>
+      <word name="&amp;input"/>
+      <word name="&amp;lcase"/>
+      <word name="&amp;letters"/>
+      <word name="&amp;level"/>
+      <word name="&amp;line"/>
+      <word name="&amp;main"/>
+      <word name="&amp;null"/>
+      <word name="&amp;output"/>
+      <word name="&amp;phi"/>
+      <word name="&amp;pi"/>
+      <word name="&amp;pos"/>
+      <word name="&amp;progname"/>
+      <word name="&amp;random"/>
+      <word name="&amp;regions"/>
+      <word name="&amp;source"/>
+      <word name="&amp;storage"/>
+      <word name="&amp;subject"/>
+      <word name="&amp;time"/>
+      <word name="&amp;trace"/>
+      <word name="&amp;ucase"/>
+      <word name="&amp;version"/>
+      <word name="&amp;window"/>
+   </keywords>
+
+</scheme>
+
+
+</hrc>

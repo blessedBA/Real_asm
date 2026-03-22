@@ -1,0 +1,39 @@
+.Language=English,English
+
+"Ok"
+"Cancel"
+
+"Transcoder"
+
+"Transcoder"
+
+"Converting"
+
+"Source Codepage"
+"Target Codepage"
+
+"Process RO"
+"Process binary"
+"Backup files"
+
+"Smart HTML charset"
+
+"FAR Tables"
+"Plugin Tables"
+
+"DOS Text"
+"CP 1251 (Windows)"
+"KOI-8"
+"ISO 8859-5 (Unix)"
+"Macintosh"
+"Java"
+"UTF-8"
+
+"Target EOL:"
+"Intact"
+
+"Select"
+
+"Target case:"
+"Lower"
+"Upper"

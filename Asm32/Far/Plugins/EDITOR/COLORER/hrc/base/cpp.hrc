@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="Windows-1251"?>
+<!DOCTYPE hrc SYSTEM "../hrc.dtd">
+<?xml-stylesheet type="text/xsl" href="../hrc.xsl"?>
+<!--
+    c++ syntax description
+With help of:
+    Vladimir Tarasov <tsoftgroup@chat.ru>
+    Timur Safin <timur@lanit.ru>
+    cail: split into two schemes: c and cpp
+-->
+<hrc>
+
+<include name="base/c.hrc"/>
+
+<define name="cppWord" value="cWord"/>
+
+<scheme name="cpp">
+   <!-- paired block -->
+   <block start="/(\/\/\{\{AFX.*)/" end="/(\/\/\}\}AFX.*)/" scheme="Comment"
+          region="dComment2" region00="dpOpenStruct" region10="dpCloseStruct"
+          region01="dComment" region11="dComment"/>
+   <inherit scheme="c">
+     <virtual scheme="c" subst="cpp"/>
+   </inherit>
+   <!-- c++ keywords -->
+   <keywords region="cppWord">
+      <word name="and"/>
+      <word name="and_eq"/>
+      <word name="bitand"/>
+      <word name="bitor"/>
+      <word name="bool"/>
+      <word name="catch"/>
+      <word name="compl"/>
+      <word name="const_cast"/>
+      <word name="class"/>
+      <word name="delete"/>
+      <word name="dynamic_cast"/>
+      <word name="false"/>
+      <word name="friend"/>
+      <word name="mutable"/>
+      <word name="namespace"/>
+      <word name="new"/>
+      <word name="not"/>
+      <word name="not_eq"/>
+      <word name="operator"/>
+      <word name="or"/>
+      <word name="or_eq"/>
+      <word name="private"/>
+      <word name="protected"/>
+      <word name="public"/>
+      <word name="reinterpret_cast"/>
+      <word name="static_cast"/>
+      <word name="template"/>
+      <word name="this"/>
+      <word name="throw"/>
+      <word name="true"/>
+      <word name="try"/>
+      <word name="typeid"/>
+      <word name="typename"/>
+      <word name="virtual"/>
+      <word name="xor"/>
+      <word name="xor_eq"/>
+      <word name="__based"/>
+      <word name="__novtordisp"/>
+      <word name="__self"/>
+      <word name="__single_inheritance"/>
+      <word name="__uuidof"/>
+      <word name="__virtual_inheritance"/>
+   </keywords>
+</scheme>
+
+</hrc>

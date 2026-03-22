@@ -1,0 +1,37 @@
+HISTORY of the FAR Resource Browser Plugin
+------------------------------------------
+
+  Version 1.00 Beta 5        23-Jan-1999
+  --------------------------------------
+    - New resource types now are supported:
+      - Version_Info (read only)
+      - Dialog (read only, partly)
+      - Group_Icon (read only)
+      - Group_Cursor (read only)
+  
+
+  Version 1.00 Beta 4        28-May-1999
+  --------------------------------------
+    - Bug with menu resource updating was fixed.
+
+
+  Version 1.00 Beta 3        15-May-1999
+  --------------------------------------
+    - Support opening from plugin menu and from command line.
+
+
+  Version 1.00 Beta 2        04-May-1999
+  --------------------------------------
+    - Icon, Cursor, MenuEx supporting.
+    - Bitmap, Icon, Cursor, String descriptions.
+
+
+  Version 1.00 Beta 1        26-Apr-1999
+  --------------------------------------
+    First version. It supports getting and updating the following resources:
+      - Bitmaps
+      - Strings
+      - Menus
+
+
+End of document

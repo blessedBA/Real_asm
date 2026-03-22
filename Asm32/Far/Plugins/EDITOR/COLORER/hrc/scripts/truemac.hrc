@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="Windows-1251"?>
+<!DOCTYPE hrc SYSTEM "../hrc.dtd">
+<?xml-stylesheet type="text/xsl" href="../hrc.xsl"?>
+<!--
+    true macro config
+-->
+
+<hrc>
+
+<scheme name="tmreplace">
+  <regexp match='/((@@)|(""))/' region0="dString2"/>
+  <regexp match='/(\\.)/' region0="dString2"/>
+  <regexp match='/((@)((add)|(Home)|(end)|(delete)|(backup)|(up)|(down)|(left)|(right)|(indentreturn)|(return)))/i' region0="dString2"/>
+</scheme>
+
+<scheme name="truemac">
+  <regexp match='/(^\;.*)$/' region0="dComment"/>
+  <regexp match='/(FileName)\s+(\".*\")/i' region1="dKeyword" region2="dString"/>
+  <regexp match='/(Macro)\s+(\".*\")/i' region1="dKeyword" region2="dString"/>
+  <block  start='/(Replace)\s+\"/i' end='/\"/' scheme="tmreplace" region="dString" region01="dKeyword"/>
+</scheme>
+
+</hrc>

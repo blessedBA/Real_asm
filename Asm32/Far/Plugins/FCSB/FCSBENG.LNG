@@ -1,0 +1,38 @@
+.Language=English,English
+
+"C functions list"
+"C functions list: Rescan"
+
+"FCSB Error"
+"   Out of memory   "
+"Ok"
+
+"Project's function list  [ Filter: %s ]"
+"ENTER - go to function; ESC - exit; F1 - Help; A..Z - Filter"
+
+"Scanning project folder.."
+"   Files processed:%ld   "
+
+"Sorting.."
+"   Please wait   "
+""
+
+"Reading project file.."
+"   Lines processed:%ld   "
+
+"   No functions found   "
+"   This version of FAR is not supported   "
+
+"C functions list config"
+"Count static functions"
+"Count inline functions"
+"Count class functions"
+"Do not reenter function list"
+"Ok"
+"Cancel"
+"Project options:"
+"Editor options:"
+"File Mask:"
+
+"Recurse subdirectories"
+"Move to function when entering editor"

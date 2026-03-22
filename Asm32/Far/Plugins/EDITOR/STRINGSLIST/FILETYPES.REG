@@ -1,0 +1,43 @@
+REGEDIT4
+
+[HKEY_CURRENT_USER\Software\Far\Plugins\RegExp\FileTypes]
+
+[HKEY_CURRENT_USER\Software\Far\Plugins\RegExp\FileTypes\Assembler]
+"FileMask"="\\.\\cASM$"
+"RX"="\\c{^[a-zA-Z]*\\s*{proc}|{macro}\\s*}"
+
+[HKEY_CURRENT_USER\Software\Far\Plugins\RegExp\FileTypes\C/C++]
+"FileMask"="\\.\\c{C|H|{CPP}|{HPP}}$"
+"RX"="^{(\\w[\\w_:*&~]+[\\w\\s_:*&~]@)\\([\\S\\s]*}|{({{struct}|{class}}\\s*\\w*[\\S\\s]*[^;])}|{(\\#define\\s*\\S*\\([\\S\\s]*)}$"
+"Present"="\\1\\2\\3"
+
+[HKEY_CURRENT_USER\Software\Far\Plugins\RegExp\FileTypes\Pascal]
+"FileMask"="\\.\\c{{PAS}|{DPR}}$"
+"RX"="^\\c{procedure}|{function}"
+
+[HKEY_CURRENT_USER\Software\Far\Plugins\RegExp\FileTypes\Perl]
+"FileMask"="\\.\\cPL|M$"
+"RX"="^\\c{sub}|{package}\\s+"
+
+[HKEY_CURRENT_USER\Software\Far\Plugins\RegExp\FileTypes\Power++ WXF]
+"FileMask"="\\.\\cWXF$"
+"RX"="^\\c{(\\w[\\w\\@_:*&~]+[\\w\\s\\@_:*&~]@)\\([\\S\\s]*}|{({{struct}|{class}}\\s*\\w*[\\S\\s]*[^;])}|{(\\#define\\s*\\S*\\([\\S\\s]*)}$"
+"Present"="\\1\\2\\3"
+
+[HKEY_CURRENT_USER\Software\Far\Plugins\RegExp\FileTypes\Registry files]
+"FileMask"="\\.\\cREG$"
+"RX"="^\\[[\\S\\s]*\\]$"
+
+[HKEY_CURRENT_USER\Software\Far\Plugins\RegExp\FileTypes\RFC text]
+"FileMask"="\\c{RFC}[\\S\\s]*\\.\\c{TXT}$"
+"RX"="^[0-9]*\\.[0-9\\.]*\\s+"
+"Present"="^[0-9]*\\.[0-9\\.]*\\s+"
+
+[HKEY_CURRENT_USER\Software\Far\Plugins\RegExp\FileTypes\Visual Basic]
+"FileMask"="\\.\\c{BAS}|{FRM}|{CLS}$"
+"RX"="\\c{^[a-zA-Z]*\\s*{sub}|{function}\\s+}"
+
+[HKEY_CURRENT_USER\Software\Far\Plugins\RegExp\FileTypes\Whatsnew]
+"FileMask"="\\cwhatsnew"
+"RX"="^[\\*]+([\\S\\s]#)[\\*]#"
+"Present"="\\1"

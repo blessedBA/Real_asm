@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="Windows-1251"?>
+<!DOCTYPE hrd SYSTEM "../hrd.dtd">
+<hrd>
+<!--
+  html text generator
+  extended html scheme - ported from rgb/default.hrd
+  note, that colorer assumes value="0"  as start and the end of all text
+  really this is not rule of course...
+  note that rgb triad in html has inverted order: bgr
+-->
+  <assign value="00" stext="&lt;html>&lt;body bgcolor=#FFFFFF>&lt;pre>" etext="&lt;/pre>&lt;/body>&lt;/html>" descr="default"/>
+
+  <assign value="2" stext="" etext="" descr="default text [dText]"/>
+  <assign value="3" stext="&lt;font color=#ffffff>" etext="&lt;/font>" sback="&lt;font style='background:#000000'>" eback="&lt;/font>" descr="current row [dRow]"/>
+  <assign value="4" stext="&lt;font color=#ffffff>" etext="&lt;/font>" sback="&lt;font style='background:#000000'>" eback="&lt;/font>" descr="current column [dColumn]"/>
+  <assign value="5" type="#1" descr="syntax check region [dSyntax]"/>
+
+  <assign value="10" stext="&lt;font color=#008c00>" etext="&lt;/font>" descr="default number [dNumber]"/>
+  <assign value="11" stext="&lt;font color=#008c00>" etext="&lt;/font>" descr="decimal number [dNumDec]"/>
+  <assign value="12" stext="&lt;font color=#008000>" etext="&lt;/font>" descr="hex number [dNumHex]"/>
+  <assign value="13" stext="&lt;font color=#005b00>" etext="&lt;/font>" descr="binary number [dNumBin]"/>
+  <assign value="14" stext="&lt;font color=#008c00>" etext="&lt;/font>" descr="octal number [dNumOct]"/>
+  <assign value="15" stext="&lt;font color=#008000>" etext="&lt;/font>" descr="float number [dNumFloat]"/>
+  <assign value="16" stext="&lt;font color=#006600>" etext="&lt;/font>" descr="number suffixes or prefixes [dNumSuffix]"/>
+
+  <assign value="20" stext="&lt;font color=#0000e6>" etext="&lt;/font>" descr="default string [dString]"/>
+  <assign value="21" stext="&lt;font color=#0f69ff>" etext="&lt;/font>" descr="string in string - metastring [dString2]"/>
+  <assign value="22" stext="&lt;font color=#800000>" etext="&lt;/font>" descr="string edges [dStringQuote]"/>
+  <assign value="23" stext="&lt;font color=#7d7dff>" etext="&lt;/font>" descr="another string edges [dStringQuote2]"/>
+  <assign value="24" stext="&lt;font color=#000080>" etext="&lt;/font>" descr="simple character [dCharacter]"/>
+  <assign value="25" stext="&lt;font color=#0000cc>" etext="&lt;/font>" descr="metacharacter [dCharacter2]"/>
+
+  <assign value="30" stext="&lt;font color=#696969>" etext="&lt;/font>" type="#1" descr="comment [dComment]"/>
+  <assign value="31" stext="&lt;font color=#6685a8>" etext="&lt;/font>" descr="metacomment [dComment2]"/>
+  <assign value="32" stext="&lt;font color=#666600>" etext="&lt;/font>" descr="block comment [dBlockComment]"/>
+  <assign value="33" stext="&lt;font color=#666600>" etext="&lt;/font>" descr="single line comment [dLineComment]"/>
+  <assign value="34" stext="&lt;font color=#c0bd92>" etext="&lt;/font>" descr="intext documentation (extended comments) [dPod]"/>
+
+  <assign value="40" stext="&lt;font color=#808000>" etext="&lt;/font>" descr="symbol, operator [dSymbol]"/>
+  <assign value="41" stext="&lt;font color=#800080>" etext="&lt;/font>" descr="language base, logic symbol [dSymbol2]"/>
+  <assign value="42" stext="&lt;font color=#00dddd>" etext="&lt;/font>" descr="prefix [dPrefix]"/>
+
+  <assign value="50" stext="&lt;font color=#00dddd>" etext="&lt;/font>" descr="operator [dOperator]"/>
+
+  <assign value="60" stext="&lt;font color=#800000>" etext="&lt;/font>" descr="keyword [dKeyword]"/>
+  <assign value="61" stext="&lt;font color=#bb7977>" etext="&lt;/font>" descr="other keywords [dKeyword2]"/>
+  <assign value="62" stext="&lt;font color=#008484>" etext="&lt;/font>" descr="type name [dType]"/>
+
+  <assign value="70" type="#2" descr="function - for list processing [dFunction]"/>
+  <assign value="71" stext="&lt;font color=#000080>" etext="&lt;/font>" descr="machine register [dRegister]"/>
+  <assign value="72" stext="&lt;font color=#007d45>" etext="&lt;/font>" descr="constant [dConstant]"/>
+  <assign value="73" stext="&lt;font color=#0f4d75>" etext="&lt;/font>" descr="boolean constant [dBoolean]"/>
+
+  <assign value="80" descr="variable [dVar]"/>
+  <assign value="81" stext="&lt;font color=#007997>" etext="&lt;/font>" descr="other variable [dVar2]"/>
+  <assign value="82" stext="&lt;font color=#005fd2>" etext="&lt;/font>" descr="identifier [dIdentifier]"/>
+
+  <assign value="90" stext="&lt;font color=#004a43>" etext="&lt;/font>" descr="compiler directive [dDirective]"/>
+  <assign value="91" stext="&lt;font color=#00776b>" etext="&lt;/font>" descr="metadirective [dDirective2]"/>
+
+  <assign value="100" stext="&lt;font color=#074726>" etext="&lt;/font>" descr="parameter [dParam]"/>
+  <assign value="101" stext="&lt;font color=#12c065>" etext="&lt;/font>" descr="metaparameter [dParam2]"/>
+
+  <assign value="110" stext="&lt;font color=#3f3025>" etext="&lt;/font>" descr="html-like tag [dTag]"/>
+  <assign value="111" stext="&lt;font color=#a65700>" etext="&lt;/font>" descr="open tag [dOpenTag]"/>
+  <assign value="112" stext="&lt;font color=#a65700>" etext="&lt;/font>" descr="close tag [dCloseTag]"/>
+
+  <assign value="120" stext="&lt;font color=#e34adc>" etext="&lt;/font>" descr="label [dLabel]"/>
+  <assign value="121" stext="&lt;font color=#000000>" etext="&lt;/font>" sback="&lt;font style='background:#a8a800'>" eback="&lt;/font>" descr="high contrast label [dInverseLabel]"/>
+
+  <assign value="130" stext="&lt;font color=#000000>" etext="&lt;/font>" sback="&lt;font style='background:#ffffa4'>" eback="&lt;/font>" descr="insertion text (code in code) [dInsert]"/>
+  <assign value="131" stext="&lt;font color=#800000>" etext="&lt;/font>" sback="&lt;font style='background:#ffffa4'>" eback="&lt;/font>" descr="insertion start [dInsertStart]"/>
+  <assign value="132" stext="&lt;font color=#800000>" etext="&lt;/font>" sback="&lt;font style='background:#ffffa4'>" eback="&lt;/font>" descr="insertion end [dInsertEnd]"/>
+
+  <assign value="140" stext="&lt;font color=#ffffff>" etext="&lt;/font>" sback="&lt;font style='background:#dd0000'>" eback="&lt;/font>" type="#3" descr="syntax error [dError]"/>
+  <assign value="141" stext="&lt;font color=#ee00ee>" etext="&lt;/font>" descr="possibly bad text [dErrorText]"/>
+  <assign value="142" stext="&lt;font color=#ffffff>" etext="&lt;/font>" sback="&lt;font style='background:#808000'>" eback="&lt;/font>" type="#3" descr="todo notes [dTODO]"/>
+  <assign value="143" stext="&lt;font color=#80abfd>" etext="&lt;/font>" sback="&lt;font style='background:#007084'>" eback="&lt;/font>" type="#3" descr="debug notes [dDebug]"/>
+
+  <assign value="150" stext="&lt;font color=#40015a>" etext="&lt;/font>" descr="file path [dPath]"/>
+  <assign value="151" stext="&lt;font color=#0000cc>" etext="&lt;/font>" descr="URL address [dURL]"/>
+  <assign value="152" stext="&lt;font color=#7100c4>" etext="&lt;/font>" descr="email address [dEMail]"/>
+
+  <assign value="160" stext="&lt;font color=#009797>" etext="&lt;/font>" descr="date [dDate]"/>
+  <assign value="161" stext="&lt;font color=#8745a0>" etext="&lt;/font>" descr="time [dTime]"/>
+
+  <assign value="170" stext="&lt;font color=#880088>" etext="&lt;/font>" type="#100" descr="pair struct start [dpOpenStruct]"/>
+  <assign value="171" stext="&lt;font color=#880088>" etext="&lt;/font>" type="#101" descr="pair struct end [dpCloseStruct]"/>
+  <assign value="172" stext="&lt;font color=#880088>" etext="&lt;/font>" type="#100" descr="block pair start [dpOpenTag]"/>
+  <assign value="173" stext="&lt;font color=#880088>" etext="&lt;/font>" type="#101" descr="block pair end [dpCloseTag]"/>
+
+  <assign value="180" stext="&lt;font color=#00ffff>" etext="&lt;/font>" sback="&lt;font style='background:#000000'>" eback="&lt;/font>" descr="editor selection [deSelection]"/>
+  <assign value="181" stext="&lt;font color=#aa6666>" etext="&lt;/font>" sback="&lt;font style='background:#dddddd'>" eback="&lt;/font>" descr="editor border [deSelMargin]"/>
+  <assign value="182" stext="&lt;font color=#ff0000>" etext="&lt;/font>" sback="&lt;font style='background:#000000'>" eback="&lt;/font>" descr="error line [deCurError]"/>
+  <assign value="183" stext="&lt;font color=#ffffff>" etext="&lt;/font>" sback="&lt;font style='background:#118811'>" eback="&lt;/font>" descr="bookmark line [deBookmark]"/>
+
+  <assign value="190" stext="&lt;font color=#000000>" etext="&lt;/font>" sback="&lt;font style='background:#ffffff'>" eback="&lt;/font>" descr="memory window [dwMemory]"/>
+  <assign value="191" stext="&lt;font color=#000000>" etext="&lt;/font>" sback="&lt;font style='background:#ffffff'>" eback="&lt;/font>" descr="disassembly window [dwAssembly]"/>
+  <assign value="192" stext="&lt;font color=#000000>" etext="&lt;/font>" sback="&lt;font style='background:#ffffff'>" eback="&lt;/font>" descr="watch window [dwWatch]"/>
+  <assign value="193" stext="&lt;font color=#000000>" etext="&lt;/font>" sback="&lt;font style='background:#ffffff'>" eback="&lt;/font>" descr="calls (stack) window [dwCalls]"/>
+  <assign value="194" stext="&lt;font color=#000000>" etext="&lt;/font>" sback="&lt;font style='background:#ffffff'>" eback="&lt;/font>" descr="values window [dwValues]"/>
+  <assign value="195" stext="&lt;font color=#000000>" etext="&lt;/font>" sback="&lt;font style='background:#ffffff'>" eback="&lt;/font>" descr="variables window [dwVariables]"/>
+
+</hrd>

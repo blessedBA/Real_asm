@@ -1,0 +1,28 @@
+REGEDIT4
+; Macros for open menu of plugin commands
+; 'S' - hot key
+
+[HKEY_CURRENT_USER\Software\Far\KeyMacros\Shell\CtrlShiftF11]
+"Sequence"="F11 S 0"
+"DisableOutput"=dword:00000001
+"Description"="SR: Plugin commands"
+
+[HKEY_CURRENT_USER\Software\Far\KeyMacros\Editor\CtrlShiftF11]
+"Sequence"="F11 S 0"
+"DisableOutput"=dword:00000001
+"Description"="SR: Plugin commands"
+
+[HKEY_CURRENT_USER\Software\Far\KeyMacros\Info\CtrlShiftF11]
+"Sequence"="F11 S 0"
+"DisableOutput"=dword:00000001
+"Description"="SR: Plugin commands"
+
+[HKEY_CURRENT_USER\Software\Far\KeyMacros\QView\CtrlShiftF11]
+"Sequence"="F11 S 0"
+"DisableOutput"=dword:00000001
+"Description"="SR: Plugin commands"
+
+[HKEY_CURRENT_USER\Software\Far\KeyMacros\Viewer\CtrlShiftF11]
+"Sequence"="F11 S 0"
+"DisableOutput"=dword:00000001
+"Description"="SR: Plugin commands"

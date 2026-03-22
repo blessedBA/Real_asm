@@ -1,0 +1,713 @@
+<?xml version="1.0" encoding="Windows-1251"?>
+<!DOCTYPE hrc SYSTEM "../hrc.dtd">
+<?xml-stylesheet type="text/xsl" href="../hrc.xsl"?>
+<!--
+    html language
+    JULY <lubimovi@usa.net>
+    Evgeny Stepanischev <Evgeny.Stepanischev@ksu.ru>
+    Andrzej Novosiolov <andrzej@ukrnet.net>
+
+    you can use
+    <inherit scheme="htmlTagCall">
+      <virtual scheme="htmlPairs" subst="empty"/>
+    </inherit>
+    to use safe html-tags includes in your meta-html language
+-->
+<hrc>
+
+<define name="htmlString"    value="dString"/>
+<define name="htmlNumb"      value="dNumber"/>
+<define name="htmlComment"   value="dComment"/>
+<define name="htmlDirective" value="dString"/>
+<define name="htmlParam"     value="dParam"/>
+<define name="htmlTagBr"     value="dTag"/>
+<define name="htmlOpenTag"   value="dOpenTag"/>
+<define name="htmlCloseTag"  value="dCloseTag"/>
+
+<include name="net/css.hrc"/>
+<include name="net/jscript.hrc"/>
+<include name="net/vbscript.hrc"/>
+<include name="base/perl.hrc"/>
+
+<scheme name="htmlString">
+</scheme>
+
+<scheme name="htmlCoreParams">
+  <keywords ignorecase="ignorecase" region="htmlParam">
+    <word name="accesskey"/>
+    <word name="action"/>
+    <word name="class"/>
+    <word name="classid"/>
+    <word name="height"/>
+    <word name="hidden"/>
+    <word name="lang"/>
+    <word name="language"/>
+    <word name="left"/>
+    <word name="leftmargin"/>
+    <word name="method"/>
+    <word name="name"/>
+    <word name="onblur"/>
+    <word name="onclick"/>
+    <word name="ondblclick"/>
+    <word name="ondragstart"/>
+    <word name="onerrorupdate"/>
+    <word name="onfilterchange"/>
+    <word name="onfocus"/>
+    <word name="onhelp"/>
+    <word name="onkeydown"/>
+    <word name="onkeypress"/>
+    <word name="onkeyup"/>
+    <word name="onmousedown"/>
+    <word name="onmousemove"/>
+    <word name="onmouseout"/>
+    <word name="onmouseover"/>
+    <word name="onmouseup"/>
+    <word name="onselectstart"/>
+    <word name="size"/>
+    <word name="style"/>
+    <word name="text"/>
+    <word name="title"/>
+    <word name="topmargin"/>
+    <word name="width"/>
+    <word name="z-index"/>
+  </keywords>
+</scheme>
+
+<scheme name="htmlCoreTags">
+  <keywords ignorecase="ignorecase" region="htmlOpenTag">
+    <word name="a"/>
+    <word name="abbr"/>
+    <word name="above"/>
+    <word name="acronym"/>
+    <word name="address"/>
+    <word name="applet"/>
+    <word name="array"/>
+    <word name="area"/>
+    <word name="b"/>
+    <word name="base"/>
+    <word name="basefont"/>
+    <word name="bdo"/>
+    <word name="bgsound"/>
+    <word name="big"/>
+    <word name="blink"/>
+    <word name="blockquote"/>
+    <word name="body"/>
+    <word name="box"/>
+    <word name="br"/>
+    <word name="blink"/>
+    <word name="button"/>
+    <word name="caption"/>
+    <word name="center"/>
+    <word name="cite"/>
+    <word name="code"/>
+    <word name="col"/>
+    <word name="colgroup"/>
+    <word name="comment"/>
+    <word name="dd"/>
+    <word name="del"/>
+    <word name="dfn"/>
+    <word name="dir"/>
+    <word name="div"/>
+    <word name="dl"/>
+    <word name="dt"/>
+    <word name="em"/>
+    <word name="embed"/>
+    <word name="fieldset"/>
+    <word name="fig"/>
+    <word name="font"/>
+    <word name="form"/>
+    <word name="frame"/>
+    <word name="frameset"/>
+    <word name="h1"/>
+    <word name="h2"/>
+    <word name="h3"/>
+    <word name="h4"/>
+    <word name="h5"/>
+    <word name="h6"/>
+    <word name="head"/>
+    <word name="hr"/>
+    <word name="html"/>
+    <word name="i"/>
+    <word name="id"/>
+    <word name="iframe"/>
+    <word name="ilayer"/>
+    <word name="img"/>
+    <word name="input"/>
+    <word name="ins"/>
+    <word name="isindex"/>
+    <word name="kbd"/>
+    <word name="label"/>
+    <word name="layer"/>
+    <word name="legend"/>
+    <word name="li"/>
+    <word name="link"/>
+    <word name="listing"/>
+    <word name="map"/>
+    <word name="marquee"/>
+    <word name="menu"/>
+    <word name="meta"/>
+    <word name="multicol"/>
+    <word name="nextid"/>
+    <word name="nobr"/>
+    <word name="noframes"/>
+    <word name="nolayer"/>
+    <word name="note"/>
+    <word name="noscript"/>
+    <word name="object"/>
+    <word name="ol"/>
+    <word name="option"/>
+    <word name="keygen"/>
+    <word name="optgroup"/>
+    <word name="p"/>
+    <word name="param"/>
+    <word name="pre"/>
+    <word name="q"/>
+    <word name="quote"/>
+    <word name="range"/>
+    <word name="root"/>
+    <word name="s"/>
+    <word name="samp"/>
+    <word name="script"/>
+    <word name="select"/>
+    <word name="small"/>
+    <word name="sound"/>
+    <word name="spacer"/>
+    <word name="span"/>
+    <word name="sqrt"/>
+    <word name="strike"/>
+    <word name="strong"/>
+    <word name="style"/>
+    <word name="sub"/>
+    <word name="sup"/>
+    <word name="table"/>
+    <word name="tbody"/>
+    <word name="td"/>
+    <word name="text"/>
+    <word name="textarea"/>
+    <word name="tfoot"/>
+    <word name="th"/>
+    <word name="thead"/>
+    <word name="title"/>
+    <word name="tr"/>
+    <word name="tt"/>
+    <word name="u"/>
+    <word name="ul"/>
+    <word name="var"/>
+    <word name="wbr"/>
+    <word name="xmp"/>
+  </keywords>
+</scheme>
+
+<scheme name="htmlCore">
+   <!--block start='/(STYLE)\s*=\s*([\x22\x27])/i' end="/(\y2)/" scheme="CSSInsideBraces"
+     region="HtString" -->
+  <block start="/~/" end="/~[\w\:\-]+\m/" scheme="htmlCoreTags"/>
+  <inherit scheme="htmlCoreParams"/>
+  <keywords ignorecase="ignorecase" region="htmlParam">
+    <word name="abbr"/>
+    <word name="above"/>
+    <word name="accept-charset"/>
+    <word name="accept"/>
+    <word name="align"/>
+    <word name="alink"/>
+    <word name="alt"/>
+    <word name="archive"/>
+    <word name="axis"/>
+    <word name="background"/>
+    <word name="behavior"/>
+    <word name="below"/>
+    <word name="bgcolor"/>
+    <word name="border"/>
+    <word name="color"/>
+    <word name="cellpadding"/>
+    <word name="cellspacing"/>
+    <word name="char"/>
+    <word name="charoff"/>
+    <word name="charset"/>
+    <word name="checked"/>
+    <word name="cite"/>
+    <word name="clear"/>
+    <word name="code"/>
+    <word name="codebase"/>
+    <word name="codetype"/>
+    <word name="cols"/>
+    <word name="dynsrc"/>
+    <word name="loopdelay"/>
+    <word name="vrml"/>
+    <word name="controls"/>
+    <word name="challenge"/>
+    <word name="direction"/>
+    <word name="scrollamount"/>
+    <word name="scrolldelay"/>
+    <word name="truespeed"/>
+    <word name="datafld"/>
+    <word name="dataformatas"/>
+    <word name="datasrc"/>
+    <word name="bordercolordark"/>
+    <word name="bordercolorlight"/>
+    <word name="datapagesize"/>
+    <word name="colspan"/>
+    <word name="compact"/>
+    <word name="content"/>
+    <word name="coords"/>
+    <word name="data"/>
+    <word name="datetime"/>
+    <word name="declare"/>
+    <word name="defer"/>
+    <word name="dir"/>
+    <word name="disabled"/>
+    <word name="enctype"/>
+    <word name="face"/>
+    <word name="for"/>
+    <word name="frame"/>
+    <word name="frameborder"/>
+    <word name="framespacing"/>
+    <word name="headers"/>
+    <word name="href"/>
+    <word name="hreflang"/>
+    <word name="hspace"/>
+    <word name="http-equiv"/>
+    <word name="id"/>
+    <word name="ismap"/>
+    <word name="label"/>
+    <word name="link"/>
+    <word name="loop"/>
+    <word name="longdesc"/>
+    <word name="mailto"/>
+    <word name="marginheight"/>
+    <word name="marginwidth"/>
+    <word name="maxlength"/>
+    <word name="media"/>
+    <word name="multiple"/>
+    <word name="nohref"/>
+    <word name="noresize"/>
+    <word name="noshade"/>
+    <word name="nowrap"/>
+    <word name="object"/>
+    <word name="onload"/>
+    <word name="onreset"/>
+    <word name="onselect"/>
+    <word name="onsubmit"/>
+    <word name="onunload"/>
+    <word name="profile"/>
+    <word name="prompt"/>
+    <word name="readonly"/>
+    <word name="top"/>
+    <word name="rel"/>
+    <word name="rev"/>
+    <word name="rows"/>
+    <word name="rowspan"/>
+    <word name="rules"/>
+    <word name="scheme"/>
+    <word name="scope"/>
+    <word name="scrolling"/>
+    <word name="selected"/>
+    <word name="shape"/>
+    <word name="span"/>
+    <word name="src"/>
+    <word name="standby"/>
+    <word name="start"/>
+    <word name="summary"/>
+    <word name="tabindex"/>
+    <word name="target"/>
+    <word name="type"/>
+    <word name="url"/>
+    <word name="usemap"/>
+    <word name="valign"/>
+    <word name="value"/>
+    <word name="valuetype"/>
+    <word name="visibility"/>
+    <word name="version"/>
+    <word name="vlink"/>
+    <word name="vspace"/>
+  </keywords>
+  <regexp match="/ \c (0x)|\#  [\da-fA-F]+ \B /ix" region0="htmlNumb"/>
+  <regexp match="/ \b [0-9\.]+%? /x" region0="htmlNumb"/>
+  <block start="/(\x22|\x27)/" end="/\y1/" scheme="htmlString" region="htmlString"/>
+</scheme>
+
+<scheme name="xssi">
+   <block start='/(=)\s*"/' end='/"/' scheme="perlInterpolatedString"
+          region="dString" region01="dSymbol" region00="dpOpenStruct" region10="dpCloseStruct"/>
+
+   <keywords region="htmlParam">
+     <word name="cgi"/>
+     <word name="cmd"/>
+     <word name="encoding"/>
+     <word name="errmsg"/>
+     <word name="expr"/>
+     <word name="file"/>
+     <word name="sizefmt"/>
+     <word name="timefmt"/>
+     <word name="value"/>
+     <word name="var"/>
+     <word name="virtual"/>
+   </keywords>
+
+   <keywords region="htmlOpenTag">
+     <word name="#config"/>
+     <word name="#echo"/>
+     <word name="#elif"/>
+     <word name="#else"/>
+     <word name="#endif"/>
+     <word name="#exec"/>
+     <word name="#flastmod"/>
+     <word name="#fsize"/>
+     <word name="#if"/>
+     <word name="#include"/>
+     <word name="#printenv"/>
+     <word name="#set"/>
+   </keywords>
+</scheme>
+
+<scheme name="htmlScripts">
+   <!-- scripts -->
+   <block start='/ (&lt;(script [^>]+ (perlscript[\d\.]*) [^>]*) >) /ix'
+          end="/(&lt;\/(script)\>)/i" scheme="Perl"
+          region00="dpOpenTag" region10="dpCloseTag"
+          region01="htmlTagBr" region02="htmlOpenTag" region03="htmlString"
+          region11="htmlTagBr" region12="htmlCloseTag"/>
+   <block start='/ (&lt;(script [^\>]+ (j(ava)?script[\d\.]*) [^\>]*) \>) /ix'
+          end="/(&lt;\/(script)\>)/i" scheme="JScript"
+          region00="dpOpenTag" region10="dpCloseTag"
+          region01="htmlTagBr" region02="htmlOpenTag" region03="htmlString"
+          region11="htmlTagBr" region12="htmlCloseTag"/>
+   <block start='/ (&lt;(script [^>]+ (vbscript[\d\.]*) [^>]*) > ) /ix'
+          end="/(&lt;\/(script)\>)/i" scheme="VBScript"
+          region00="dpOpenTag" region10="dpCloseTag"
+          region01="htmlTagBr" region02="htmlOpenTag" region03="htmlString"
+          region11="htmlTagBr" region12="htmlCloseTag"/>
+   <block start="/ (&lt;(script .*?) \> ) /ix" end="/(&lt;\/(script)\>)/ix" scheme="JScript"
+          region00="dpOpenTag" region10="dpCloseTag"
+          region01="htmlTagBr" region02="htmlOpenTag"
+          region11="htmlTagBr" region12="htmlCloseTag"/>
+</scheme>
+
+<scheme name="htmlPairs">
+   <block start="/(&lt; (
+                 (html) | (head) | (title) |
+                 (body) | (tr) | (td) | (pre) |
+                 (blockquote) | (h[1-6]) | (table) |
+                 ([uo]l) | ([ibu]) | (em) | (small) | (code)
+                 ) &gt;)/ix" end="/(&lt;\/ (\Y2) &gt;)/ix"
+          scheme="html"
+          region00="dpOpenStruct" region10="dpCloseStruct"
+          region01="htmlTagBr" region02="htmlOpenTag"
+          region11="htmlTagBr" region12="htmlOpenTag"/>
+</scheme>
+
+<scheme name="htmlTagCall">
+   <!-- this inherit let's other meta-html languages
+        to disable pair searching -->
+   <inherit scheme="htmlPairs"/>
+   <block start="/(&lt;)\M([\w\:\-]+)/i" end="/(\/?&gt;)/" scheme="htmlCore"
+          region00="dpOpenStruct" region10="dpCloseStruct"
+          region01="htmlTagBr" region11="htmlTagBr"/>
+   <block start="/(&lt;\/)\M([\w\:\-]+)&gt;/i" end="/(&gt;)/" scheme="htmlCore"
+          region00="dpOpenStruct" region10="dpCloseStruct"
+          region01="htmlTagBr" region11="htmlTagBr"
+          lowpriority="lowpriority"/>
+</scheme>
+
+<scheme name="html">
+
+   <inherit scheme="htmlScripts"/>
+
+   <block start="/ (&lt;(style).*?>)/ix" end="/(&lt;\/(style)\>)/i" scheme="css"
+          region00="dpOpenTag" region10="dpCloseTag"
+          region01="htmlTagBr" region02="htmlOpenTag"
+          region11="htmlTagBr" region12="htmlOpenTag"/>
+
+   <regexp match="/ \b [0-9\.]+ /x" region0="htmlNumb"/>
+
+   <inherit scheme="htmlTagCall"/>
+
+   <!-- comments -->
+   <block start="/&lt;!--\M#/" end="/-->/" scheme="xssi"
+          region="htmlComment" region00="dpOpenStruct" region10="dpCloseStruct"/>
+   <block start="/&lt;!--/" end="/-->/" scheme="Comment"
+          region="htmlComment" region00="dpOpenStruct" region10="dpCloseStruct"/>
+   <block start="/&lt;\!\M\w/" end="/>/" scheme="Comment"
+          region00="dpOpenStruct" region10="dpCloseStruct" region="htmlDirective"/>
+
+   <keywords region="htmlParam">
+     <symb name=";"/>
+     <symb name="="/>
+     <symb name="+"/>
+     <symb name="-"/>
+     <symb name="/"/>
+     <symb name="*"/>
+     <symb name="|"/>
+     <symb name="^"/>
+     <symb name="("/>
+     <symb name=")"/>
+     <symb name="["/>
+     <symb name="]"/>
+     <symb name=","/>
+     <symb name="."/>
+     <symb name=":"/>
+     <symb name="!"/>
+     <symb name="~"/>
+     <symb name="'"/>
+     <symb name='"'/>
+     <symb name="%"/>
+     <symb name="{"/>
+     <symb name="}"/>
+     <symb name="?"/>
+     <symb name="\"/>
+     <symb name="&amp;Aacute;"/>
+     <symb name="&amp;aacute;"/>
+     <symb name="&amp;Acirc;"/>
+     <symb name="&amp;acirc;"/>
+     <symb name="&amp;acute;"/>
+     <symb name="&amp;AElig;"/>
+     <symb name="&amp;aelig;"/>
+     <symb name="&amp;Agrave;"/>
+     <symb name="&amp;agrave;"/>
+     <symb name="&amp;alefsym;"/>
+     <symb name="&amp;Alpha;"/>
+     <symb name="&amp;alpha;"/>
+     <symb name="&amp;amp;"/>
+     <symb name="&amp;and;"/>
+     <symb name="&amp;ang;"/>
+     <symb name="&amp;Aring;"/>
+     <symb name="&amp;aring;"/>
+     <symb name="&amp;asymp;"/>
+     <symb name="&amp;Atilde;"/>
+     <symb name="&amp;atilde;"/>
+     <symb name="&amp;Auml;"/>
+     <symb name="&amp;auml;"/>
+     <symb name="&amp;bdquo;"/>
+     <symb name="&amp;Beta;"/>
+     <symb name="&amp;beta;"/>
+     <symb name="&amp;brvbar;"/>
+     <symb name="&amp;bull;"/>
+     <symb name="&amp;cap;"/>
+     <symb name="&amp;Ccedil;"/>
+     <symb name="&amp;ccedil;"/>
+     <symb name="&amp;cedil;"/>
+     <symb name="&amp;cent;"/>
+     <symb name="&amp;Chi;"/>
+     <symb name="&amp;chi;"/>
+     <symb name="&amp;circ;"/>
+     <symb name="&amp;clubs;"/>
+     <symb name="&amp;cong;"/>
+     <symb name="&amp;copy;"/>
+     <symb name="&amp;crarr;"/>
+     <symb name="&amp;cup;"/>
+     <symb name="&amp;curren;"/>
+     <symb name="&amp;dagger;"/>
+     <symb name="&amp;Dagger;"/>
+     <symb name="&amp;darr;"/>
+     <symb name="&amp;dArr;"/>
+     <symb name="&amp;deg;"/>
+     <symb name="&amp;Delta;"/>
+     <symb name="&amp;delta;"/>
+     <symb name="&amp;diams;"/>
+     <symb name="&amp;divide;"/>
+     <symb name="&amp;Eacute;"/>
+     <symb name="&amp;eacute;"/>
+     <symb name="&amp;Ecirc;"/>
+     <symb name="&amp;ecirc;"/>
+     <symb name="&amp;Egrave;"/>
+     <symb name="&amp;egrave;"/>
+     <symb name="&amp;empty;"/>
+     <symb name="&amp;emsp;"/>
+     <symb name="&amp;ensp;"/>
+     <symb name="&amp;Epsilon;"/>
+     <symb name="&amp;epsilon;"/>
+     <symb name="&amp;equiv;"/>
+     <symb name="&amp;Eta;"/>
+     <symb name="&amp;eta;"/>
+     <symb name="&amp;ETH;"/>
+     <symb name="&amp;eth;"/>
+     <symb name="&amp;Euml;"/>
+     <symb name="&amp;euml;"/>
+     <symb name="&amp;euro;"/>
+     <symb name="&amp;exist;"/>
+     <symb name="&amp;fnof;"/>
+     <symb name="&amp;forall;"/>
+     <symb name="&amp;frac12;"/>
+     <symb name="&amp;frac14;"/>
+     <symb name="&amp;frac34;"/>
+     <symb name="&amp;frasl;"/>
+     <symb name="&amp;Gamma;"/>
+     <symb name="&amp;gamma;"/>
+     <symb name="&amp;ge;"/>
+     <symb name="&amp;gt;"/>
+     <symb name="&amp;harr;"/>
+     <symb name="&amp;hArr;"/>
+     <symb name="&amp;hearts;"/>
+     <symb name="&amp;hellip;"/>
+     <symb name="&amp;Iacute;"/>
+     <symb name="&amp;iacute;"/>
+     <symb name="&amp;Icirc;"/>
+     <symb name="&amp;icirc;"/>
+     <symb name="&amp;iexcl;"/>
+     <symb name="&amp;Igrave;"/>
+     <symb name="&amp;igrave;"/>
+     <symb name="&amp;image;"/>
+     <symb name="&amp;infin;"/>
+     <symb name="&amp;int;"/>
+     <symb name="&amp;Iota;"/>
+     <symb name="&amp;iota;"/>
+     <symb name="&amp;iquest;"/>
+     <symb name="&amp;isin;"/>
+     <symb name="&amp;Iuml;"/>
+     <symb name="&amp;iuml;"/>
+     <symb name="&amp;Kappa;"/>
+     <symb name="&amp;kappa;"/>
+     <symb name="&amp;Lambda;"/>
+     <symb name="&amp;lambda;"/>
+     <symb name="&amp;lang;"/>
+     <symb name="&amp;laquo;"/>
+     <symb name="&amp;larr;"/>
+     <symb name="&amp;lArr;"/>
+     <symb name="&amp;lceil;"/>
+     <symb name="&amp;ldquo;"/>
+     <symb name="&amp;le;"/>
+     <symb name="&amp;lfloor;"/>
+     <symb name="&amp;lowast;"/>
+     <symb name="&amp;loz;"/>
+     <symb name="&amp;lrm;"/>
+     <symb name="&amp;lsaquo;"/>
+     <symb name="&amp;lsquo;"/>
+     <symb name="&amp;lt;"/>
+     <symb name="&amp;macr;"/>
+     <symb name="&amp;mdash;"/>
+     <symb name="&amp;micro;"/>
+     <symb name="&amp;middot;"/>
+     <symb name="&amp;minus;"/>
+     <symb name="&amp;Mu;"/>
+     <symb name="&amp;mu;"/>
+     <symb name="&amp;nabla;"/>
+     <symb name="&amp;nbsp;"/>
+     <symb name="&amp;ndash;"/>
+     <symb name="&amp;ne;"/>
+     <symb name="&amp;ni;"/>
+     <symb name="&amp;not;"/>
+     <symb name="&amp;notin;"/>
+     <symb name="&amp;nsub;"/>
+     <symb name="&amp;Ntilde;"/>
+     <symb name="&amp;ntilde;"/>
+     <symb name="&amp;Nu;"/>
+     <symb name="&amp;nu;"/>
+     <symb name="&amp;Oacute;"/>
+     <symb name="&amp;oacute;"/>
+     <symb name="&amp;Ocirc;"/>
+     <symb name="&amp;ocirc;"/>
+     <symb name="&amp;OElig;"/>
+     <symb name="&amp;oelig;"/>
+     <symb name="&amp;Ograve;"/>
+     <symb name="&amp;ograve;"/>
+     <symb name="&amp;oline;"/>
+     <symb name="&amp;Omega;"/>
+     <symb name="&amp;omega;"/>
+     <symb name="&amp;Omicron;"/>
+     <symb name="&amp;omicron;"/>
+     <symb name="&amp;oplus;"/>
+     <symb name="&amp;or;"/>
+     <symb name="&amp;ordf;"/>
+     <symb name="&amp;ordm;"/>
+     <symb name="&amp;Oslash;"/>
+     <symb name="&amp;oslash;"/>
+     <symb name="&amp;Otilde;"/>
+     <symb name="&amp;otilde;"/>
+     <symb name="&amp;otimes;"/>
+     <symb name="&amp;Ouml;"/>
+     <symb name="&amp;ouml;"/>
+     <symb name="&amp;para;"/>
+     <symb name="&amp;part;"/>
+     <symb name="&amp;permil;"/>
+     <symb name="&amp;perp;"/>
+     <symb name="&amp;Phi;"/>
+     <symb name="&amp;phi;"/>
+     <symb name="&amp;Pi;"/>
+     <symb name="&amp;pi;"/>
+     <symb name="&amp;piv;"/>
+     <symb name="&amp;plusmn;"/>
+     <symb name="&amp;pound;"/>
+     <symb name="&amp;prime;"/>
+     <symb name="&amp;Prime;"/>
+     <symb name="&amp;prod;"/>
+     <symb name="&amp;prop;"/>
+     <symb name="&amp;Psi;"/>
+     <symb name="&amp;psi;"/>
+     <symb name="&amp;quot;"/>
+     <symb name="&amp;radic;"/>
+     <symb name="&amp;rang;"/>
+     <symb name="&amp;raquo;"/>
+     <symb name="&amp;rarr;"/>
+     <symb name="&amp;rArr;"/>
+     <symb name="&amp;rceil;"/>
+     <symb name="&amp;rdquo;"/>
+     <symb name="&amp;real;"/>
+     <symb name="&amp;reg;"/>
+     <symb name="&amp;rfloor;"/>
+     <symb name="&amp;Rho;"/>
+     <symb name="&amp;rho;"/>
+     <symb name="&amp;rlm;"/>
+     <symb name="&amp;rsaquo;"/>
+     <symb name="&amp;rsquo;"/>
+     <symb name="&amp;sbquo;"/>
+     <symb name="&amp;Scaron;"/>
+     <symb name="&amp;scaron;"/>
+     <symb name="&amp;sdot;"/>
+     <symb name="&amp;sect;"/>
+     <symb name="&amp;shy;"/>
+     <symb name="&amp;Sigma;"/>
+     <symb name="&amp;sigma;"/>
+     <symb name="&amp;sigmaf;"/>
+     <symb name="&amp;sim;"/>
+     <symb name="&amp;spades;"/>
+     <symb name="&amp;sub;"/>
+     <symb name="&amp;sube;"/>
+     <symb name="&amp;sum;"/>
+     <symb name="&amp;sup;"/>
+     <symb name="&amp;sup1;"/>
+     <symb name="&amp;sup2;"/>
+     <symb name="&amp;sup3;"/>
+     <symb name="&amp;supe;"/>
+     <symb name="&amp;szlig;"/>
+     <symb name="&amp;Tau;"/>
+     <symb name="&amp;tau;"/>
+     <symb name="&amp;there4;"/>
+     <symb name="&amp;Theta;"/>
+     <symb name="&amp;theta;"/>
+     <symb name="&amp;thetasym;"/>
+     <symb name="&amp;thinsp;"/>
+     <symb name="&amp;THORN;"/>
+     <symb name="&amp;thorn;"/>
+     <symb name="&amp;tilde;"/>
+     <symb name="&amp;times;"/>
+     <symb name="&amp;trade;"/>
+     <symb name="&amp;Uacute;"/>
+     <symb name="&amp;uacute;"/>
+     <symb name="&amp;uarr;"/>
+     <symb name="&amp;uArr;"/>
+     <symb name="&amp;Ucirc;"/>
+     <symb name="&amp;ucirc;"/>
+     <symb name="&amp;Ugrave;"/>
+     <symb name="&amp;ugrave;"/>
+     <symb name="&amp;uml;"/>
+     <symb name="&amp;upsih;"/>
+     <symb name="&amp;Upsilon;"/>
+     <symb name="&amp;upsilon;"/>
+     <symb name="&amp;Uuml;"/>
+     <symb name="&amp;uuml;"/>
+     <symb name="&amp;weierp;"/>
+     <symb name="&amp;Xi;"/>
+     <symb name="&amp;xi;"/>
+     <symb name="&amp;Yacute;"/>
+     <symb name="&amp;yacute;"/>
+     <symb name="&amp;yen;"/>
+     <symb name="&amp;Yuml;"/>
+     <symb name="&amp;yuml;"/>
+     <symb name="&amp;Zeta;"/>
+     <symb name="&amp;zeta;"/>
+     <symb name="&amp;zwj;"/>
+     <symb name="&amp;zwnj;"/>
+   </keywords>
+</scheme>
+
+</hrc>

@@ -1,0 +1,22 @@
+############################################################
+base=C:\Program Files (x86)\Far Manager\Plugins\EDITOR\COLORER\hrc\colorer.hrc
+
+rules.view=C:\Program Files (x86)\Far Manager\Plugins\EDITOR\COLORER\hrd\console\alt.hrd
+rules.gen=C:\Program Files (x86)\Far Manager\Plugins\EDITOR\COLORER\hrd\textgen\html.hrd
+
+rules.alt=C:\Program Files (x86)\Far Manager\Plugins\EDITOR\COLORER\hrd\console\alt.hrd
+rules.black=C:\Program Files (x86)\Far Manager\Plugins\EDITOR\COLORER\hrd\console\black.hrd
+rules.default=C:\Program Files (x86)\Far Manager\Plugins\EDITOR\COLORER\hrd\console\default.hrd
+rules.dnlike=C:\Program Files (x86)\Far Manager\Plugins\EDITOR\COLORER\hrd\console\dnlike.hrd
+rules.gray=C:\Program Files (x86)\Far Manager\Plugins\EDITOR\COLORER\hrd\console\gray.hrd
+rules.hack=C:\Program Files (x86)\Far Manager\Plugins\EDITOR\COLORER\hrd\console\hack.hrd
+rules.nc=C:\Program Files (x86)\Far Manager\Plugins\EDITOR\COLORER\hrd\console\nc.hrd
+rules.white=C:\Program Files (x86)\Far Manager\Plugins\EDITOR\COLORER\hrd\console\white.hrd
+rules.xmastree=C:\Program Files (x86)\Far Manager\Plugins\EDITOR\COLORER\hrd\console\xmastree.hrd
+
+rules.ansi=C:\Program Files (x86)\Far Manager\Plugins\EDITOR\COLORER\hrd\textgen\ansi.hrd
+rules.html=C:\Program Files (x86)\Far Manager\Plugins\EDITOR\COLORER\hrd\textgen\html.hrd
+rules.htmli=C:\Program Files (x86)\Far Manager\Plugins\EDITOR\COLORER\hrd\textgen\htmli.hrd
+rules.htmlb=C:\Program Files (x86)\Far Manager\Plugins\EDITOR\COLORER\hrd\textgen\htmlb.hrd
+rules.htmltag=C:\Program Files (x86)\Far Manager\Plugins\EDITOR\COLORER\hrd\textgen\htmltag.hrd
+

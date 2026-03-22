@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="Windows-1251"?>
+<!DOCTYPE hrc SYSTEM "../hrc.dtd">
+<?xml-stylesheet type="text/xsl" href="../hrc.xsl"?>
+<!--
+    sqlj files
+With help of:
+-->
+<hrc>
+
+<include name="main/java.hrc"/>
+<include name="rare/sql.hrc"/>
+
+<scheme name="javasql">
+   <block start="/(\# \s* sql)/x" end="/(\;)/" scheme="sql"
+          region00="dpOpenStruct" region10="dpCloseStruct"
+          region="dDirective"/>
+   <inherit scheme="java">
+     <virtual scheme="java" subst="javasql"/>
+   </inherit>
+</scheme>
+
+</hrc>

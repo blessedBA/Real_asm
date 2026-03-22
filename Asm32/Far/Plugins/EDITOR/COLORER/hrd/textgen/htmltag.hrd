@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="Windows-1251"?>
+<!DOCTYPE hrd SYSTEM "../hrd.dtd">
+<hrd>
+<!--
+  simple html <i> and <b> tagz
+-->
+  <assign value="00" stext="&lt;html>&lt;body bgcolor=white>&lt;pre>" etext="&lt;/pre>&lt;/body>&lt;/html>" descr="default"/>
+
+  <assign value="02" stext="" etext="" descr="dText"/>
+  <assign value="03" stext="" etext="" descr="dRow"/>
+  <assign value="04" stext="" etext="" descr="dColumn"/>
+
+  <assign value="10" stext="" etext="" descr="dNumber"/>
+  <assign value="11" stext="" etext="" descr="dNumDec"/>
+  <assign value="12" stext="" etext="" descr="dNumHex"/>
+  <assign value="13" stext="" etext="" descr="dNumBin"/>
+  <assign value="14" stext="" etext="" descr="dNumOct"/>
+  <assign value="15" stext="" etext="" descr="dNumFloat"/>
+  <assign value="16" stext="" etext="" descr="dNumSuffix"/>
+
+  <assign value="20" stext="&lt;b>" etext="&lt;/b>" descr="dString"/>
+  <assign value="21" stext="" etext="" descr="dString2"/>
+  <assign value="22" stext="" etext="" descr="dStringQuote"/>
+  <assign value="23" stext="" etext="" descr="dStringQuote2"/>
+  <assign value="24" stext="" etext="" descr="dCharacter"/>
+  <assign value="25" stext="" etext="" descr="dCharacter2"/>
+
+  <assign value="30" stext="&lt;i>" etext="&lt;/i>" type="1" descr="dComment"/>
+  <assign value="31" stext="" etext="" descr="dComment2"/>
+  <assign value="32" stext="" etext="" descr="dBlockComment"/>
+  <assign value="33" stext="" etext="" descr="dLineComment"/>
+  <assign value="34" stext="&lt;i>" etext="&lt;/i>" descr="dPod"/>
+
+  <assign value="40" stext="" etext="" descr="dSymbol"/>
+  <assign value="41" stext="" etext="" descr="dSymbol2"/>
+  <assign value="42" stext="" etext="" descr="dPrefix"/>
+
+  <assign value="50" stext="" etext="" descr="dOperator"/>
+
+  <assign value="60" stext="&lt;b>" etext="&lt;/b>" descr="dKeyword"/>
+  <assign value="61" stext="&lt;b>"   etext="&lt;/b>" descr="dKeyword2"/>
+  <assign value="62" stext="&lt;b>" etext="&lt;/b>" descr="dType"/>
+
+  <assign value="70" stext="" etext="" type="2" descr="dFunction"/>
+  <assign value="71" stext="" etext="" descr="dRegister"/>
+  <assign value="72" stext="" etext="" descr="dConstant"/>
+  <assign value="73" stext="" etext="" descr="dBoolean"/>
+
+  <assign value="80" stext="" etext="" descr="dVar"/>
+  <assign value="81" stext="" etext="" descr="dVar2"/>
+  <assign value="82" stext="" etext="" descr="dIdentifier"/>
+
+  <assign value="90" stext="&lt;small>" etext="&lt;/small>" descr="dDirective"/>
+  <assign value="91" stext="&lt;small>"   etext="&lt;/small>" descr="dDirective2"/>
+
+  <assign value="100" stext=""  etext="" descr="dParam"/>
+  <assign value="101" stext=""  etext="" descr="dParam2"/>
+
+  <assign value="110" stext="" etext="" descr="dTag"/>
+  <assign value="111" stext="" etext="" descr="dOpenTag"/>
+  <assign value="112" stext="" etext="" descr="dCloseTag"/>
+
+  <assign value="120" stext="&lt;b>" etext="&lt;/b>" descr="dLabel"/>
+  <assign value="121" stext="&lt;b>" etext="&lt;/b>" descr="dInverseLabel"/>
+
+  <assign value="130" stext="" etext="" descr="dInsert"/>
+  <assign value="131" stext="" etext="" descr="dInsertStart"/>
+  <assign value="132" stext="" etext="" descr="dInsertEnd"/>
+
+  <assign value="140" stext="&lt;b>&lt;u>" etext="&lt;/u>&lt;/b>" type="3" descr="dError"/>
+  <assign value="141" stext="" etext="" descr="dErrorText"/>
+  <assign value="142" stext="&lt;u>" etext="&lt;/u>" type="3" descr="dTODO"/>
+  <assign value="143" stext="&lt;u>" etext="&lt;/u>" type="3" descr="dDebug"/>
+
+  <assign value="150" stext="&lt;i>" etext="&lt;/i>" descr="dPath"/>
+  <assign value="151" stext="&lt;i>" etext="&lt;/i>" descr="dURL"/>
+  <assign value="152" stext="&lt;i>" etext="&lt;/i>" descr="dEMail"/>
+
+  <assign value="160" stext="&lt;b>" etext="&lt;/b>" descr="dDate"/>
+  <assign value="161" stext="&lt;b>" etext="&lt;/b>" descr="dTime"/>
+
+  <assign value="170" stext=""  etext="" type="#100" descr="dpOpenStruct"/>
+  <assign value="171" stext=""  etext="" type="#101" descr="dpCloseStruct"/>
+  <assign value="172" stext="" etext="" type="#100" descr="dpOpenTag"/>
+  <assign value="173" stext="" etext="" type="#101" descr="dpCloseTag"/>
+
+</hrd>

@@ -1,0 +1,17 @@
+.Language=English,English
+.PluginContents=String sorting
+
+@Contents
+$ #String sorting#
+        This plugin allows to sorting. The selected lines (or parts of lines) 
+are sorting only. A key for sorting is the selected area always (for example, 
+vertical block).
+
+ #Only selected#     Only data inside the selected block are 
+                   sorted. Otherwise, the whole lines are 
+                   rearranged.
+
+ #Inverse sorting#   The return order of sorting.
+
+ #Case sensitivity#  To distinguish the uppercase and lowercase
+                   symbols.

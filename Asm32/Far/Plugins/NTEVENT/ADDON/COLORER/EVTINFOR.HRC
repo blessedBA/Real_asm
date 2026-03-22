@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="Windows-1251"?>
+<!DOCTYPE hrc SYSTEM "../hrc.dtd">
+<?xml-stylesheet type="text/xsl" href="../hrc.xsl"?>
+<!--
+  ‘еҐ¬  а бЄа бЄЁ д ©«®ў *.info (¤«п Ї« ЈЁ­  NTEvent).
+  ђ §а Ў®в ­® ¤«п "Colorer 4ever".
+  „®Ў ўмвҐ б«Ґ¤гойЁҐ бва®ЄЁ ў д ©« colorer.hrc:
+  ==========================================================
+  <type descr="‘®ЎлвЁп" name="evt" exts="/\.info$/i">
+    <load name="_addons\evtinfor.hrc"/>
+    <scheme name="EvtInfo"/>
+  </type>
+  ==========================================================
+-->
+<hrc version="4ever">
+
+<define name="eiCategory" value="dKeyword"/>
+<define name="eiText"     value="dParam"/>
+<define name="eiDate"     value="dDate"/>
+<define name="eiTime"     value="dTime"/>
+<define name="eiError"    value="dError"/>
+<define name="eiWarning"  value="dTodo"/>
+<define name="eiOther"    value="eiText"/>
+
+<scheme name="other_stuff"> <!--include here whatever you want-->
+   <inherit scheme="mPath"/>
+   <inherit scheme="mNetAddresses"/>
+   <inherit scheme="mStdStr"/>
+   <inherit scheme="mCHexNumb"/>
+</scheme>
+<scheme name="MultiLine">
+   <block start="/^\M./" end="/$/" scheme="other_stuff" region="eiText"/>
+</scheme>
+
+<scheme name="EvtInfo">
+   <regexp match="/\M^([\w\s]+):(.*)$/" region1="dFunction"/>
+   <regexp match="/^(„ в ):\s+(.*)$/" region1="eiCategory" region2="eiDate"/>
+   <regexp match="/^(‚аҐ¬п):\s+(.*)$/" region1="eiCategory" region2="eiTime"/>
+   <regexp match="/^(Џ®«м§®ў вҐ«м):\s+(.*)$/" region1="eiCategory" region2="eiText"/>
+   <regexp match="/^(Љ®¬ЇмовҐа):\s+(.*)$/" region1="eiCategory" region2="eiText"/>
+   <regexp match="/^(Љ®¤ \(ID\)):\s+(.*)$/" region1="eiCategory" region2="eiText"/>
+   <regexp match="/^(€бв®з­ЁЄ):\s+(.*)$/" region1="eiCategory" region2="eiText"/>
+   <regexp match="/^(’ЁЇ):\s+((ЋиЁЎЄ )|(ЏаҐ¤гЇаҐ¦¤Ґ­ЁҐ)|(.*))$/" region1="eiCategory"
+           region3="eiError" region4="eiWarning" region5="eiOther"/>
+   <regexp match="/^(Љ вҐЈ®аЁп):\s+(.*)$/" region1="eiCategory" region2="eiText"/>
+   <regexp match="/^(Џа®¤гЄв):\s+(.*)$/" region1="eiCategory" region2="eiText"/>
+
+   <block start="/(ЋЇЁб ­ЁҐ):/" end="/^$/" scheme="MultiLine"
+          region01="eiCategory"/>
+
+   <block start="/(„ ­­лҐ):/" end="/^$/" scheme="MultiLine"
+          region01="eiCategory"/>
+</scheme>
+</hrc>

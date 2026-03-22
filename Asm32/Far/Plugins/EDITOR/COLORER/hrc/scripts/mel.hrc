@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="Windows-1251"?>
+<!DOCTYPE hrc SYSTEM "../hrc.dtd">
+<?xml-stylesheet type="text/xsl" href="../hrc.xsl"?>
+<!--
+    3D Max Syntax
+With help of:
+-->
+
+<hrc>
+
+<scheme name="3dmax_mel">
+   <!-- Numbers -->
+   <inherit scheme="mCHexNumb"/>
+   <inherit scheme="mFloatNumb"/>
+   <inherit scheme="mDecNumb"/>
+
+   <!-- Strings -->
+   <regexp match='/("((\\.)|[^\\"])*")/' region0="dString"/>
+   <regexp match='/(`((\\.)|[^\\"])*`)/' region0="dString"/>
+   <regexp match="/('..??.??.??')/" region0="dString"/>
+
+   <!-- Linear Comments-->
+   <regexp match="/(\/\/.*$)/" region0="dComment"/>
+   <regexp match="/(--.*$)/" region0="dComment"/>
+   <block start="/\/\*/" end="/\*\//" scheme="Comment"
+          region="dComment" region00="dpOpenStruct" region10="dpCloseStruct"/>
+
+   <!-- Standard Symbols -->
+   <keywords region="dSymbol">
+      <symb name=";"/><symb name="="/><symb name="+"/><symb name="-"/>
+      <symb name="/"/><symb name="*"/><symb name="&amp;"/><symb name="|"/>
+      <symb name="^"/><symb name="("/><symb name=")"/><symb name="["/>
+      <symb name="]"/><symb name=","/><symb name="."/><symb name=":"/>
+      <symb name="!"/><symb name="~"/><symb name="&lt;"/><symb name="&gt;"/>
+      <symb name="%"/><symb name="{"/><symb name="}"/><symb name="?"/>
+   </keywords>
+
+   <!-- KeyWords -->
+   <keywords  region="dKeyword">
+      <word name="menuItem"/>
+      <word name="global"/>
+      <word name="proc"/>
+      <word name="toolButton"/>
+      <word name="setParent"/>
+      <word name="print"/>
+      <word name="source"/>
+      <word name="on"/>
+      <word name="do"/>
+      <word name="int"/>
+      <word name="string"/>
+      <word name="float"/>
+   </keywords>
+</scheme>
+
+</hrc>

@@ -1,0 +1,46 @@
+.Language=English,English
+
+"colorer"
+
+"colorer's settings"
+
+"&Turn off colorer"
+"&Log errors (c:\_colorer.log)"
+"&Don't detect hrc directory changes"
+
+"Cro&ss"
+"&Pairs"
+"S&yntax"
+
+"&OK"
+" &Reload "
+" R&eload all "
+"&Cancel"
+
+"&Base file:"
+"&Assigns file:"
+
+"&1 List types"
+"&2 Match pair"
+"&3 Select block"
+"&4 Select pair"
+"&5 List functions"
+"&6 Find errors"
+"&7 Select region"
+"&C Configure"
+
+"Total %d types"
+"Select syntax"
+"Errors list [%s]"
+"Functions list [%s]"
+"Nothing found"
+"Gotcha"
+"Enter - choose, [a-z:_] - filter"
+
+"Just wait - I'm reloading..."
+"Hm... I can't load"
+"Die"
+"Hm... bad colorer version:"
+"Try anyway"
+"Fatal hrc base load error (bad registry paths?)"
+"Need colorer"

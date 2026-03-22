@@ -1,0 +1,24 @@
+REGEDIT4
+
+[HKEY_CURRENT_USER\Software\Far\Plugins\Date-n-Time]
+
+[HKEY_CURRENT_USER\Software\Far\Plugins\Date-n-Time\Format1]
+"Name"="Dir Name"
+"Format"="%d.%b.%Y"
+"Mode"=dword:00000000
+
+[HKEY_CURRENT_USER\Software\Far\Plugins\Date-n-Time\Format2]
+"Name"="Time"
+"Format"="%X"
+"Mode"=dword:00010001
+
+[HKEY_CURRENT_USER\Software\Far\Plugins\Date-n-Time\Format3]
+"Name"="Date"
+"Format"="%x"
+"Mode"=dword:00010001
+
+[HKEY_CURRENT_USER\Software\Far\Plugins\Date-n-Time\Format4]
+"Name"="Archive"
+"Format"="W:\\Archive\\%Y\\%B\\%d%p\\"
+"Mode"=dword:00010001
+

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<renewal>
+	<plugin guid="{C5DA0A14-FFAF-453E-9C3A-10B4C0FC0804}">
+		<url arch="any">http://code.google.com/p/farplugs/downloads/list</url>
+		<regex arch="x64">//farplugs.googlecode.com/files/FarSudo_(\d+)\.(\d+)_x64\.zip</regex>
+		<regex arch="x86">//farplugs.googlecode.com/files/FarSudo_(\d+)\.(\d+)_x86\.zip</regex>
+		<srcpath arch="any">Sudo</srcpath>
+	</plugin>
+</renewal>

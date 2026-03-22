@@ -1,0 +1,41 @@
+[English]
+0=Temporary panel
+1=Remove
+2=Updating temporary panel contents
+3=Sending files to temporary panel
+4=Switch
+5=" Temporary panel #%d "
+6=Total files:
+7=Available temporary panels
+8=Save file list as
+9=TmpPanel.SaveList
+10=Error
+11=SavLst
+
+[Russian]
+0=Временная панель
+1=Убрать
+2=Обновление содержимого временной панели
+3=Передача файлов во временную панель
+4=Выбор
+5=" Временная панель #%d "
+6=Всего файлов:
+7=Доступные временные панели
+8=Сохранить список как
+9=TmpPanel.SaveList
+10=Ошибка
+11=СохСпи
+
+[Ukrainian]
+0=Тимчасова панель
+1=Прибрати
+2=Поновити вмiст тимчасової панелi
+3=Передача файлiв у тимчасову панель
+4=Вибiр
+5=" Тимчасова панель #%d "
+6=Всього файлiв:
+7=Доступнi тимчасовi панелi
+8=Зберегти список як
+9=TmpPanel.SaveList
+10=Помилка 
+11=ЗбрСпи

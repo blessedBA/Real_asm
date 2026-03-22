@@ -1,0 +1,37 @@
+.Language=Russian,Russian (Русский)
+
+"Unicode Wizard"
+
+"Декодировать"
+"Кодировать"
+"Обрабатывать всегда только выделенное"
+"Перекодировать результат в текущую кодировку редактора"
+
+"Не могу создать файл"
+"Выделенной области не найдено"
+
+"Панель"
+"Редактор"
+"Программа просмотра"
+
+"ОК"
+
+"Unicode Wizard (version %d.%d)"
+"FAR 1.7x PlugIn module"
+
+"Author :"
+"Ivan Sintyurin AKA Spinoza"
+"E-mail :  spinoza@mail.ru"
+"WWW:"
+"http://www.moris.ru/~spinoza"
+"DISTRIBUTION: see License.txt"
+
+"Здесь могла бы быть ваша реклама..."
+
+"Автоопределение"
+"Unicode"
+"Unicode Big Endian"
+"UTF-7"
+"UTF-8"
+"Quoted-Printable"
+"Base64"

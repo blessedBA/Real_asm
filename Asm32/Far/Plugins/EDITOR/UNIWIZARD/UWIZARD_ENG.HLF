@@ -1,0 +1,197 @@
+.Language=English,English
+.PluginContents=Unicode Wizard
+
+@Contents
+$^#Unicode Wizard (version 1.6 from 26.01.2006)#
+
+    This plugin, Unicode Wizard (UWizard), is intended for "#editing#" and
+"#viewing#" of files in #unicode#, #utf-7#, #utf-8# and #quoted-printable# encodings.
+For #base64# it is possible only to decode and only in the ~editor~@Editor@.
+
+    UWizard allows working with those files as if they where archives. Upon
+entering such an "archive" you will see a file with the original contents, but
+it will already be decoded to OEM (in the case of quoted-printable, the
+decoded file can be in any other codepage, such as koi8-r, that depends on the
+program that created the file and not on UWizard). Changes made to that file
+will be reflected on the original file.
+
+    Files encoded in Unicode and UTF-8 are automatically recognized by the
+plugin, if they have the appropriate signatures, upon "Enter" in panels. If
+such signatures are not found but you are sure that you know the encoding of
+the file, you can run UWizard manually from the command line.
+
+    And even more, UWizard can work with files already opened in the editor.
+For that you should run it from the editor, simple eh?
+
+    ~Working in editor~@Editor@
+    ~Working in panels~@PanelsMenu@
+    ~Command line~@CMD@
+    ~About the author...~@author@
+
+^~Registration~@reg@
+
+    #If you want to support program's development, please donate some money.#
+#My purses in ~WebMoney.ru~@http://WebMoney.ru@#
+#(~www.wmtransfer.com~@http://www.wmtransfer.com@) system: Z787475721790 (for USD),#
+#E876273527569 (for Euro), R538290555814 (for RUR).#
+
+@reg
+$^#Registering Unicode Wizard#
+
+    See #License.txt#.
+
+ ~Contents~@Contents@
+@author
+$ #About the author of this plugin#
+
+    [...censored...]
+
+    Well, friends know who I am and where to find me, so I won't be describing
+it in glowing terms.
+    All that is needed can always be found here:
+
+^~http://www.moris.ru/~~spinoza~@http://www.moris.ru/~spinoza@
+
+    Use this plugin as you please but don't forget to vote for it on plugring:
+
+^~http://plugring.farmanager.com/cgi-bin/voter.cgi?ID=337~@http://plugring.farmanager.com/cgi-bin/voter.cgi?ID=337@
+
+
+    Send E-Mail here: ~spinoza@@mail.ru~@mailto:Spinoza@@mail.ru?Subject=UWizard@
+
+ #P.S. You can play online games on my site!#
+
+ ~Contents~@Contents@
+
+@CMD
+$^#Command line syntax#
+
+
+    To open the plugin from the command line, user menu or file associations
+you can use the commands below:
+
+  #UWA#:#FileName#
+  #UW#:#FileName#
+  #UBE#:#FileName#
+  #UTF7#:#FileName#
+  #UTF8#:#FileName#
+  #QP#:#FileName#
+
+  #UWA#, #UW#, #UBE#, #UTF7#, #UTF8#, #QP#
+    Plugin's prefixes (in accordance to autodetection, #Unicode#, #Unicode Big Endian#,
+#UTF-7#, #UTF-8# and #Quoted-printable#)
+
+  #FileName# - the name of the file you want to process.
+
+
+    To automatically decode and open a file in the internal viewer without
+opening plugin's panel, use the following commands:
+
+  UWA:#<#FileName
+  UW:#<#FileName
+  UBE:#<#FileName
+  UTF7:#<#FileName
+  UTF8:#<#FileName
+  QP:#<#FileName
+
+
+    To automatically decode and open a file in the internal editor without
+opening plugin's panel, use the following commands:
+
+  UW:#*#FileName
+  UW:#*#FileName
+  UBE:#*#FileName
+  UTF7:#*#FileName
+  UTF8:#*#FileName
+  QP:#*#FileName
+
+    If the file opened in such way is changed then all the changes will be
+reflected on the original file.
+
+    If you feel uncomfortable using the command line, you can always open the
+plugin through the standard F11 ~menu~@PanelsMenu@.
+
+ ~Contents~@Contents@
+@Editor
+$^#Unicode Wizard: working in editor#
+
+    The plugin can encode the contents of the file being edited from the
+currently selected codepage to UTF-7, UTF-8 or quoted-printable and to decode the file
+contents from Unicode, UTF-8, quoted-printable or Base64 encodings to the
+codepage selected in the editor. Working with UTF-7, UTF-8 and Unicode is available
+only when the current editor's codepage is OEM (when you see DOS in the status
+line).
+
+    #Always process only selected area#
+    If this option is on then the plugin will always process only the selected
+area. If this option is off then the plugin will process the selected area if
+such exists or the whole file if there is no selection. When processing the
+whole file (only when there is no selection!) and decoding from
+quoted-printable then occurs concatenation of lines ending with '='.
+
+    #Translate result to the current editor's codepage#
+    The work order in editor: the data is decoded from the current codepage
+(usually selected by #F8# or #Shift-F8#) to OEM, then the selected action
+from the menu is preformed (encoding or decoding of the data according to the
+selected item), after all this, if the option "#Translate result to...#" is
+on, then the data will also be translated from OEM to the current codepage.
+
+    #Notes#
+    Encoding to Unicode is not available because of the internal workings of
+FAR editor - in which the data is processed line by line, because of that the
+plugin can only encode to Unicode each line separately, after saving such a
+file you will get anything but only not a correct file in the Unicode
+encoding. If it is a necessity for you to be able to edit unicode files then
+run the plugin from the ~command line~@CMD@, and there you will come to the
+particulars.
+    If when decoding from Base64 you have some other not Base64 encoded text in
+the file you must select and operate with the Base64 encoded section only.
+    When decoding from Base64 the line is always processed as a whole,
+even if only part of the line is selected, because of the specifics of
+this encoding.
+
+ ~Contents~@Contents@
+@PanelsMenu
+$^#Unicode Wizard: working in panels#
+
+    The menu command is applied to the file currently under cursor.
+
+    #Panel: Autodetect#
+    UWizard detects Unicode and UTF-8-files by checking for standard sequences
+of bytes in the beginning of the file (FEFF, FFFE and EFBBBF, also see
+uwizard.ini description). If such
+sequence is not found then autodetection ends without success. If the file
+type was detected then a standard UWizard panel is created and opened, if the
+file type was not detected then no panel is created.
+
+    #Panel: Unicode, Unicode Big Endian,#
+    #UTF-7, UTF-8, Quoted-printable#
+    It is considered that the file under cursor is Unicode, Unicode Big Endian, UTF-7, UTF-8 or
+Quoted-printable accordingly, the corresponding panel is then created and
+opened.
+
+    #Editor: Autodetect#
+    When the file type is detected successfully (see above) that file is then
+translated to OEM and the result is opened in a modal editor. If the file
+opened in the editor in such a way is changed then after closing the editor
+all the changes will be applied to the original file. If autodetection wasn't
+successful then simply the file under cursor is opened in a regular non modal
+editor.
+
+    #Editor: Unicode, Unicode Big Endian,#
+    #UTF-7, UTF-8, Quoted-printable#
+    It is considered that the file under cursor is Unicode, Unicode Big Endian, UTF-7, UTF-8 or
+Quoted-printable accordingly.
+
+    #Viewer: Autodetect#
+    When the file type is detected successfully (see above) that file is then
+translated to OEM and the result is opened in the viewer. If autodetection
+wasn't successful then the original file is opened in the viewer.
+
+    #Viewer: Unicode, Unicode Big Endian,#
+    #UTF-7, UTF-8, Quoted-printable#
+    It is considered that the file under cursor is Unicode, Unicode Big Endian, UTF-7, UTF-8 or
+Quoted-printable accordingly.
+
+
+ ~Contents~@Contents@

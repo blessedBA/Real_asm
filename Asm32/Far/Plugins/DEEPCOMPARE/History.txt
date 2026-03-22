@@ -1,0 +1,37 @@
+Deep Compare
+
+ ! Major change
+ + Feature added
+ - Bug fixed
+ * Minor change
+
+Version 1.13 (06.03.2006)
+	- Fixed comparing by contents for large files
+	- Fixed 'Two-seconds precision'
+
+Version 1.12 (17.02.2006)
+	- When using cache, folders are not more permanently locked (but you may need to retry Moving/Deleting them)
+
+Version 1.11 (23.01.2006)
+	- Zero-length files are not considered different by content
+	- Fixed case-insensitive filename comparison in subfolders
+
+Version 1.10 (20.01.2006)
+	- Fixed Compare by contents
+	- Fixed Exclude masks
+	* It's possible to disable cache at all in configuration
+	* Filenames can be compared case-sensitively or not
+	* Russian language file added
+
+Version 1.00 (21.12.2005)
+	+ Supports comparing only files matching given mask
+	+ Supports recursing only folders matching given mask (e.g. you can ignore CVS folders or such)
+	+ Supports attribute comparison
+	+ Can ignore common 'false time differences'
+	+ Supports limited contents comparison (only first N Kb)
+
+	! Supports caching comparison results - so that if you compared C:\Dir1 and
+	  D:\Dir2\SubDir1, you will get results for C:\Dir1\SD2 and
+	  D:\Dir2\SubDir1\SD2 instantly, without rescanning deeper.
+	  Cache is automatically flushed when changes are detected in one of compared
+	  directories.

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="Windows-1251"?>
+<!DOCTYPE hrd SYSTEM "../hrd.dtd">
+<hrd>
+
+  <assign value="2" fore="#00000f" back="#000001" descr="dText"/>
+  <assign value="3" fore="#00000e" back="#000000" descr="dRow"/>
+  <assign value="4" fore="#00000e" back="#000000" descr="dColumn"/>
+  <assign value="5" type="#1" descr="dSyntax"/>
+
+  <assign value="10" fore="#00000a" descr="dNumber"/>
+  <assign value="11" fore="#00000a" descr="dNumDec"/>
+  <assign value="12" fore="#00000a" descr="dNumHex"/>
+  <assign value="13" fore="#00000a" descr="dNumBin"/>
+  <assign value="14" fore="#00000a" descr="dNumOct"/>
+  <assign value="15" fore="#00000a" descr="dNumFloat"/>
+  <assign value="16" fore="#000002" descr="dNumSuffix"/>
+
+  <assign value="20" fore="#00000e" descr="dString"/>
+  <assign value="21" fore="#000006" descr="dString2"/>
+  <assign value="22" fore="#00000c" descr="dStringQuote"/>
+  <assign value="23" fore="#00000f" descr="dStringQuote2"/>
+  <assign value="24" fore="#00000c" descr="dCharacter"/>
+  <assign value="25" fore="#00000c" descr="dCharacter2"/>
+
+  <assign value="30" fore="#000003" type="#1" descr="dComment"/>
+  <assign value="31" fore="#000007" descr="dComment2"/>
+  <assign value="32" fore="#000003" descr="dBlockComment"/>
+  <assign value="33" fore="#000003" descr="dLineComment"/>
+  <assign value="34" fore="#000007" descr="dPod"/>
+
+  <assign value="40" fore="#00000b" descr="dSymbol"/>
+  <assign value="41" fore="#00000e" descr="dSymbol2"/>
+  <assign value="42" fore="#00000e" descr="dPrefix"/>
+
+  <assign value="50" fore="#00000e" descr="dOperator"/>
+
+  <assign value="60" fore="#00000b" descr="dKeyword"/>
+  <assign value="61" fore="#00000b" descr="dKeyword2"/>
+  <assign value="62" fore="#00000b" descr="dType"/>
+
+  <assign value="70" type="#2" descr="dFunction"/>
+  <assign value="71" fore="#00000b" descr="dRegister"/>
+  <assign value="72" fore="#000003" descr="dConstant"/>
+  <assign value="73" fore="#00000b" descr="dBoolean"/>
+
+  <assign value="80" fore="#00000f" descr="dVar"/>
+  <assign value="81" fore="#000007" descr="dVar2"/>
+  <assign value="82" fore="#000002" descr="dIdentifier"/>
+
+  <assign value="90" fore="#00000a" descr="dDirective"/>
+  <assign value="91" fore="#000002" descr="dDirective2"/>
+
+  <assign value="100" fore="#00000a" descr="dParam"/>
+  <assign value="101" fore="#000002" descr="dParam2"/>
+
+  <assign value="110" fore="#00000b" descr="dTag"/>
+  <assign value="111" fore="#00000e" descr="dOpenTag"/>
+  <assign value="112" fore="#00000e" descr="dCloseTag"/>
+
+  <assign value="120" fore="#00000e" descr="dLabel"/>
+  <assign value="121" fore="#000001" back="#00000f" descr="dInverseLabel"/>
+
+  <assign value="130" fore="#00000f" back="#000000" descr="dInsert"/>
+  <assign value="131" fore="#00000f" back="#000000" descr="dInsertStart"/>
+  <assign value="132" fore="#00000f" back="#000000" descr="dInsertEnd"/>
+
+  <assign value="140" fore="#00000f" back="#000004" type="#3" descr="dError"/>
+  <assign value="141" fore="#00000d" descr="dErrorText"/>
+  <assign value="142" fore="#00000f" back="#000009" type="#3" descr="dTODO"/>
+  <assign value="143" fore="#00000e" back="#000005" type="#3" descr="dDebug"/>
+
+  <assign value="150" fore="#00000c" descr="dPath"/>
+  <assign value="151" fore="#000004" descr="dURL"/>
+  <assign value="152" fore="#000006" descr="dEMail"/>
+
+  <assign value="160" fore="#00000e" descr="dDate"/>
+  <assign value="161" fore="#00000a" descr="dTime"/>
+
+  <assign value="170" fore="#000004" type="#100" descr="dpOpenStruct"/>
+  <assign value="171" fore="#000004" type="#101" descr="dpCloseStruct"/>
+  <assign value="172" fore="#00000e" back="#000008" type="#100" descr="dpOpenTag"/>
+  <assign value="173" fore="#00000e" back="#000008" type="#101" descr="dpCloseTag"/>
+
+</hrd>

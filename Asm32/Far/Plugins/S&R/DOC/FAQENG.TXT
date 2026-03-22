@@ -1,0 +1,424 @@
+FAQ on "What is Search And Replace and how to eat it..."
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ADVICE: READ HELP MORE ATTENTIVELY!
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  This FAQ includes answers for questions, which  I  was  asked  sometimes  by
+S_AND_R user (by mail, voice etc.). If you haven't found an  answer  for  your
+question here, ask me, and I'll include it (and the answer :-) in this FAQ. If
+you've got a question and an answer, and you'd like to see  it  in  this  FAQ,
+also send them to me.
+
+Maintainer - Ivan Sintyurin/ AKA Spinoza
+(spinoza@mail.ru, http://www.moris.ru/~spinoza)
+
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴�
+In no answer author given, it means, the author is me.
+Currently, answers of the following people have been used in FAQ:
+IR -> Igor Ruskih (ruiv@uic.nnov.ru)
+AY -> Alex Yaroslavsky (trexinc@yandex.ru)
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴�
+VERSION OF [Sat 19 Jul 14:49:11 2003]
+Legend:  * - questions with changed/added answers
+         + - new questions
+
+ALL OF THE FOLLOWING IS RIGHT ONLY FOR S_AND_R VERSION 2.1 AND LATER
+(maybe, it will work in older versions, but I'm too lazy to try :-)
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+[0] I've found a terrible bug!!!
+[1] What's this, at the end?
+[2] What about search and replace with regular expressions?
+[3] What, if I want to replace 5 different words?
+[4] What, if I want to replace 1000 different words?
+[5] I want to search, using all available code pages?
+[6] I've got a heap of files, in which there are unneeded spaces in the end
+    of lines. It's boring to call Trucer for every file. What can I do?
+[7] Got a heap of files. Want to replace many null lines into one. How to do?
+[8] ... and if I want to delete all the null lines?
+[9] What are all these regexps needed for, in the end?
+[10] These regexps are such a great thing. Thanks!
+[11] I want to do this and that, use such a regexp for it, and got
+     a question...
+[12] Wanna delete the line, containing word blablabla. How to do it?
+[13] I use regexps. I have made a little mistake, and your [censored] plug-in
+     have replaced everything in my file in absolutely improper way.
+[14] Why does it work so badly?
+[15] I want to lowercase all the tags in html-file.
+[16] How to delete all of these tags, in the end?
+[17] Cannot search with hex-codes using simple search (w/o using regexps)...
+[18] What regexp means end of the line, in the end?
+[19] When will it be possible to use in editor?
+[20] What shit is all this? Searching with file-mask *.* causes bak-files
+     to create...
+[21] I want the same kind of menu for opening a file in a viewer, as using
+     shift-f4. How can I do it?
+[22] Why do you overload the plug-in with s&r:view etc?
+[23] I want to search words...
+[24] I want plug-in automatically to start, when I press enter on it's
+     configuration file.
+[25] Your regexps handling is too slow :(
+[26] This plug-in can numerate lines, can't it?
+[27] How can I sweep a vertical block in editor?
+[28] Why doesn't s&r allow to "glue" lines in editor?
+[29] Your ctrl-up/down macros produce bugs with mousewheel.
+[30] I want to place found files on temp panel.
+[31] How can I specify search area "Search in the current folder only"
+     etc. (similar to alt-f7)?
+[32] How to delete the duplicated strings from a file?
+[33] How to swap everything in each line of the editor all, what is arranged
+     up to the character '=' and after this character?
+[34] The item of the plugin module is added in the "plugins menu" of the FAR
+     only after of the first execution of the S&R in panels or in the editor.
+[35] How to write regexp equal to  "text1  --  any  symbols  sequence  except
+     empty line -- text2"?
+[36] VerInfo: How to view version information for a file on archive panel?
+[37] Replacement "^$" with "" does not delete  empty  lines  even  if  option
+     "replace options/delete empty lines" is set.
+[38] Is it true S&R can replace standard FAR "Temporary panel" plugin?
+[39] How can I make S&R settings to be the same always when FAR starts?
+[40] How can I use the lookahead/backward search regexp's operators?
+[41] Why does message "Search string is empty!" appear when I want to search
+     a regexp, which starts from '/' symbol?
+[42] Why are you using an archive, which is enveloped into another  one,  for
+     distribution of S&R?
++[43] In the viewer (but not in the editor) we search for  regular  expression
+     \bx. Operation of continuation of search considers that \b  condition  is
+     always true and finds the second "x" in "xx". Is it correct?
+
+Here your question could be...
+
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+[0] I've found a terrible bug!!!
+
+    Everything could happen :-) If you wish bug to be found and cut  out,  send
+me the following information:
+ - bug description and sequence of actions led to it
+ - S&R/FAR/Windows version
+ - Data from: HKCU\Software\Far\Plugins\S_And_R
+   (of from HKCU\Software\Far\Users\UserName\Plugins\S_And_R, if you execute
+    FAR by command: far /u UserName)
+ - size of file, on which the bug have occurred
+ - CPU/size of HDD, on which the file is written/it's free space/RAM size
+ - S&R/FAR/Windows last message
+ - any additional information, that seems to you useful
+
+ DO NOT SEND:
+ - screenshots (except those, which have been created with ALT+INS), large
+   attaches etc.
+
+[1] What's this, at the end?
+
+    It's a virus. Hypnoses people, makes them copying it with increasing speed,
+changing some vital bytes in your file (of course, without asking  you  first!)
+:-)))
+
+    Seriously - short answer to this question is in readme.txt, and even  I  do
+not know the full answer - the application are of this program is very large.
+
+[2] What about search and replace with regular expressions?
+
+    Invented in version 0.3
+    Just set the corresponding option.
+
+[3] What, if I want to replace 5 different words?
+
+    Currently, there is the only way for doing it - to run the program  5 times
+(the most convenient way is to run it from user menu  with  different  settings
+file). In the future, maybe, it'll be possible to make such a multi-replacement
+at once...
+
+[4] What, if I want to replace 1000 different words?
+
+    Listen, guy, won't PROMT help you in this case? :-)
+
+[5] I want to search, using all available code pages?
+
+    Appeared since version 1.8.
+
+[6] I've got a heap of files, in which there are unneeded spaces in the end
+    of lines. It's boring to call Trucer for every file. What can I do?
+
+    There are two ways, but they won't work for the last line of the file,
+if it doesn't end with end of line symbols (and that's right).
+
+    [x] Regular expressions
+Variant 1 (for files with lines ending with \r\n):
+       Search=\x20+\r\n   (or "\x20+$", see configurations)
+       [x] Replace with=\$
+
+Variant 2 (universal): Search=\x20+(\r?\n)
+                           [x] Replace with=$1
+
+     Both variants are intended to be used in panels. In editor you may use the
+following:
+     [x] Regular expressions
+     Search=\s+$
+     [x] Replace with=(null string)
+     You may turn off option "[ ] Delete empty lines", if you do not want  S&R
+to delete lines, which consist of spaces only.
+
+[7] Got a heap of files. Want to replace many null lines into one. How to do?
+
+    In panels:
+    Search=(\r\n){2,}
+    [x] Replace with=\$\$
+    [x] Regular expressions
+
+[8] ... and if I want to delete all the null lines?
+
+    Then:
+    [x] Replace with=\$
+
+[9] What are all these regexps needed for, in the end?
+
+    You, as far as you ask such a question, don't need them...
+
+[10] These regexps are such a great thing. Thanks!
+
+    Don't forget to thank Konstantin Stupnik, I use his regexps parsing module
+in the S&R.
+
+[11] I want to do this and that, use such a regexp for it, and got
+     a question...
+
+    Send all questions to me or read books :-)
+
+[12] Wanna delete the line, containing word blablabla. How to do it?
+
+    [x] Replace with=\$
+    [x] Regular expressions
+IR> Search=\r\n[^\n]*blablabla[^\n]*\r\n
+Alternative variant:
+    Search=^[^\n]*blablabla[^\n]*\r\n
+
+Note:
+    Starting with version 1.0 this regexp is right, when option "Process
+    several lines" is set. If it is not set, you can use regexp like:
+    Search=\r\n.*blablabla.*\r\n
+
+    In editor you may use:
+    [x] Regular expressions
+    [x] Delete empty lines
+    Search=^[^\n]*blablabla[^\n]*\r\n
+    Replace with=(null string)
+
+[13] I use regexps. I have made a little mistake, and your [censored] plug-in
+     have replaced everything in my file in absolutely improper way.
+
+    1. DO NOT WRITE IRREGULAR REGEXPS!
+    2. [x] Save original file copies
+    3. [x] Replacement confirmation
+
+[14] Why does it work so badly?
+
+    a) What makes you saying "badly"? (maybe, something may be corrected)
+       See also FAQ#0
+    b) Write the same yourself, egg-head
+
+[15] I want to lowercase all the tags in html-file.
+
+    Search=<.+?>
+    [x] Replace with=\L$0
+    [x] Regular expressions
+
+[16] How to delete all of these tags, in the end?
+
+    Search=<.+?>
+    [x] Replace with=(null string)
+    [x] Regular expressions
+
+[17] Cannot search with hex-codes using simple search (w/o using regexps)...
+
+    They'll be searched only in case sensitive mode, i.e. it should be:
+    [x] Case sensitive
+
+[18] What regexp means end of the line, in the end?
+
+    Use "\r\n" (or "$", see configuration), "\n" or universal - "\r?\n".
+    See also FAQ#6
+
+[19] When will it be possible to use in editor?
+
+    It is possible starting from version 1.0
+
+[20] What shit is all this? Searching with file-mask *.* causes bak-files
+     to create...
+
+    Completely cured in version 1.1.
+
+[21] I want the same kind of menu for opening a file in a viewer, as using
+     shift-f4. How can I do it?
+
+    S&R starting with version 0.9 can't help you... Use  Far Commands  plug-in
+from Far distribution.
+
+[22] Why do you overload the plug-in with s&r:view etc?
+
+    No such things anymore. I threw them away in version 0.9.
+
+[23] I want to search words...
+
+    If you use regexps search, see help on special characters \b.
+    If you use simple search, set "[x] Whole words only".
+
+
+[24] I want plug-in automatically to start, when I press enter on it's
+     configuration file.
+
+    To do it,  you  should  create  configuration  files  with  some  original
+extension, i.e. ".sr".  Then  it  will  be  possible  to  make  the  following
+association to "*.sr" files on the Enter key:  "s&r:i/!\!.!".  After  that  to
+run plug-in you'll be able just to press Enter on "*.sr" files...
+
+[25] Your regexps handling is too slow :(
+
+    Work with regexps is performed by Konstantin  Stupnik's  parser.  Ask  him
+about things, concerning parser work speed...
+
+[26] This plug-in can numerate lines, can't it?
+
+    Yes, it can. Use replacement string regexp "\#" to perform it...
+
+[27] How can I sweep a vertical block in editor?
+
+    Search for=.
+    Replace with=\x20
+    [x] Regular expressions
+    () Selected text
+
+[28] Why doesn't s&r allow to "glue" lines in editor?
+
+    'Cose there's no standard method to do it in Far. Of course, it's possible
+to solve the problem without using Far, but it will cause plug-in  work  speed
+in editor to decrease _essentially_. If you wish  to  work  with  EOL  symbols
+more productively (including, you wish to "glue" lines), run s&r in panels and
+process the file you need.
+
+[29] Your ctrl-up/down macros produce bugs with mousewheel.
+
+    Put these macros to any other keys :)
+
+[30] I want to place found files on temp panel.
+
+    Appeared since version 1.6, it may be turned on in "Configuration/Search",
+but it works only in FAR 1.70 and later versions.
+
+[31] How can I specify search area "Search in the current folder only"
+     etc. (similar to alt-f7)?
+
+    a) "Search in all non-removable drives"
+       () Search in folders: *
+       [x] Process subfolders
+
+    b) "Search from the root folder"
+    No perfect analogue, you'll have to specify the path, or jump to disk's
+root folder and start searching there.
+
+    c) "Search from the current folder"
+       () Search with file-mask
+       [x] Process subfolders
+
+    d) "Search in the current folder only"
+       () Search with file-mask
+       [ ] Process subfolders
+
+    e) "Search in selected folders"
+       () Search in selected
+
+[32] How to delete the duplicated strings from a file?
+
+    For example...
+    In panels set cursor to file, invoke S&R.
+    () Search in selected
+    Search for=^(.+\r\n)\1+
+    Replace with=$1
+    [x] Regular expressions
+    [ ] Process several lines
+
+[33] How to swap in each line of the editor all, that is arranged
+     up to the character '=' and after this character?
+
+    Search for=^(.*?)=(.*?)$
+    Replace with=$2=$1
+    [x] Regular expressions
+
+[34] Item of the plugin module is added in "plugins menu" of FAR
+     only after the first execution of S&R in panels or in editor.
+
+    Clear your plugins cache (you may use ClearPluginsCache.bat)
+
+[35] How to write regexp equal to  "text1  --  any  symbols  sequence  except
+     empty line -- text2"?
+
+    [x] Regular expressions
+    [x] Process several lines
+    Search=text1((?!\r\n\r\n).)+?text2
+    "\r\n\r\n" means empty string - two eol-sequences if DOS  format.  If  you
+work with file in unix-format you may use:
+    Search=text1((?!\n\n).)+?text2
+    Universal variant:
+    Search=text1((?!\r?\n\r?\n).)+?text2
+
+[36] VerInfo: How to view version information for a file on archive panel?
+
+    You must open a file in the viewer (F3) and execute VerInfo there.
+
+[37] Replacement "^$" with "" does not delete  empty  lines  even  if  option
+     "replace options/delete empty lines" is set.
+
+     S&R cannot replace something if its size is 0.  The work will be  stopped
+in panels in such case. In editor the work will not stopped, but  replacements
+won't be preformed. If you want to  delete  empty  lines,  use  the  following
+command: "F11/S&R/Delete not matched lines" and regexp ".".
+
+[38] Is it true S&R can replace standard FAR "Temporary panel" plugin?
+
+     Yes, it's  possible  in  S&R  2.0  and  above.  If  you  delete  standard
+TmpPanel.dll, FAR found files list (Alt-F7) will be placed  to  S&R  temporary
+panel (of course, temppanel.srs must be installed, FAR version  must  be  1.70
+and above, option "Process OPEN_FINDLIST command" must be set in configuration
+of temppanel.srs).
+
+[39] How can I make S&R settings to be the same always when FAR starts?
+
+      Export necessary settings into s_and_r_settings.reg and import  it  when
+FAR starts. You can import them with "regedit -s s_and_r_settings.reg" command
+using FAR autostart macro, for example.
+
+[40] How can I use the lookahead/backward search regexp's operators?
+
+AY> You can use the lookahead/backward search  regexp's  operators  to  search
+AY> text, which is placed before/after any other text, which you not  want  to
+AY> match with search regexp (useful for replaces).
+AY> Examples:
+AY> 1. Search=(?<=AA)YYY
+AY>    Replace with=X
+AY>    Perform replacement "YYY" with "X" if text "AA" exists before "YYY".
+AY> 2. Search=AA(?=YYY)
+AY>    Replace with=X
+AY>    Perform replacement "AA" with "X" if text "YYY" exists after "YYY".
+
+[41] Why does message "Search string is empty!" appear when I want to search
+     a regexp, which starts from '/' symbol?
+
+     If  you  use  regexp  "/bla/"  this  message  appears  only  if   "search
+options/Work without // when searching with regexps" option is set, because in
+this case S&R appends these slashes, which results in "//bla//".  This  regexp
+is empty, because regexp is a text, which is placed between first two slashes.
+
+[42] Why are you using an archive, which is enveloped into another  one,  for
+     distribution of S&R?
+
+     This is the simplest sieve, which allows to separate losers from users :-)
+
++[43] In the viewer (but not in the editor) we search for  regular  expression
+     \bx. Operation of continuation of search considers that \b  condition  is
+     always true and finds the second "x" in "xx". Is it correct?
+
+     This behaviour is not exactly correct. In the program it is caused by the
+specifics of work with the viewer - the file is begun to be processed from the
+current position, and the previous symbol is not taken into account, therefore
+\b in the beginning of  expression  is  always  considered  true.  I  have  no
+stimulus to make other behaviour now.
+
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴�

@@ -1,0 +1,8 @@
+REGEDIT4
+
+[HKEY_CURRENT_USER\Software\Far\KeyMacros\Shell\F7]
+"Sequence"="F11 k"
+"DisableOutput"=dword:00000001
+
+[HKEY_CURRENT_USER\Software\Far\PluginHotkeys\Plugins/MKDIR/mkdir.dll]
+"Hotkey"="k"

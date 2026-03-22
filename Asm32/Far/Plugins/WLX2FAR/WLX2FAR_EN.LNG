@@ -1,0 +1,47 @@
+.Language=English,English
+
+"wlx2far"
+"wlx2far configuration"
+
+"&1 Toggle QViewer"
+"&2 Focus QViewer"
+"&3 Update QViewer"
+"&4 Open lister"
+"&5 Show lister"
+"&6 Hide lister"
+"&7 Scan for new plugins"
+
+"Select wlx plugin"
+
+"Ins, Del, F4, Enter, CtrlUp/CtrlDown"
+"F4, Enter"
+
+"Ok"
+"Cancel"
+
+"WLX plugin name:"
+"WLX plugin hotkey:"
+"WLX plugin file name:"
+"WLX plugin mask:"
+"WLX plugin arguments:"
+
+"Install new WLX plugin"
+"Enter WLX plugin name:"
+"Enter WLX plugin file name:"
+"Enter WLX plugin default file mask:"
+
+"Uninstall WLX plugin"
+"Edit WLX plugin settings"
+"Open lister with arguments"
+"Scan for new wlx plugins"
+
+"wlx2far working..."
+"Scanning for new wlx plugins"
+"Updating wlx plugins information"
+
+"Enter scanning path:"
+
+"Pin lister window to FAR window"
+"Show loading process information"
+"Search for new wlx plugins at startup"
+"Default wlx plugins path:"

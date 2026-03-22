@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="Windows-1251"?>
+<!DOCTYPE hrc SYSTEM "../hrc.dtd">
+<?xml-stylesheet type="text/xsl" href="../hrc.xsl"?>
+<!--
+    data type definition
+-->
+<hrc>
+
+<define name="dtdString"    value="dString"/>
+<define name="dtdComment"   value="dComment"/>
+<define name="dtdKeyword"   value="dKeyword"/>
+<define name="dtdParam"     value="dParam"/>
+<define name="dtdOpenTag"   value="dOpenTag"/>
+<define name="dtdCloseTag"  value="dCloseTag"/>
+<define name="dtdSymb"      value="dSymbol"/>
+
+<scheme name="dtdComment">
+   <block start="/&lt;!--/" end="/-->/" scheme="Comment"
+          region="dtdComment" region00="dpOpenStruct" region10="dpCloseStruct"/>
+</scheme>
+
+<scheme name="dtdTagName">
+   <keywords region="dtdKeyword">
+      <word name="DOCTYPE"/>
+      <word name="INCLUDE"/>
+      <word name="NOTATION"/>
+      <word name="ELEMENT"/>
+      <word name="ATTLIST"/>
+      <word name="ENTITY"/>
+      <word name="ENTITIES"/>
+   </keywords>
+</scheme>
+
+<scheme name="dtdCore">
+   <regexp match="/'.*?'/" region0="dtdString"/>
+   <regexp match='/".*?"/' region0="dtdString"/>
+
+   <block start="/~/" end="/~\w+\m/" scheme="dtdTagName"/>
+   <block start="/(\[)/" end="/(\])/" scheme="dtd"
+          region00="dtdOpenTag" region01="dpOpenStruct"
+          region10="dtdCloseTag" region11="dpCloseStruct"/>
+
+   <keywords region="dtdSymb">
+      <symb name="&amp;"/><symb name="("/><symb name=")"/>
+      <symb name="*"/><symb name="+"/><symb name=","/>
+      <symb name="-"/><symb name="."/><symb name="/"/>
+      <symb name=":"/><symb name=";"/><symb name="="/>
+      <symb name="?"/><symb name="["/><symb name="]"/>
+      <symb name="^"/><symb name="{"/><symb name="|"/>
+      <symb name="}"/><symb name="~"/><symb name="%"/>
+   </keywords>
+   <keywords region="dtdParam">
+      <word name="SYSTEM"/>
+      <word name="IGNORE"/>
+      <word name="CDATA"/>
+      <word name="PCDATA"/>
+      <word name="EMPTY"/>
+      <word name="ID"/>
+      <word name="IDREF"/>
+      <word name="NMTOKEN"/>
+      <word name="NMTOKENS"/>
+      <word name="#IMPLIED"/>
+      <word name="#REQUIRED"/>
+      <word name="#FIXED"/>
+      <word name="#PCDATA"/>
+   </keywords>
+</scheme>
+
+<!-- DTD Codes -->
+<scheme name="dtd">
+   <inherit scheme="dtdComment"/>
+   <block start="/(&lt;!)/"  end="/(>)/"  scheme="dtdCore"
+          region00="dtdOpenTag" region01="dpOpenStruct"
+          region10="dtdCloseTag" region11="dpCloseStruct"/>
+</scheme>
+
+</hrc>

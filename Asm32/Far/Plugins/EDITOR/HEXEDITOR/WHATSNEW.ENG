@@ -1,0 +1,18 @@
+Version 1.2 (September 19, 1999)
+~~~~~~~~~~~
++ Added text/data search by pressing F7
+
++ Screen scroll on moving by Up/Down arrows
+
++ History in edit controls
+
+* Small cosmetical changes.
+
+
+Version 1.1 (September 5, 1999)
+~~~~~~~~~~~
++ Now you can edit data at any address. Use PgUp/PgDn to turn the pages,
+  Ctrl-Home/End to move to the home/end of the file, F5 to go to the specified
+  address.
+
+* Small cosmetical changes.

@@ -1,0 +1,403 @@
+
+;-------------------------------------------------
+
+enum { DnTmenu0,  DnTmenu1,  DnTmenu2,   DnTmenu3,   DnTmenu4,   DnTtitle,
+       DnTdialog, DnTformat, DnTind,     DnTtimeout, DnThistory, DnTedit,
+       DnTpedit,  DnTborder, DnTinsert,  DnTput,     DnTdlg,     DnTsep,
+       DnTtit,    DnTok,     DnTsave,    DnTcancel,  DnTColBut,  DnTTestBtn,
+       DnTColor,  DnTForgr,  DnTBackgr,  DnTusedef,  DnTusedefF, DnTusrfrm,
+       DnTpause,  DnTusetit, DnTusectrl, DnTsmode,
+       DnTweekday,DnTweekend,DnTjan,     DnTfeb,     DnTmar,
+       DnTapr,    DnTmay,    DnTjun,     DnTjul,     DnTaug,     DnTsen,
+       DnToct,    DnTnov,    DnTdec,     DnTCalen,   DnTsetyear, DnTsetmon,
+       DnTdlg2,   DnTsu,     DnTmo,	 DnTtu,	     DnTwe,	 DnTth,
+       DnTfr,	  DnTsa };
+
+;-------------------------------------------------
+name "Calendar"
+help "Calendar"
+
+DOUBLEBOX 100   3  1 32 11  F F  0                  0 ""
+TEXT      100   5  3  0  0  F F  DIF_SEPARATOR      0 NULL
+
+BUTTON     54   9  2  0  0  F F  DIF_NOBRACKETS     0 "Month"
+BUTTON     51  18  2  0  0  F F  DIF_NOBRACKETS     0 "Year"
+                                                   
+BUTTON     53  27  1  0  0  F F  DIF_NOBRACKETS     0 "&["
+BUTTON     56  28  1  0  0  F F  DIF_NOBRACKETS     0 "&="
+BUTTON     55  29  1  0  0  F F  DIF_NOBRACKETS     0 "&]"
+         
+TEXT      100   5  4  0  0  F F  BLUE+BK_LIGHTGRAY  0 %LNG% DnTmo
+TEXT      100   5  5  0  0  F F  BLUE+BK_LIGHTGRAY  0 %LNG% DnTtu
+TEXT      100   5  6  0  0  F F  BLUE+BK_LIGHTGRAY  0 %LNG% DnTwe
+TEXT      100   5  7  0  0  F F  BLUE+BK_LIGHTGRAY  0 %LNG% DnTth
+TEXT      100   5  8  0  0  F F  BLUE+BK_LIGHTGRAY  0 %LNG% DnTfr
+TEXT      100   5  9  0  0  F F   RED+BK_LIGHTGRAY  0 %LNG% DnTsa
+TEXT      100   5 10  0  0  F F   RED+BK_LIGHTGRAY  0 %LNG% DnTsu
+         
+BUTTON      1   9  4  0  0  F F  DIF_NOBRACKETS     0  26
+BUTTON      2   9  5  0  0  F F  DIF_NOBRACKETS     0  27
+BUTTON      3   9  6  0  0  F F  DIF_NOBRACKETS     0  28
+BUTTON      4   9  7  0  0  F F  DIF_NOBRACKETS     0  29
+BUTTON      5   9  8  0  0  F F  DIF_NOBRACKETS     0  30
+BUTTON      6   9  9  0  0  F F  DIF_NOBRACKETS     0 " 1"
+BUTTON      7   9 10  0  0  F F  DIF_NOBRACKETS     0 "ÿ2"
+BUTTON      8  13  4  0  0  F F  DIF_NOBRACKETS     0 "ÿ3"
+BUTTON      9  13  5  0  0  F F  DIF_NOBRACKETS     0 "ÿ4"
+BUTTON     10  13  6  0  0  F F  DIF_NOBRACKETS     0 " 5"
+BUTTON     11  13  7  0  0  F F  DIF_NOBRACKETS     0 " 6"
+BUTTON     12  13  8  0  0  F F  DIF_NOBRACKETS     0 " 7"
+BUTTON     13  13  9  0  0  F F  DIF_NOBRACKETS     0 " 8"
+BUTTON     14  13 10  0  0  F F  DIF_NOBRACKETS     0 " 9"
+BUTTON     15  17  4  0  0  F F  DIF_NOBRACKETS     0  10
+BUTTON     16  17  5  0  0  F F  DIF_NOBRACKETS     0  11
+BUTTON     17  17  6  0  0  F F  DIF_NOBRACKETS     0  12
+BUTTON     18  17  7  0  0  F F  DIF_NOBRACKETS     0  13
+BUTTON     19  17  8  0  0  F F  DIF_NOBRACKETS     0  14
+BUTTON     20  17  9  0  0  F F  DIF_NOBRACKETS     0  15
+BUTTON     21  17 10  0  0  F F  DIF_NOBRACKETS     0  16
+BUTTON     22  21  4  0  0  F F  DIF_NOBRACKETS     0  17
+BUTTON     23  21  5  0  0  F F  DIF_NOBRACKETS     0  18
+BUTTON     24  21  6  0  0  F F  DIF_NOBRACKETS     0  19
+BUTTON     25  21  7  0  0  F F  DIF_NOBRACKETS     0  20
+BUTTON     26  21  8  0  0  F F  DIF_NOBRACKETS     0  21
+BUTTON     27  21  9  0  0  F F  DIF_NOBRACKETS     0  22
+BUTTON     28  21 10  0  0  F F  DIF_NOBRACKETS     0  23
+BUTTON     29  25  4  0  0  F F  DIF_NOBRACKETS     0  24
+BUTTON     30  25  5  0  0  F F  DIF_NOBRACKETS     0  25
+BUTTON     31  25  6  0  0  F F  DIF_NOBRACKETS     0  26
+BUTTON     32  25  7  0  0  F F  DIF_NOBRACKETS     0  27
+BUTTON     33  25  8  0  0  F F  DIF_NOBRACKETS     0  28
+BUTTON     34  25  9  0  0  F F  DIF_NOBRACKETS     0  29
+BUTTON     35  25 10  0  0  F F  DIF_NOBRACKETS     0  30
+BUTTON     36  29  4  0  0  F F  DIF_NOBRACKETS     0  31
+BUTTON     37  29  5  0  0  F F  DIF_NOBRACKETS     0 " 1"
+BUTTON     38  29  6  0  0  F F  DIF_NOBRACKETS     0 " 2"
+BUTTON     39  29  7  0  0  F F  DIF_NOBRACKETS     0 " 3"
+BUTTON     40  29  8  0  0  F F  DIF_NOBRACKETS     0 " 4"
+BUTTON     41  29  9  0  0  F F  DIF_NOBRACKETS     0 " 5"
+BUTTON     42  29 10  0  0  F F  DIF_NOBRACKETS     0 " 6"
+
+;-------------------------------------------------
+name "Calendar_Vert_Mo"
+help "Calendar"
+
+DOUBLEBOX   100  3 1 32 11 F F 0                         0 %LNG% DnTCalen
+
+BUTTON 50 05  2 0 0  F F DIF_NOBRACKETS 0 " <"
+BUTTON 51 07  2 0 0  F F DIF_NOBRACKETS 0 " Year "
+BUTTON 52 13  2 0 0  F F DIF_NOBRACKETS 0 "> "
+BUTTON 53 17  2 0 0  F F DIF_NOBRACKETS 0 "&< "
+BUTTON 54 19  2 0 0  F F DIF_NOBRACKETS 0 "Month"
+BUTTON 55 28  2 0 0  F F DIF_NOBRACKETS 0 " &>"
+
+TEXT       100  5  4   0 0  F F BLUE+BK_LIGHTGRAY   0 %LNG% DnTmo
+TEXT       100  5  5   0 0  F F BLUE+BK_LIGHTGRAY   0 %LNG% DnTtu
+TEXT       100  5  6   0 0  F F BLUE+BK_LIGHTGRAY   0 %LNG% DnTwe
+TEXT       100  5  7   0 0  F F BLUE+BK_LIGHTGRAY   0 %LNG% DnTth
+TEXT       100  5  8   0 0  F F BLUE+BK_LIGHTGRAY   0 %LNG% DnTfr
+TEXT       100  5  9   0 0  F F RED+BK_LIGHTGRAY   0 %LNG% DnTsa
+TEXT       100  5 10   0 0  F F RED+BK_LIGHTGRAY   0 %LNG% DnTsu
+
+BUTTON  1  9   4  0 0  F F DIF_NOBRACKETS        0 26
+BUTTON  2  9   5  0 0  F F DIF_NOBRACKETS        0 27
+BUTTON  3  9   6  0 0  F F DIF_NOBRACKETS        0 28
+BUTTON  4  9   7  0 0  F F DIF_NOBRACKETS        0 29
+BUTTON  5  9   8  0 0  F F DIF_NOBRACKETS        0 30
+BUTTON  6  9   9  0 0  F F DIF_NOBRACKETS        0 " 1"
+BUTTON  7  9  10  0 0  F F DIF_NOBRACKETS        0 "ÿ2"
+BUTTON  8 13   4  0 0  F F DIF_NOBRACKETS        0 "ÿ3"
+BUTTON  9 13   5  0 0  F F DIF_NOBRACKETS        0 "ÿ4"
+BUTTON 10 13   6  0 0  F F DIF_NOBRACKETS        0 " 5"
+BUTTON 11 13   7  0 0  F F DIF_NOBRACKETS        0 " 6"
+BUTTON 12 13   8  0 0  F F DIF_NOBRACKETS        0 " 7"
+BUTTON 13 13   9  0 0  F F DIF_NOBRACKETS        0 " 8"
+BUTTON 14 13  10  0 0  F F DIF_NOBRACKETS        0 " 9"
+BUTTON 15 17   4  0 0  F F DIF_NOBRACKETS        0 10
+BUTTON 16 17   5  0 0  F F DIF_NOBRACKETS        0 11
+BUTTON 17 17   6  0 0  F F DIF_NOBRACKETS        0 12
+BUTTON 18 17   7  0 0  F F DIF_NOBRACKETS        0 13
+BUTTON 19 17   8  0 0  F F DIF_NOBRACKETS        0 14
+BUTTON 20 17   9  0 0  F F DIF_NOBRACKETS        0 15
+BUTTON 21 17  10  0 0  F F DIF_NOBRACKETS        0 16
+BUTTON 22 21   4  0 0  F F DIF_NOBRACKETS        0 17
+BUTTON 23 21   5  0 0  F F DIF_NOBRACKETS        0 18
+BUTTON 24 21   6  0 0  F F DIF_NOBRACKETS        0 19
+BUTTON 25 21   7  0 0  F F DIF_NOBRACKETS        0 20
+BUTTON 26 21   8  0 0  F F DIF_NOBRACKETS        0 21
+BUTTON 27 21   9  0 0  F F DIF_NOBRACKETS        0 22
+BUTTON 28 21  10  0 0  F F DIF_NOBRACKETS        0 23
+BUTTON 29 25   4  0 0  F F DIF_NOBRACKETS        0 24
+BUTTON 30 25   5  0 0  F F DIF_NOBRACKETS        0 25
+BUTTON 31 25   6  0 0  F F DIF_NOBRACKETS        0 26
+BUTTON 32 25   7  0 0  F F DIF_NOBRACKETS        0 27
+BUTTON 33 25   8  0 0  F F DIF_NOBRACKETS        0 28
+BUTTON 34 25   9  0 0  F F DIF_NOBRACKETS        0 29
+BUTTON 35 25  10  0 0  F F DIF_NOBRACKETS        0 30
+BUTTON 36 29   4  0 0  F F DIF_NOBRACKETS        0 31
+BUTTON 37 29   5  0 0  F F DIF_NOBRACKETS        0 " 1"
+BUTTON 38 29   6  0 0  F F DIF_NOBRACKETS        0 " 2"
+BUTTON 39 29   7  0 0  F F DIF_NOBRACKETS        0 " 3"
+BUTTON 40 29   8  0 0  F F DIF_NOBRACKETS        0 " 4"
+BUTTON 41 29   9  0 0  F F DIF_NOBRACKETS        0 " 5"
+BUTTON 42 29  10  0 0  F F DIF_NOBRACKETS        0 " 6"
+
+TEXT        100   5   3 0 0  F F DIF_SEPARATOR   0 NULL
+;TEXT 	    100   5  11 0 0  F F DIF_SEPARATOR   0 NULL
+
+BUTTON     -1   15 11 0 0  F F DIF_CENTERGROUP 0  %LNG% DnTcancel
+BUTTON     -1    5  1 0 0  F F DIF_NOBRACKETS+BLUE 0  "[þ]"
+BUTTON     56   28  1 0 0  F F DIF_NOBRACKETS  0 "(&*)"
+
+;-------------------------------------------------
+name "Calendar_Mo"
+help "Calendar"
+
+DOUBLEBOX   100  3 1 32 11 F F 0                         0 %LNG% DnTCalen
+
+BUTTON 50 05  2 0 0  F F DIF_NOBRACKETS 0 " <"
+BUTTON 51 07  2 0 0  F F DIF_NOBRACKETS 0 " Year "
+BUTTON 52 13  2 0 0  F F DIF_NOBRACKETS 0 "> "
+BUTTON 53 17  2 0 0  F F DIF_NOBRACKETS 0 "&< "
+BUTTON 54 19  2 0 0  F F DIF_NOBRACKETS 0 "Month"
+BUTTON 55 28  2 0 0  F F DIF_NOBRACKETS 0 " &>"
+
+TEXT       100	  5   4 0 0  F F BLUE+BK_LIGHTGRAY   0 %LNG% DnTmo 
+TEXT       100    9   4 0 0  F F BLUE+BK_LIGHTGRAY   0 %LNG% DnTtu 
+TEXT       100   13   4 0 0  F F BLUE+BK_LIGHTGRAY   0 %LNG% DnTwe 
+TEXT       100   17   4 0 0  F F BLUE+BK_LIGHTGRAY   0 %LNG% DnTth 
+TEXT       100   21   4 0 0  F F BLUE+BK_LIGHTGRAY   0 %LNG% DnTfr 
+TEXT       100   25   4 0 0  F F RED+BK_LIGHTGRAY   0 %LNG% DnTsa 
+TEXT       100   29   4 0 0  F F RED+BK_LIGHTGRAY   0 %LNG% DnTsu 
+
+BUTTON  1  5 5  0 0  F F DIF_NOBRACKETS        0 26
+BUTTON  2  9 5  0 0  F F DIF_NOBRACKETS        0 27
+BUTTON  3 13 5  0 0  F F DIF_NOBRACKETS        0 28
+BUTTON  4 17 5  0 0  F F DIF_NOBRACKETS        0 29
+BUTTON  5 21 5  0 0  F F DIF_NOBRACKETS        0 30
+BUTTON  6 25 5  0 0  F F DIF_NOBRACKETS        0 " 1"
+BUTTON  7 29 5  0 0  F F DIF_NOBRACKETS        0 "ÿ2"
+BUTTON  8  5 6  0 0  F F DIF_NOBRACKETS        0 "ÿ3"
+BUTTON  9  9 6  0 0  F F DIF_NOBRACKETS        0 "ÿ4"
+BUTTON 10 13 6  0 0  F F DIF_NOBRACKETS        0 " 5"
+BUTTON 11 17 6  0 0  F F DIF_NOBRACKETS        0 " 6"
+BUTTON 12 21 6  0 0  F F DIF_NOBRACKETS        0 " 7"
+BUTTON 13 25 6  0 0  F F DIF_NOBRACKETS        0 " 8"
+BUTTON 14 29 6  0 0  F F DIF_NOBRACKETS        0 " 9"
+BUTTON 15  5 7  0 0  F F DIF_NOBRACKETS        0 10
+BUTTON 16  9 7  0 0  F F DIF_NOBRACKETS        0 11
+BUTTON 17 13 7  0 0  F F DIF_NOBRACKETS        0 12
+BUTTON 18 17 7  0 0  F F DIF_NOBRACKETS        0 13
+BUTTON 19 21 7  0 0  F F DIF_NOBRACKETS        0 14
+BUTTON 20 25 7  0 0  F F DIF_NOBRACKETS        0 15
+BUTTON 21 29 7  0 0  F F DIF_NOBRACKETS        0 16
+BUTTON 22  5 8  0 0  F F DIF_NOBRACKETS        0 17
+BUTTON 23  9 8  0 0  F F DIF_NOBRACKETS        0 18
+BUTTON 24 13 8  0 0  F F DIF_NOBRACKETS        0 19
+BUTTON 25 17 8  0 0  F F DIF_NOBRACKETS        0 20
+BUTTON 26 21 8  0 0  F F DIF_NOBRACKETS        0 21
+BUTTON 27 25 8  0 0  F F DIF_NOBRACKETS        0 22
+BUTTON 28 29 8  0 0  F F DIF_NOBRACKETS        0 23
+BUTTON 29  5 9  0 0  F F DIF_NOBRACKETS        0 24
+BUTTON 30  9 9  0 0  F F DIF_NOBRACKETS        0 25
+BUTTON 31 13 9  0 0  F F DIF_NOBRACKETS        0 26
+BUTTON 32 17 9  0 0  F F DIF_NOBRACKETS        0 27
+BUTTON 33 21 9  0 0  F F DIF_NOBRACKETS        0 28
+BUTTON 34 25 9  0 0  F F DIF_NOBRACKETS        0 29
+BUTTON 35 29 9  0 0  F F DIF_NOBRACKETS        0 30
+BUTTON 36  5 10 0 0  F F DIF_NOBRACKETS        0 31
+BUTTON 37  9 10 0 0  F F DIF_NOBRACKETS        0 " 1"
+BUTTON 38 13 10 0 0  F F DIF_NOBRACKETS        0 " 2"
+BUTTON 39 17 10 0 0  F F DIF_NOBRACKETS        0 " 3"
+BUTTON 40 21 10 0 0  F F DIF_NOBRACKETS        0 " 4"
+BUTTON 41 25 10 0 0  F F DIF_NOBRACKETS        0 " 5"
+BUTTON 42 29 10 0 0  F F DIF_NOBRACKETS        0 " 6"
+
+TEXT        100   5   3 0 0  F F DIF_SEPARATOR   0 NULL
+;TEXT 	    100   5  11 0 0  F F DIF_SEPARATOR   0 NULL
+
+BUTTON     -1   15 11 0 0  F F DIF_CENTERGROUP 0  %LNG% DnTcancel
+BUTTON     -1    5  1 0 0  F F DIF_NOBRACKETS+BLUE 0  "[þ]"
+BUTTON     56   28  1 0 0  F F DIF_NOBRACKETS  0 "(&*)"
+
+;-------------------------------------------------
+name "Calendar_Su"
+help "Calendar"
+
+DOUBLEBOX   101  3 1 32 11 F F 0                         0 %LNG% DnTCalen
+
+BUTTON 50 05  2 0 0  F F DIF_NOBRACKETS 0 " <"
+BUTTON 51 07  2 0 0  F F DIF_NOBRACKETS 0 " Year "
+BUTTON 52 13  2 0 0  F F DIF_NOBRACKETS 0 "> "
+BUTTON 53 17  2 0 0  F F DIF_NOBRACKETS 0 "&< "
+BUTTON 54 19  2 0 0  F F DIF_NOBRACKETS 0 "Month"
+BUTTON 55 28  2 0 0  F F DIF_NOBRACKETS 0 " &>"
+
+TEXT   100    9   4 0 0  F F BLUE+BK_LIGHTGRAY   0 %LNG% DnTmo 
+TEXT   100   13   4 0 0  F F BLUE+BK_LIGHTGRAY   0 %LNG% DnTtu 
+TEXT   100   17   4 0 0  F F BLUE+BK_LIGHTGRAY   0 %LNG% DnTwe 
+TEXT   100   21   4 0 0  F F BLUE+BK_LIGHTGRAY   0 %LNG% DnTth 
+TEXT   100   25   4 0 0  F F RED+BK_LIGHTGRAY   0 %LNG% DnTfr 
+TEXT   100   29   4 0 0  F F RED+BK_LIGHTGRAY   0 %LNG% DnTsa 
+TEXT   100    5   4 0 0  F F BLUE+BK_LIGHTGRAY   0 %LNG% DnTsu 
+
+BUTTON  0  5 5  0 0  F F DIF_NOBRACKETS        0 25
+BUTTON  1  9 5  0 0  F F DIF_NOBRACKETS        0 26
+BUTTON  2 13 5  0 0  F F DIF_NOBRACKETS        0 27
+BUTTON  3 17 5  0 0  F F DIF_NOBRACKETS        0 28
+BUTTON  4 21 5  0 0  F F DIF_NOBRACKETS        0 29
+BUTTON  5 25 5  0 0  F F DIF_NOBRACKETS        0 30
+BUTTON  6 29 5  0 0  F F DIF_NOBRACKETS        0 " 1"
+BUTTON  7  5 6  0 0  F F DIF_NOBRACKETS        0 "ÿ2"
+BUTTON  8  9 6  0 0  F F DIF_NOBRACKETS        0 "ÿ3"
+BUTTON  9 13 6  0 0  F F DIF_NOBRACKETS        0 "ÿ4"
+BUTTON 10 17 6  0 0  F F DIF_NOBRACKETS        0 " 5"
+BUTTON 11 21 6  0 0  F F DIF_NOBRACKETS        0 " 6"
+BUTTON 12 25 6  0 0  F F DIF_NOBRACKETS        0 " 7"
+BUTTON 13 29 6  0 0  F F DIF_NOBRACKETS        0 " 8"
+BUTTON 14  5 7  0 0  F F DIF_NOBRACKETS        0 " 9"
+BUTTON 15  9 7  0 0  F F DIF_NOBRACKETS        0 10
+BUTTON 16 13 7  0 0  F F DIF_NOBRACKETS        0 11
+BUTTON 17 17 7  0 0  F F DIF_NOBRACKETS        0 12
+BUTTON 18 21 7  0 0  F F DIF_NOBRACKETS        0 13
+BUTTON 19 25 7  0 0  F F DIF_NOBRACKETS        0 14
+BUTTON 20 29 7  0 0  F F DIF_NOBRACKETS        0 15
+BUTTON 21  5 8  0 0  F F DIF_NOBRACKETS        0 16
+BUTTON 22  9 8  0 0  F F DIF_NOBRACKETS        0 17
+BUTTON 23 13 8  0 0  F F DIF_NOBRACKETS        0 18
+BUTTON 24 17 8  0 0  F F DIF_NOBRACKETS        0 19
+BUTTON 25 21 8  0 0  F F DIF_NOBRACKETS        0 20
+BUTTON 26 25 8  0 0  F F DIF_NOBRACKETS        0 21
+BUTTON 27 29 8  0 0  F F DIF_NOBRACKETS        0 22
+BUTTON 28  5 9  0 0  F F DIF_NOBRACKETS        0 23
+BUTTON 29  9 9  0 0  F F DIF_NOBRACKETS        0 24
+BUTTON 30 13 9  0 0  F F DIF_NOBRACKETS        0 25
+BUTTON 31 17 9  0 0  F F DIF_NOBRACKETS        0 26
+BUTTON 32 21 9  0 0  F F DIF_NOBRACKETS        0 27
+BUTTON 33 25 9  0 0  F F DIF_NOBRACKETS        0 28
+BUTTON 34 29 9  0 0  F F DIF_NOBRACKETS        0 29
+BUTTON 35  5 10 0 0  F F DIF_NOBRACKETS        0 30
+BUTTON 36  9 10 0 0  F F DIF_NOBRACKETS        0 31
+BUTTON 37 13 10 0 0  F F DIF_NOBRACKETS        0 " 1"
+BUTTON 38 17 10 0 0  F F DIF_NOBRACKETS        0 " 2"
+BUTTON 39 21 10 0 0  F F DIF_NOBRACKETS        0 " 3"
+BUTTON 40 25 10 0 0  F F DIF_NOBRACKETS        0 " 4"
+BUTTON 41 29 10 0 0  F F DIF_NOBRACKETS        0 " 5"
+;BUTTON 42 29 10 0 0  F F DIF_NOBRACKETS        0 " 6"
+
+TEXT      100   5   3 0 0  F F DIF_SEPARATOR   0 NULL
+;TEXT 	  100   5  11 0 0  F F DIF_SEPARATOR   0 NULL
+
+BUTTON     -1   15 11 0 0  F F DIF_CENTERGROUP 0  %LNG% DnTcancel
+BUTTON     -1    5  1 0 0  F F DIF_NOBRACKETS+BLUE 0  "[þ]"
+BUTTON     56   28  1 0 0  F F DIF_NOBRACKETS  0 "(&*)"
+
+;-------------------------------------------------
+name "Calendar_Vert_Su"
+help "Calendar"
+
+DOUBLEBOX   100  3 1 32 11 F F 0                         0 %LNG% DnTCalen
+
+BUTTON 50 05  2 0 0  F F DIF_NOBRACKETS 0 " <"
+BUTTON 51 07  2 0 0  F F DIF_NOBRACKETS 0 " Year "
+BUTTON 52 13  2 0 0  F F DIF_NOBRACKETS 0 "> "
+BUTTON 53 17  2 0 0  F F DIF_NOBRACKETS 0 "&< "
+BUTTON 54 19  2 0 0  F F DIF_NOBRACKETS 0 "Month"
+BUTTON 55 28  2 0 0  F F DIF_NOBRACKETS 0 " &>"
+
+TEXT       100  5  4   0 0  F F BLUE+BK_LIGHTGRAY   0 %LNG% DnTsu
+TEXT       100  5  5   0 0  F F BLUE+BK_LIGHTGRAY   0 %LNG% DnTmo 
+TEXT       100  5  6   0 0  F F BLUE+BK_LIGHTGRAY   0 %LNG% DnTtu 
+TEXT       100  5  7   0 0  F F BLUE+BK_LIGHTGRAY   0 %LNG% DnTwe 
+TEXT       100  5  8   0 0  F F BLUE+BK_LIGHTGRAY   0 %LNG% DnTth 
+TEXT       100  5  9   0 0  F F RED+BK_LIGHTGRAY   0 %LNG% DnTfr 
+TEXT       100  5 10   0 0  F F RED+BK_LIGHTGRAY   0 %LNG% DnTsa 
+
+BUTTON  0  9   4  0 0  F F DIF_NOBRACKETS        0 26
+BUTTON  1  9   5  0 0  F F DIF_NOBRACKETS        0 26
+BUTTON  2  9   6  0 0  F F DIF_NOBRACKETS        0 27
+BUTTON  3  9   7  0 0  F F DIF_NOBRACKETS        0 28
+BUTTON  4  9   8  0 0  F F DIF_NOBRACKETS        0 29
+BUTTON  5  9   9  0 0  F F DIF_NOBRACKETS        0 30
+BUTTON  6  9  10  0 0  F F DIF_NOBRACKETS        0 " 1"
+BUTTON  7 13   4  0 0  F F DIF_NOBRACKETS        0 "ÿ2"
+BUTTON  8 13   5  0 0  F F DIF_NOBRACKETS        0 "ÿ3"
+BUTTON  9 13   6  0 0  F F DIF_NOBRACKETS        0 "ÿ4"
+BUTTON 10 13   7  0 0  F F DIF_NOBRACKETS        0 " 5"
+BUTTON 11 13   8  0 0  F F DIF_NOBRACKETS        0 " 6"
+BUTTON 12 13   9  0 0  F F DIF_NOBRACKETS        0 " 7"
+BUTTON 13 13  10  0 0  F F DIF_NOBRACKETS        0 " 8"
+BUTTON 14 17   4  0 0  F F DIF_NOBRACKETS        0 " 9"
+BUTTON 15 17   5  0 0  F F DIF_NOBRACKETS        0 10
+BUTTON 16 17   6  0 0  F F DIF_NOBRACKETS        0 11
+BUTTON 17 17   7  0 0  F F DIF_NOBRACKETS        0 12
+BUTTON 18 17   8  0 0  F F DIF_NOBRACKETS        0 13
+BUTTON 19 17   9  0 0  F F DIF_NOBRACKETS        0 14
+BUTTON 20 17  10  0 0  F F DIF_NOBRACKETS        0 15
+BUTTON 21 21   4  0 0  F F DIF_NOBRACKETS        0 16
+BUTTON 22 21   5  0 0  F F DIF_NOBRACKETS        0 17
+BUTTON 23 21   6  0 0  F F DIF_NOBRACKETS        0 18
+BUTTON 24 21   7  0 0  F F DIF_NOBRACKETS        0 19
+BUTTON 25 21   8  0 0  F F DIF_NOBRACKETS        0 20
+BUTTON 26 21   9  0 0  F F DIF_NOBRACKETS        0 21
+BUTTON 27 21  10  0 0  F F DIF_NOBRACKETS        0 22
+BUTTON 28 25   4  0 0  F F DIF_NOBRACKETS        0 23
+BUTTON 29 25   5  0 0  F F DIF_NOBRACKETS        0 24
+BUTTON 30 25   6  0 0  F F DIF_NOBRACKETS        0 25
+BUTTON 31 25   7  0 0  F F DIF_NOBRACKETS        0 26
+BUTTON 32 25   8  0 0  F F DIF_NOBRACKETS        0 27
+BUTTON 33 25   9  0 0  F F DIF_NOBRACKETS        0 28
+BUTTON 34 25  10  0 0  F F DIF_NOBRACKETS        0 29
+BUTTON 35 29   4  0 0  F F DIF_NOBRACKETS        0 30
+BUTTON 36 29   5  0 0  F F DIF_NOBRACKETS        0 31
+BUTTON 37 29   6  0 0  F F DIF_NOBRACKETS        0 " 1"
+BUTTON 38 29   7  0 0  F F DIF_NOBRACKETS        0 " 2"
+BUTTON 39 29   8  0 0  F F DIF_NOBRACKETS        0 " 3"
+BUTTON 40 29   9  0 0  F F DIF_NOBRACKETS        0 " 4"
+BUTTON 41 29  10  0 0  F F DIF_NOBRACKETS        0 " 5"
+;BUTTON 42 29 10   0 0  F F DIF_NOBRACKETS        0 " 6"
+
+TEXT        100   5   3 0 0  F F DIF_SEPARATOR   0 NULL
+;TEXT 	    100   5  11 0 0  F F DIF_SEPARATOR   0 NULL
+
+BUTTON     -1   15 11 0 0  F F DIF_CENTERGROUP 0  %LNG% DnTcancel
+BUTTON     -1    5  1 0 0  F F DIF_NOBRACKETS+BLUE 0  "[þ]"
+BUTTON     56   28  1 0 0  F F DIF_NOBRACKETS  0 "(&*)"
+
+;-------------------------------------------------
+name "Set Year"
+help "Calendar"
+
+DOUBLEBOX    0  3  1 27  5  F F      0               0 %LNG% DnTsetyear
+EDIT        51 19  3 23  0  T "Year" DIF_HISTORY     0 1999
+BUTTON      53  6  3  0  0  F F      0               0 "Current"
+
+BUTTON      60  5  5  0  0  F F      DIF_CENTERGROUP 1 %LNG% DnTok
+BUTTON      -1  5  5  0  0  F F      DIF_CENTERGROUP 0 %LNG% DnTcancel
+
+;-------------------------------------------------
+name "Set Month"
+help "Calendar"
+
+DOUBLEBOX    0  3  1 24 18  F F      0               0 %LNG% DnTsetmon
+TEXT         0  5  3  0  0  F F      DIF_SEPARATOR   0 NULL
+TEXT         0  5 16  0  0  F F      DIF_SEPARATOR   0 NULL
+
+BUTTON      60  5 17  0  0  F F      DIF_CENTERGROUP 1 %LNG% DnTok
+BUTTON      -1  5 17  0  0  F F      DIF_CENTERGROUP 0 %LNG% DnTcancel
+
+BUTTON      53  8  2  0  0  T F      0               0 "Current"
+
+RADIOBUTTON  1  7  4  0  0  F T      0               0 %LNG% DnTjan
+RADIOBUTTON  2  7  5  0  0  F F      0               0 %LNG% DnTfeb
+RADIOBUTTON  3  7  6  0  0  F F      0               0 %LNG% DnTmar
+RADIOBUTTON  4  7  7  0  0  F F      0               0 %LNG% DnTapr
+RADIOBUTTON  5  7  8  0  0  F F      0               0 %LNG% DnTmay
+RADIOBUTTON  6  7  9  0  0  F F      0               0 %LNG% DnTjun
+RADIOBUTTON  7  7 10  0  0  F F      0               0 %LNG% DnTjul
+RADIOBUTTON  8  7 11  0  0  F F      0               0 %LNG% DnTaug
+RADIOBUTTON  9  7 12  0  0  F F      0               0 %LNG% DnTsen
+RADIOBUTTON 10  7 13  0  0  F F      0               0 %LNG% DnToct
+RADIOBUTTON 11  7 14  0  0  F F      0               0 %LNG% DnTnov
+RADIOBUTTON 12  7 15  0  0  F F      0               0 %LNG% DnTdec
+                 

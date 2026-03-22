@@ -1,0 +1,105 @@
+Список поддерживаемых форматов
+Mr.Ripper v0.20 alpha 6 (30,46)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Графика
+
+  BMP  - Microsoft bitmap files
+  DjVu - Многостраничный формат AT&T
+  GIF  - Статические и анимированные изображения CompuServe
+  JPEG - Сжатое изображение
+  LBM  - IFF, содержащий графику
+  PCX  - ZSoft image file
+  PNG  - Portable Network Graphics image
+  TGA1 - несжатое изображение с палитрой
+  TGA2 - несжатое изображение без палитры
+
+Звук
+
+  AIFF - IFF, с аудиоданными
+  AU   - Sun sound files (используется в *nix системах)
+  MPEG - MP3, MP3Pro, VBR
+  OGG  - Ogg Vorbis
+  WAV  - Microsoft sound files
+
+
+Музыка
+
+  IT   - Impulse tracker files
+  MIDI - команды MIDI
+  MOD  - ProTracker files
+  MUS  - упрощенный аналог формата MID
+  S3M  - ScreamTracker 3 files
+  ULT  - UltraTracker modules (все версии)
+  XM   - Extended module files
+  XMI  - IFF, с командами MIDI
+
+Видео
+
+  AVI - Microsoft Audio Video Interlaced files
+  BIK - RadGame Tools Bink video files
+  SMK - RadGame Tools Smacker video files
+
+Текст
+
+  PDF - Электронные книги Adobe
+  RTF - Microsoft RichText format files
+
+Прочее
+
+  IFF  - Формат, подобный RIFF
+  RIFF - Microsoft multimedia format files
+
+Пакетные файлы (псевдоархивы)
+
+  Название              Расширения         Работа с файлами
+                                         Добавление Удаление
+  Allods 1/2             - RES               нет       нет
+  Beachhead 2000 (?)     - IMG+IND           нет       нет
+  C&C: Generals          - BIG               нет       нет
+  C&C: Tiberium Dawn     - MIX               нет       нет
+  C&C: Tiberian Sun      - MIX               нет       нет
+  Chasm                  - BIN               нет       нет
+  Crimsonland            - PAQ               нет       нет
+  DemonStar              - GLB,MAP           нет       нет
+  Doom 1/2               - WAD               нет       нет
+  Duke 3D                - GRP               нет       нет
+  Dune 2                 - PAK               нет       нет
+  Dungeon Keeper 1       - DAT               нет       нет
+  Dungeon Keeper 2       - SDT,WAD           нет       нет
+  Dweep                  - DAT               нет       нет
+  Fallout 1              - DAT               нет       нет
+  Fallout 2              - DAT               нет       нет
+  Flat Out               - BFS               нет       нет
+  F-15                   - PFF0(NovaLogic)   нет       нет
+  GTA                    - RAW+SDT           нет       нет
+  GTA: Vice City         - ADF,GXT,IMG       да        нет
+  GTA3                   - GXT               нет       нет
+  GTA3, Vice City        - IMG+DIR           нет       нет
+  GTA3, Vice City        - RAW+SDT           нет       нет
+  Half-Life              - WAD               нет       нет
+  Heroes of M&M 2        - AGG               нет       нет
+  Heroes of M&M 3        - LOD,SND,VID       нет       нет
+  Lemmings Revolution    - BOX               нет       нет
+  MechWarrior 4          - MW4               нет       нет
+  Moorhuhn 1             - DAT               нет       нет
+  Moorhuhn 2             - WTN               нет       нет
+  Moorhuhn 3, X          - DAT               нет       нет
+  Moorhuhn Winter Edition- DAT               нет       нет
+  Mortal Kombat 3        - LCD               нет       нет
+  MotoGT                 - ARK               нет       нет
+  Need For Kill          - D                 да        да
+  Need For Speed 3,4,5,6 - VIV               нет       нет
+  Need For Speed U2      - VIV               нет       нет
+  Nuclear Titbit         - EZD               нет       нет
+  Quake                  - PAK,WAD           да        да
+  Red Alert 1/2          - MIX               нет       нет
+  Red Faction            - VPP               нет       нет
+  Speed Haste            - JCL               нет       нет
+  Sven Zwo               - DAT,PAK           нет       нет
+  UFOs                   - DAT               нет       нет
+  Zulu Assault           - CAT               нет       нет
+  Петька и ВИЧ 3         - RSS               нет       нет
+
+Если  Вам  надо чтобы MrRipper мог работать с файлами нужного  вам
+формата,  то просто  напишите мне письмо с Вашей просьбой.  Помогу
+как смогу.

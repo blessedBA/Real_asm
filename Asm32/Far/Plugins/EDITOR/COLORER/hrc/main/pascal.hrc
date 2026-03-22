@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="Windows-1251"?>
+<!DOCTYPE hrc SYSTEM "../hrc.dtd">
+<?xml-stylesheet type="text/xsl" href="../hrc.xsl"?>
+<!--
+    Pascal/Delphi Syntax
+With help of:
+    Vladimir Tarasov <tsoftgroup@chat.ru>
+    Vadim Lopushansky <NotaBene@dak.uame.com.ua>
+    Timur Safin <timur@lanit.ru> completed Delphi4/5 support
+-->
+<hrc>
+
+<define name="pString"   value="dString"/>
+<define name="pComment"  value="dComment"/>
+<define name="pSymb"     value="dSymbol"/>
+<define name="pWord"     value="dKeyword"/>
+<define name="pWord2"    value="dKeyword"/>
+<define name="pType"     value="dType"/>
+<define name="pOther"    value="dDirective"/>
+<define name="pNumb"     value="dNumber"/>
+<define name="pGUID"     value="dParam"/>
+
+<include name="base/asm.hrc"/>
+<include name="base/c.hrc"/>
+
+<scheme name="PasAsm">
+   <!-- Comments -->
+   <regexp match="/\/\/.*$/" region0="asmComment"/>
+   <block start="/\{/" end="/\}/" scheme="Comment"
+          region="asmComment" region00="dpOpenStruct" region10="dpCloseStruct"/>
+   <block start="/\(\*/" end="/\*\)/" scheme="Comment"
+          region="asmComment" region00="dpOpenStruct" region10="dpCloseStruct"/>
+   <inherit scheme="baseasm"/>
+</scheme>
+
+<scheme name="mPasCore">
+   <!-- Comments -->
+   <block start="/\/\//" end="/$/" scheme="Comment" region="pComment"/>
+   <block start="/\{\$/" end="/\}/" scheme="Comment"
+          region="pOther" region00="dpOpenStruct" region10="dpCloseStruct"/>
+   <regexp match="/(\(\*\$.*?\*\))/" region0="pOther"/>
+   <block start="/\{/" end="/\}/" scheme="Comment"
+          region="pComment" region00="dpOpenStruct" region10="dpCloseStruct"/>
+   <block start="/\(\*/" end="/\*\)/" scheme="Comment"
+          region="pComment" region00="dpOpenStruct" region10="dpCloseStruct"/>
+   <!-- paired -->
+   <block start="/(\()/" end="/(\))/" scheme="mPasCore"
+          region00="pSymb" region01="dpOpenStruct"
+          region10="pSymb" region11="dpCloseStruct"/>
+   <block start="/(\[)/" end="/(\])/" scheme="mPasCore"
+          region00="pSymb" region01="dpOpenStruct"
+          region10="pSymb" region11="dpCloseStruct"/>
+
+   <!-- Strings -->
+   <regexp match="/'(\{[\da-fA-F]{8}\-[\da-fA-F]{4}\-[\da-fA-F]{4}\-[\da-fA-F]{4}\-[\da-fA-F]{12}\})'/"
+           region0="pString" region1="pGUID"/>
+   <regexp match="/'(.*?[^\'])??'/" region0="pString"/>
+   <regexp match="/\#\d+?\B/" region0="pNumb"/>
+   <regexp match="/\#\$[\dA-Fa-f]+?\B/" region0="pNumb"/>
+   <!-- Numbers  -->
+   <regexp match="/\c(\$[\da-fA-F]+)\B/" region0="pNumb"/>
+   <inherit scheme="mFloatNumb"/>
+   <inherit scheme="mDecNumb"/>
+   <regexp match="/\c(\$[\da-fA-F]*?([^\s\W\da-fA-F]).*?)\B/" region0="dError"/>
+   <!-- Symbols -->
+   <keywords region="pSymb">
+      <symb name="="/><symb name="^"/><symb name="+"/><symb name="&lt;"/>
+      <symb name="-"/><symb name="*"/><symb name="/"/><symb name=".."/>
+      <symb name=":"/><symb name="("/><symb name="."/><symb name="&gt;"/>
+      <symb name="#"/><symb name=")"/><symb name="["/><symb name="]"/>
+      <symb name=","/><symb name=";" region="dSymbol2"/>
+   </keywords>
+   <keywords ignorecase="ignorecase" region="pType">
+     <!-- Types -->
+     <word name="Byte"/>
+     <word name="ShortInt"/>
+     <word name="SmallInt"/>
+     <word name="Integer"/>
+     <word name="LongInt"/>
+     <word name="Cardinal"/>
+     <word name="LongWord"/>
+     <word name="int64"/>
+     <word name="Word"/>
+     <word name="byte"/>
+
+     <word name="real"/>
+     <word name="single"/>
+     <word name="double"/>
+     <word name="real46"/>
+     <word name="Comp"/>
+     <word name="Currency"/>
+     <word name="extended"/>
+
+     <word name="file"/>
+     <word name="text"/>
+     <word name="TextFile"/>
+
+     <word name="Boolean"/>
+     <word name="ByteBool"/>
+     <word name="WordBool"/>
+     <word name="LongBool"/>
+
+     <word name="AnsiChar"/>
+     <word name="char"/>
+     <word name="WideChar"/>
+     <word name="PAnsiChar"/>
+     <word name="PChar"/>
+     <word name="PWideChar"/>
+
+     <word name="string"/>
+     <word name="ShortString"/>
+     <word name="OpenString"/>
+     <word name="AnsiString"/>
+     <word name="WideString"/>
+
+     <word name="Variant"/>
+     <word name="OleVariant"/>
+     <word name="TDateTime"/>
+
+     <word name="Pointer"/>
+   </keywords>
+</scheme>
+
+<scheme name="pasProperty">
+   <inherit scheme="mPasCore"/>
+   <keywords ignorecase="ignorecase" region="pWord">
+     <word name="read"/>
+     <word name="readonly"/>
+     <word name="write"/>
+     <word name="writeonly"/>
+     <word name="default"/>
+     <word name="stored"/>
+     <word name="nodefault"/>
+     <word name="index"/>
+   </keywords>
+</scheme>
+
+<scheme name="pasExport">
+   <inherit scheme="mPasCore"/>
+   <keywords ignorecase="ignorecase" region="pWord">
+     <word name="external"/>
+     <word name="name"/>
+     <word name="index"/>
+   </keywords>
+</scheme>
+
+<scheme name="pascal">
+   <!-- paired -->
+   <block start="/\b((begin)|(library)|(implementation)|(case)|(record)|(object))\B/i" end="/\b(end)\B/i" scheme="pascal"
+          region00="pWord2" region10="pWord2"
+          region01="dpOpenStruct" region11="dpCloseStruct"/>
+   <block start="/\b(class) \s*\M \(|$/ix" end="/\b(end)\B/i" scheme="pascal"
+          region00="pWord2" region10="pWord2"
+          region01="dpOpenStruct" region11="dpCloseStruct"/>
+   <block start="/\b(try)\B/i" end="/\b(end)\B/i" scheme="pascal"
+          region00="pWord2" region10="pWord2"
+          region01="dpOpenStruct" region11="dpCloseStruct"/>
+   <block start="/\b(repeat)\B/ix" end="/\b(until)\B/ix" scheme="pascal"
+          region00="pWord2" region10="pWord2"
+          region01="dpOpenStruct" region11="dpCloseStruct"/>
+
+   <block start="/\(\*(\$HPPEMIT)\s\'/i" end="/$|(\'\s\*\))/" scheme="Comment"
+          region="pComment" region01="pOther"/>
+   <block start="/\{(\$HPPEMIT)\s\'/i" end="/$|(\'\s\})/" scheme="Comment"
+          region="pComment" region01="pOther"/>
+
+   <inherit scheme="mPasCore"/>
+
+   <block start="/\b(asm)\B/i" end="/\s|^(end)/i" scheme="pasAsm"
+          region00="pWord" region10="pWord"
+          region01="dpOpenStruct" region11="dpCloseStruct"/>
+   <block start="/\b(property)\B/i" end="/(;)/" scheme="pasProperty"
+          region01="pWord" region10="pSymb"/>
+   <block start="/\b((external)|(exports))\B/i" end="/(;)/i" scheme="pasExport"
+          region01="pWord" region10="pSymb"/>
+   <regexp match="/^ \s* \M (procedure)|(function) \s+ ([_\w]+)/ix" region3="dFunction"/>
+
+   <!-- cail: hacks foobar.Text bad coloring -->
+   <regexp match="/(\.)(\w+)/" region1="pSymb"/>
+   <!-- Words -->
+   <keywords ignorecase="ignorecase" region="pWord">
+     <word name="absolute"/>
+     <word name="abstract"/>
+     <word name="and"/>
+     <word name="array"/>
+     <word name="as"/>
+     <word name="asm"/>
+     <word name="assembler"/>
+     <word name="automated"/>
+     <word name="begin" region="dError"/>
+     <word name="case"/>
+     <word name="cdecl"/>
+     <word name="class"/>
+     <word name="const"/>
+     <word name="constructor"/>
+     <word name="contains"/>
+     <!--Word name="default"-->
+     <word name="destructor"/>
+     <word name="dispid"/>
+     <word name="dispinterface"/>
+     <word name="div"/>
+     <word name="do"/>
+     <word name="downto"/>
+     <word name="dynamic"/>
+     <word name="else"/>
+     <word name="end" region="dError"/>
+     <word name="except"/>
+     <word name="export"/>
+     <word name="exports"/>
+     <word name="external"/>
+     <word name="false"/>
+     <word name="far"/>
+     <word name="finalization"/>
+     <word name="finally"/>
+     <word name="for"/>
+     <word name="forward"/>
+     <word name="function"/>
+     <word name="goto"/>
+     <word name="if"/>
+     <word name="is"/>
+     <word name="implementation"/>
+     <word name="in"/>
+     <word name="inherited"/>
+     <word name="initialization"/>
+     <word name="inline"/>
+     <word name="interface"/>
+     <word name="interrupt"/>
+     <word name="label"/>
+     <word name="library"/>
+     <word name="message"/>
+     <word name="mod"/>
+     <word name="near"/>
+     <word name="nil"/>
+     <word name="not"/>
+     <word name="object"/>
+     <word name="of"/>
+     <word name="on"/>
+     <word name="or"/>
+     <word name="out"/>
+     <word name="overload"/>
+     <word name="override"/>
+     <word name="package"/>
+     <word name="packed"/>
+     <word name="pascal"/>
+     <word name="private"/>
+     <word name="procedure"/>
+     <word name="program"/>
+     <!--Word name="property"-->
+     <word name="protected"/>
+     <word name="public"/>
+     <word name="published"/>
+     <word name="raise"/>
+     <!--Word name="readonly"-->
+     <word name="record"/>
+     <word name="reintroduce"/>
+     <word name="repeat"/>
+     <word name="requires"/>
+     <word name="resident"/>
+     <word name="result"/>
+     <word name="resourcestring"/>
+     <word name="safecall"/>
+     <word name="set"/>
+     <word name="self"/>
+     <word name="shl"/>
+     <word name="stdcall"/>
+     <word name="register"/>
+     <!--Word name="nodefault"-->
+     <word name="shr"/>
+     <word name="then"/>
+     <word name="to"/>
+     <word name="true"/>
+     <word name="try"/>
+     <word name="type"/>
+     <word name="unit"/>
+     <word name="until"/>
+     <word name="uses"/>
+     <word name="var"/>
+     <word name="virtual"/>
+     <word name="while"/>
+     <word name="with"/>
+     <!--Word name="writeonly"-->
+     <word name="xor"/>
+   </keywords>
+</scheme>
+
+</hrc>

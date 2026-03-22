@@ -1,0 +1,5 @@
+REGEDIT4
+
+[HKEY_CURRENT_USER\SOFTWARE\Far\Plugins\Date-n-Time\Config]
+"NoUseMenu"=dword:00000001
+

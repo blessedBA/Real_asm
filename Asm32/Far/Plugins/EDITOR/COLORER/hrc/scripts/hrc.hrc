@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="Windows-1251"?>
+<!DOCTYPE hrc SYSTEM "../hrc.dtd">
+<?xml-stylesheet type="text/xsl" href="../hrc.xsl"?>
+<!--
+    Colorer HRC Description v2.0
+With Help of:
+  ANR Daemon, <anrdaemon@mtu-net.ru> Hell corp.
+      Full RegExp code. Ideally for syntax checking
+  cail: changes for version 4you
+  4ever
+-->
+
+<hrc>
+
+<define name="hrcString"   value="dString"/>
+<define name="hrcString2"  value="dStringQuote2"/>
+<define name="hrcComment"  value="dComment"/>
+<define name="hrcRegExp"   value="dString2"/>
+<define name="hrcTag"      value="dKeyword"/>
+<define name="hrcOtherTag" value="dKeyword2"/>
+<define name="hrcWord"     value="dParam"/>
+<define name="hrcBad"      value="dErrorText"/>
+<define name="hrcOtherParams" value="dParam2"/>
+
+<scheme name="clComment">
+  <block start="/&lt;!--/" end="/-->/" scheme="Comment"
+         region="hrcComment" region00="dpOpenStruct" region10="dpCloseStruct"/>
+  <block start="/&lt;\?|\!/" end="/>/" scheme="Comment" region="dDirective"/>
+</scheme>
+<scheme name="clBad">
+  <regexp match="/\S+/" region0="dError" lowpriority="lowpriority"/>
+</scheme>
+
+<scheme name="clColorer">
+  <inherit scheme="clComment"/>
+  <regexp match="/\M&lt;scheme/i" region0="dFunction"/>
+  <block start="/(&lt;scheme \M .*?\>)/x" end="/(&lt;/scheme>)/" scheme="clScheme"
+         region00="hrcTag" region01="dpOpenStruct"
+         region10="hrcTag" region11="dpCloseStruct"/>
+  <block start="/&lt;define\s/" end="/\/>/" scheme="clDefine"
+         region00="hrcTag" region10="hrcTag"/>
+  <block start="/&lt;include\s/" end="/\/>/" scheme="clInclude"
+         region00="hrcTag" region10="hrcTag"/>
+  <block start="/(&lt;type \M .*? \>|$)/x" end="/(&lt;/type>)/i" scheme="clType"
+         region00="hrcTag" region01="dpOpenStruct"
+         region10="hrcTag" region11="dpCloseStruct"/>
+  <inherit scheme="clBad"/>
+</scheme>
+
+<scheme name="colorerhrc">
+  <block start="/(&lt;hrc.*>)/" end="/(&lt;/hrc>)/" scheme="clColorer"
+         region="hrcBad" region00="hrcTag" region01="dpOpenStruct"
+         region10="hrcTag" region11="dpCloseStruct"/>
+  <inherit scheme="clComment"/>
+  <inherit scheme="clBad"/>
+</scheme>
+
+<scheme name="clScheme">
+  <inherit scheme="clComment"/>
+  <regexp match='/\b(name)\s*(=)\s*([\x22\x27])(\w*)(\3)/'
+          region1="hrcWord" region2="hrcTag" region3="hrcString2"
+          region4="hrcString" region5="hrcString2"/>
+  <keywords ignorecase="ignorecase" region="hrcTag">
+    <symb name="&gt;"/>
+  </keywords>
+<!-- block -->
+  <!--regexp match="/\M&lt;block/i" region0="dFunction"-->
+  <block start="/&lt;block/" end="/\/>/" scheme="clBlock"
+         region00="hrcTag" region10="hrcTag"/>
+<!-- regexp -->
+  <block start="/&lt;regexp/" end="/\/>/" scheme="clRegexp"
+         region00="hrcTag" region10="hrcTag"/>
+<!-- keyword -->
+  <block start="/((&lt;keywords)\s\M.*(>))/" end="/(&lt;/keywords>)/" scheme="clKeyW"
+         region01="dpOpenStruct" region02="hrcTag" region03="hrcTag"
+         region10="hrcTag" region11="dpCloseStruct"/>
+<!-- include -->
+  <block start="/(&lt;inherit)\s/" end="/((\/>)|(&lt;\/inherit>))/" scheme="clIncludeScheme"
+         region00="hrcTag" region10="hrcTag"
+         region01="dpOpenStruct" region11="dpCloseStruct"/>
+  <inherit scheme="clBad"/>
+</scheme>
+<scheme name="clClass">
+  <regexp match="/\\x[\da-fA-F]{2}/" region0="hrcRegExp"/>
+  <regexp match="/\\[^&amp;&lt;]/" region0="hrcRegExp"/>
+  <regexp match="/-/" region0="hrcString2"/>
+  <regexp match="/&amp;(lt)|(gt)|(amp)|(quot);/" region0="dParam2"/>
+  <regexp match="/&lt;|&amp;/" region0="dError"/>
+  <regexp match="/\)|\(/" region0="dError"/>
+</scheme>
+<scheme name="clRegExpString">
+  <block start="/(\()/" end="/(\))/" scheme="clRegExpString"
+         region00="hrcString2" region01="dpOpenStruct"
+         region10="hrcString2" region11="dpCloseStruct"/>
+  <block start="/(\[)/" end="/(\])/" scheme="clClass"
+         region00="hrcString2" region01="dpOpenStruct"
+         region10="hrcString2" region11="dpCloseStruct"/>
+  <regexp match="/&amp;(lt)|(gt)|(amp)|(quot);/" region0="dParam2"/>
+  <regexp match="/&lt;|&amp;|\)/" region0="dError" lowpriority="lowpriority"/>
+  <regexp match="/[\~\*\.\?\^\$\|\[\]\{\}]/" region0="hrcString2"/>
+  <regexp match="/\\y?[\da-fA-F]/i" region0="hrcString2"/>
+  <regexp match="/\\x[\da-fA-F]{2}/" region0="hrcRegExp"/>
+  <regexp match="/\\[^&amp;&lt;]/" region0="hrcRegExp"/>
+</scheme>
+<scheme name="clRegExpString22">
+  <regexp match="/\\?\x22/" region0="dError"/>
+  <inherit scheme="clRegExpString">
+    <virtual scheme="clRegExpString" subst="clRegExpString22"/>
+  </inherit>
+</scheme>
+<scheme name="clRegExpString27">
+  <regexp match="/\\?\x27/" region0="dError"/>
+  <!-- need real polymorphizm !
+       'virtual' schemes! - yeasss! -->
+  <inherit scheme="clRegExpString">
+    <virtual scheme="clRegExpString" subst="clRegExpString27"/>
+  </inherit>
+</scheme>
+
+<scheme name="clIncludeScheme">
+  <regexp match='/((scheme)|(subst))\s*(=)\s*([\x22\x27])(\w*)(\5)/'
+          region1="hrcWord" region4="hrcTag" region5="hrcString2"
+          region6="hrcString" region7="hrcString2"/>
+  <regexp match="/&gt;/" region0="hrcTag"/>
+  <block start="/&lt;virtual /" end="/\/&gt;/" scheme="clIncludeScheme"
+         region00="hrcTag" region10="hrcTag"/>
+  <inherit scheme="clBad"/>
+</scheme>
+
+<scheme name="clInclude">
+  <regexp match='/\b(name)\s*(=)\s*([\x22\x27])(.+?)(\3)/'
+          region1="hrcWord" region2="hrcTag" region3="hrcString2"
+          region4="hrcString" region5="hrcString2"/>
+  <inherit scheme="clBad"/>
+</scheme>
+
+<scheme name="clType">
+  <inherit scheme="clComment"/>
+  <block start="/\b((match)|(exts))\s*(=)\s*(([\x22\x27])\/)/" end="/(\/[xi]*\y6)/"
+         scheme="clRegExpString" region="hrcString"
+         region01="hrcWord" region04="hrcTag" region05="hrcString2"
+         region10="hrcString2"/>
+  <regexp match='/\s*(=)\s*([\x22\x27])(.*?)(\2)/'
+          region1="hrcTag" region2="hrcString2"
+          region3="hrcString" region4="hrcString2"/>
+  <regexp match='/(&lt;)(colors)|(params)/'
+          region0="hrcOtherTag" region1="hrcTag"/>
+
+  <keywords region="hrcWord">
+     <word name="scheme"/>
+     <word name="type"/>
+     <word name="match"/>
+     <word name="descr"/>
+     <word name="name"/>
+  </keywords>
+  <keywords region="hrcOtherParams">
+     <word name="fullback"/>
+     <word name="backparse"/>
+     <word name="maxlinelen"/>
+     <word name="color"/>
+     <word name="row"/>
+     <word name="col"/>
+     <word name="useht"/>
+     <word name="separator"/>
+  </keywords>
+  <keywords region="hrcTag">
+     <word name="&lt;load"/>
+     <word name="&lt;switch"/>
+     <word name="&lt;scheme"/>
+     <symb name=">"/><symb name="/>"/><symb name="="/>
+  </keywords>
+  <inherit scheme="clBad"/>
+</scheme>
+
+<scheme name="clDefine">
+  <regexp match='/((name)|(value))\s*(=)\s*([\x22\x27])([\\\/\w\#\$\%]+?)(\5)/'
+          region1="hrcWord" region4="hrcTag" region5="hrcString2"
+          region6="hrcString" region7="hrcString2"/>
+  <inherit scheme="clBad"/>
+</scheme>
+
+<scheme name="clBlock">
+  <block start="/\b((start)|(end))\s*(=)\s*(('\/))/" end="/(\/[xi]*')/"
+         scheme="clRegExpString27"
+         region="hrcString" region01="hrcWord" region04="hrcTag"
+         region05="hrcString2" region10="hrcString2"
+         region06="dpOpenStruct" region11="dpCloseStruct"/>
+  <block start='/\b((start)|(end))\s*(=)\s*(("\/))/' end="/(\/[xi]*\x22)/"
+         scheme="clRegExpString22"
+         region="hrcString" region01="hrcWord" region04="hrcTag"
+         region05="hrcString2" region10="hrcString2"
+         region06="dpOpenStruct" region11="dpCloseStruct"/>
+  <regexp match='/\b ( (region([01][\dabcdefABCDEF])?) | (scheme) )
+                 \s* (=) \s* ([\x22\x27])
+                 ([\/\+\w\#\%\$]+)
+                 (\6)/x'
+          region1="hrcWord" region5="hrcTag" region6="hrcString2"
+          region7="hrcString" region8="hrcString2"/>
+  <regexp match='/(lowpriority)\s*(=)\s*([\x22\x27])([\\\/\w\#\$\%]+?)(\3)/'
+          region1="hrcWord" region2="hrcTag" region3="hrcString2"
+          region4="hrcString" region5="hrcString2"/>
+  <inherit scheme="clBad"/>
+</scheme>
+<scheme name="clRegExp">
+  <block start="/\b(match)\s*(=)\s*(('\/))/" end="/(\/[xi]*')/" scheme="clRegExpString27"
+         region="hrcString" region01="hrcWord" region02="hrcTag"
+         region03="hrcString2" region10="hrcString2"
+         region04="dpOpenStruct" region11="dpCloseStruct"/>
+  <block start='/\b(match)\s*(=)\s*(("\/))/' end="/(\/[xi]*\x22)/" scheme="clRegExpString22"
+         region="hrcString" region01="hrcWord" region02="hrcTag" region03="hrcString2"
+         region10="hrcString2" region04="dpOpenStruct" region11="dpCloseStruct"/>
+  <regexp match='/\b((region[\da-fA-F]))\s*(=)\s*([\x22\x27])([\/\+\w\#\%\$]+)(\4)/'
+         region1="hrcWord" region3="hrcTag" region4="hrcString2"
+         region5="hrcString" region6="hrcString2"/>
+  <regexp match='/(lowpriority)\s*(=)\s*([\x22\x27])([\\\/\w\#\$\%]+?)(\3)/'
+          region1="hrcWord" region2="hrcTag" region3="hrcString2"
+          region4="hrcString" region5="hrcString2"/>
+  <inherit scheme="clBad"/>
+</scheme>
+
+<scheme name="clKeyW">
+  <inherit scheme="clComment"/>
+  <block start="/(&lt;(word)|(symb))\s/" end="/(\/>)/" scheme="clWordSymb"
+         region="hrcBad" region01="hrcTag"
+         region11="hrcTag"/>
+  <block start="/\b(worddiv)\s*(=)\s*((([\x22\x27])\/))/" end="/(\/[xi]*\y5)/" scheme="clRegExpString"
+         region="hrcString" region01="hrcWord" region02="hrcTag"
+         region03="hrcString2" region10="hrcString2"
+         region04="dpOpenStruct" region11="dpCloseStruct"/>
+  <regexp match='/\b((region))\s*(=)\s*([\x22\x27])([^\s&lt;>]+)(\4)/'
+         region1="hrcWord" region3="hrcTag" region4="hrcString2"
+         region5="hrcString" region6="hrcString2"/>
+  <regexp match='/((ignorecase)|(lowpriority))\s*(=)\s*([\x22\x27])([\\\/\w\#\$\%]+?)(\5)/'
+          region1="hrcWord" region4="hrcTag" region5="hrcString2"
+          region6="hrcString" region7="hrcString2"/>
+  <keywords region="hrcTag">
+    <symb name="&gt;"/>
+  </keywords>
+  <inherit scheme="clBad"/>
+</scheme>
+
+<scheme name="clWordSymbTags">
+  <regexp match="/&amp;(lt)|(gt)|(amp)|(quot);/" region0="dParam2"/>
+  <regexp match="/&lt;|&amp;/" region0="dError"/>
+</scheme>
+<scheme name="clWordSymb">
+  <block start='/((name)|(region))\s*(=)\s*([\x22\x27])/' end="/\y5/"
+          scheme="clWordSymbTags"
+          region01="hrcWord" region04="hrcTag" region05="hrcString2"
+          region="hrcString" region10="hrcString2"/>
+  <inherit scheme="clBad"/>
+</scheme>
+
+</hrc>

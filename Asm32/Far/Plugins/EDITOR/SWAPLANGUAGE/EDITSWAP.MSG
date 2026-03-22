@@ -1,0 +1,73 @@
+[Default]
+// секция одна - другие не нужны, т.к. только данные
+Language=Russian
+
+[Russian]
+// Автоматическое переключение раскладки клавиатуры после перекодирования :-)
+// Переключение происходит по кругу: RU->EN->RU->... - это вполне достаточно.
+Switch=1
+
+// пара перекодировочных таблиц (см. свою клавиатуру) (макс
+// длина строки - не более 80 символов :-)
+// two decode tables (refer to its keyboard)
+TableRus=№АВГДЕЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЯавгдежзийклмнопрстуфхцчшщъыьэяёЁБЮЭ
+TableEng=#FDULT:PBQRKVYJGHCNEA{WXIO}SMZfdult;pbqrkvyjghcnea[wxio]sm'z`~<>"
+
+// [russian]
+// 10 Правил для случая "если предыдущий символ русский"
+// первый символ - что меняем, второй - на что меняем
+// (по 2 символа!)
+// 10 Rules for event: "if preceding symbol - russian"
+// first symbol - that change, second symbol - on that change
+RulRus0=,?
+RulRus1=./
+RulRus2=б,
+RulRus3=ю.
+RulRus4=
+RulRus5=
+RulRus6=
+RulRus7=
+RulRus8=
+RulRus9=
+
+// [english]
+// 10 Правил для случая "если предыдущий символ латинский"
+// первый символ - что меняем, второй - на что меняем
+// (по 2 символа!)
+// 10 Rules for event: "if preceding symbol - english"
+// first symbol - that change, second symbol - on that change
+RulEng0=?,
+RulEng1=/.
+RulEng2=,б
+RulEng3=.ю
+RulEng4=ю.
+RulEng5=б,
+RulEng6=
+RulEng7=
+RulEng8=
+RulEng9=
+
+
+// [Unknown]
+// 10 Правил для случая "если предыдущий символ не рус/lat"
+// первый символ - что меняем, второй - на что меняем
+// крутим по кругу:
+// 10 Rules for event: "if preceding symbol not russian and un-english"
+// first symbol - that change, second symbol - on that change
+// on cycle:
+// '/' -> '.' -> '│' -> '/'
+// '?' -> ',' -> 'с' -> '?'
+// (по 2 символа!)
+RulUnk0=/.
+RulUnk1=.ю
+RulUnk2=ю/
+
+RulUnk3=?,
+RulUnk4=,б
+RulUnk5=б?
+
+RulUnk6=
+RulUnk7=
+RulUnk8=
+RulUnk9=
+

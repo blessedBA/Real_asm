@@ -1,0 +1,32 @@
+.Language=English,English
+.PluginContents=Resource Browser plugin
+
+@Contents
+$^#Resource Browser Plugin 1.00 Beta 5#
+$^#Copyright (c) 1999-2000 Igor Pavlov#
+    This FAR module allows to work with resources in executable files.
+Files in the archive are handled in the same manner as if they were in a
+folder.
+
+   ~Getting resources~@ExtractResources@
+
+   ~Resource Browser configuration~@ResourceConfig@
+
+
+
+ Web site:  #www.7-zip.com#
+
+ E-mail:    #support@@7-zip.com#
+
+@ExtractResources
+$ #Getting resources#
+    In this dialog you may enter the path to extract files.
+
+@ResourceConfig
+$ #Resource Browser configuration#
+    In this dialog you may change following parameters:
+
+ #Plugin Enabled#         Enables / Disables plugin.
+ 
+ #Text in Unicode#        Text will be copied in Unicode.
+ 

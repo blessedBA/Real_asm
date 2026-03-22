@@ -1,0 +1,24 @@
+Version 1.3, 03.01.99
+
+With FAR 1.60+, this plugin may be called from editor too.
+
+Bug fixed: FAR crashed when expanded pathname contained a space character.
+
+
+Version 1.2, 06.04.98
+(actually was compiled much earlier, but not distributed)
+
+Bug fixed: some of file names were skipped in some situations.
+
+
+Version 1.1, 19.11.97
+
+1. The bug with failing to work in Windows 95 was fixed.
+2. Slashes '/' are treated as backslashes '/'.
+3. The completion state is reset when current directory is changed.
+4. Words inside the command line may be completed too, not only the last word.
+   Which one is completed, depends on the cursor position.
+
+A known problem: FAR always sets the cursor to the end of the line, no matter
+where the word completed is. However, after the cursor has moved, the
+completion state is not reset, you can continue with the Next command.

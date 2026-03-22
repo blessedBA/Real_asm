@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="Windows-1251"?>
+<!DOCTYPE hrc SYSTEM "../hrc.dtd">
+<?xml-stylesheet type="text/xsl" href="../hrc.xsl"?>
+<!--
+   Kixtart Script Syntax description
+Created by:
+   Valerie Ivanov <vi@ippe.obninsk.ru>
+-->
+
+<hrc>
+
+<define name="kixComment" value="dComment"/>
+<define name="kixLabel"   value="dLabel"/>
+<define name="kixString"  value="dString"/>
+<define name="kixNumb"    value="dNumber"/>
+<define name="kixSymb"    value="dSymbol"/>
+<define name="kixFunc"    value="dKeyword"/>
+<define name="kixKey"     value="dParam"/>
+<define name="kixReser"   value="dKeyword"/>
+<define name="kixVar"     value="dVar2"/>
+<define name="kixIdent"   value="dIdentifier"/>
+
+<scheme name="Kixtart">
+   <!-- Linear Comments-->
+   <regexp match="/(\;.*$)/" region0="kixComment"/>
+   <!-- Strings -->
+   <regexp match='/("((\\.)|[^\\"])*?")/' region0="kixString"/>
+   <!-- Numbers -->
+   <inherit scheme="mCHexNumb"/>
+   <inherit scheme="mFloatNumb"/>
+   <inherit scheme="mDecNumb"/>
+   <!-- Labels -   ...: -->
+   <regexp match="/(^:[\w\s]+)/" region0="kixLabel"/>
+   <!-- Kixtart variables -->
+   <regexp match="/(\$\w*)/" region0="kixVar"/>
+   <!-- Enviroment Identifier -->
+   <regexp match="/\@(\$\w*)/" region0="kixIdent"/>
+   <!-- Functions -->
+   <keywords ignorecase="ignorecase" region="kixFunc">
+      <word name="AT"/>
+      <word name="CD"/>
+      <word name="DO"/>
+      <word name="GO"/>
+      <word name="IF"/>
+      <word name="LM"/>
+      <word name="MD"/>
+      <word name="ON"/>
+      <word name="OR"/>
+      <word name="AND"/>
+      <word name="ASC"/>
+      <word name="BIG"/>
+      <word name="BOX"/>
+      <word name="CHR"/>
+      <word name="CLS"/>
+      <word name="DAY"/>
+      <word name="DEL"/>
+      <word name="DOS"/>
+      <word name="GET"/>
+      <word name="KIX"/>
+      <word name="LEN"/>
+      <word name="NOT"/>
+      <word name="OFF"/>
+      <word name="RAS"/>
+      <word name="RUN"/>
+      <word name="SET"/>
+      <word name="SID"/>
+      <word name="USE"/>
+      <word name="VAL"/>
+      <word name="BEEP"/>
+      <word name="CALL"/>
+      <word name="CASE"/>
+      <word name="COPY"/>
+      <word name="DATE"/>
+      <word name="ELSE"/>
+      <word name="EXIT"/>
+      <word name="GETS"/>
+      <word name="GOTO"/>
+      <word name="LOOP"/>
+      <word name="OPEN"/>
+      <word name="PLAY"/>
+      <word name="PRIV"/>
+      <word name="QUIT"/>
+      <word name="SETL"/>
+      <word name="SETM"/>
+      <word name="TIME"/>
+      <word name="YEAR"/>
+      <word name="BREAK"/>
+      <word name="CLOSE"/>
+      <word name="COLOR"/>
+      <word name="ENDIF"/>
+      <word name="ERROR"/>
+      <word name="EXIST"/>
+      <word name="GOSUB"/>
+      <word name="INSTR"/>
+      <word name="INWIN"/>
+      <word name="LCASE"/>
+      <word name="LTRIM"/>
+      <word name="MONTH"/>
+      <word name="PWAGE"/>
+      <word name="RTRIM"/>
+      <word name="SHELL"/>
+      <word name="SLEEP"/>
+      <word name="SMALL"/>
+      <word name="UCASE"/>
+      <word name="UNTIL"/>
+      <word name="WHILE"/>
+      <word name="WKSTA"/>
+      <word name="ADDKEY"/>
+      <word name="CURDIR"/>
+      <word name="DELKEY"/>
+      <word name="DOMAIN"/>
+      <word name="LDRIVE"/>
+      <word name="LOGOFF"/>
+      <word name="MDAYNO"/>
+      <word name="RETURN"/>
+      <word name="SELECT"/>
+      <word name="SERROR"/>
+      <word name="SUBSTR"/>
+      <word name="USERID"/>
+      <word name="WDAYNO"/>
+      <word name="YDAYNO"/>
+      <word name="ADDRESS"/>
+      <word name="COMMENT"/>
+      <word name="COOKIE1"/>
+      <word name="DELTREE"/>
+      <word name="DISPLAY"/>
+      <word name="ENUMKEY"/>
+      <word name="FLUSHKB"/>
+      <word name="HOMEDIR"/>
+      <word name="HOMESHR"/>
+      <word name="INGROUP"/>
+      <word name="LANROOT"/>
+      <word name="LDOMAIN"/>
+      <word name="LOADKEY"/>
+      <word name="LSERVER"/>
+      <word name="MONTHNO"/>
+      <word name="RSERVER"/>
+      <word name="SAVEKEY"/>
+      <word name="SETTIME"/>
+      <word name="SYSLANG"/>
+      <word name="WUSERID"/>
+      <word name="DELVALUE"/>
+      <word name="EXISTKEY"/>
+      <word name="FULLNAME"/>
+      <word name="HOSTNAME"/>
+      <word name="LOADHIVE"/>
+      <word name="MAXPWAGE"/>
+      <word name="PASSWORD"/>
+      <word name="READLINE"/>
+      <word name="READTYPE"/>
+      <word name="SHUTDOWN"/>
+      <word name="STARTDIR"/>
+      <word name="USERLANG"/>
+      <word name="ENDSELECT"/>
+      <word name="ENUMGROUP"/>
+      <word name="ENUMVALUE"/>
+      <word name="HOMEDRIVE"/>
+      <word name="IPADDRESS"/>
+      <word name="READVALUE"/>
+      <word name="SCRIPTDIR"/>
+      <word name="WRITELINE"/>
+      <word name="MESSAGEBOX"/>
+      <word name="SETCONSOLE"/>
+      <word name="UNLOADHIVE"/>
+      <word name="WRITEVALUE"/>
+      <word name="LONGHOMEDIR"/>
+      <word name="OLECALLFUNC"/>
+      <word name="OLECALLPROC"/>
+      <word name="SENDMESSAGE"/>
+      <word name="OLEGETOBJECT"/>
+      <word name="PRIMARYGROUP"/>
+      <word name="SETWALLPAPER"/>
+      <word name="ADDPROGRAMITEM"/>
+      <word name="DELPROGRAMITEM"/>
+      <word name="ENUMLOCALGROUP"/>
+      <word name="GETFILEVERSION"/>
+      <word name="OLEGETPROPERTY"/>
+      <word name="OLEPUTPROPERTY"/>
+      <word name="REDIRECTOUTPUT"/>
+      <word name="ADDPROGRAMGROUP"/>
+      <word name="DELPROGRAMGROUP"/>
+      <word name="OLECREATEOBJECT"/>
+      <word name="OLEGETSUBOBJECT"/>
+      <word name="COMPAREFILETIMES"/>
+      <word name="OLERELEASEOBJECT"/>
+      <word name="SHOWPROGRAMGROUP"/>
+      <word name="READPROFILESTRING"/>
+      <word name="SETDEFAULTPRINTER"/>
+      <word name="WRITEPROFILESTRING"/>
+      <word name="ADDPRINTERCONNECTION"/>
+      <word name="DELPRINTERCONNECTION"/>
+   </keywords>
+</scheme>
+
+</hrc>

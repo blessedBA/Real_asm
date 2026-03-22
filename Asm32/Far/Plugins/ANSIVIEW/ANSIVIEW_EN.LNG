@@ -1,0 +1,28 @@
+.Language=English,English (English)
+//0
+"View ANSI-log"
+"ANSIview"
+"ANSIview"
+"Convert in :"
+"File:"
+//5
+"file type"
+"&HTML-file"
+"&FAR hlf-file"
+"&MUD-colors"
+"&ANSI (colors only)"
+//10
+"&Yes"
+"&Cancel"
+"Attention"
+"File exists.Overwrite it ?"
+"ANSIview - Error"
+//15
+"Can't create file!"
+"Can't open file !"
+"Command line pre&fixes"
+"Enable &blinking"
+"Max. string &length"
+//20
+"Picture:"
+"Log:"

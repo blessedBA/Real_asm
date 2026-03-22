@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="Windows-1251"?>
+<!DOCTYPE hrc SYSTEM "../hrc.dtd">
+<?xml-stylesheet type="text/xsl" href="../hrc.xsl"?>
+<!--
+    Windows REG files (REGEDIT4) format for Colorer4ever.
+    Version 2.0, 02.02.2001
+    Copyright (C) 2001 Roman Pekhov <pekhov@mail.ru>
+
+    Reading REG files regedit does not report any errors. It messages
+    "Information in <file> has been successfully entered into the registry"
+    always even if has not accepted whole the data.
+
+    So this HRC highlights everything unrecognizable by the regedit.
+-->
+<hrc>
+
+
+<!-- CUSTOMIZE YOUR COLORS HERE -->
+
+<!-- See your HRD file (...\Colorer\hrd\console\default.hrd  by default)
+     for basic color settings -->
+
+<!-- Registry keys -->
+<define name="regKey"       value="dText"/>
+
+<!-- Registry keys being deleted-->
+<define name="regKeyDel"    value="dErrorText"/>
+
+<!-- Key enclosing brackets -->
+<define name="regSymbol2"   value="dSymbol2"/>
+
+<!-- Value names and string data -->
+<define name="regString"    value="dString"/>
+
+<!-- 'hex' and 'dword' keywords -->
+<define name="regKeyword"   value="dKeyword"/>
+
+<!-- Colons at 'hex' and 'dword' -->
+<define name="regSymbol"    value="dSymbol"/>
+
+<!-- Hexadecimal data -->
+<define name="regNumHex"    value="dNumHex"/>
+
+<!-- File format signature -->
+<define name="regSignature" value="dLabel"/>
+
+<!-- Comments -->
+<define name="regComment"   value="dComment"/>
+
+<!-- Consider Keys as functions -->
+<define name="regFunction"   value="dFunction"/>
+
+<!-- Errors. All that will be ignored by the regedit -->
+<define name="regError"     value="dError"/>
+
+<!-- END OF COLOR DEFINES -->
+
+
+
+
+<!-- The main scheme is "Reg" -->
+
+
+<!-- Invalid lines -->
+<scheme name="RegError">
+
+    <!-- Comment -->
+    <regexp match='/^\s*(;.*)?$/x'  lowpriority="lowpriority"
+            region1="regComment"/>
+    <!-- -->
+    <regexp match='/^\s+/x'         lowpriority="lowpriority"/>
+    <regexp match='/\s+$/x'         lowpriority="lowpriority"/>
+    <!-- The rest is error -->
+    <regexp match='/(.+?)/x'        lowpriority="lowpriority"
+            region1="regError"/>
+
+</scheme>
+
+
+<!-- Hexadecimal data chain -->
+<scheme name="RegHex">
+
+    <regexp match='/([\da-fA-F]{1,2})\s*,\s*\M[^\s\\;]/x'
+            region1="regNumHex"/>
+    <regexp match='/([\da-fA-F]{1,2})\s*,\s*\\ \s*(;.*)?$/x'
+            region1="regNumHex" region2="regComment"/>
+    <regexp match='/^\s*(;.*)?$/x'
+            region1="regComment"/>
+    <regexp match='/^\s+/'/>
+
+</scheme>
+
+
+<!-- The main scheme -->
+<scheme name="Reg">
+
+<!-- ##### Valid data ##### -->
+    <!-- String -->
+    <regexp match='/^\s*("([^"\\]|(\\\\)|(\\"|n|r)){,254}")\s*=\s*("([^"\\]|(\\\\)|(\\"|n|r))*?")\s*(;.*)?/x'
+            region1="regString" region5="regString"  region9="regComment"/>
+    <!-- Hex - dataless -->
+    <regexp match='/^\s*("([^"\\]|(\\\\)|(\\"|n|r)){,254}")\s*=\s*(hex)(\(([\da-fA-F]{1,8})\))?(:)\s*(;.*)?(\\ \s*([^\s;].*?)\s*)?$/x'
+            region1="regString" region5="regKeyword" region7="regNumHex"
+            region8="regSymbol" region9="regComment" regionB="regError"/>
+    <!-- Hex -->
+    <block  start='/^\s*("([^"\\]|(\\\\)|(\\"|n|r)){,254}")\s*=\s*(hex)(\(([\da-fA-F]{1,8})\))?(:)\s*(\\ \s*(;.*)?)?/x'
+            region01="regString" region05="regKeyword" region07="regNumHex"
+            region08="regSymbol" region0A="regComment"
+            end='/(([\da-fA-F]{1,2})\s*(,\s*(\\ \s*)?)?(;.*)?)|(.)/x'
+            region12="regNumHex" region15="regComment" region16="regError"
+            scheme="RegHex"/>
+    <!-- Key -->
+    <regexp match='/^\s*((\[)   HKEY_ (LOCAL_MACHINE)|(CURRENT_USER)|(CLASSES_ROOT)|(USERS)|(CURRENT_CONFIG)|(DYN_DATA) (\\([^\\].{,259}){,1}){,1}(\]))(.*)$/x'
+            region1="regKey" region2="regSymbol2" regionB="regSymbol2"
+            regionA="regFunction" regionC="regComment"/>
+    <!-- Default string -->
+    <regexp match='/^\s*( @((()))                         )\s*=\s*("([^"\\]|(\\\\)|(\\"|n|r))*?")\s*(;.*)?/x'
+            region1="regString" region5="regString"  region9="regComment"/>
+    <!-- Default hex - dataless -->
+    <regexp match='/^\s*( @((()))                         )\s*=\s*(hex)(\(([\da-fA-F]{1,8})\))?(:)\s*(;.*)?(\\ \s*([^\s;].*?)\s*)?$/x'
+            region1="regString" region5="regKeyword" region7="regNumHex"
+            region8="regSymbol" region9="regComment" regionB="regError"/>
+    <!-- Default hex -->
+    <block  start='/^\s*( @((()))                         )\s*=\s*(hex)(\(([\da-fA-F]{1,8})\))?(:)\s*(\\ \s*(;.*)?)?/x'
+            region01="regString" region05="regKeyword" region07="regNumHex"
+            region08="regSymbol" region0A="regComment"
+            end='/(([\da-fA-F]{1,2})\s*(,\s*(\\ \s*)?)?(;.*)?)|(.)/x'
+            region12="regNumHex" region15="regComment" region16="regError"
+            scheme="RegHex"/>
+    <!-- Comment -->
+    <regexp match='/^\s*(;.*)?$/x'
+            region1="regComment"/>
+    <!-- Dword -->
+    <regexp match='/^\s*("([^"\\]|(\\\\)|(\\"|n|r)){,254}")\s*=\s*(dword)(:)\s*([\da-fA-F]{1,8})\s*(;.*)?/x'
+            region1="regString"  region5="regKeyword" region6="regNumHex"
+            region6="regSymbol"  region8="regComment"/>
+    <!-- Default dword -->
+    <regexp match='/^\s*( @((()))                         )\s*=\s*(dword)(:)\s*([\da-fA-F]{1,8})\s*(;.*)?/x'
+            region1="regString" region5="regKeyword" region6="regNumHex"
+            region6="regSymbol" region8="regComment"/>
+    <!-- Key deleting -->
+    <block  start='/^\s*((\[) - HKEY_ (LOCAL_MACHINE)|(CURRENT_USER)|(CLASSES_ROOT)|(USERS)|(CURRENT_CONFIG)|(DYN_DATA) (\\([^\\].{,259}){,1}){,1}(\]))(.*)$/x'
+            region01="regKeyDel" region02="regSymbol2" region0B="regSymbol2"
+            region0A="regFunction" region0C="regComment"
+            end='/^\M\s*\[/x'
+            scheme="RegError"/>
+    <!-- Deleting -->
+    <regexp match='/^\s*("([^"\\]|(\\\\)|(\\"|n|r)){,254}")\s*=\s* - \s*(;.*)?/x'
+            region1="regString" region5="regComment"/>
+    <!-- Default deleting -->
+    <regexp match='/^\s*( @((()))                         )\s*=\s* - \s*(;.*)?/x'
+            region1="regString" region5="regComment"/>
+    <!-- Signature -->
+    <regexp match='/^\s*((REGEDIT4)|(FARREG\d\d)|(Windows Registry Editor Version \d\.\d\d))\s*/'
+            region1="regSignature"/>
+
+<!-- ##### Erroneous lines #####-->
+    <!-- Hex  -->
+    <regexp match='/^\s*("([^"\\]|(\\\\)|(\\"|n|r)){,254}")\s*=\s*(h(e(x(\((([\da-fA-F]{1,8})\){,1}){,1}){,1}){,1}){,1})(\s*\S.*?)\s*(;.*)?$/x'
+            region1="regString" region5="regKeyword" region8="regSymbol"
+            regionA="regNumHex" regionB="regError"   regionC="regComment"/>
+    <!-- Dword -->
+    <regexp match='/^\s*("([^"\\]|(\\\\)|(\\"|n|r)){,254}")\s*=\s*(d(w(o(r(d(:\s*){,1}){,1}){,1}){,1}){,1})(\s*\S.*?)\s*(;.*)?$/x'
+            region1="regString" region5="regKeyword" regionA="regSymbol"
+            regionB="regError"  regionC="regComment"/>
+    <!-- String -->
+    <regexp match='/^\s*("([^"\\]|(\\\\)|(\\"|n|r)){,254})((")\s*(=\s*("([^"\\]|(\\\\)|(\\"|n|r))*){,1}){,1}){,1}\M\s*\S/x'
+            region1="regString" region6="regString"  region8="regString"/>
+    <!-- Key deleting -->
+    <block  start='/^\s*((\[) - (HKEY_ ((LOCAL_MACHINE)|(CURRENT_USER)|(CLASSES_ROOT)|(USERS)|(CURRENT_CONFIG)|(DYN_DATA) (\\([^\\].{,259}){,1}){,1}){,1}){,1} )\M\s*\S/x'
+            region01="regKeyDel" region02="regSymbol2" region0C="regFunction"
+            end='/^\M\s*\[/x'
+            scheme="RegError"/>
+    <!-- Key -->
+    <block  start='/^\s*((\[)   (HKEY_ ((LOCAL_MACHINE)|(CURRENT_USER)|(CLASSES_ROOT)|(USERS)|(CURRENT_CONFIG)|(DYN_DATA) (\\([^\\].{,259}){,1}){,1}){,1}){,1} )\M\s*\S/x'
+            region01="regKey" region02="regSymbol2" region0C="regFunction"
+            end='/^\M\s*\[/x'
+            scheme="RegError"/>
+    <!-- Default hex  -->
+    <regexp match='/^\s*( @((()))                         )\s*=\s*(h(e(x(\((([\da-fA-F]{1,8})\){,1}){,1}){,1}){,1}){,1})(\s*\S.*?)\s*(;.*)?$/x'
+            region1="regString" region5="regKeyword" region8="regSymbol"
+            regionA="regNumHex" regionB="regError"   regionC="regComment"/>
+    <!-- Default dword -->
+    <regexp match='/^\s*( @((()))                         )\s*=\s*(d(w(o(r(d(:\s*){,1}){,1}){,1}){,1}){,1})(\s*\S.*?)\s*(;.*)?$/x'
+            region1="regString" region5="regKeyword" regionA="regSymbol"
+            regionB="regError"  regionC="regComment"/>
+    <!-- Default string -->
+    <regexp match='/^\s*( @((()))                        )(())\s*(=\s*("([^"\\]|(\\\\)|(\\"|n|r))*){,1}){,1}\M\S/x'
+            region1="regString" region6="regString"  region8="regString"/>
+    <!-- Leading and trailing spaces -->
+    <regexp match='/^\s+/x'/>
+    <regexp match='/\s+$/x'/>
+    <!-- The rest is error -->
+    <regexp match='/(.+?)/x'
+            region1="regError"/>
+</scheme>
+
+</hrc>

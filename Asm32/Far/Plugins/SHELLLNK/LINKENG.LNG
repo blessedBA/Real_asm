@@ -1,0 +1,30 @@
+.Language=English,English
+
+"Ok"
+"Cancel"
+
+"Shell link creation"
+
+"&Panel"
+"&Desktop"
+
+"Create shell link to"
+"selected files"
+"&Where"
+"De&scription"
+"Create"
+"C&ase"
+
+"Can't create shell link"
+"to"
+
+"This link file already exists"
+"Overwrite"
+"Skip"
+"All"
+
+"Shell link support options"
+"&Resolve folder links"
+"Folder link &mask"
+"De&scription prefix"
+"Create shell links by default:"

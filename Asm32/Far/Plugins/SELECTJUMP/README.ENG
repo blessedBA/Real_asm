@@ -1,0 +1,27 @@
+
+Selection jump	v1.1
+FAR plugin
+컴컴컴컴컴컴컴컴컴컴컴컴
+
+	Allows to move through the selected files in the active
+        panel. For best use, setup keymacroses for your favorite keys,
+        f.e. Alt+Home/Up/Down/End -> To first/prev/next/last file.
+
+
+v1.1
+----
+ $ Fixed some bugs with moving to next/end selected file.
+ $ Sometimes first plugin call shows empty menu. Fixed.
+
+
+        Please, send your bug reports and ideas to:
+
+        	tsoftgroup@chat.ru
+                2:5056/10.77@fidonet
+                icq: 11754666
+
+	WWW:	http://i.am/tsoft
+
+
+Vladimir Tarasov / TSoft Group
+Mon 19 Jul 00:08:47 1999

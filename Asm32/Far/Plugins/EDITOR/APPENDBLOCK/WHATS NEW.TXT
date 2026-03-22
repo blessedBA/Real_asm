@@ -1,0 +1,12 @@
+Append block plugin
+
+version 2.1
+~~~~~~~~~~~
+! Bug with CR/LF corrected
++ Now commands are moved directly to plugins menu
+
+
+version 2.0  beta 1
+~~~~~~~~~~~~~~~~~~~
++ Insert file command
++ Temp button

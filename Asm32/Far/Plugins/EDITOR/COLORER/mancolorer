@@ -1,0 +1,96 @@
+        -------======= colorer features demo file =======-------
+
+"foo \" bar \n\" foo \\\\"  - C/C++ strings. cool?
+
+   0x123ABC   - C/C++ hex.                   1234    - decimal.
+   0x123ZABC  - incorrect hex.               2.4e+5  - exponential.
+   100101b    - ASM binary.                  1234Dh  - ASM hex.
+
+// line comments... !!!todo marks!!!
+   http://www.uic.nnov.ru/~ruiv/ - homepage
+   ruiv@uic.nnov.ru              - email
+   2:5666/6666.666               - fido address
+
+// different regions:
+function
+some type
+Constant
+Boolean
+Identifier
+Label:
+InverseLabel:
+debug info
+
+08.08.2000 - date
+12:44pm - time
+
+=head1 perl pods
+pod style
+documentation
+=head2 here
+ok
+=cut
+
+q!foobar!, q$bazquux$ - perl strings
+
+/* /*  Nested Comments - easy deed  */
+/* foo /* bar /* quux */ bar */ foo */
+/*  really too easy for colorer  */ */
+
+print <<_text_;
+perl constructions
+@foo $bar
+interpolated perl variables
+full perl support
+_text_
+
+This is an Asm {
+@@Hang:
+    Cli
+    jmp @@Hang
+};
+
+And C...{
+#include<colorer/classes.h>
+#error hi from pragmas!!
+  if (Parent != &Cache)
+    ret = Colorize(Parent->ClEnder->end, Parent->bkcol);
+  return true;
+  // Really - 'ASM' in 'C'! You like it?
+  __asm{
+    mov ax, 4C00h /* C Comments in Asm code - it works! */
+    int 21h
+    // Without bugs!
+  };
+};
+
+and look here - html (*
+<html>
+<head>
+<style><!--
+  /* CSS includes - easy deed */
+  h1, h2, h3 ,h4 {
+    font-family: impact, arial, helvetica;
+    font-size: 19pt;
+  };
+--></style>
+</head>
+<body BGColor="#000000" Text="#B5B5B5" LINK="#FFFFFF"
+onload="<%getinfo(666)%>">
+<script language="JavaScript">
+   <!--//
+   // JavaScript in HTML - it works! really!
+   // have you ever saw it before?
+   var roll = document.images != null;
+   Anim = <% hm.. 'asp vb here :) %>;
+   function InitAnim(name)
+   {
+     if (!roll) return;
+     Anim[ANum] = new Array(6);
+     //...
+   };
+</script>
+</body>
+</html>
+*)
+                                   s|And ($many)+ other features ...|foo|ig;

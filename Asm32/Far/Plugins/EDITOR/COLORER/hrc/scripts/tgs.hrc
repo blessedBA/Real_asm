@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="Windows-1251"?>
+<!DOCTYPE hrc SYSTEM "../hrc.dtd">
+<?xml-stylesheet type="text/xsl" href="../hrc.xsl"?>
+<!--
+    HTML editor plugin script :)
+with help of:
+-->
+
+<hrc>
+
+<scheme name="tgsinternal">
+  <inherit scheme="mDecNumb"/>
+  <keywords region="dParam">
+    <word name="description"/>
+    <word name="param"/>
+    <word name="position"/>
+    <word name="hotkey"/>
+    <word name="opentag"/>
+    <word name="closetag"/>
+    <word name="noendtag"/>
+    <symb name="=" region="dSymbol"/>
+    <symb name="," region="dSymbol"/>
+  </keywords>
+</scheme>
+<scheme name="TGS">
+  <block start="/(&lt;(\S+).*?\>)/xi" end="/(&lt;\/\y2\>)/"
+         scheme="tgsinternal" region="dComment2" region01="dKeyword" region10="dKeyword"/>
+  <keywords region="dKeyword">
+    <symb name="Tags="/>
+    <symb name="--"/>
+  </keywords>
+</scheme>
+
+</hrc>

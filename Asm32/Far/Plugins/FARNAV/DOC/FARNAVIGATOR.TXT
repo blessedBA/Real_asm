@@ -1,0 +1,47 @@
+                         ProxyKit for FAR manager.
+                     Far Navigator (ProxyFtp) plugin.
+
+                Copyright (c) 1998-2002, Vasily V. Moshninov.
+
+   I. License agreement
+
+     This module is designed as an extension to FAR and intended for performing
+  the various operations with files and directories on FTP servers.
+
+     Status of this product is FREEWARE. It is distributed "As is". The Author
+  does not carry no responsibility for any evident or not evident damage,
+  received as a result use or impossibility of use given product.
+
+
+  II. Introduction
+
+  Features on this moment:
+
+  *  work with FTP (user@site style), HTTP or SOCKS proxy server;
+  *  receive/send/delete files and folders;
+  *  rename files (FTP mode only);
+  *  server to server transfer mode
+  *  resume function with copy/move;
+  *  change file permissions/owner (FTP mode only);
+  *  send command line directly to FTP server (FTP mode only);
+  *  customize connection timeout and idle timeout;
+  *  language tables support
+  *  and more...
+
+
+ III. Greetings
+
+  *  Eugene Roshal - author of FAR        - 2:5010/45.7@fidonet.org
+  *  Borland Intl. - Developers of Delphi - http://www.inprise.com
+  *  All Far Navigator (ProxyFtp) users...
+
+
+  IV. Summary
+
+  All bugs reports and your wishes send to: proxykit@newmail.ru
+                                   fido is: 2:5004/18.32@fidonet.org
+                                       ICQ: 17217849
+
+  ProxyFtp Home page:                     http://proxykit.newmail.ru
+
+  Vasily V. Moshninov                                    may 20 1999

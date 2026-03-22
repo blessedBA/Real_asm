@@ -1,0 +1,33 @@
+REGEDIT4
+; Example of macros for use S&R in the editor
+; 'S' - hot key
+
+[HKEY_CURRENT_USER\Software\Far\KeyMacros\Editor\AltW]
+"Sequence"="F11 S 8"
+"DisableOutput"=dword:00000001
+"Description"="SR: Find all occurrences of the word under cursor"
+
+[HKEY_CURRENT_USER\Software\Far\KeyMacros\Editor\AltS]
+"Sequence"="F11 S 9"
+"DisableOutput"=dword:00000001
+"Description"="SR: Find all sections of the file"
+
+[HKEY_CURRENT_USER\Software\Far\KeyMacros\Editor\AltC]
+"Sequence"="F11 S C"
+"DisableOutput"=dword:00000001
+"Description"="SR: Choose file-type"
+
+[HKEY_CURRENT_USER\Software\Far\KeyMacros\Editor\AltX]
+"Sequence"="F11 S X"
+"DisableOutput"=dword:00000001
+"Description"="SR: Find all sections of the file, using settings of another type"
+
+[HKEY_CURRENT_USER\Software\Far\KeyMacros\Editor\CtrlAltDown]
+"Sequence"="F11 S 5"
+"Description"="SR: Search the word under the cursor"
+"DisableOutput"=dword:00000001
+
+[HKEY_CURRENT_USER\Software\Far\KeyMacros\Editor\CtrlAltUp]
+"Sequence"="F11 S 6"
+"Description"="SR: Reverse search the word under the cursor"
+"DisableOutput"=dword:00000001

@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="Windows-1251"?>
+<!DOCTYPE hrc SYSTEM "../hrc.dtd">
+<?xml-stylesheet type="text/xsl" href="../hrc.xsl"?>
+<!--
+  Colorer sheme file for PV-Wave script language
+
+  by Khlopenkov Konstantin
+  19.12.2000
+
+
+-->
+<hrc>
+
+<define name="pvwString"   value="dString"/>
+<define name="pvwComment"  value="dComment"/>
+<define name="pvwSymb"     value="dSymbol"/>
+<define name="pvwWord"     value="dKeyword"/>
+<define name="pvwWord2"    value="dKeyword2"/>
+<define name="pvwFunction" value="dFunction"/>
+<define name="pvwLabel"    value="dLabel"/>
+<define name="pvwError"    value="dError"/>
+
+<!--include name="baselng/c.hrc"-->
+
+<scheme name="pvwave">
+
+  <!-- Comments -->
+
+  <block start="/\;/" end="/$/" scheme="Comment" region="pvwComment"/>
+
+   <!-- Labels -->
+  <regexp match="/^\w*:/" region0="pvwLabel"/>
+  <regexp match="/(goto),\s*(\w*\B)/i" region1="pvwWord" region2="pvwLabel"/>
+
+  <!-- Numbers  -->
+  <regexp match="/'([\da-fA-F]+)'[x|X]/" region1="dNumHex"/>
+  <inherit scheme="mFloatNumb"/>
+  <inherit scheme="mDecNumb"/>
+
+  <!-- Strings -->
+  <regexp match="/'(.*?[^\'])??'/" region0="pvwString"/>
+
+  <regexp match="/^ \s* \M (pro) \s+ (\w+)/ix" region2="pvwFunction"/>
+
+  <block start="/\b(pro)\B/ix" end="/\b(end)\B/ix" scheme="pvwave"
+         region00="pvwWord" region10="pvwWord"
+         region01="dpOpenStruct" region11="dpCloseStruct"/>
+
+  <block start="/\b(for)\B/ix" end="/\b(do)\B/ix" scheme="pvwave"
+         region00="pvwWord" region10="pvwWord"
+         region01="dpOpenStruct" region11="dpCloseStruct"/>
+
+  <block start="/\b(if)\B/ix" end="/\b(then)\B/ix" scheme="pvwave"
+         region00="pvwWord" region10="pvwWord"
+         region01="dpOpenStruct" region11="dpCloseStruct"/>
+
+  <block start="/\b(repeat\s+begin)\B/ix" end="/\b(endrep\s+until)\B/ix" scheme="pvwave"
+         region00="pvwWord" region10="pvwWord"
+         region01="dpOpenStruct" region11="dpCloseStruct"/>
+
+  <block start="/\b(case)\B/ix" end="/\b(endcase)\B/ix" scheme="pvwave"
+         region00="pvwWord" region10="pvwWord"
+         region01="dpOpenStruct" region11="dpCloseStruct"/>
+
+  <block start="/\b(while)\B/ix" end="/\b(do)\B/ix" scheme="pvwave"
+         region00="pvwWord" region10="pvwWord"
+         region01="dpOpenStruct" region11="dpCloseStruct"/>
+
+  <block start="/\b(else\s+begin)\B/ix" end="/\b(endelse)\B/ix" scheme="pvwave"
+         region00="pvwWord" region10="pvwWord"
+         region01="dpOpenStruct" region11="dpCloseStruct"/>
+
+  <block start="/\b(begin)\B/ix" end="/\b((endfor)|(endif)|(endwhile)|(end))\B/ix" scheme="pvwave"
+         region00="pvwWord" region10="pvwWord"
+         region01="dpOpenStruct" region11="dpCloseStruct"/>
+
+  <block start="/(\()/" end="/(\))/" scheme="pvwave"
+         region00="pvwSymb" region10="pvwSymb"
+         region01="dpOpenStruct" region11="dpCloseStruct"/>
+
+  <block start="/(\[)/" end="/(\])/" scheme="pvwave"
+         region00="pvwSymb" region10="pvwSymb"
+         region01="dpOpenStruct" region11="dpCloseStruct"/>
+
+  <!--regexp match="/^ \s* \M (pro) \s+ ([_\w]+)/ix" region1="pvwFunction"-->
+
+
+  <keywords region="pvwSymb">
+     <symb name="(" region="pvwError"/>
+     <symb name=")" region="pvwError"/>
+  </keywords>
+
+  <keywords ignorecase="ignorecase" region="pvwSymb">
+
+    <word name="EQ"/>
+    <word name="NE"/>
+    <word name="LE"/>
+    <word name="GE"/>
+    <word name="GT"/>
+    <word name="LT"/>
+    <word name="OR"/>
+    <word name="AND"/>
+    <word name="XOR"/>
+    <word name="NOT"/>
+
+  </keywords>
+  <!-- pvw KeyWords -->
+
+  <keywords ignorecase="ignorecase" region="pvwWord">
+
+    <word name="else"/>
+    <word name="return"/>
+    <word name="device"/>
+    <word name="openw"/>
+    <word name="readf"/>
+    <word name="readu"/>
+    <word name="plot"/>
+
+  </keywords>
+</scheme>
+</hrc>

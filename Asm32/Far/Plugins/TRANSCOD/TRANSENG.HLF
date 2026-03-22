@@ -1,0 +1,7 @@
+.Language=English,English
+.PluginContents=File CP transcoding
+
+@Contents
+$ #File CP transcoding#
+    This command allows to transcod selected files
+according to selected codepages and change EOL style.

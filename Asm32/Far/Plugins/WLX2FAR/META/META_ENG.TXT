@@ -1,0 +1,35 @@
+Meta wlx plug-ins (wlm) are used in wlx2far for defining
+if file supports by fixed wlx plugin. For this purpose in
+meta wlx plug-in there are 2 exported functions:
+
+void ListGetExtensions(char* extbuffer,int bufferlength) -
+     Function returns masks of files which are supported
+     wlx by a corresponding wlx plug-in.
+int  ListIsSupported(const char *FileName,const char *Buffer,DWORD BufferSize) -
+     Function checks if the concrete file supports in wlx
+     plug-in. Meta plug-in receives a name of a file and
+     an initial file content fragment of size BufferSize.
+     Return value is 0 if file doesn't support.
+
+At the analysis of suitability of a file to an available
+list wlx plug-ins and allocation of one of them for display
+of a file wlx2far uses a following algorithm:
+1) Check of masks in wlx2far which are kept in "wlx2far.ini".
+   It is consecutive for all wlx plug-ins
+2) Check of masks received from ListGetExtensions () for each
+   of available wlx plug-ins
+3) Analysis of result ListIsSupported () for each of available
+   wlx plug-ins
+
+For work with meta wlx plug-in its name should be same as
+well as wlx plug-in, but with wlm extension:
+
+myplugin.wlx - regular wlx plug-in
+myplugin.wlm - связанный с ним мета плагин.
+
+For work the majority wlx plug-ins it is possible to use
+standard meta wlx a plug-in. This meta plug-in connects
+with corresponding wlx plug-in the list of extensions which
+are in a file "meta.ini". Having renamed "Meta.wlm" with
+yours wlx a plug-in and editing "meta.ini", you can connect
+meta plug-in with any wlx plug-in.

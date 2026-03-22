@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="Windows-1251"?>
+<!DOCTYPE hrc SYSTEM "../hrc.dtd">
+<?xml-stylesheet type="text/xsl" href="../hrc.xsl"?>
+<!--
+    Python Defs
+With help of:
+    Grzegorz Makarewicz <mak@mikroplan.com.pl>
+-->
+<hrc>
+
+<define name="pyString"   value="dString"/>
+<define name="pyComment"  value="dComment"/>
+<define name="pySymb"     value="dSymbol"/>
+<define name="pyWord"     value="dKeyword"/>
+<define name="pyBuiltins" value="dLabel"/>
+<define name="pyOctNumb"  value="dNumOct"/>
+
+<define name="pyException" value="dLabel"/>
+
+<scheme name="python">
+   <regexp match="/(\#.*$)/" region0="pyComment"/>
+   <block start='/\"\"\"/' end='/\"\"\"/' scheme="Comment"
+          region="pyComment" region00="dpOpenStruct" region10="dpCloseStruct"/>
+   <block start="/'''/" end="/'''/" scheme="Comment"
+          region="pyComment" region00="dpOpenStruct" region10="dpCloseStruct"/>
+   <!-- Strings -->
+   <regexp match='/("((\\.)|[^\\"])*?")/' region0="pyString"/>
+   <regexp match="/('((\\.)|[^\\'])*?')/" region0="pyString"/>
+
+   <!-- Numbers -->
+   <inherit scheme="mFloatNumb"/>
+   <inherit scheme="mcHexNumb"/>
+   <inherit scheme="mDecNumb"/>
+   <regexp match="/\b(0[0-7]*[Ll]?)\B/" region0="pyOctNumb"/>
+   <regexp match="/(`.*`)/" region0="pyBuiltins"/>
+
+   <keywords region="pySymb">
+      <symb name=";"/><symb name="="/><symb name="+"/><symb name="-"/>
+      <symb name="/"/><symb name="*"/><symb name="&amp;"/><symb name="|"/>
+      <symb name="^"/><symb name="("/><symb name=")"/><symb name="["/>
+      <symb name="]"/><symb name=","/><symb name="."/><symb name=":"/>
+      <symb name="!"/><symb name="~"/><symb name="&lt;"/><symb name="&gt;"/>
+      <symb name="%"/><symb name="{"/><symb name="}"/><symb name="?"/>
+   </keywords>
+   <keywords  region="pyWord">
+      <word name="and"/>       <word name="assert"/>    <word name="break"/>
+      <word name="continue"/>  <word name="del"/>       <word name="elif"/>
+      <word name="else"/>      <word name="except"/>    <word name="exec"/>
+      <word name="finally"/>   <word name="for"/>       <word name="from"/>
+      <word name="global"/>    <word name="if"/>        <word name="return"/>
+      <word name="try"/>       <word name="import"/>    <word name="in"/>
+      <word name="is"/>        <word name="not"/>
+      <word name="or"/>        <word name="pass"/>      <word name="print"/>
+      <word name="raise"/>     <word name="while"/>     <word name="def"/>
+      <word name="class"/>
+   </keywords>
+   <keywords   region="pyException">
+      <word name="ArithmeticError"/>       <word name="AssertionError"/>
+      <word name="AttributeError"/>        <word name="EOFError"/>
+      <word name="EnvironmentError"/>      <word name="Exception"/>
+      <word name="FloatingPointError"/>    <word name="IOError"/>
+      <word name="ImportError"/>           <word name="IndexError"/>
+      <word name="KeyError"/>              <word name="KeyboardInterrupt"/>
+      <word name="LookupError"/>           <word name="MemoryError"/>
+      <word name="NameError"/>             <word name="NotImplementedError"/>
+      <word name="OSError"/>               <word name="OverflowError"/>
+      <word name="RuntimeError"/>          <word name="StandardError"/>
+      <word name="SyntaxError"/>           <word name="SystemError"/>
+      <word name="SystemExit"/>            <word name="TypeError"/>
+      <word name="ValueError"/>            <word name="ZeroDivisionError"/>
+   </keywords>
+   <keywords  region="pyBuiltins">
+      <word name="Ellipsis"/>
+      <word name="lambda"/>
+      <word name="__debug__"/> <word name="__doc__"/>   <word name="__import__"/>
+      <word name="__name__"/>  <word name="abs"/>       <word name="apply"/>
+      <word name="buffer"/>    <word name="callable"/>  <word name="chr"/>
+      <word name="cmp"/>       <word name="coerce"/>    <word name="compile"/>
+      <word name="complex"/>   <word name="delattr"/>   <word name="dir"/>
+      <word name="divmod"/>    <word name="eval"/>      <word name="execfile"/>
+      <word name="exit"/>      <word name="filter"/>    <word name="float"/>
+      <word name="getattr"/>   <word name="globals"/>   <word name="hasattr"/>
+      <word name="hash"/>      <word name="hex"/>       <word name="id"/>
+      <word name="input"/>     <word name="int"/>       <word name="intern"/>
+      <word name="isinstance"/><word name="issubclass"/><word name="len"/>
+      <word name="list"/>      <word name="locals"/>    <word name="long"/>
+      <word name="map"/>       <word name="max"/>       <word name="min"/>
+      <word name="oct"/>       <word name="open"/>      <word name="ord"/>
+      <word name="pow"/>       <word name="quit"/>      <word name="range"/>
+      <word name="raw_input"/> <word name="reduce"/>    <word name="reload"/>
+      <word name="repr"/>      <word name="round"/>     <word name="setattr"/>
+      <word name="slice"/>     <word name="str"/>       <word name="tuple"/>
+      <word name="type"/>      <word name="vars"/>      <word name="xrange"/>
+   </keywords>
+</scheme>
+
+</hrc>

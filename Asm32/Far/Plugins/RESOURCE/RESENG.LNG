@@ -1,0 +1,40 @@
+.Language=English,English
+
+"Ok"
+"Cancel"
+
+"Warning"
+"Error"
+
+"Extract"
+"&Extract to"
+"Extr&act"
+"&Cancel"
+
+"Delete resources from the file"
+"Delete \"%.40s\" from the archive"
+"Delete selected resources from the file"
+"Delete %d resources from the file"
+"Delete"
+"Cancel"
+
+"%d files"
+"Wait"
+"Reading resources"
+
+"Getting resources"
+
+"Resource browser"
+
+"Resource browser configuration"
+
+"Plugin Enabled"
+"Text in Unicode"
+
+"Updating resource works only under Windows NT 4.0 or later"
+
+"Cannot begin a resource update"
+"Incorrect BITMAP file"
+"File reading error"
+"Cannot update resource"
+"Cannot end a resource update"

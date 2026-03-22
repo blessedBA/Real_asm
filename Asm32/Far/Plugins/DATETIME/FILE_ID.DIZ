@@ -1,0 +1,14 @@
+
+Date-n-Time (ver 2.03.02)
+FAR 1.60+ plugin to use Date and Time in editor, command line and clipboard.
+
+- Date indicator (a'la DN).
+- Flexible color, position, format for date indicator.
+- Flexible date indicator behavior.
+- Insert Date and/or Time to editor, command line, clipboard.
+- !New! Flexible Dialogs technology.
+- SmartPad (a'la DN).
+- Dialog Generator API description and header-file.
+- Text parsing functions within Dialog Generator API (a'la regexp).
+- !NEW! Calendar.
+- !NEW! 4 calendar design.

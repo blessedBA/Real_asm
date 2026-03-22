@@ -1,0 +1,43 @@
+REGEDIT4
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Far\Plugins\MultiArc\ZIP]
+"Extract"="7z {-p%%P} -r0 -y x %%A @%%LQMN"
+"ExtractWithoutPath"="7z {-p%%P} -y -r0 e %%A @%%LQMN"
+"Test"="7z t {-p%%P} -y -r0 %%A @%%LQMN"
+"Delete"="7z d -y -r0 %%A @%%LQMN"
+"Add"="7z -r0 -y -tzip a %%A @%%LQMN"
+"AddRecurse"="7z -r0 -y -tzip a %%A @%%LQMN"
+"AllFilesMask"="*"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Far\Plugins\MultiArc\TAR]
+"Extract"="7z -r0 -y x %%A @%%LQMN"
+"ExtractWithoutPath"="7z -y -r0 e %%A @%%LQMN"
+"Test"="7z t -y -r0 %%A @%%LQMN"
+"Delete"="7z d -y -r0 %%A @%%LQMN"
+"Add"="7z -r0 -y -ttar a %%A @%%LQMN"
+"AddRecurse"="7z -r0 -y -ttar a %%A @%%LQMN"
+"AllFilesMask"="*"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Far\Plugins\MultiArc\GZIP]
+"Extract"="7z -r0 -y x %%A @%%LQMN"
+"ExtractWithoutPath"="7z -y -r0 e %%A @%%LQMN"
+"Test"="7z t -y -r0 %%A @%%LQMN"
+"Delete"="7z d -y -r0 %%A @%%LQMN"
+"Add"="7z -r0 -y -tgzip a %%A @%%LQMN"
+"AddRecurse"="7z -r0 -y -tgzip a %%A @%%LQMN"
+"AllFilesMask"="*"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Far\Plugins\MultiArc\BZIP]
+"Extract"="7z -r0 -y x %%A @%%LQMN"
+"ExtractWithoutPath"="7z -y -r0 e %%A @%%LQMN"
+"Test"="7z t -y -r0 %%A @%%LQMN"
+"Delete"="7z d -y -r0 %%A @%%LQMN"
+"Add"="7z -r0 -y -tbzip2 a %%A @%%LQMN"
+"AddRecurse"="7z -r0 -y -tbzip2 a %%A @%%LQMN"
+"AllFilesMask"="*"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Far\Plugins\MultiArc\CAB]
+"Extract"="7z -r0 -y x %%A @%%LQMN"
+"ExtractWithoutPath"="7z -y -r0 e %%A @%%LQMN"
+"Test"="7z t -y -r0 %%A @%%LQMN"
+"AllFilesMask"="*"

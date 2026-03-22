@@ -1,0 +1,34 @@
+﻿.Language=English,English
+
+"Sniffer"
+
+"OK"
+"Cancel"
+
+"Source"
+"Destination"
+"Protocol"
+"Size"
+"Time"
+
+"Operation not supported"
+"Error in external sniffer module"
+"Another instance of Far sniffer already started"
+"Invalid address or mask of the subnet"
+
+"Network packets view mode:"
+"structured"
+"binary"
+"Add to the panels plugin menu"
+"Add to the disk menu"
+"Add rule to the Windows firewall"
+
+"Binding address:"
+"Source subnet:"
+"Destination subnet:"
+"Intercept traffic:"
+"Protocols:"
+"Any"
+"Start"
+
+"Waiting for external module..."

@@ -1,0 +1,44 @@
+.Language=English,English
+.PluginContents=Backup Editor files v1.0
+
+@Contents
+$ #Backup Editor files v1.0#
+    This plugin allows to create backup (BAK) files when you save files in internal editor.
+
+    In editor you can enable creation of backup copies only for current editor session
+by selecting corresponding item in editor plugin menu. This makes sense if you switched off
+always to create backup copies.
+
+    In configuration dialog you may change the following options:
+
+ #Create BAK files#         If this option is on, plugin will create
+                          BAK files.
+
+ #Create B00, B01, ...#     If this option is on, plugin will create
+ #files#                    new (non existing) file and won't overwrite
+                          existing BAK file.
+
+ #Create only one copy#     If this option is on, copy will be created
+ #in session#               when file is saved first time only. That is
+                          during one session of editor only one copy will
+                          be created independent of number of times you
+                          saved the file.
+
+ #Create a copy at#         If this option is on, when editor starts,
+ #editor start#             plugin creates a copy.
+
+ #Append .bak to#           If this option is on, file backup copy will be
+ #file name#                <filename.ext.bak> rather than <filename.bak>
+
+ #Don't create copies#      When you edit a file in archive FAR create it
+ #in archives#              in temp directory. If you don't want to create
+                          copy in this directory, select the option.
+
+ #Don't change#             You can enable this option only if 
+ #file name#                #Use specified backup folder# is on. In such a
+                          case plugin will create copies in specified folder
+                          without changing file names.
+
+ #Use specified#            If this option is on, plugin will create
+ #backup folder#            copies in specified folder, rather than
+                          in folder where file is located.

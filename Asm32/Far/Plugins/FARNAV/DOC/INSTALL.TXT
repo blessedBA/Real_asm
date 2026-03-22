@@ -1,0 +1,22 @@
+                         ProxyKit for FAR manager.
+                      Far Navigator (ProxyFtp) plugin.
+
+                Copyright (c) 1998-2002, Vasily V. Moshninov.
+
+ How to install:
+  1. Exit from all FAR copies.
+  2. Run "Windows Explorer"
+  3. Make "ProxyFTP" directory in "FAR\Plugin" directory
+  4. Copy files from this archive to "ProxyFTP" directory
+  5. Run FAR and select menu "Options"/"Plugins configuration"/"ProxyFTP client"
+  6. Define your options and proxy settings
+  7. In "File panels" press ALT+F1/F2 (or F11) and select "ProxyFTP client".
+
+
+  All bugs reports and your wishes send to: proxykit@newmail.ru
+                                   fido is: 2:5004/18.32@fidonet.org
+                                       ICQ: 17217849
+
+  ProxyFtp Home page:                     http://proxykit.newmail.ru
+
+  Vasily V. Moshninov                                    may 20 1999

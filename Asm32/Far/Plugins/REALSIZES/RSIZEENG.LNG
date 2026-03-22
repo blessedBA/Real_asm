@@ -1,0 +1,44 @@
+.Language=English,English
+
+"&Ok"
+"&Cancel"
+"&Yes"
+"&No"
+"&Close"
+"&Recalculate"
+
+"Interrupt process ?"
+
+"Real Size"         
+"Real Size options"
+
+"Bytes per cluster (0-autodetect): "
+"Ignore fo&lders by masks" 
+"Ignore &files by masks" 
+"(Several masks enumerates through commas)"
+
+"Size of cluster can't be detected via standard method !" 
+"&Use alternate method"
+"&Specify size manually"
+                                          
+"Scanning the folder..."
+
+"Disk type           :"
+"File system         :"
+"Bytes per sector    :"
+"Sectors per cluster :"
+"Cluster size        :"
+
+"Files        :"
+"Folders      :"
+"Summary size :"
+
+"Real size    :"
+"Loses        :"
+
+"fixed"
+"removable"
+"CD-ROM"
+"network"
+"RAM disk"
+"unknown"

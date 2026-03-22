@@ -1,0 +1,23 @@
+REGEDIT4
+; Macros for replace with S&R standard search in the quick view panel
+; 'S' - hot key (use F4 in "Plugin commands" menu)
+
+[HKEY_CURRENT_USER\Software\Far\KeyMacros\QView\F7]
+"Sequence"="F11 s 1"
+"DisableOutput"=dword:00000001
+"Description"="SR: Search in QView"
+
+[HKEY_CURRENT_USER\Software\Far\KeyMacros\QView\ShiftF7]
+"Sequence"="F11 s 2"
+"DisableOutput"=dword:00000001
+"Description"="SR: Continue search"
+
+[HKEY_CURRENT_USER\Software\Far\KeyMacros\QView\Space]
+"Sequence"="F11 s 2"
+"DisableOutput"=dword:00000001
+"Description"="SR: Continue search"
+
+[HKEY_CURRENT_USER\Software\Far\KeyMacros\QView\AltF7]
+"Sequence"="F11 s 3"
+"DisableOutput"=dword:00000001
+"Description"="SR: Continue search (reverse search)"

@@ -1,0 +1,100 @@
+
+            The Filename Completion Plugin for FAR
+                   Version 1.3, 3 Jan 1999
+
+
+--------------------------------------------------------------------------
+DISTRIBUTION: Freeware. You may freely distribute this plugin without any
+modifications if you make no commercial profit of distribution, keep
+this read.me together with the plugin and leave it unchanged.
+--------------------------------------------------------------------------
+
+This plugin does the thing I've always been missing in FAR, that is,
+command-line filename completion, like in 4DOS/4NT. And even more, it
+completes host names and shared resource names, asking for password if needed.
+And, since version 1.3, in FAR 1.60+, it works also in editor (this may be
+useful for typing batch files etc.).
+
+Copy FComplet.dll to your FAR directory, restart FAR, press F11, and you
+will see the new "Filename Completion" menu item. Choose this item, and
+you will see a menu of four filename completion commands:
+
+Next          Get the next matching filename.
+Previous      Return to the previous matching filename.
+List...       List all the matching filenames.
+Short names   Toggle using Short/Long filenames.
+
+Of course, the plugin is useful only if you use key macros to call these
+commands.
+
+Wildcards *,? are supported; '*' is always assumed at the end. FAR's
+extended wildcards with square brackets are not supported (and not needed
+here, right?).
+Plugins' virtual "directories" are not supported in this version either.
+
+All slashes '/' are treated as backslashes. Everything said below is true
+for slashes too.
+
+If the path being expanded starts with two backslashes (\\), the plugin
+does the following:
+
+- if there are no more backslashes in the line, it attempts to find all
+Windows network hosts matching the name after "\\", belonging to your domain
+or workgroup;
+- if there is exactly one more backslash in the line, it treats the word
+between "\\" and "\" as a server name, and tries to find matching resource
+names belonging to this host;
+- if there are more backslashes, this is a UNC path and expanded as a usual
+directory name.
+
+In hostname/resource name completion, the plugin DOES understand FAR's
+extended wildcards, in UNC directories it does NOT, as mentioned above.
+
+Filenames typed at the start of the command line will match only subdirectories
+and files with extensions .exe,.com,.bat,.cmd,.btm. Filenames typed after the
+command "cd" will match only subdirectories. If you need to override these,
+type a space at the command line start, that's enough.
+
+You can use the plugin with any key assignments you like. 4DOS/4NT uses Tab
+for this purpose. You probably wouldn't want to lose your current Tab key
+functionality in FAR, so you have to use some other keys. Two possible
+styles of key assignments are proposed.
+
+(1) If you rarely type the '`' and '~' characters in command line, you can
+assign them to do filename completion. It is convenient, as the `/~ key
+is close to Tab. You can use Alt-`/Alt-Shift-` to input these characters
+if you still need them. So you can create these macros:
+
+  `             - find next;
+  ~ (Shift-'`') - return to previous;
+  Ctrl-`        - show list;
+  Ctrl-Shift-N  - toggle the Short names mode.
+
+These macros are provided in the FCOMPLET.RG1 file. I didn't do it for the
+editor, because most people would prefer to leave the `/~ key in the editor
+intact.
+
+(2) Another proposed method is using Ctrl-Space assignments, that is:
+
+  Ctrl-Space       - find next;
+  Ctrl-Shift-Space - return to previous;
+  Ctrl-Alt-Space   - show list.
+  Ctrl-Shift-N  - toggle the Short names mode.
+
+These macros are provided in the FCOMPLET.RG2 file. They work in editor too.
+
+The files .rg1 and .rg2 are usual .reg files. You can import them using
+REGEDIT or the Registry Browser plugin. If you do this from inside the FAR,
+don't forget to restart FAR, but previously disable the Auto save setup option
+(this is true for FAR 1.50).
+
+ATTENTION! The FCOMPLET.RG? files assume that the hotkey auto-assigned to
+this plugin in the Plugins menu, is 'i' in command line and 'f' in editor.
+Check this first! Press F11 and check if the highlighted letters in
+"Filename completion" item are as I assumed. If they are different, fix
+these, or record your own macros.
+
+----------------------------------------
+Michael Yutsis
+michael.y@sapiens.com
+2:405/333.15@Fidonet

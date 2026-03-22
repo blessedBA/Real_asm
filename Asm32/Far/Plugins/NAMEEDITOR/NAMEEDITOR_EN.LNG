@@ -1,0 +1,30 @@
+﻿.Language=English,English
+
+"Batch rename"
+
+"F4: To editor"
+"F1: Help"
+"Rename"
+"Retry"
+"Ignore"
+"Rollback"
+"Cancel"
+
+"No files selected for renaming"
+
+"Name editor (%i)"
+"Name template:"
+" Case "
+"Name:"
+"Extension:"
+"Do not change"
+"lower"
+"UPPER"
+"First capital"
+"Title Case"
+" Preview "
+"Source name:"
+"New name:"
+"Template name contains errors"
+"The number of names is not the same (edited: %i, read: %i)"
+"Failed to rename\n%s\nto\n%s"

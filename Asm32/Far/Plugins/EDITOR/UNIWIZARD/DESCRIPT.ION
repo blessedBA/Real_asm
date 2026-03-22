@@ -1,0 +1,15 @@
+File_ID.DIZ The description of this archive
+uwizard.dll plugin module for FAR manager
+uwizard.hlf help [russian]
+Reg *.reg
+Doc *.txt
+Descript.ion :-)
+uwizard.lng messages [russian]
+uwizard.ini settings
+uwizard_eng.lng messages [english]
+uwizard_Eng.hlf help [english]
+uwizard_cze.lng messages [czech]
+uwizard_cze.hlf help [czech]
+uwizard.uni table: oem->unicode
+uwizard_sk.hlf help [slovak]
+uwizard_sk.lng messages [slovak]

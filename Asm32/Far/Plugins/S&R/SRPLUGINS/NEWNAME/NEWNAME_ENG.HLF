@@ -1,0 +1,138 @@
+.Language=English,English
+.PluginContents=Rename files (NewName)
+
+@Contents
+$^#Rename files#
+
+    This plugin module allows to rename files with regular expressions usage.
+It works only in Far 1.70 build 1634 and above. Some useful information is
+absent in this help, but you can find it in standard documentation of
+~Search and Replace (S&R)~@<..\..\>@ plug-in.
+
+     Process of renaming is almost the same as
+search and replace, but in this case not file contents, but
+file #name# is processed. If you still don't understand what a unique
+thing you've got, look at ~the examples~@RenameExamples@.
+
+     Attention: #files descriptions are not updated# in the current version!
+
+^#Dialog description:#
+
+     Major part of options and buttons are similar to the same-named ones of
+~S&R~@<..\..\>MainDialog@ plug-in.
+
+     If #selected# processing is being performed and option
+#Process subfolders# is turned off, mere folders will be renamed as
+if they were files.
+
+ #Search#       ~Regular expression~@<..\..\>RegExp@, which specifies search string for
+              #processed files names#. Notice that you may have to
+              enclose search string in slashes depending on
+              ~settings of S&R~@<..\..\>CfgSearch@.
+
+ #Replace with# Replacement string ~regular expression~@<..\..\>ReplaceRegExp@.
+
+ #Initiate#     Affects #\### ~regexp~@<..\..\>ReplaceRegExp@.
+ #value of the#
+ #counter by#
+ #zero in each#
+ #directory#
+
+ #Write#        Plug-in will create a file with information about
+ #log-file#     renaming process. You can tune up format of log-name
+              and format of log-contents in ~configuration~@Config@
+              Log-file will have a name YYYY_MM_DD_hh_mm_cc.bat by
+              default, it may be used to rollback performed name
+              changes at any time. #Remark:# log is created only
+              after main job is done, because records must be
+              placed in log in reverse order.
+
+ #Confirmation# If option is set renaming confirmation dialog will
+ #of the#       be shown. You can change new filename in this dialog.
+ #renaming#
+
+ #Scheme#       Call schemes manipulations menu.
+              Use #Alt-Shift-0#...#Alt-Shift-9# for quick switching
+              between first 10 schemes.
+
+ #Save#         Save current settings as a scheme
+              (you'll be prompted for a scheme name).
+
+ See file #Reg\newnamescheme.reg# for additional examples.
+
+ ~Contents~@Contents@
+@RenameExamples
+$^#Examples of settings for files renaming#
+
+    All the examples are divided into two groups. Examples do now show
+all the possible variants of #newname.srp# usage, but they are made
+for those persons, who moved to this 2nd level plug-in from my another plug-in
+NewName, and for those, who have removed standard #Case conversion# plug-in,
+which is distributed with ~FAR~@:Contents@.
+
+^#NewName.dll replacement#
+
+    The correspondences between special sequences of
+newname.dll and S&R regexps are listed below:
+
+  #File order#       See description of ~\##~@<..\..\>ReplaceRegExp@
+  #number#
+
+  #Total number of#  No equivalent, you'll have to specify
+  #processed files#  the number actually.
+
+  #Filename with#    ~$0~@<..\..\>ReplaceRegExp@
+  #extension#
+
+  #Filename without extension#, #Extension#
+    If search string looks like "#^(.+)\.(.*)$#", then
+~$1~@<..\..\>ReplaceRegExp@ stands for filename, and
+~$2~@<..\..\>ReplaceRegExp@ for extension.
+
+
+^#FileCase.dll replacement#
+
+     Correspondence for some file case conversion types.
+
+      Type      |   Search string    | Replacement String
+  --------------------------------------------------------
+  #Filename.ext#  | ^(.)(.*)$          | \u$1\L$2
+  #Filename.Ext#  | ^(.)(.*)\.(.)(.*)$ | \u$1\L$2.\u$3\L$4
+  #filename.ext#  | ^.+$               | \L$0
+  #FILENAME.EXT#  | ^.+$               | \U$0
+  #File Name.Ext# | ((\w)([^\s\.]*))+  | \u$2\L$3
+
+ ~Contents~@Contents@
+@Config
+$^#NewName: configuration#
+
+^#History#
+
+  You can specify which history is to be used in NewName dialog for the following
+fields: "#Search for#", "#Replace with#".
+
+  #History of S&R#    Use #S&R# history settings.
+  #Another history#   You may set registry keys names to store
+                    history.
+
+^#Log#
+
+    Don't change this settings if you don't understand what you want to do!
+
+    #Template: Log-filename#
+    ~Regular expression for replace string~@<..\..\>ReplaceRegExp@. Using
+this template NewName will build the name of a log-file. You can use
+any regexp operators except operators which are working only with
+~processing of files group~@<..\..\>ReplaceRegExp@ (exception -
+~\P~@<..\..\>ReplaceRegExp@ operator) in this template.
+
+    #Template: successful and unsuccessful renaming#
+    ~Regular expression for replace string~@<..\..\>ReplaceRegExp@. Using
+this template NewName will build log-records. Note that
+~$0~@<..\..\>ReplaceRegExp@ operator means new name of file with path,
+~$1~@<..\..\>ReplaceRegExp@ means new name of file without path, and operators
+which are working only with
+~processing of files group~@<..\..\>ReplaceRegExp@ use old filename
+information.
+
+ ~Contents~@Contents@

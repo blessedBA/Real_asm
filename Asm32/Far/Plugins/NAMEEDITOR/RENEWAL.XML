@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<renewal>
+	<plugin guid="{F9E265F9-B0FE-43B6-AA17-F5AA7830D86C}">
+		<home arch="any">http://code.google.com/p/farplugs</home>
+		<url arch="any">http://code.google.com/p/farplugs/downloads/list</url>
+		<changelog arch="any">http://farplugs.googlecode.com/svn/trunk/NameEditor/dist/ChangeLog</changelog>
+		<regex arch="x64">//farplugs.googlecode.com/files/FarNameEditor_(\d+)\.(\d+)\.?(\d+)?_x64\.zip</regex>
+		<regex arch="x86">//farplugs.googlecode.com/files/FarNameEditor_(\d+)\.(\d+)\.?(\d+)?_x86\.zip</regex>
+		<srcpath arch="any">NameEditor</srcpath>
+	</plugin>
+</renewal>

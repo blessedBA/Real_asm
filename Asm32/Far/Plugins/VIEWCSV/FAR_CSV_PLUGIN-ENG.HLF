@@ -1,0 +1,12 @@
+.Language=English,English
+.PluginContents="Viewing" CSVs (C) 2002-2003
+
+@Contents
+$ #"Viewing" CSVs, ver.1.12 [January 3, 2003]#
+   This plug-in emulates "file system" upon informarion contained
+   in CSV-file of following format:
+ filename,filelength,CRC,[folder,][comment]
+   (folder and/or comment are optional)
+
+ Author:
+ (C) Vladimir V.Vasil'ev, bbb4guest@@bigfoot.com

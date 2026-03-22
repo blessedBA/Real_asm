@@ -1,0 +1,172 @@
+                 History of plugin modules for S&R development
+                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+   This document contains information about plugin modules for S&R development.
+All the plugins supplied with S&R are designed only for the version of S&R with
+which they are supplied. It  is  not  guaranteed  that  standard  plugins  will
+function correctly with different S&R versions.
+
+Legend: + added
+        - deleted
+        * changed
+        ! bug fixed
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+S&R 2.3
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ ! TempPanel: errors  when  working  with  memory  when  processing
+   subfolders.
+
+
+S&R 2.2
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ ! Config: pressing Enter resulted in closing "File-type  settings"
+   menu, now it works like F4.
+ ! NewName: wrong FAR version check.
+ ! NewName: a message on impossibility of renaming a file  did  not
+   have the name of a renamed file within.
+ * NewName, Dir2File, VerInfo: these plugins work  only  under  FAR
+   1.70 build 1634 and above.
+ + TempPanel:  Alt-Shift-F9  opens  temporary  panel  configuration
+   dialog,
+ + Dir2File: you can use operators  which  work  only  when
+   processing of files  group  in  "First  line"  and  "Last  line"
+   templates.
+ * New schemes in newnamescheme.reg by Vlad Bolhov.
+
+
+S&R 2.1
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ + Config: option "Open search dialog  in  the  locked  editor"  in
+   search configuration. Turned on by default.
+ + Config: option  "Process  OPEN_FINDLIST  command"  in  temporary
+   panel configuration. Turned on by default.
+ * Dir2File, NewName: use Alt-Shift-digit instead of Crtl-Alt-digit
+   for quick switching between schemes.
+
+
+S&R 2.0
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ * OLD PLUGINS ARE NOT COMPATIBLE WITH THIS VERSION OF S&R.
+ * Config, TempPanel: placed in subfolders of the "System" folder.
+ * NewName, Dir2File, VerInfo: these plugins work  only  under  FAR
+   1.70 build 1282 and above.
+ ! VerInfo: cosmetic errors in "Your FAR is too old" message.
+ ! Dir2File: dialog did not fit if height of console was 25 lines.
+ + NewName: you can open configuration dialog from the main  dialog
+   in panels.
+ + TempPanel: hotkey Alt-Shift-F2 allows to save  contents  of  the
+   panel to a list file.
+ + TempPanel:  it  is  possible  to  open  temporary  panels   with
+   different numbers in the left and right FAR panels
+   simultaneously.
+ + TempPanel: option "Put found files list in empty panel"  in  the
+   "Configuration/Temporary panel". Turned on by default.
+ * TempPanel: the message "Updating temporary  panel  contents"  is
+   shown only if panel contains more than 512 items.
+ + TempPanel: plugin uses FAR settings concerning  filename's  case
+   transformations.
+ + Config: special settings group - "Messages options".
+ + Config: you can open "File-type settings".
+ + Config: option "Empty search and replace  string  at  first"  in
+   "Other options". Turned on by default.
+ + Config: option "Select found in  editor"  in  "Search  options".
+   Turned off be default.
+ + Config: option "Pick up the word in editor" in "Search options".
+   Turned off by default.
+ + Config: setting "Path for plugins" in "Other options".
+ + Additional examples in dir2file_scheme.reg.
+ + Dir2File:    dir2file_eng.hlf     by     Nataliya      Lukyanova
+   (nat_lu2002@yahoo.co.uk).
+ * Dir2File: history of "Enter name of file to create" line depends
+   on "Save replace data to file" setting  ("Other  options").  You
+   may delete the following registry record:
+   HKCU\Software\Far\SavedDialogHistory\Dir2File_Name
+ + NewName, Dir2File: use the following option ("Other  options"):
+   "Process selected items if panel contains selected items"
+ * NewName, Dir2File:  cosmetic in messages which show filenames.
+ + NewName, Dir2File, VerInfo: relative  links  in  help-files.  It
+   works only under FAR 1.70 build 1476 and  above,  and  SRPlugins
+   must be placed in the same folder as s_and_r.dll.
+ * NewName: do not perform renaming if new name  is  equal  to  old
+   name.
+ + NewName, Dir2File: you  can  choose  one  of  first  10  schemes
+   without opening the menu using the following keys combinations:
+   Ctrl-Alt-0, Ctrl-Alt-1, ..., Ctrl-Alt-9.
+ + VerInfo:  shows  version  of  the  file  and  the  product  from
+   VS_FIXEDFILEINFO.
+ + VerInfo: its  dialog  automatically  increases  to  fit  in  the
+   console (made by Jouri Mamaev <JouriM@uran.ru>).
+ * VerInfo: you cannot modify  information  lines  (made  by  Jouri
+   Mamaev <JouriM@uran.ru>).
+ * VerInfo:   dialog  has  one  color   (made   by   Jouri   Mamaev
+   <JouriM@uran.ru>).
+ + Dir2File, NewName: detailed search regexp's errors message.
+ + NewName: option "Confirmation for renaming".
+ + NewName: you can specify log-name and format of log-records.
+ * NewName: log is created only after main  job  is  done,  because
+   records must be placed in log in reverse order.
+ + Dir2File, NewName: "Target" dropdown box.
+
+
+S&R 1.9
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ + Possible to switch between several temporary panels (see  help).
+   Default number of temporary panels is 10 (see readme).
+ + Possible to redefine temporary panel status line.
+ + NewName adds own item to  S&R  Plugins  configuration.  You  can
+   change dialog history for this srp.
+ * Additional examples in dir2file_scheme.reg.
+
+
+S&R 1.8
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ * Old plugins are not compatible with this version of S&R.
+ ! NewName, Dir2File:  empty  regexps  for  search  string  missing
+   occurred and work wasn't correct.
+ ! NewName tried to rename own log.
+ + VerInfo: You can copy information to clipboard, view information
+   for some other file having typed new filename in the dialog.
+
+
+S&R 1.7
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ * Config.srp and TempPanel.srp now are system plugin modules.  See
+   readme for details. They have been  renamed  to  config.srs  and
+   temppanel.srs respectively.
+ + Really true support of  user's  plugin  modules.  User's  plugin
+   modules realize additional functions of S&R. They must have  SRP
+   extension. Program searches for them in folder SRPLugins and all
+   its subfolders (SRPlugins directory should  be  located  in  the
+   same folder as s_and_r.dll). It  is  possible  to  write  plugin
+   modules for panels, editor and viewer. Documentation for writing
+   external plugin modules for S&R (unfortunately, only in Russian)
+   and example of such plugin module in C++ (example is the sources
+   of any (your choice) from standard plugin modules) will be  sent
+   on the first request from the registered user.
+
+NewName.srp
+~~~~~~~~~~~
+ * Changed to match new rules. Paths in newnamescheme.reg have been
+   changed.
+ * Possible to use empty replace string.
+
+Dir2File.srp
+~~~~~~~~~~~~
+ + New plugin: "File list  creator". This plug-in's  appearance  in
+   distribution means that my another plug-in Dir2Html will develop
+   no more,  'cose  it's  features  are  covered  by  dir2file.srp.
+   Dir2File schemes example is placed in dir2file_scheme.reg.  This
+   is a multifunction plugin module which is capable of  generating
+   everything, everything, according to your rules. E.g., you can:
+     a) create a html-page with pictures from the current directory
+     b) create bat-files with complex commands to process necessary
+        files
+     c) copy your internet shortcuts (*.url) in a html-page
+     e) et cetera, et cetera... All depends on your imagination :-)
+
+VerInfo.srp
+~~~~~~~~~~~
+ + New plugin: "VersionInfo viewer".
+
+
+~EOF~

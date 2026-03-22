@@ -1,0 +1,14 @@
+KVA Software FarIntel v1.0
+--------------------------
+
+   FarIntel 1.0
+   ~~~~~~~~~~~~
+    1. Improved wheel sensitivity.
+
+    2. Fixed few bugs.
+	
+
+
+   FarIntel 0.9
+   ~~~~~~~~~~~~
+    1. First version.

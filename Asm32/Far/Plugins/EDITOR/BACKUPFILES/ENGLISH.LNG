@@ -1,0 +1,16 @@
+.Language=English,English
+
+"OK"
+"Cancel"
+
+"Backup Editor files*"
+"Enable backup in the session*"
+
+"&Create BAK files"
+"&Make B00, B01, ... files"
+"Create only &one copy in session"
+"Create a copy at editor &start"
+"Use specified backup &folder"
+"&Append .bak to file name"
+"&Don't create copies in archives"
+"Don't change file &name"

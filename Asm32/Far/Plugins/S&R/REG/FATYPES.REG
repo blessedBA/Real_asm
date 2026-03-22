@@ -1,0 +1,173 @@
+REGEDIT4
+
+[HKEY_CURRENT_USER\Software\Far\Plugins\S_And_R\FATypes]
+"total"=dword:00000018
+
+[HKEY_CURRENT_USER\Software\Far\Plugins\S_And_R\FATypes\0]
+"Type"="C/C++"
+"Mask"="*.[ch],*.[ch]pp,*.cc,*.cxx"
+"Ignore"="/^\\s*([#\\{\\}\\/]|typedef|for|if|else +if|do|while|switch|return|[^A-z]|\\w+\\( *SysLog).*$/"
+"Match"="/^(([\\w+ \\*&]*)[ \\*])?(([\\w<>]+::~?)?[\\w=\\+\\-]+) *\\(.*\\)?|(class|struct) *\\w+( *\\{.*)?$/"
+"Tpl"="$0"
+
+[HKEY_CURRENT_USER\Software\Far\Plugins\S_And_R\FATypes\1]
+"Type"="Pascal"
+"mask"="*.pas,*.dpr"
+"Match"="/^ *((function|procedure) +(\\w+\\.)?\\w+).*;$/i"
+"Ignore"=""
+"Tpl"="$1"
+
+[HKEY_CURRENT_USER\Software\Far\Plugins\S_And_R\FATypes\10]
+"Type"="FarMenu.ini"
+"mask"="FarMenu.ini"
+"Match"="/^\\w:.+$/"
+"Ignore"=""
+"Tpl"="$0"
+
+[HKEY_CURRENT_USER\Software\Far\Plugins\S_And_R\FATypes\11]
+"Type"="INI-file"
+"mask"="*.ini,*.sr,*.msg,watznew.dat,*.fml,*.theme"
+"Match"="/^\\[(.+)\\]/"
+"Ignore"=""
+"Tpl"="$1"
+
+[HKEY_CURRENT_USER\Software\Far\Plugins\S_And_R\FATypes\12]
+"Type"="batch file"
+"mask"="*.bat"
+"Match"="/^:(\\w+)$/"
+"Ignore"=""
+"Tpl"="$1"
+
+[HKEY_CURRENT_USER\Software\Far\Plugins\S_And_R\FATypes\13]
+"Type"="JavaScript [under construction :)]"
+"mask"="*.js"
+"Match"="/^\\s*(function\\s*[\\w:]+\\(.*?\\)).*$/"
+"Ignore"="/^\\s*([#\\{\\}\\/]|for|if|else +if|do|while|switch|return).*$/"
+"Tpl"="$1"
+
+[HKEY_CURRENT_USER\Software\Far\Plugins\S_And_R\FATypes\14]
+"Type"="Visual Basic"
+"mask"="*.vbs,*.vbp,*.cls,*.frm,*.bas"
+"Match"="/^[^\\=']*?\\b(Function|Procedure|Sub|Property Let|Property Get)\\b\\s?(\\w+)/i"
+"Ignore"=""
+"Tpl"="$1-{L,9} $2"
+
+[HKEY_CURRENT_USER\Software\Far\Plugins\S_And_R\FATypes\15]
+"mask"="*.prg,*.ch"
+"Type"="Clipper"
+"Match"="/^\\s*(func(tion)?|proc(edure)?)\\s+([\\w_]+)/i"
+"Ignore"=""
+"Tpl"="$5"
+
+[HKEY_CURRENT_USER\Software\Far\Plugins\S_And_R\FATypes\16]
+"mask"="esc.xml,esc_*.xml"
+"Type"="Esc.xml"
+"Match"="/<type.+?(name|include)=\"(.+?)\"/i"
+"Ignore"=""
+"Tpl"="$2"
+
+[HKEY_CURRENT_USER\Software\Far\Plugins\S_And_R\FATypes\17]
+"Type"="Perl"
+"mask"="*.p[lm],*.pls,*.cgi,*.pod"
+"Match"="/^\\s*?(sub|package)\\s+?([\\w_']+).*$/i"
+"Ignore"=""
+"Tpl"="$2"
+
+[HKEY_CURRENT_USER\Software\Far\Plugins\S_And_R\FATypes\18]
+"mask"="*.asm,*.inc,*.i32"
+"Type"="Assembler"
+"Match"="/^\\s*(proc\\s+([\\w_\\@]+)|([\\w_\\@]+)\\s+proc)/i"
+"Ignore"=""
+"Tpl"="$0"
+
+[HKEY_CURRENT_USER\Software\Far\Plugins\S_And_R\FATypes\19]
+"Type"="ChangeLog"
+"mask"="ChangeLog"
+"Match"="/^Version\\s\\d+?.\\d+?\\s\\d\\d-\\w+-\\d\\d+$|^\\w+\\s\\w+\\s\\d+\\s\\d+.+$|^\\d{4}(-\\d\\d){2}(\\s\\d\\d:\\d\\d)?\\s.+$|^\\d\\d\\s\\w+?\\s\\d{4}\\s.+$/"
+"Ignore"=""
+"Tpl"="$0"
+
+[HKEY_CURRENT_USER\Software\Far\Plugins\S_And_R\FATypes\2]
+"Type"="FAQ"
+"Mask"="faq,faq.txt,faqeng.txt,farfaq.txt"
+"Match"="/^([+*]?\\[\\d+?\\]|((\\d(\\d|:)|Q\\d)[+*]?>)|\\d+\\.).+$/"
+"Tpl"="$0"
+"Ignore"=""
+
+[HKEY_CURRENT_USER\Software\Far\Plugins\S_And_R\FATypes\20]
+"Type"="HyperView/Tmp"
+"mask"="/^~hv([\\dA-F])+\\.tmp/i"
+"Match"="/^(Status:\\s\\w+|Bug#:\\d+)/i"
+"Ignore"=""
+"Tpl"="$0"
+
+[HKEY_CURRENT_USER\Software\Far\Plugins\S_And_R\FATypes\21]
+"Type"="Call Command resource"
+"mask"="*.ccr"
+"Match"="/^Masks\\s*\\=\\s*(.+)$/i"
+"Ignore"=""
+"Tpl"="$1"
+
+[HKEY_CURRENT_USER\Software\Far\Plugins\S_And_R\FATypes\22]
+"Type"="colorer hrc"
+"mask"="*.hrc"
+"Match"="/^.*?scheme\\s+name\\s*=\\s*([\\x22\\x27])(.+?)\\1.*$/"
+"Ignore"=""
+"Tpl"="$2"
+
+[HKEY_CURRENT_USER\Software\Far\Plugins\S_And_R\FATypes\23]
+"Type"="nnCron tab"
+"mask"="*.tab"
+"Match"="/^#\\(\\s*(?{title}\\S.+)$/"
+"Ignore"=""
+"Tpl"="${title}"
+
+[HKEY_CURRENT_USER\Software\Far\Plugins\S_And_R\FATypes\3]
+"Type"="TechInfo"
+"mask"="TechInfo.txt,TechInfo.Rus.txt"
+"Match"="/^(\\d{1,3}\\..+?)\\s*$/"
+"Ignore"=""
+"Tpl"="$1"
+
+[HKEY_CURRENT_USER\Software\Far\Plugins\S_And_R\FATypes\4]
+"Type"="history.txt"
+"mask"="history.txt,historyEng.txt"
+"Match"="/^.?(\\d\\d?\\.\\d\\d?\\/\\d\\d\\.\\d\\d\\.\\d\\d\\d\\d).?$/"
+"Ignore"=""
+"Tpl"="$1"
+
+[HKEY_CURRENT_USER\Software\Far\Plugins\S_And_R\FATypes\5]
+"Type"="RFC: Request for Comments"
+"mask"="/rfc\\d{4}\\.txt/i"
+"Match"="/^\\s{,8}((\\w|\\d\\d*?)[\\.\\-])+?\\s.+$/"
+"Ignore"=""
+"Tpl"="$0"
+
+[HKEY_CURRENT_USER\Software\Far\Plugins\S_And_R\FATypes\6]
+"mask"="*.txt"
+"Type"="Text file"
+"Match"="/^\\s{,8}(\\d[\\d\\.\\-]*\\s[^\\d.]+|\\w+\\s\\d+)/"
+"Ignore"=""
+"Tpl"="$1"
+
+[HKEY_CURRENT_USER\Software\Far\Plugins\S_And_R\FATypes\7]
+"Type"="FAR help file"
+"mask"="*.hlf"
+"Match"="/^@(.+)$/"
+"Ignore"="/^@(\\+|\\-)$|^@.*@$/"
+"Tpl"="$1"
+
+[HKEY_CURRENT_USER\Software\Far\Plugins\S_And_R\FATypes\8]
+"mask"="*.reg"
+"Type"="Registry file"
+"Match"="/^\\[(.+)\\]/"
+"Ignore"=""
+"Tpl"="$1"
+
+[HKEY_CURRENT_USER\Software\Far\Plugins\S_And_R\FATypes\9]
+"Type"="True-tpl.ini"
+"mask"="true-*.ini,true-*.xml"
+"Match"="/^\\s*<Language.+Desc=\"(.+?)\".*>$/i"
+"Ignore"=""
+"Tpl"="$1"
+

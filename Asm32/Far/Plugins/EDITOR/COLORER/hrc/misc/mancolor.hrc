@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="Windows-1251"?>
+<!DOCTYPE hrc SYSTEM "../hrc.dtd">
+<?xml-stylesheet type="text/xsl" href="../hrc.xsl"?>
+<!--
+    samples and HRC description
+-->
+<hrc>
+
+<include name="base/asm.hrc"/>
+<include name="base/c.hrc"/>
+<include name="base/perl.hrc"/>
+<include name="net/asp.hrc"/>
+
+<scheme name="mancolorer">
+   <!-- http and eMail addresses -->
+   <inherit scheme="mNetAddresses"/>
+   <inherit scheme="mDate"/>
+   <inherit scheme="mTime"/>
+
+   <!-- numbers -->
+   <inherit scheme="mCHexNumb"/>
+   <inherit scheme="mFloatNumb"/>
+   <inherit scheme="mDecNumb"/>
+
+   <regexp match="/\b(0x|X[\da-fA-F]*?([^\s\W\da-fA-F]).*?)\B/i" region0="dError"/>
+   <regexp match="/\b([01]+b)\B/i" region0="dNumBin"/>
+   <regexp match="/\b(\d[\da-fA-F]+h)\B/i" region0="dNumHex"/>
+   <!-- c/c++ comments -->
+   <block start="/\/\//" end="/$/" region="dComment" scheme="Comment"/>
+   <inherit scheme="cNestComm"/>
+
+   <block start="/\M^=/" end="/^=(head)|(cut)\m/" scheme="perlPod" region="plPod" region10="plPodSym"/>
+
+   <!-- block structures -->
+   <inherit scheme="cString"/>
+
+   <block start="/\b(q(\W))/" end="/(\y2)/" scheme="PerlInterpolatedString"
+          region="PlString" region00="dStringQuote" region10="dStringQuote"/>
+   <block start="/\b\M((s|(tr)|y ([^\w\s])))/x" end="/(\y4 [mgeioxcds]*)/x"
+          scheme="perlSubstBlock" region="plString"
+          region01="plStringQuote" region10="plStringQuote"
+          region02="dpOpenStruct" region11="dpCloseStruct"/>
+   <block start="/&lt;&lt;([^\s;\x22]+)/"  end="/^(\y1)$/" scheme="PerlInterpolatedString"
+          region="plString" region01="plWord" region10="plWord"/>
+
+   <regexp match="/function/i" region0="dFunction"/>
+   <regexp match="/some type/i" region0="dType"/>
+   <regexp match="/constant/i" region0="dConstant"/>
+   <regexp match="/Boolean/i" region0="dBoolean"/>
+   <regexp match="/Identifier/i" region0="dIdentifier"/>
+   <regexp match="/Label:/i" region0="dLabel"/>
+   <regexp match="/InverseLabel:/i" region0="dInverseLabel"/>
+   <regexp match="/debug info/i" region0="dDebug"/>
+   <regexp match="/Identifier/i" region0="dIdentifier"/>
+
+   <block start="/(This is an Asm)\s*?\{/" end="/\}/" scheme="Asm"
+          region01="cWord"/>
+   <block start="/(And C...\s*?\{)/" end="/\}/" scheme="c"
+          region01="cWord" region10="cWord"/>
+   <block start="/(And look here - html)\s*?(\(\*)/i" end="/(\*\))/" scheme="asp"
+          region01="dStringQuote" region02="dStringQuote" region10="dStringQuote"/>
+</scheme>
+
+</hrc>

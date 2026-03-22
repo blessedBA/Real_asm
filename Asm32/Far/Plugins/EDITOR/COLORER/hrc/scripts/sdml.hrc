@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="Windows-1251"?>
+<!DOCTYPE hrc SYSTEM "../hrc.dtd">
+<?xml-stylesheet type="text/xsl" href="../hrc.xsl"?>
+<!--
+    Sdml Scripts
+With help of:
+
+-->
+
+<hrc>
+
+<scheme name="Sdml">
+   <inherit scheme="mStdStr"/>
+   <inherit scheme="mCHexNumb"/>
+   <inherit scheme="mFloatNumb"/>
+   <block start="/&lt;!--/" end="/-->/" scheme="Comment"
+          region="dComment" region00="dpOpenStruct" region10="dpCloseStruct"/>
+   <keywords ignorecase="ignorecase" region="dKeyword">
+      <word name="Sdml"/>
+      <word name="/Sdml"/>
+      <word name="Info"/>
+      <word name="/Info>"/>
+      <word name="Defines"/>
+      <word name="/Defines"/>
+      <word name="Body"/>
+      <word name="/Body"/>
+      <word name="Block"/>
+      <word name="El"/>
+      <word name="/El"/>
+      <word name="Genre"/>
+      <word name="Style"/>
+      <word name="Artist"/>
+      <word name="Author"/>
+      <word name="Title"/>
+      <word name="Comments"/>
+      <word name="/Comments"/>
+      <word name="Path"/>
+      <symb name="/"/>
+      <symb name="&lt;"/><symb name="&gt;"/>
+   </keywords>
+</scheme>
+
+</hrc>

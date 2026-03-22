@@ -1,0 +1,75 @@
+                                   
+  SHELL FILE AND FOLDER LINK SUPPORT FAR PLUGIN: DEVELOPMENT HISTORY
+
+                  Version 1.0 (New Year beta) 3.01.98
+
+     It  has  been  tested  in  two  months  under  Windows  95  OSR2  RUS  and
+Windows  NT  workstation 4.0 RUS Service Pack 3. The supposition was  confirmed
+that  OLE library interface functions work incorrect under Windows 95 OSR2  RUS
+when  called  from  a  dynamic linked library. Because of  this  OLE  bug,  the
+operating  system version checking procedure is included in shell link  support
+module  functioning  algorithm.  If plugin  runs  under  Windows  95,  it  just
+interacts  with  FAR  and  leaves  shell file  and  folder  link  creation  and
+resolution  to  additional executable modules create.shl and  resolve.shl.  Per
+anus ad astra.
+
+                Version 1.1 (February release) 22.02.98
+
+     Russian  named  folder  shell  links  haven't  been  resolved  because  of
+misconversion from one Russian code page to another. It was fixed.
+     Creating  group  of shell links, path to every next object  was  added  by
+paths to previous one. It was fixed.
+
+                Version 1.11 (You ask for it) 29.04.98
+
+     An extra space has been added in "Description" field if description prefix
+was empty. Anton Steblev (as@itti.com) found this bug. It was fixed.
+     Now it's possible to set folder link mask to a different one from standard
+*.lnk,  and  to  change  link  file  name case  when  creating.  Taras  Terexob
+(2:5020/1333.10@fidonet, tepexob@i-connect.ru) asked for it.
+     Creating  shell  link to an executable or batch file, "Working  Directory"
+field  was empty. Alexey Petrov (alesha@chat.ru) asked this field to be set  to
+linked objects' current directory.
+
+                 Version 1.12 (Little bugfix) 8.05.98
+
+     Creating  shell  link  to  an  object under Windows  NT,  fields  "Working
+Directory"  and  "Command" have been swapped out. It was not  a  good  idea  to
+release new version before May Celebrations. The bug was fixed.
+     Little  misspells were also found in English manual. They  were  fixed  (I
+hope:).
+
+                  Version 1.14 (Cat service) 23.11.98
+
+     The  bug  was  found  because of which shell link to  a  catalog  at  root
+directory has not been recognized by MS Explorer. Actually, all the links  have
+been  created incorrectly, although it was not acceptable using standard  shell
+link interface functions. As usual, MS goes its own undocumented way. This  bug
+was fixed.
+     Shell  links  to objects with Russian (and, probably, any national)  names
+have  been  created  in wrong code page under Windows 98. Certainly,  it  works
+properly under NT: The bug was fixed.
+     Russian named folder shell links haven't been resolved even under NT. Load
+function  of  IPersistFile interface simply doesn't work. The same  code  works
+normally when called from executable. It was fixed - i.e. additional executable
+module resolves shell links to folder objects now.
+
+               Version 1.15 (Tempora mutantur) 05.09.99
+
+     They  say if nothing can help you, you should read the manual. Working  in
+FAR  context,  I must call SetFileApisToAnsi() before any file operations  with
+win32api  functions.  Thus,  we  avoid all  the  problems  with  Russian  names
+described  above.  Helper  modules are moved off, therefore  plugin  will  work
+faster.
+     Shell links to objects selected into the temporary FAR panel haven't  been
+created.  It  was  legal - it's impossible to create a link  to  emulated  file
+system  object, to a file in archive for example. But it was not right  because
+some  FAR plugins (such as temporary panel or network browser) give full access
+to real files and folders. The bug was fixed.
+     Creating  group  of shell links to some objects at current  folder,  those
+links have been placed in a root directory. It was fixed.
+     Creating shell link at alternative location, such as on desktop instead of
+other panel current folder by pressing "On desktop" key (and vice versa),  that
+link has been named by default regardless of user input. The bug was fixed.
+     
+     

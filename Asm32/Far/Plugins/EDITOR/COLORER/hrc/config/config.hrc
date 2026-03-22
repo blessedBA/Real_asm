@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="Windows-1251"?>
+<!DOCTYPE hrc SYSTEM "../hrc.dtd">
+<?xml-stylesheet type="text/xsl" href="../hrc.xsl"?>
+<!--
+    Config Files
+With help of:
+    Vladimir Tarasov <tsoftgroup@chat.ru>
+    Safin Timur <timur@lanit.ru>
+    Alexander Polosow/Ђ«ҐЄб ­¤а Џ®«®§®ў 2:5025/54.32 aka 38.89
+-->
+<hrc>
+
+<scheme name="mConfCore">
+   <inherit scheme="mNetAddresses"/>
+   <!-- Path -->
+   <inherit scheme="mPath"/>
+   <regexp match="/^\s* \M \[ .*? \]/x" region0="dFunction"/>
+   <regexp match="/\%[\w\.]+\%/" region0="dVar"/>
+   <regexp match="/\{[\da-fA-F]{8}\-[\da-fA-F]{4}\-[\da-fA-F]{4}\-[\da-fA-F]{4}\-[\da-fA-F]{12}\}/" region0="dNumber"/>
+   <regexp match='/\-.*?\-/' region0="dString"/>
+   <block start="/\{(\|.*?\|)/" end="/\}/" scheme="Config"
+          region="dInsert" region01="dString2"/>
+   <keywords ignorecase="ignorecase" region="dSymbol">
+      <!--symb name="."-->
+      <symb name=","/>
+   </keywords>
+</scheme>
+
+<scheme name="mConfKeywords">
+   <keywords ignorecase="ignorecase" region="dVar">
+      <word name="ON"/><word name="OFF"/><word name="YES"/><word name="NO"/>
+   </keywords>
+   <!-- some popular fido and other keywords -->
+   <keywords ignorecase="ignorecase" region="dKeyword">
+      <word name="ABORT"/>
+      <word name="ACCEPT"/>
+      <word name="ACCES"/>
+      <word name="ADD"/>
+      <word name="ADDRESS"/>
+      <word name="ADRES"/>
+      <word name="AKA"/>
+      <word name="ALIAS"/>
+      <word name="ALIASES"/>
+      <word name="ALL"/>
+      <word name="ANSWER"/>
+      <word name="AREA"/>
+      <word name="AREAS"/>
+      <word name="ARHIVER"/>
+      <word name="AUDIT"/>
+      <word name="AUTO"/>
+      <word name="BAD"/>
+      <word name="BAUD"/>
+      <word name="BBS"/>
+      <word name="BEGIN"/>
+      <word name="BIND"/>
+      <word name="BOUND"/>
+      <word name="BOX"/>
+      <word name="BOXES"/>
+      <word name="BREAK"/>
+      <word name="BUFFER"/>
+      <word name="BUFFERS"/>
+      <word name="BUSY"/>
+      <word name="CALL"/>
+      <word name="CARBON"/>
+      <word name="CHAT"/>
+      <word name="CLASS"/>
+      <word name="COLOR"/>
+      <word name="COMPRESS"/>
+      <word name="CONFIRM"/>
+      <word name="CONNECT"/>
+      <word name="COPI"/>
+      <word name="COPY"/>
+      <word name="COUNTRY"/>
+      <word name="CREATE"/>
+      <word name="DATA"/>
+      <word name="DAY"/>
+      <word name="DEFAULT"/>
+      <word name="DEVICE"/>
+      <word name="DIAL"/>
+      <word name="DIR"/>
+      <word name="DIRECT"/>
+      <word name="DISABLE"/>
+      <word name="DOS"/>
+      <word name="DRIVE"/>
+      <word name="DRIVPARM"/>
+      <word name="DUPE"/>
+      <word name="DUPES"/>
+      <word name="ECHO"/>
+      <word name="EMPTY"/>
+      <word name="ENABLE"/>
+      <word name="END"/>
+      <word name="ERROR"/>
+      <word name="EVENT"/>
+      <word name="EVENTS"/>
+      <word name="EXCLUDE"/>
+      <word name="EXIT"/>
+      <word name="EXTENSION"/>
+      <word name="EXTERNAL"/>
+      <word name="EXTRACT"/>
+      <word name="FAX"/>
+      <word name="FCBS"/>
+      <word name="FILE"/>
+      <word name="FILES"/>
+      <word name="FIX"/>
+      <word name="FLAG"/>
+      <word name="FLAGS"/>
+      <word name="FOR"/>
+      <word name="FORCE"/>
+      <word name="FORWARD"/>
+      <word name="FREQ"/>
+      <word name="FROM"/>
+      <word name="GROUP"/>
+      <word name="HELP"/>
+      <word name="HIDE"/>
+      <word name="HIGH"/>
+      <word name="HOLD"/>
+      <word name="HUMAN"/>
+      <word name="IDENT"/>
+      <word name="IGNORE"/>
+      <word name="IN"/>
+      <word name="INCLUDE"/>
+      <word name="INIT"/>
+      <word name="INSTALL"/>
+      <word name="INTERVAL"/>
+      <word name="ITEM"/>
+      <word name="KEY"/>
+      <word name="KILL"/>
+      <word name="LAST"/>
+      <word name="LEVEL"/>
+      <word name="LIGHT"/>
+      <word name="LINK"/>
+      <word name="LINKS"/>
+      <word name="LIST"/>
+      <word name="LOAD"/>
+      <word name="LOADING"/>
+      <word name="LOCAL"/>
+      <word name="LOCK"/>
+      <word name="LOG"/>
+      <word name="MACRO"/>
+      <word name="MAIL"/>
+      <word name="MAILER"/>
+      <word name="MANAGER"/>
+      <word name="MAX"/>
+      <word name="MENU"/>
+      <word name="MIN"/>
+      <word name="MODE"/>
+      <word name="MODEM"/>
+      <word name="MONTH"/>
+      <word name="MOVE"/>
+      <word name="MULTI"/>
+      <word name="NAME"/>
+      <word name="NAME"/>
+      <word name="NET"/>
+      <word name="NODE"/>
+      <word name="NORMAL"/>
+      <word name="NUMBER"/>
+      <word name="ORDER"/>
+      <word name="ORIGIN"/>
+      <word name="OS2"/>
+      <word name="OUT"/>
+      <word name="PACK"/>
+      <word name="PACKET"/>
+      <word name="PACKETS"/>
+      <word name="PASS"/>
+      <word name="PATH"/>
+      <word name="PHONE"/>
+      <word name="PLACE"/>
+      <word name="POLL"/>
+      <word name="PORT"/>
+      <word name="PRE"/>
+      <word name="PROCESS"/>
+      <word name="PROTOCOL"/>
+      <word name="PUT"/>
+      <word name="REG"/>
+      <word name="RE"/>
+      <word name="RING"/>
+      <word name="ROUTE"/>
+      <word name="ROUTING"/>
+      <word name="SAVER"/>
+      <word name="SCAN"/>
+      <word name="SCREEN"/>
+      <word name="SECURITY"/>
+      <word name="SEMAPHORE"/>
+      <word name="SEND"/>
+      <word name="SENT"/>
+      <word name="SESSION"/>
+      <word name="SET"/>
+      <word name="SHELL"/>
+      <word name="SIZE"/>
+      <word name="SOUND"/>
+      <word name="SOUNDOF"/>
+      <word name="STACKS"/>
+      <word name="STRING"/>
+      <word name="STYLE"/>
+      <word name="SUB"/>
+      <word name="SUBJ"/>
+      <word name="SUBST"/>
+      <word name="SUFFIX"/>
+      <word name="SWAP"/>
+      <word name="SWITCHES"/>
+      <word name="SYS"/>
+      <word name="SYSOP"/>
+      <word name="TASK"/>
+      <word name="TEMP"/>
+      <word name="TEMPLATE"/>
+      <word name="TERMINAL"/>
+      <word name="TERMINATE"/>
+      <word name="TICK"/>
+      <word name="TIME"/>
+      <word name="TRACK"/>
+      <word name="TRANSIT"/>
+      <word name="TWIT"/>
+      <word name="UN"/>
+      <word name="UP"/>
+      <word name="USER"/>
+      <word name="VIEW"/>
+      <word name="W32"/>
+      <word name="WARNING"/>
+      <word name="WEEK"/>
+      <word name="WORD"/>
+      <word name="WORK"/>
+   </keywords>
+</scheme>
+
+<scheme name="mConfCommonRight">
+   <!-- Linear Comments -->
+   <block start="/^|(\s{1,})|(^\s+);/" end="/$/" scheme="Comment" region="dComment"/>
+   <block start="/^|(\s{3,})|(^\s+)\/\//" end="/$/" scheme="Comment" region="dComment"/>
+   <block start="/^|(\s{3,})|(^\s+)\#/" end="/$/" scheme="Comment" region="dComment"/>
+   <regexp match="/^|(\s{3,})(&amp;&amp;.*$)/"  region2="dComment"/>
+   <regexp match="/^|(\s{3,})(\*.*$)/" region2="dComment"/>
+   <inherit scheme="mConfCore"/>
+</scheme>
+
+<scheme name="mConfCommon">
+   <inherit scheme="mConfCommonRight"/>
+   <inherit scheme="mConfKeywords"/>
+</scheme>
+
+<scheme name="mConfStrings">
+    <!-- Strings -->
+    <block start="/'/" end="/'|$/" scheme="ConfString" region="dString"/>
+    <block start='/"/' end='/"|$/' scheme="ConfString" region="dString"/>
+</scheme>
+
+<scheme name="ConfString">
+   <!--inherit scheme="mConfCore"-->
+   <regexp match='/("")|(\\\\)|(\\")/' region0="dString2"/>
+</scheme>
+
+<scheme name="ConfRight">
+    <inherit scheme="mConfStrings"/>
+    <!-- Numbers -->
+    <!--Timur: Hack justt for ignore 'pseudo' hex digits as "Add", "dbf" etc..-->
+    <regexp match="/\b([A-Fa-f]+[^\d])?!(0x|X)?[\da-fA-F]+\B/" region0="dNumber"/>
+
+    <inherit scheme="mConfCommonRight"/>
+
+    <keywords ignorecase="ignorecase" region="dComment">
+       <word name="DWord"/>
+       <word name="Hex"/>
+    </keywords>
+</scheme>
+
+<scheme name="Config">
+    <inherit scheme="mConfCommon"/>
+    <regexp match='/^\s*\[.*?\]/' region0="dComment2"/>
+    <!-- Apache conf stuff -->
+    <regexp match='/^\s*(&lt;.*?\>)\s*$/' region0="dComment2"/>
+    <block  start="/(=)/" end="/^ | ([^\\]?#1) $/x" scheme="ConfRight" region00="dSymbol"/>
+    <inherit scheme="mConfStrings"/>
+</scheme>
+
+</hrc>

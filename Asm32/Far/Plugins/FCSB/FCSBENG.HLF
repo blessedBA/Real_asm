@@ -1,0 +1,73 @@
+.Language=English,English
+.PluginContents=C source browser plugin for FAR
+
+@Contents
+
+
+^#C Source Browser for FAR (FCSB) v2.1#
+
+   FCSB plugin scans a C programming project or a source file for all
+functions and makes a list of these functions with a possibility to move
+directly to chosen function in corresponding source file. This list can be
+quickly filtered by entering first letters of function's name.
+There is a possibility to scan all project "on the wing" or to make
+a special project file (fcsbprj$.Far) with a list of all functions.
+This project file can be very useful while working with large amount of 
+code (some megabytes or dozens of megabytes), but it needs to be 
+rebuild from time to time..
+
+
+
+^#Menu commands#
+
+
+#[C functions list]#
+
+   When this menu item is selected from file panel, FCSB searches for
+file fcsbprj$.Far in current directory. If this file exists, all function
+names are taken from it; otherwise FCSB scans all source files
+from the current directory and builds a list of functions in memory.
+File mask and subdirectories processing can be changed in plugin settings.
+Then You can select any function You want from the list and enter
+FAR internal editor. To quit FCSB, simply press ESC. Function list
+can be reduced in size by entering first letters of function's name
+directly from keyboard. You can enter letters A-Z, figures 0-9, space,
+backspace and symbols ':', '_', '~~', '<', '>'. You don't need to press Shift.
+
+   When this menu item is selected from FAR internal editor, FCSB scans
+all functions in current file and shows a list of found functions. Then You
+can move directly to chosen function by pressing Enter.
+
+
+#[(Re)scan project]#
+
+   In this case FCSB (re)creates project file fcsbprj$.Far in current
+directory. Existing file will be overwritten. This option works only
+from file panel. If called from FAR internal editor, it does nothing.
+
+
+
+^#Notes#
+
+   Function list by default doesn't include static functions. You can select
+what kind of functions (static, inline, class members) You want to include or
+exclude from counting.
+
+   While working with a large project, scanning and sorting may last
+for some minutes (this plugin was tested with ~~45Mb of source code,
+8000 functions, P166, approximate scanning/sorting time - 4 minutes), so it's
+a good idea to create a project file with function list. For little
+projects (up to 1Mb) this time is approx. 1 second.
+
+   After moving into internal editor from function list it's 
+impossible to switch between panels with Ctrl-TAB, because FCSB is
+still active :(
+
+
+
+^#Contacts#
+
+   Author : Serge Alexandrov
+   FidoNet: 2:5020/975.21, 2:5020/1610.26
+   email:   poseidon@@mtu-net.ru
+   HP:      http://www.chat.ru/~~alsea/

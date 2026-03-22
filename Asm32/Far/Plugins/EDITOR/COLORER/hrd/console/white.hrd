@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="Windows-1251"?>
+<!DOCTYPE hrd SYSTEM "../hrd.dtd">
+<hrd>
+<!--
+  white settings - as many IDEs
+  really cool in windowed console modes
+-->
+
+  <assign value="02" fore="#0" back="#F" descr="dText"/>
+  <assign value="03" fore="#8" back="#E" descr="dRow"/>
+  <assign value="04" fore="#8" back="#E" descr="dColumn"/>
+  <assign value="05" fore="" back="" type="1" descr="dSyntax"/>
+
+  <assign value="10" fore="#2" back="" descr="dNumber"/>
+  <assign value="11" fore="#2" back="" descr="dNumDec"/>
+  <assign value="12" fore="#2" back="" descr="dNumHex"/>
+  <assign value="13" fore="#2" back="" descr="dNumBin"/>
+  <assign value="14" fore="#2" back="" descr="dNumOct"/>
+  <assign value="15" fore="#2" back="" descr="dNumFloat"/>
+  <assign value="16" fore="#A" back="" descr="dNumSuffix"/>
+
+  <assign value="20" fore="#1" back="" descr="dString"/>
+  <assign value="21" fore="#9" back="" descr="dString2"/>
+  <assign value="22" fore="#C" back="" descr="dStringQuote"/>
+  <assign value="23" fore="#8" back="" descr="dStringQuote2"/>
+  <assign value="24" fore="#1" back="" descr="dCharacter"/>
+  <assign value="25" fore="#1" back="" descr="dCharacter2"/>
+
+  <assign value="30" fore="#3" back="" type="1" descr="dComment"/>
+  <assign value="31" fore="#7" back="" descr="dComment2"/>
+  <assign value="32" fore="#3" back="" descr="dBlockComment"/>
+  <assign value="33" fore="#3" back="" descr="dLineComment"/>
+  <assign value="34" fore="#7" back="" descr="dPod"/>
+
+  <assign value="40" fore="#1" back="" descr="dSymbol"/>
+  <assign value="41" fore="#6" back="" descr="dSymbol2"/>
+  <assign value="42" fore="#1" back="" descr="dPrefix"/>
+
+  <assign value="50" fore="#1" back="" descr="dOperator"/>
+
+  <assign value="60" fore="#7" back="" descr="dKeyword"/>
+  <assign value="61" fore="#4" back="" descr="dKeyword2"/>
+  <assign value="62" fore="#7" back="" descr="dType"/>
+
+  <assign value="70" fore="" back="" type="2" descr="dFunction"/>
+  <assign value="71" fore="#4" back="" descr="dRegister"/>
+  <assign value="72" fore="#7" back="" descr="dConstant"/>
+  <assign value="73" fore="#7" back="" descr="dBoolean"/>
+
+  <assign value="80" fore="#0" back="" descr="dVar"/>
+  <assign value="81" fore="#5" back="" descr="dVar2"/>
+  <assign value="82" fore="#2" back="" descr="dIdentifier"/>
+
+  <assign value="90" fore="#9" back="" descr="dDirective"/>
+  <assign value="91" fore="#1" back="" descr="dDirective2"/>
+
+  <assign value="100" fore="#2" back=""  descr="dParam"/>
+  <assign value="101" fore="#4" back=""  descr="dParam2"/>
+
+  <assign value="110" fore="#8" back="" descr="dTag"/>
+  <assign value="111" fore="#7" back="" descr="dOpenTag"/>
+  <assign value="112" fore="#7" back="" descr="dCloseTag"/>
+
+  <assign value="120" fore="#6" back="" descr="dLabel"/>
+  <assign value="121" fore="#F" back="#7" descr="dInverseLabel"/>
+
+  <assign value="130" fore="#8" back="#E" descr="dInsert"/>
+  <assign value="131" fore="#8" back="#E" descr="dInsertStart"/>
+  <assign value="132" fore="#8" back="#E" descr="dInsertEnd"/>
+
+  <assign value="140" fore="#F" back="#4" type="3" descr="dError"/>
+  <assign value="141" fore="#D" back=""   descr="dErrorText"/>
+  <assign value="142" fore="#C" back="#6" type="3" descr="dTODO"/>
+  <assign value="143" fore="#C" back="#6" type="3" descr="dDebug"/>
+
+  <assign value="150" fore="#4" back="" descr="dPath"/>
+  <assign value="151" fore="#4" back="" descr="dURL"/>
+  <assign value="152" fore="#5" back="" descr="dEMail"/>
+
+  <assign value="160" fore="#3" back="" descr="dDate"/>
+  <assign value="161" fore="#1" back="" descr="dTime"/>
+
+  <assign value="170" fore="#5" back="" type="#100" descr="dpOpenStruct"/>
+  <assign value="171" fore="#5" back="" type="#101" descr="dpCloseStruct"/>
+  <assign value="172" fore="#0" back="#E" type="#100" descr="dpOpenTag"/>
+  <assign value="173" fore="#0" back="#E" type="#101" descr="dpCloseTag"/>
+
+</hrd>

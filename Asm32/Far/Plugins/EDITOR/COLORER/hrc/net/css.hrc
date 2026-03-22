@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="Windows-1251"?>
+<!DOCTYPE hrc SYSTEM "../hrc.dtd">
+<?xml-stylesheet type="text/xsl" href="../hrc.xsl"?>
+<!--
+    CSS Defs
+With help of:
+    darkman <darkman@magnet.ru>
+    Albert Micheev <2:5049/80>
+    Timur Safin <timur@lanit.ru> - reorganized with schemes
+-->
+<hrc>
+
+<define name="cssString"  value="dString"/>
+<define name="cssComment" value="dComment"/>
+<define name="cssPar"     value="dParam"/>
+<define name="cssTag"     value="dKeyword"/>
+<define name="cssNumb"    value="dNumber"/>
+<define name="cssValue"   value="dParam2"/>
+
+<scheme name="cssComment">
+   <block start="/\/\*/" end="/\*\//" scheme="Comment"
+          region="CSSComment" region00="dpOpenStruct" region10="dpCloseStruct"/>
+</scheme>
+
+<scheme name="cssPropertyValue">
+   <inherit scheme="cssComment"/>
+   <!-- Strings -->
+   <regexp match="/'.*?'/" region0="cssString"/>
+   <regexp match='/".*?"/' region0="cssString"/>
+   <!-- Numbers -->
+   <regexp match="/ \c \#[\da-fA-F]+ \B /x" region0="cssNumb"/>
+   <regexp match="/ \b [0-9\.]+ %|(pt)|(px)|(em) \B/x" region0="cssNumb"/>
+</scheme>
+
+<scheme name="cssInsideBraces">
+
+   <inherit scheme="cssComment"/>
+   <!-- property value after colon -->
+   <block start="/([\w\-]+):/" end="/\M ; | \} | \x22 | \x27/x" scheme="CSSPropertyValue"
+          region="cssValue" region01="cssPar"/>
+
+   <!-- CSS properties -->
+   <!-- <regexp match="/\b|^ ([\-a-zA-Z]+) \B/x" region0="CSSPar"> -->
+
+   <keywords ignorecase="ignorecase" region="CSSPar">
+      <symb name="-"/>
+      <symb name="background"/>
+      <symb name="border"/>
+      <symb name="bottom"/>
+      <symb name="border"/>
+      <symb name="clear"/>
+      <symb name="clip"/>
+      <symb name="color"/>
+      <symb name="display"/>
+      <symb name="float"/>
+      <symb name="font"/>
+      <symb name="font-family"/>
+      <symb name="font-size"/>
+      <symb name="font-style"/>
+      <symb name="font-weight"/>
+      <symb name="height"/>
+      <symb name="image"/>
+      <symb name="index"/>
+      <symb name="left"/>
+      <symb name="line-height"/>
+      <symb name="list"/>
+      <symb name="margin"/>
+      <symb name="overflow"/>
+      <symb name="padding"/>
+      <symb name="position"/>
+      <symb name="right"/>
+      <symb name="style"/>
+      <symb name="type"/>
+      <symb name="text-align"/>
+      <symb name="text-decoration"/>
+      <symb name="text-indent"/>
+      <symb name="text-transform"/>
+      <symb name="top"/>
+      <symb name="visibility"/>
+      <symb name="width"/>
+      <symb name="z"/>
+   </keywords>
+</scheme>
+
+<scheme name="CSS">
+   <inherit scheme="cssComment"/>
+
+   <block start="/\{/" end="/\}/" scheme="CSSInsideBraces"
+          region="CSSValue" region00="dpOpenStruct" region10="dpCloseStruct"/>
+
+   <regexp match="/[\#\.\w\:\-]+/" region0="CSSTag"/>
+   <!--
+   <keywords ignorecase="ignorecase" region="CSSTag">
+      <word name="A"/>
+      <symb name="A:link"/>
+      <symb name="A:hover"/>
+      <symb name="A:active"/>
+      <symb name="A:visited"/>
+      <symb name="BODY"/>
+      <symb name="H1"/>
+      <symb name="H2"/>
+      <symb name="H3"/>
+      <symb name="H4"/>
+      <symb name="H5"/>
+      <symb name="H6"/>
+      <symb name="P"/>
+      <symb name="body"/>
+      <symb name="b"/>
+      <symb name="i"/>
+      <symb name="ul"/>
+      <symb name="ol"/>
+      <symb name="li"/>
+      <symb name="dir"/>
+      <symb name="small"/>
+      <symb name="td"/>
+      <symb name="tr"/>
+      <symb name="table"/>
+      <symb name="#"/>
+      <symb name="."/>
+   </keywords>
+   -->
+</scheme>
+
+</hrc>

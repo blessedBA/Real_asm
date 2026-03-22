@@ -1,0 +1,14 @@
+Doc *.txt
+Reg *.reg
+Descript.ion :-)
+File_ID.DIZ The description of this archive
+s_and_r.dll plugin module for FAR manager
+s_and_r.hlf help [russian]
+s_and_r.lng messages [russian]
+s_and_r_Eng.hlf help [english]
+s_and_r_Eng.lng messages [english]
+s_and_r_Ukr.lng messages [ukrainian]
+SRPlugins Plugin modules folder
+s_and_r.msg messages [english, russian, ukrainian]
+s_and_r_Ukr.hlf help [ukrainian]
+System System plugin modules folder

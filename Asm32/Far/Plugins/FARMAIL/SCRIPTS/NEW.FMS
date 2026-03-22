@@ -1,0 +1,25 @@
+rem
+rem An example of new message script for FARMail.
+rem
+
+
+i = 0
+while ( i<7 )
+   insline(i,0)
+   i = i+1
+wend
+
+setline( "%start%", 0 )
+setline( " set %to% = ", 1 )
+setline( " set %subj% = ", 2 )
+setline( "%end%", 3 )
+setline( " Hello,", 5 )
+
+i = nlines()-1
+
+insline(i,1)
+insline(i+1,1)
+insline(i+2,1)
+
+setline( " Best regards,", i+2 )
+setline( "     Vasya Pupkin", i+3 )

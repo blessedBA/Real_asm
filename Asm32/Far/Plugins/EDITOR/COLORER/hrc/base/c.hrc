@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="Windows-1251"?>
+<!DOCTYPE hrc SYSTEM "../hrc.dtd">
+<?xml-stylesheet type="text/xsl" href="../hrc.xsl"?>
+<!--
+    c syntax description
+With help of:
+    Vladimir Tarasov <tsoftgroup@chat.ru>
+    Timur Safin <timur@lanit.ru>
+    cail: split into two schemes: c and cpp
+-->
+<hrc>
+
+<define name="cString"      value="dString"/>
+<define name="cString2"     value="dString2"/>
+<define name="cComment"     value="dComment"/>
+<define name="cSymb"        value="dSymbol"/>
+<define name="cStructOp"    value="dSymbol2"/>
+<define name="cWord"        value="dKeyword"/>
+<define name="cFunc"        value="dFunction"/>
+<define name="cPreProc"     value="dDirective"/>
+<define name="cPreProcSpec" value="dComment2"/>
+<define name="cPrePrWord"   value="dDirective2"/>
+<define name="cAsm"         value="dDirective"/>
+<define name="cNumb"        value="dNumber"/>
+
+<include name="base/asm.hrc"/>
+
+<scheme name="cAsm">
+   <!-- Comments -->
+   <regexp match="/\/\/.*$/" region0="cComment"/>
+   <block  start="/\/\*/" end="/\*\//" scheme="Comment"
+           region="cComment" region00="dpOpenStruct" region10="dpCloseStruct"/>
+   <regexp match='/[Ll]?"((\\.)|[^\\"])*?"/' region0="cString"/>
+   <inherit scheme="mCHexNumb"/>
+   <inherit scheme="BaseAsm"/>
+</scheme>
+
+<scheme name="cPragmaText">
+   <block start="/\/\//" end="/$/" scheme="Comment" region="cComment"/>
+   <block start="/\/\*/" end="/\*\//" scheme="Comment"
+          region="cComment" region00="dpOpenStruct" region10="dpCloseStruct"/>
+   <regexp match='/"((\\.)|[^\\"])*?"/' region0="cString"/>
+</scheme>
+
+<scheme name="cSymbol">
+   <regexp match="/[Ll]?'((\\.)|[^\\']){0,8}'/" region0="cString"/>
+</scheme>
+<scheme name="cString">
+   <block start='/[Ll]?"/' end='/"/' scheme="cStringCore" region="cString"/>
+</scheme>
+<scheme name="cStringCore">
+   <regexp match='/\\\\$/' region0="dError"/>
+   <regexp match='/\\[^xX0-7]/' region0="cString2"/>
+   <regexp match='/\\$/' region0="cString2"/>
+   <regexp match='/\\x|X[\da-fA-F]{1,8}/' region0="cString2"/>
+   <regexp match='/\\[0-7]{1,12}/' region0="cString2"/>
+   <regexp match='/\%[\-\+\#0]*?[\d\*]*(\.[\d\*]+)?[Ll]?[SsCcsuidopxXnEefgG]/' region0="cString2"/>
+   <regexp match='/[^\\\"]$/' region0="dError"/>
+</scheme>
+
+<scheme name="CPrePro">
+   <block start="/\/\//" end="/$/" scheme="Comment" region="cComment"/>
+   <block start="/\/\*/" end="/\*\//" scheme="Comment"
+          region="cComment" region00="dpOpenStruct" region10="dpCloseStruct"/>
+
+   <regexp match="/(&lt;)[\w\d\.\-\\/]*(>)/"
+           region0="cString" region1="dpOpenStruct" region2="dpCloseStruct"/>
+   <inherit scheme="cString"/>
+   <inherit scheme="cSymbol"/>
+
+   <block  start="/\b pragma \s/x" end="/$/" scheme="CPragmaText" region="cPreProcSpec" region00="cPrePrWord"/>
+   <regexp match="/\b (error) \s .*$/x" region0="cPreProcSpec" region1="cPrePrWord"/>
+   <regexp match="/\M define \s+ ([\w_]+) \( /x" region1="cFunc"/>
+
+   <!-- could be bugz -->
+   <!--inherit scheme="mPairedBrackets">
+     <virtual scheme="mPairedBrackets" subst="cPrePro"/>
+   </include-->
+   <!-- standard c symbols -->
+   <keywords region="cSymb">
+      <symb name=";"/><symb name="="/><symb name="+"/><symb name="-"/>
+      <symb name="/"/><symb name="*"/><symb name="&amp;"/><symb name="|"/>
+      <symb name="^"/><symb name="("/><symb name=")"/><symb name="["/>
+      <symb name="]"/><symb name=","/><symb name="."/><symb name=":"/>
+      <symb name="!"/><symb name="~"/><symb name="&lt;"/><symb name="&gt;"/>
+      <symb name="%"/><symb name="{"/><symb name="}"/><symb name="?"/>
+      <symb name="#"/><symb name="@"/>
+   </keywords>
+   <keywords region="cPrePrWord">
+      <word name="defined"/><word name="sizeof"/>
+      <word name="ifdef"/><word name="ifndef"/>
+      <word name="define"/><word name="endif"/>
+      <word name="pragma"/><word name="else"/>
+      <word name="include"/><word name="if"/>
+      <word name="undef"/><word name="elif"/>
+      <word name="line"/>
+   </keywords>
+</scheme>
+
+<scheme name="c">
+   <!-- paired block -->
+   <inherit scheme="mPairedBrackets">
+     <virtual scheme="mPairedBrackets" subst="c"/>
+   </inherit>
+   <!-- c preprocessor -->
+   <block  start="/^\s*#/" end="/^ | ([^\\]?#1) $/x" scheme="cPrePro" region="cPreProc"/>
+   <!-- Numbers -->
+   <inherit scheme="mCHexNumb"/>
+   <inherit scheme="mFloatNumb"/>
+   <inherit scheme="mDecNumb"/>
+   <regexp match="/\c(0x[\da-fA-F]*?([^\s\W\da-fA-F]).*?)\B/i" region0="dError"/>
+
+   <!-- Strings -->
+   <regexp match="/([Ll]?'((\\.)|[^\\']){0,4}')/" region0="cString"/>
+   <!-- cail: extended strings. you may wish to disable
+        multylines : end='/"|$/' -->
+   <inherit scheme="cString"/>
+
+   <!-- Linear Comments -->
+   <block start="/\/\//" end="/$/" scheme="Comment" region="cComment"/>
+   <block start="/\/\*/" end="/\*\//" scheme="Comment"
+          region="cComment" region00="dpOpenStruct" region10="dpCloseStruct"/>
+
+   <!-- thanx to andrei somsikov for bug -->
+   <block start="/(\b_?_?asm)\s*?(\{)|$/" end="/(\})/" scheme="CAsm"
+          region01="cAsm" region02="cStructOp" region00="dpOpenStruct"
+          region10="cStructOp" region11="dpCloseStruct"/>
+
+   <block start="/\b__asm/" end="/$/" scheme="CAsm"
+          region00="cAsm"/>
+
+   <regexp match='/^ \M (\w[\w_*&amp;~]+ \s [\s\w_*&amp;~\"]*?)? ([\:\w_*&amp;~]+?) \s* \( .*? [^;] $/x'
+           region2="cFunc"/>
+   <regexp match='/^ \M ( (typedef\s+)? (struct)|(class) \s+ ([\w_]+ [\w_:\s]*? [^;]) )$/x'
+           region5="cFunc"/>
+
+   <!-- standard C/C++ symbols -->
+   <keywords region="cSymb">
+      <symb name=";" region="cStructOp"/>
+      <symb name="!"/><symb name="~"/><symb name="&lt;"/><symb name="&gt;"/>
+      <symb name="%"/><symb name="?"/><symb name="|"/><symb name=":"/>
+      <symb name="/"/><symb name="*"/><symb name="&amp;"/><symb name="."/>
+      <symb name="="/><symb name="+"/><symb name="-"/>
+      <symb name=","/><symb name="^"/>
+   </keywords>
+   <keywords region="dError">
+      <symb name="["/><symb name="]"/>
+      <symb name="{"/><symb name="}"/>
+      <symb name="("/><symb name=")"/>
+      <symb name="*/"/>
+   </keywords>
+
+   <!-- C keywords -->
+   <keywords  region="cWord">
+      <!--
+      <word name="__builtin_alignof"/>
+      <word name="__builtin_isfloat"/>
+      -->
+      <word name="asm"/>
+      <word name="auto"/>
+      <word name="break"/>
+      <word name="case"/>
+      <word name="cdecl"/>
+      <word name="char"/>
+      <word name="const"/>
+      <word name="continue"/>
+      <word name="default"/>
+      <word name="defined"/>
+      <word name="do"/>
+      <word name="double"/>
+      <word name="else"/>
+      <word name="enum"/>
+      <word name="explicit"/>
+      <word name="export"/>
+      <word name="extern"/>
+      <word name="far"/>
+      <word name="fastcall"/>
+      <word name="float"/>
+      <word name="finally"/>
+      <word name="for"/>
+      <word name="fortran"/>
+      <word name="goto"/>
+      <word name="huge"/>
+      <word name="if"/>
+      <word name="import"/>
+      <word name="inline"/>
+      <word name="int"/>
+      <word name="interrupt"/>
+      <word name="long"/>
+      <word name="near"/>
+      <word name="pascal"/>
+      <word name="register"/>
+      <word name="return"/>
+      <word name="short"/>
+      <word name="signed"/>
+      <word name="sizeof"/>
+      <word name="static"/>
+      <word name="stdcall"/>
+      <word name="struct"/>
+      <word name="switch"/>
+      <word name="typedef"/>
+      <word name="union"/>
+      <word name="unsigned"/>
+      <word name="using"/>
+      <word name="void"/>
+      <word name="volatile"/>
+      <word name="wchar_t"/>
+      <word name="while"/>
+      <word name="_cdecl"/>
+      <word name="_export"/>
+      <word name="_fastcall"/>
+      <word name="_import"/>
+      <word name="_pascal"/>
+      <word name="_stdcall"/>
+      <word name="__cdecl"/>
+      <word name="__declspec"/>
+      <word name="__except"/>
+      <word name="__export"/>
+      <word name="__far"/>
+      <word name="__far16"/>
+      <word name="__fastcall"/>
+      <word name="__finally"/>
+      <word name="__fortran"/>
+      <word name="__huge"/>
+      <word name="__import"/>
+      <word name="__inline"/>
+      <word name="__int128"/>
+      <word name="__int16"/>
+      <word name="__int32"/>
+      <word name="__int64"/>
+      <word name="__int8"/>
+      <word name="__interrupt"/>
+      <word name="__leave"/>
+      <word name="__loadds"/>
+      <word name="__near"/>
+      <word name="__nounwind"/>
+      <word name="__pascal"/>
+      <word name="__property"/>
+      <word name="__ptr64"/>
+      <word name="__published"/>
+      <word name="__restrict"/>
+      <word name="__resume"/>
+      <word name="__rtti"/>
+      <word name="__saveregs"/>
+      <word name="__segment"/>
+      <word name="__segname"/>
+      <word name="__stdcall"/>
+      <word name="__sysapi"/>
+      <word name="__syscall"/>
+      <word name="__thiscall"/>
+      <word name="__thread"/>
+      <word name="__try"/>
+      <word name="__unaligned"/>
+      <word name="__wchar_t"/>
+   </keywords>
+</scheme>
+
+</hrc>

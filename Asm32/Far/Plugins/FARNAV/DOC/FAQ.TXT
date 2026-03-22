@@ -1,0 +1,41 @@
+                         ProxyKit for FAR manager.
+                     Far Navigator (ProxyFtp) plugin.
+
+                  Copyright (c) 1998-2002, Vasily V. Moshninov.
+
+                       Frequently Asked Questions
+
+Q: I have some problems with Far Navigator (ProxyFtp).
+A: Get latest version of Far Navigator (ProxyFtp) at
+   http://proxykit.newmail.ru
+
+Q: My FTP server send data in russian language (ex: months names). And
+   ProxyFTP does not show any folder. Why?
+A: Set valid [Character table] in "Host configuration" dialog.
+
+Q: How i can send the files directly from one to another FTP server?
+A: You can send files between two FTP servers only if you have opened this
+   servers with ProxyFTP plugin (Left and Right panel), and you work not
+   over HTTP proxy. In this case SHIFT+F5 will transfer files between FTP
+   servers.
+
+Q: When i try to connect over HTTP proxy, i see blinking dialog window and
+   then error message.
+A: I don't know why. Try to set "Connect options"/"Retry count" = 0.
+
+Q: How i can get full url for current file on ftp server?
+A: Press Ctrl+Shift+Ins. This will copy full url in clipboard.
+   Ctrl+F will be insert full url into command line.
+
+Q: I can't delete files from ftp sever. Message "Function not available on 
+   this server" appear, when i try to delete any file.
+A: Turn on "Use HTTP version 1.1" option in "Proxy options" dialogue.
+
+Q: I have some problems with Far Navigator (ProxyFtp)...
+A: Create log file (level 3) and send it to proxykit@newmail.ru with next info:
+   - ProxyFTP version
+   - OS version
+   - Type of internet connection (direct/via proxy)
+   - Type and version of your proxy server.
+   - Problem description
+   

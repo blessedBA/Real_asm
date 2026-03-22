@@ -1,0 +1,35 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "build asm",
+        "type": "shell",
+        "command": "nasm",
+        "args": [
+          "-f", "macho64",
+          "-F", "dwarf",
+          "-g",
+          "${workspaceFolder}/hello.asm",
+          "-o",
+          "${workspaceFolder}/hello.o"
+        ],
+        "problemMatcher": []
+      },
+      {
+        "label": "link asm",
+        "type": "shell",
+        "command": "xcrun",
+        "args": [
+          "clang",
+          "-arch",
+          "x86_64",
+          "-Wl,-ld_classic",
+          "${workspaceFolder}/hello.o",
+          "-o",
+          "${workspaceFolder}/hello"
+        ],
+        "dependsOn": "build asm",
+        "problemMatcher": []
+      }
+    ]
+  }

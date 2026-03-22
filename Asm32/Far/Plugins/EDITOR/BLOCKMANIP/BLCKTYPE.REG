@@ -1,0 +1,6 @@
+REGEDIT4
+
+[HKEY_CURRENT_USER\Software\Far\KeyMacros\Editor\CtrlShiftIns]
+@="Flip block type"
+"Sequence"="F11 k f ShiftIns"
+"DisableOutput"=dword:00000001

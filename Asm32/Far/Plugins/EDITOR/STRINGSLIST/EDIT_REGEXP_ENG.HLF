@@ -1,0 +1,241 @@
+.Language=English,English
+.PluginContents=Editor RegExp plugin
+
+@Contents
+$^#Plugin purpose
+
+ Plugin generates a string list for more comfortable navigation in the text.
+ For example: function list in C/C++ source code.
+ The criterion of definition of function is set by regular expression.
+ Plugin will work with FAR 1.60 and later.
+
+ The bugreports, wishes and regular expressions for definition of functions
+ for various types of files are welcomed.
+
+ #Before using of module, run FileTypes.reg!#
+
+ Sorry for bad english. It is result of translation by Stylus98 :)
+
+ Contacts: Alexey I. Kardashevsky, aik@@agava.com, alexhome@@aha.ru, 2:5020/607.5.
+
+
+~Copyrights~@Copyrights@
+
+
+
+
+@SearchError
+$^#Search error
+
+~Copyrights~@Copyrights@
+
+@ReplaceError
+$^#Replace error
+
+~Copyrights~@Copyrights@
+
+@ProcListMenu
+$^#Function list
+
+~Copyrights~@Copyrights@
+
+@ProcListCfg
+$^#Function list -- setup
+
+There are 3 properties:
+
+ #file type# - presentable name of file mask;
+ #file mask# - regular expression that define filemask;
+ ~Regular expressions~@RegExp@ - expression that is used for function definition.
+ ~presentation expression~@RegExp@ - expression that define appearance of found function
+ #select from cursor# - if checked, in created menu will be selected nearest to cursor item,
+otherwise will be selected previously selected item;
+ #sort items# - enables items sorting;
+ #shift unused parameters in presentation string# - shifts unused parameters in
+Presentation expression.
+
+ For example, this properties set define module's behavior for C/C++ files:
+
+@-
+ #File type#
+ C/C++ files
+ #File mask#
+ \.\c{C|H|{CPP}|{HPP}|{CC}|{RH}|{INL}|{XS}}$
+ #Regular expression#
+ ^{(\w[\w_:*&~~]+[\w\s_:*&~~]@@\([\S\s]*)}|
+ {(struct\s*\w*[\S\s]*[^^;])}|{(\##define\s*\S*\([\S\s]*)}$
+ #presentation expression#
+ \1\2\3
+@+
+
+In #presentation expression# you can use special macro's:
+ %LINE%      - line number;
+ %INDEX%     - function number;
+ %PERCENT%   - offset in percents from begin of file.
+
+ Notes.
+ I can implement "file mask" processing as in FAR (simple filemasks
+delimited with commas), but service function CmpName doesn't process similar masks.
+For me has appeared easier to make processing using RegExp's :)
+
+
+~Copyrights~@Copyrights@
+
+@ProcListCfgMenu
+$^#Menu with filetypes
+
+ Ins - add new filetype;
+ Del - delete filetype;
+ F4 - edit currently selected filetype.
+
+
+@Search
+$^#You can search anything
+
+~Copyrights~@Copyrights@
+
+@Replace
+$^#You can replace anything
+
+~Copyrights~@Copyrights@
+
+@Copyrights
+$^#Copyrights
+
+@-
+Author - #Alexey I. Kardashevsky#
+
+Email: ~alexhome@@aha.ru~@EMailClient@
+Fidonet: ~2:5020/607.5~@FidoClient@, ~2:5020/676.22~@FidoClient@
+Copyright (C) 1999
+
+RexExp processing code - #Marko Macek#
+The module is used from the sanction Marko Macek.
+
+Email: ~Marko.Macek@@gmx.ne~@EMailClient@
+WWW:   ~http://www.kiss.uni-lj.si/~~k4fr0235/~@WWW@
+Copyright (C) 1994-1996
+@+
+
+@EMailClient
+$^#mail to
+
+No mail clients have been installed.
+
+@WWW
+$^#www
+
+Sorry, browser is accessible in registered version.
+
+@FidoClient
+$^#FarDED
+
+Search GoldEd on your PC and run it.
+
+@RegExp
+$^#Regular expressions - who they?
+
+@-
+#Search/Match Operators#
+
+#\ #
+     Quotes the following character. If the following character
+is not alphanumeric, it will lost it's special meaning, otherwise it will gain a special
+meaning as described below.
+#\n #
+     Matches a 0x0A (LF) character.
+#\r #
+     Matches a 0x0D (CR) character.
+#\t #
+     Matches a 0x09 (TAB) character.
+#\e #
+     Matches an escape character (0x1B)
+#\s #
+     Matches whitespace (CR, LF, TAB, SPACE) characters.
+#\S #
+     Matches non-whitespace (the reverse of \s)
+#\w #
+     Matches word character [a-zA-Z0-9]
+#\W #
+     Matches non-word character
+#\d #
+     Matches a digit [0-9].
+#\D #
+     Matches a non-digit.
+#\U #
+     Matches uppercase characters (A-Z)
+#\L #
+     Matches lowercase characters (a-z)
+#\x#### #
+     Matches specified hex value (\x0A, \x0D, \x09, etc.)
+#\o###### #
+     Matches specified octal value (\o000, \o015, etc.)
+#\N###### #
+     Matches specified decimal value (\N000, \N013, \N009, etc.)
+#\C #
+     Starts case sensitive matching.
+#\c #
+     Starts case insensitive matching.
+#^ #
+     Match a beginning of line.
+#$ #
+     Match an end of line.
+#. #
+     Match any character.
+#< #
+     Match beginning of word (word consists of [A-Za-z0-9]).
+#> #
+     Match end of word.
+#[ ] #
+     Specifies a class of characters ([abc123], [\]\x10], etc).
+#[ - ] #
+     Specified a range of characters ([0-9a-zA-Z_], [0-9], etc)
+#[^ ] #
+     Specifies complement class ([^a-z], [^\-], etc)
+#? #
+     Matches preceeding pattern optionally (a?bc, filename\.?, $?, etc)
+#| #
+     Matches preceeding or next pattern (a|b, c|d, abc|d). Only one
+character will be used as pattern unless grouped together using {} or ().
+#* #
+     Match zero or more occurances of preceeding pattern. Matching is
+greedy and will match as much as possible.
+#+ #
+     Match one or more occurances of preceeding pattern. Match is greedy.
+#@@ #
+     Match zero or more occurances of preceeding pattern. Matching
+is non-greedy and will match as little as possible without causing the rest of the
+pattern match to fail.
+### #
+     Match one or more occurances of preceeding pattern. Matching is non-greedy.
+#{ } #
+     Group patterns together to form complex pattern. ( {abc}, {abc}|{cde}, {abc}?, {word}?)
+#( ) #
+     Group patterns together to form complex pattern. Also used
+to save the matched substring into the register which can be used for substitution
+operation. Up to 9 registers can be used.
+
+#Replacement Operators#
+
+#\ #
+     Causes the next character to lose it's special meaning.
+#\n #
+     Inserts a 0x0A (LF) character.
+#\r #
+     Inserts a 0x0D (CR) character.
+#\t #
+     Inserts a 0x09 (TAB) character.
+#\1 to \9 #
+     Recalls stored substrings from registers (\1, \2, \3, to \9).
+#\0 #
+     Recalls entire matched pattern.
+#\u #
+     Convert next character to uppercase
+#\l #
+     Convert next character to lowercase
+#\U #
+     Convert to uppercase till \E or \e
+#\L #
+     Convert to lowercase till \E or \e
+@+
+

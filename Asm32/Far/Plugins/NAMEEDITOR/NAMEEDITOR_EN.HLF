@@ -1,0 +1,33 @@
+﻿.Language=English,English
+.PluginContents=Batch rename
+.Options CtrlColorChar=|
+
+@Contents
+
+  #Name pattern format#
+
+  |3F%n|- File name without extension.
+     |37myFileName.jpg > %n.NewExt > myFileName.NewExt|-
+
+  |3F%e|- File extension.
+     |37myFileName.jpg > prefix_%n.%e > prefix_myFileName.jpg|-
+
+  |3F%[fl][/s]i|- File sequence number (decimal).
+             where |3Ff|-: placeholder;
+                   |3Fl|-: minimal length of the number;
+                   |3Fs|-: initial sequence number.
+             |37myFileName.jpg > %n_%i.%e > myFileName_1.jpg|-
+             |37myFileName.jpg > %n_%03i.%e > myFileName_001.jpg|-
+             |37myFileName.jpg > %n_%03/100i.%e > myFileName_101.jpg|-
+             |37myFileName.jpg > %n_%/-100i.%e > myFileName_-100.jpg|-
+
+  |3F%[fl][/s]x|- File sequence number (hexadecimal).
+             Correspond to the format of the |3F%i|-.
+             |37myFileName.jpg → %n_%03/f0i.%e → myFileName_0f1.jpg|-
+
+
+^* * *
+
+^Source code and updates you can get at project page:
+
+^~http://code.google.com/p/farplugs~@http://code.google.com/p/farplugs@

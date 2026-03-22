@@ -1,0 +1,244 @@
+.Language=English,English
+.PluginContents=System Parameters Editor
+.Options CtrlColorChar=
+@Contents
+$ #System Parameters Editor#
+  This plugin allows you to edit a lot of (i.e, currently over 20) parameters in Far manager
+version 1.70 (and higher), which are not accessible through normal configuration.
+
+  ~System Parameters, Page 1~@SystemSwitch1Params@
+  ~System Parameters, Page 2~@SystemSwitch2Params@
+  ~System Parameters, Page 3~@SystemSwitch3Params@
+  ~System Parameters, Page 4~@SystemStringParams@
+  ~Hot leys handling~@SystemHotKeyParams@
+  ~XLat keys handling~@SystemXLatParams@
+  ~Disabled options~@SystemDisableParams@
+
+  #Contacting me:#
+  #Pavel Kostromitinov#
+  #2:5030/661.14@@Fidonet#
+  #~kostrom@@mail.ru~@mailto:kostrom@@mail.ru@#
+
+  Updates are available from ~my homepage~@http://lev.serebryakov.spb.ru/pavel/programs.shtml@.
+  ~Vote~@http://www.uic.nnov.ru/~ruiv/plugring/cgi-bin/voter.cgi?ID=326@ for this plugin on PlugRinG!
+See ~all my plugins~@http://www.uic.nnov.ru:8101/~ruiv/plugring/cgi-bin/downld.cgi?Draw=List&Select=Author&SelectAuthor=63@!
+
+@SystemSwitch1Params
+$ #System Parameters, Page 1#
+
+  #Esc in Command-line history saves position# (TechInfo 9)
+    If checked, pressing 3BEsc- while scrolling through command history with
+3BCtrl+E--3BCtrl-X- keys, will save your position in history.
+
+  #New 'Set Attributes' behaviour# (TechInfo 15)
+    If checked, "Process subfolders" checkbox in "File Attrbutes"
+dialog box will be unset for the single directory. Otherwise behavior will be
+as in FAR prior to 1.70 version.
+
+  #Show 'Debugger' button on exception# (TechInfo 17)
+    If checked, button invoking default system debugger will be present in Exception dialog,
+
+  #New Editor|Search behaviour# (TechInfo 18)
+    If checked, the first search begins from the current position, the following
+from the next position. Otherwise, search will work as in FAR prior to version 1.70.
+
+  #Show drives hidden in Explorer# (TechInfo 30)
+    If set, drives set to Hidden in explorer will be shown in Far anyway.
+
+  #Show plugin name while testing file# (TechInfo 37)
+    If set, names of plugin DLLs trying to open the file (e.g. archive or such) will be
+shown in window title upon pressing 3BEnter- or 3BCtrl+PgDn-.
+
+  #New console size switch scheme# (TechInfo 38)
+    Use new window size changing mechanism (normal/maximal console size).
+
+  #History positions on matching item# (TechInfo 41)
+    If it is set, history in dialogs will position on item matching with entered text
+upon opening it, otherwise - on the last (topmost) item.
+
+  #Add plugin's prefix to path while copying to clipboard# (TechInfo 42)
+    If set, upon adding a name of a file from plugin panel to clipboard (via 3BCtrl+Ins- or
+3BCtrl+F-), it will be prefixed with a plugin's prefix.
+
+  #Show scrollbar in menus# (TechInfo 43)
+    Whether to show scrollbar in the menus that are too large.
+
+  #Hidden attribute on hidden shares (Network plugin)# (TechInfo 35)
+    Specifies whether Network plugin should set Hidden attribute while displaying
+hidden shares.
+
+  #Restore codepage after executing programs# (TechInfo 45)
+    Use this to force Far to restore default codepage after running external programs.
+
+  #Esc twice interrupts operation# (TechInfo 47)
+    Allows to control the operation interruption behaviour. If set, pressing 3BEsc-
+closes the message box and interrupts the operation, otherwise, operation is contiuned.
+
+  #Case-sensitive filenames in history# (TechInfo 31, WinNT+ only)
+    Whether to treat file names in viewer/editor history as case-sensitive.
+   
+  #Save configuration when console window is closed# (TechInfo 46, WinNT+ only)
+    If this option set, Far tries to save its configuration (if auto-save is enabled)
+when console window is closed via Close button in the window title bar.
+
+@SystemSwitch2Params
+$ #System Parameters, Page 2#
+
+  #Right click in empty column# (TechInfo 6)
+    Specifies action taken when right mouse buttn is clicked in an empty column.
+    #Moves cursor and selects last file#
+    #Moves cursor to last file#
+    #Does nothing#
+
+  #Editing Read-Only files# (TechInfo 19)
+    Specifies handling of read-only files when opened for editing.
+    #In read-only mode#          - open as if Ctrl-L was pressed after opening
+    #Show warning message#       - warn of read-only file
+    #Also with Hidden attribute# - apply the rules also to files with Hidden attribute
+    #Also with System attribute# - apply the rules also to files with System attribute
+
+  #URLs in help# (TechInfo 12)
+    Specifies handling URL links in help files.
+    #Disable# - URLs are not working
+    #Enable#  - Default browser is launched
+    #Prompt#  - A message appears
+  #Alternative activation method#
+    Try checking this, if URL activation doesn't work
+
+@SystemSwitch3Params
+$ #System Parameters, Page 3#
+
+  #Show current character code in editor as# (TechInfo 32)
+    Specifies radix to display current symbol code in editor
+    #Octal#       - 3 digits, zero aligned
+    #Decimal#     - 3 digits, space aligned
+    #Hexadecimal# - 2 digits, zero aligned, 'h' appended
+
+  #Show timing on copying# (TechInfo 26)
+    Allows displaying information on average copying speed, copying time and average
+remaining time.
+    #To NUL#         - Enable when copying to NUL device ('read benchmarking')
+    #Normal copying# - Enable on all other operations
+
+  #SUBST drives query# (TechInfo 36, WinNT/2K only)
+    Sets which drives should be tested if they're SUBST drives
+    #Query removable drives#
+    #Query other drives#
+
+@SystemStringParams
+$ #System String Parameters#
+
+  #Template for personal plugins# (TechInfo 2)
+    Specifies a template for personal plugins path. Environment variables
+can be used here.
+
+  #Word Dividers# (TechInfo 1)
+    Specifies symbols that are treated as word dividers.
+
+  #Word dividers for XLat# (TechInfo 16)
+    Specifies symbols that are treated as word dividers when invoking XLat feature.
+
+  #Editor/viewer bookmark cache# (TechInfo 11)
+    Specifies the size of the cache used to save bookmarks of the editor/viewer.
+The minimal value is 16, maximum is 128.
+
+  #Maximal editor file size# (TechInfo 20)
+    If file opened for editing is greater than specified size, a warning message
+appears. If this value is 0, messages never appears.
+
+  #Editor undo size# (TechInfo 44)
+    Soecifies size of editor undo buffer. Can be any number from 64 up to 2 Gb,
+though real buffer is limited by available memory
+
+  #Size of buffer for copying# (TechInfo 23)
+    Sets size (in bytes) of buffer to use while copying. Setting it to '0' enables
+standard buffer of 0x10000 bytes.
+
+  #Windowed cursor size# (TechInfo 25)
+    Sets size (in percent) of insert and overwrite mode cursor when Far is in
+windowed mode. Setting it to '0' allows using default console value.
+  #Fullscreen cursor size# (TechInfo 25)
+    Sets size (in percent) of insert and overwrite mode cursor when Far is in
+fullscreen mode. Setting it to '0' allows using default console value.
+
+  #Wipe symbol code# (TechInfo 29)
+    Specifies symbol used in "Wipe file" operation (3BAlt+Del-)
+
+  #Quoted symbols# (TechInfo 34)
+    Specifies symbols, which will cause the filename containing them to be quoted
+when needed.
+
+  #Locale ID for sorting# (TechInfo 40)
+    Sets which locale should Far use when comparing filenames.
+    Special values are:
+      0x0400 LOCALE_USER_DEFAULT
+      0x0800 LOCALE_SYSTEM_DEFAULT
+      0x0000 LOCALE_NEUTRAL
+    For other values see <winnt.h>
+
+  #Maximum files for panel auto-update# (TechInfo 41)
+    Specifies maximum number of files on a panel with which auto-update works.
+Set it to 0 to enable auto-update always.
+
+  #Mouse wheel delta#           \
+  #Mouse wheel delta in viewer#  (TechInfo 33, Win2000 only)
+  #Mouse wheel delta in editor# /
+    Specifies the number of keypresses of the 3BUp/Down- keys that are sent when
+the mouse wheel is rotated and the keys 3BCtrl/Shift/Alt- are not pressed.
+    Rotating the wheel when 3BShift- is pressed is equivalent to pressing 3BPgUp/PgDn-,
+rotating the wheel when 3BAlt- is pressed always causes the scrolling by one position.
+
+@SystemHotKeyParams
+$ #Hot keys handling#
+  
+  #Ctrl-Alt-Shift works in# (TechInfo 7)
+    Specifies where will this combination work.
+    #File Panels# - hiding panels (see lower)
+    #Editor#      - showing user screen
+    #Viewer#      - showing user screen
+    #Help Window# - hiding the window
+    #Dialogs#     - hiding the dialog
+
+  #Ctrl-Alt-Shift in panel hides# (TechInfo 8)
+    Specifies exact behavior for 3BCtrl+Alt+Shift- in panels.
+    #Panels only# - hide panels only, same as 3BCtrl+O-
+    #Panels and command line# - hide command line also
+    #Panels, command line and keybar# - hide everything, showing full user screen
+
+  #BS clears 'unchanged' text# (TechInfo 5)
+    If checked, pressing 3BBackSpace- in dialog input line, when it is in 'unchanged'
+state, will clear the text (as 3BDel- key does); otherwise, it will remain.
+
+  #BS deletes vertical block# (TechInfo 13)
+    If checked, pressing 3BBackSpace- in editor with vertical block selected will delete it
+the same as 3BDel- key does.
+
+  #Ctrl+F adds name as shown# (TechInfo 14)
+    If checked, pressing 3BCtrl+F- will add full current file name to command line
+in the form it is displayed, otherwise in the original form.
+
+  #New hotkey handling scheme# (TechInfo 21)
+    Use layout-independent hotkey handling technique.
+Helps when using "Janko's Keyboard Generator" or similar program, generating incorrect
+.KBD files
+
+  #New Shift/Ctrl/Alt handling scheme# (TechInfo 24)
+    Use advanced method of handling shift keys and their combinations. E.g.,
+3BAlt+NonLatinSymbol- will be treated as 3BAlt+LatinSymbol- (except that in quick search)
+
+@SystemXLatParams
+$ #XLat keys handling#
+
+  #Key for Xlat in command line# (TechInfo 10)
+  #Key for Xlat in dialogs#
+  #Key for Xlat in editor#
+    Specifies keys for Xlat feature. To enter a key, select appropriate input field
+and press desired key combination.
+
+  #Console detach key# (TechInfo 27)
+    Specifies a key combination for detaching FAR Manager console from a non-interactive
+process running in it.
+
+@SystemDisableParams
+$ #Disabled options (TechInfo 4)#
+  This set of check boxes specifies different items in Options menu that are to be disabled.

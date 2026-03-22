@@ -1,0 +1,120 @@
+FCSB v2.1 - C source browser plugin for FAR
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+
+This plugin scans a C programming project or a source file for all functions
+and makes a list of these functions with a possibility to move directly to
+chosen function in corresponding source file.
+
+
+Installation
+ÄÄÄÄÄÄÄÄÄÄÄÄ
+
+1. Create subdirectory "FCSB" in "Far\Plugins\" directory.
+2. Copy files from this archive to this subdirectory.
+3. Restart FAR.
+
+
+Contact
+ÄÄÄÄÄÄÄ
+
+Author : Serge Alexandrov
+FidoNet: 2:5020/975.21, 2:5020/1610.26
+email  : poseidon@mtu-net.ru
+HP     : http://www.chat.ru/~alsea/
+
+If you like (or hate :) this plugin, please be so kind to send me a
+little form by email with
+ * your name, email
+ * your country and city
+ * your organisation
+ * your suggestions about this program
+So I'll know if I need do develop this program subsequently. Thanks
+in advance.
+
+
+
+
+HISTORY
+ÄÄÄÄÄÄÄ
+
+
+v0.1
+ÄÄÄÄ
+
+First version. Can create project files and display function list.
+No messages, no help, no filtering :( Incorrect C++ processing.
+
+
+v0.9 (07.07.99)
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+
+New:
+ - Messages displaying
+ - Function list filtering
+ - HLF-file with plugin description
+
+Bugs fixed:
+ - now processing expressions like:
+   zzz::zzz( ... )
+   zzz::~zzz( ... )
+   zzz :: zzz( ... )
+   zzz<Something>::DoSmth( ... )
+   zzz< vector<AnyType> >::DoSmth( ... )
+   operator>
+
+
+v1.0a (18.07.99)
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+
+New:
+ - Plugin configuration dialog, settings in registry. Now you can include
+   or exclude static, inline and class members functions from counting.
+
+Bugs fixed:
+ - Correct processing of expressions with '\' at the end of line.
+
+
+v1.1 (22.07.99)
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+
+New:
+ - Added progress bar
+ - Added exception handling (hope you'll never see it :) 
+
+Bugs fixed:
+ - Sometimes stack was corrupted in v1.0a, this caused a GPF.
+ - Now processing correctly code like:
+    anytype arr[ sizeof( X ) ];
+    MYEXPORT(..) func(..) { .. }
+    MYTYPE(..) MYEXPORT(..) func( a )
+     anytype ( * a ) (..);
+     { .. }
+    MyClass::MyClass( a ):Foo( a )
+     { .. }
+    MyClass::MyClass( a ) : Foo( a ), Zu ( a )
+     { .. }
+
+
+v1.2 (23.07.99)
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+
+Bugs fixed:
+ - Code like MYEXPORT(..) operator.. processed like function MYEXPORT(). Fixed.
+
+
+v2.0 (03.08.99)
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+
+New:
+ - Function list in editor.
+Also some minor bugs fixed.
+
+
+v2.1 (23.08.99)
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+
+New:
+ - keeping position in function list
+ - setting: recurse subdirectories
+ - setting: move to function in editor
+ - source files mask

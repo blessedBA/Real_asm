@@ -1,0 +1,27 @@
+                         ProxyKit for FAR manager.
+                      Far Navigator (ProxyFtp) plugin.
+
+   This file contains additional information about Far Navigator (ProxyFtp) plugin.
+
+RootKey    = HKEY_CURRENT_USER\SoftWare\Far\Plugins\ProxyFtp
+PrivateKey = HKEY_CURRENT_USER\SoftWare\GranDe Soft lab\ProxyFtp
+
+Following values are default:
+
+
+[RootKey\INTERFACE]
+"Exchange description"="1" - Exchange FileName and Description in hosts panel
+"Prefix"="ftp"             - Set ProxyFtp commandline prefix
+"SendCmdLine"="CtrlS"      - Combination of keys for sending commandline directly
+                             to ftp server.
+"Copy passwords"="0"       - Copy passwords to clipboard or commandline
+                            (Ctrl+Shift+Ins or Ctrl+F)
+"Adjust filetime"="1"      - Adjust filetime "in future"
+"Check free space"="1"     - Check free space before downloading. If you have
+                             problem with large disks, you may turn off this option.
+"Owner delimeter"=":"      - Delimeter for owner/group column
+                          
+[RootKey\CONNECTION]         
+"Buffer size"="4096"       - Set Recv/Send buffer size to 4k
+"Cache size"="64"          - Internal cache size (in directory entries)
+"User-Agent"               - Define the 'User-Agent' field of HTTP header.

@@ -1,0 +1,24 @@
+EditCompletion (version 3.9)
+FAR 1.7x PlugIn module
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Author       : Igor Lubimov
+E-mail       : mr_july@mail.ru
+Maintainer   : Vadim Yegorov
+E-mail       : zg@matrica.apollo.lv
+DISTRIBUTION : FreeWare and "AS IS"
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+(en)
+  This  plugin  module  allows  You
+complete  and AUTOcomplete words in
+internal FAR editor.
+
+(ru)
+  Этот  плагин  позволяет завершать
+слова  во  внутреннем редакторе Far
+Manager'а.
+Работает в двух режимах:
+1) интерактивном (показывает меню с
+   вариантами)
+2) автоматическом
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

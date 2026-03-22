@@ -1,0 +1,570 @@
+                         ProxyKit for FAR manager.
+                      Far Navigator (ProxyFtp) plugin.
+
+               Copyright (c) 1998-2002, Vasily V. Moshninov.
+
+
+   I. Legend:
+       [+] - Feature is added
+       [*] - Feature is modifyed
+       [-] - Bug fixed
+
+                               
+  II. History:
+
+
+    ProxyFtp 1.7 release 2
+
+  --- Oct 26 2000 ---
+
+    [+] - New option in "Advanced copy/move" dialogue:
+          "Copy without paths"
+    [+] - New option: File synchronization. Press CTRL+ALT+S on plugin
+          panel and enjoy ;)
+    [+] - New information when copying/moving files: Average CPS/Last CPS
+    [-] - Fixed bug with uploading multiple files over HTTP
+    [-] - Fixed bug with connecting to some servers...
+    [-] - Fixed bug with russian names over HTTP proxy
+
+
+    ProxyFtp 1.7 release 1
+
+  --- Oct 23 2000 ---
+
+    [+] - WinRoute HTTP proxy support. (New listing format)
+    [+] - New option: "Remember last action for copy/move"
+          See unofficial.txt
+    [-] - Old bugs fixed, new added ;)
+
+
+    ProxyFtp 1.6 release 12b
+
+  --- Sep 18 2000 ---
+          
+   [+] - You can define format of 'LIST' command for each host.
+   [+] - "Advanced options"/"Set 'HIDDEN' to partial downloaded files"
+   [+] - New feature "Partial folder reading". You may break reading a files
+         at any time, and ProxyFtp will show all files, which were read.
+   [-] - Some bugs fixed ;)
+
+
+    ProxyFtp 1.6 release 11
+
+  --- Aug 24 2000 ---
+
+   [-] - Fixed bug with TANDEM servers...
+
+
+    ProxyFtp 1.6 release 10
+
+  --- Aug 22 2000 ---
+
+   [-] - Some bugs fixed.
+
+
+    ProxyFtp 1.6 release 9
+
+  --- Aug 08 2000 ---
+
+   [*] - Parsing algorithm has changed
+
+
+    ProxyFtp 1.6 release 8
+
+  --- Jul 14 2000 ---
+
+   [+] - Now plugin shows full reply on reconnect.
+
+
+    ProxyFtp 1.6 release 7
+
+  --- Jun 26 2000 ---
+
+   [+] - Resume function in "Server to Server" mode
+   [-] - Fixed bug with suspending in "Sever to Server" mode.
+
+
+    ProxyFtp 1.6 release 6
+
+  --- Jun 26 2000 ---
+                               
+   [+] - CTRL+SHIFT+F2 - Save download queue to file
+         CTRL+SHIFT+F3 - Load download queue from file
+   [*] - Plugin can work with files on "Temp panel"
+   [-] - Fixed bug with suspend of some win32/win16 programs.
+   [-] - Fixed bug with deleting files after moving from ftp server.
+   [-] - Fixed bug with uploading folders. ("File already exists" dialogue
+         was appeared if copied file existed in parent folder)
+
+
+    ProxyFtp 1.6 release 5
+
+  --- Jun 08 2000 ---           
+
+   [+] - Now download queue is stored on the disk. When you disconnect from
+         the host and connect again - queue may be restored.
+   [+] - You may define delimeter for "Owner:Group" column. See unofficial.txt
+         for details.
+   [-] - Fixed bug with parsing of extra info in URL. (Data after '?' or '#')
+   [-] - Now file attributes are shown in "Change access mode" dialogue.
+
+
+    ProxyFtp 1.6 release 4
+
+  --- May 31 2000 ---
+
+   [+] - "Default action" in "Copy/Move" dialogue. You may define default
+         action (such as Overwrite/Newer/Skip/Resume) for copying/moving
+         operation, if file already exists.
+   [+] - "Connection options"/"Cache life time". You may define life time of
+         internal cache for each folder. When time will expired - cache will be
+         reset for this folder.
+   [*] - parsing algorithm has changed (for UNIX/HCLFTPd/NOVELL ftp servers and
+         WinGate http proxies).
+   [-] - Fixed small bug with moving hosts records.
+   [-] - Fixed small bug with directory caching.
+   [-] - Fixed bug with progress bar.
+
+
+    ProxyFtp 1.6 release 3                              
+                                           
+  --- Apr 14 2000 ---
+
+   [+] - New item in "Plugins menu" (called by F11) - "Synchronization"
+         If you on local disk and select this item, ProxyFtp will scan for
+         'proxyftp.mnu' file in current directory and all above. If file
+         exists, ProxyFtp will read from this file information about ftp
+         servers, connect to the server (if many - will appear menu) and
+         go to the same folder as local dir. Current directory will appear
+         on another panel. Folder with 'proxyftp.mnu' file will 'root'.
+         For information about 'proxyftp.mnu' see "Special file format" topic
+         in ProxyFtp help.
+         Special thanks to PAF (Alexander Petrosyan) for idea.
+
+   [+] - New TANDEM ftp feature:
+         When you press "..", ProxyFtp will be ask for new SUBVOLUME name.
+         If you type ".." or "" - host will be closed.
+
+   [+] - New listing format: OS/2 ftp server
+
+   [+] - New memory management routines.
+
+
+    ProxyFtp 1.6 release 2
+
+  --- Mar 16 2000 ---
+
+   [+] - "Check free space" option. See unofficial.txt
+   [-] - Fixed GetDiskFreeSpace bug. Now ProxyFtp use GetDiskFreeSpaceEx,
+         if available.
+
+
+    ProxyFtp 1.6 release 1
+
+  --- Mar 15 2000 ---
+
+   [+] - ProxyFtp 1.6.r1 released.
+   [-] - Fixed small bugs in 1.6.b8
+
+
+    ProxyFtp 1.6 beta 8
+
+  --- Mar 07 2000 --- 
+
+   [+] - Added checking for free disk space before downloading.
+   [-] - Fixed bug with shortcuts. You may need to recreate shortcuts.
+   [-] - Fixed bug with CPU time overload.
+             
+
+  --- Feb 14 2000 ---
+
+    ProxyFtp 1.6 beta 7
+             
+   [+] - If you have checked option "Ask password before connection", ProxyFtp
+         will show "username/password" dialogue with "username" and "password"
+         fields. If "password" field left blank and password require during
+         connection, ProxyFtp will show "password" dialogue with last replyes.
+         This feature may uses for Secure Shell Logon
+   [-] - Bug with "Waiting for termination of idle process..." fixed.
+
+
+  --- Feb 08 2000 ---
+
+    ProxyFtp 1.6 beta 6
+
+   [+] - Now proxyftp always uses "Async" sockets
+   [-] - Bug with "Autodetect character table" fixed.
+   [-] - Bug with character #255 fixed.
+
+
+  --- Feb 01 2000 ---
+
+    ProxyFtp 1.6 beta 5
+
+   [+] - Additional registry options (see unofficial.txt)
+   [-] - With some servers ProxyFtp did not work properly. Fixed, i hope ;)
+
+
+  --- Jan 18 2000 ---
+
+    ProxyFtp 1.6 beta 4
+                               
+   [*] - parsing algorithm has changed (for UNIX/HCLFTPd ftp servers and
+         WinGate/Generic http proxies)
+   [*] - "Adjust filetime "in future" algorithm has changed. ;)
+   [-] - Fixed little bug with VMS system. (Get files)
+
+
+  --- Jan 14 2000 ---
+
+    ProxyFtp 1.6 beta 3
+
+   [-] - Fixed bug with date and time
+   [-] - Fixed bug with searching in archives from selected folders
+         (First folder only)
+   [-] - Fixed bugs with VMS system.
+   [-] - Fixed bug with links.
+                   
+
+  --- Dec 30 1999 ---
+
+    ProxyFtp 1.6 beta 2 Christmas Edition
+
+   [-] - Fixed bug with date and time
+
+
+  --- Dec 23 1999 ---
+
+    ProxyFtp 1.6 beta 1                    
+                               
+   [!] - New format of Hosts records. Before using ProxyFtp 1.6 you MUST
+         upgrade from previous version. See readme.!!! for details.
+   [+] - "Connection options"/"Write ftp cache to disk"
+           All cached dirs on ftp servers can be stored to your hard drive
+           for future use. When you are connected to the server in the next
+           time, all cached dirs will be restored.
+   [+] - In "Host configuration" dialogue you can define type of ftp server.
+         In some cases ProxyFtp can't recognize server automatically and
+         you must define this parameter manually.
+   [+] - VMS system support.
+   [+] - TANDEM system support.
+   [+] - "Proxy options"/"Use HTTP version 1.1"
+   [+] - "Proxy options"/"Use Socks version 5"
+   [+] - "Advanced" button in "Interface options" dialogue
+   [+] - You can define columns types for View mode 0 in
+         "Advanced interface options" dialogue.
+   [+] - "Advanced interface options"/"Show 'Upload options' dialogue"
+   [*] - "Proxy options"/"Tell HTTP proxy do not use cache" changed to
+         "Proxy options"/"Use HTTP proxy cache"
+   [*] - Next options moved to "Interface options"/"Advanced" dialogue:
+         "Interface options"/"Show 'Private hosts'"
+         "Interface options"/"Use Casesensitive host names"
+         "Interface options"/"Show progress on View/Edit"
+         "Interface options"/"Replace View mode 0"
+   [*] - Help files updated
+   [-] - Fixed bug with Socks4 (6 bytes in begining of file)
+
+  
+  --- Nov 01 1999 ---
+
+    ProxyFtp 1.5 release 1
+
+   [*] - Help files updated
+
+
+  --- Oct 28 1999 ---
+
+    ProxyFtp 1.5 beta 4                
+
+   [+] - Now you can enter/change UserName in "Ask password before connection"
+         dialogue
+   [*] - Cosmetic changes
+   [-] - Fixed bug with parsing of some FTP servers (space before filename)
+   [-] - Fixed bug with "Group connections" when "Retry Count" = 1
+   [-] - Fixed bug with HTTP version 1.1
+                                                   
+
+  --- Oct 05 1999 ---
+
+    ProxyFtp 1.5 beta 3
+
+   [+] - Netscape Proxy 3.5 supported
+   [+] - CERN httpd 3.0 supported
+   [*] - Help files updated.
+   [-] - Fixed HTML parsing bug for some types of HTTP proxies
+   [-] - Fixed bug with processing of hexadecimal numbers in HTML (%??)
+
+
+  --- Oct 01 1999 ---
+
+    ProxyFtp 1.5 beta 2
+
+   [+] - On FTP server press ALT+F5 and selected files will be added
+         in Download Queue.
+   [*] - Help files updated.
+   [-] - Fixed bug with long names. (Over HTTP proxy)
+   [-] - Fixed bug with exporting hosts from .ini files
+         (In Hosts panel)
+   [-] - Fixed bug with deleting files in subdirectories on ftp server.
+         
+
+  --- Sep 22 1999 ---
+
+    ProxyFTP 1.5 beta 1
+
+   [+] - Connect to first free server from group.
+         In hosts panel select two or more servers and press CTRL+G.
+   [+] - Queued downloads. Now you can use queued downloads.
+         In "Download" dialogue press the "Queue" button and selected files
+         will be added in download queue. CTRL+SHIFT+F5 switching between
+         normal ftp/queue mode. This work only for ftp (not for hosts panel).
+   [+] - "Interface options"\"Show 'Private hosts' in Hosts panel"
+         All entries in 'Private hosts' stores in separate
+         PRIVATE KEY in registry.
+   [+] - "Interface options"\"Use CaseSensitive Host names"
+         To Use casesensitive a comparison of host names
+         (ex.: 'ftp.cdrom.com/pub' and 'ftp.cdrom.com/PUB')
+   [+] - Remembers last working directory in hosts panel
+
+
+  --- Jun 15 1999 ---
+   [+] - You now can set commandline prefix for ProxyFTP.
+         [HKCU\SoftWare\Far\Plugins\ProxyFtp\Interface]
+         Prefix=pftp
+         Restart FAR and command line prefix for ProxyFTP will be "pftp"
+         By default is "ftp"
+   [+] - You now can set shortcut for next feature:
+         "send command line directly to ftp server"
+         [HKCU\SoftWare\Far\Plugins\ProxyFtp\Interface]
+         SendCmdLine=CtrlShiftS
+         By default is "CtrlS"
+   [+] - "Rename files"/"Use quick renaming for folders"
+   [+] - "Connection options"/"Retry timeout"
+   [-] - Upload files with spaces.
+
+  --- Jun 11 1999 ---   
+   [+] - Added history in "Rename files" dialog
+
+  --- May 20 1999 ---
+   [-] - Fixed bug with Ctrl+Shift+Ins (copy to clipboard)
+   [-] - Fixed bug with "Total copy progress indicator"
+
+  --- May 13 1999 ---
+   [-] - Fixed some problems with restoring of broken downloading
+
+  --- Mar 23 1999 ---
+   [+] - "Rename files"/"Use quick renaming for folders"
+   [+] - "Connection options"/"Retry timeout"
+
+  --- Mar 09 1999 ---
+   [-] - Fixed some problems with importing passwords from standard
+         FAR FTP client.
+
+  --- Mar 01 1999 ---
+   [-] - Fixed some problems with ESC key
+
+  --- Feb 22 1999 ---
+   [+] - when you try to change access mode, plugin now shows
+         old permissions in dialog box.
+
+  --- Feb 08 1999 ---
+   [+] - "Connection options"/"Quick logout"
+   [+] - Showing estimated time in window caption when Copying/Moving
+   [+] - SHIFT+F5 will copy host record in hosts panel
+   [+] - Nondestructive checking for ESC
+
+  --- Feb 03 1999 ---
+   [-] - Adjust filetime for files from "future" ;)
+   [-] - "Can't assign requested address" fixed
+   [-] - Fixed error of Date parse for SquiId/Novell/Wingate proxy
+   [-] - Sending non-ASCII chars in HTTP requests
+   [-] - Fixed some problems with uploading files
+
+  --- Dec 17 1998 ---
+   [-] - Fixed EAccessVialoation under Windows NT
+
+  --- Dec 11 1998 --- 
+   [-] - Found error, causing program crash with showing a messagebox (GUI)
+   [-] - Plugin caused crash under FAR 1.51 or below
+         Now plugin works under FAR 1.50 or above
+
+  --- Dec 08 1998 ---                                 
+   [+] - Renaming folders on FTP servers
+   [+] - "Decode/Encode files" in "Advanced copy/move" dialog box
+   [-] - Fixed problems with Copy/Move folders with mask
+   [-] - Fixed problems with renaming files on FTP servers
+   [-] - Fixed bug with Ctrl+F/Ctrl+Shift+Ins
+
+  --- Dec 04 1998 ---
+   [*] - "Server to Server transfer mode" updated
+   [-] - Fixed algorithm of CPS calculation
+   [-] - Socks5 login procedure fixed.
+   [-] - CTRL+HOME bug fixed. 
+   [-] - Check for existing file.
+   [-] - Positioning a cursor on begining of directory after processing
+         directory link.
+
+  --- Dec 03 1998 ---
+   [+] - SOCKS4 proxy support.
+   [+] - When you have no selected items and you press F5 on ".."
+         you will be able to enter filename for copying.
+         (! Mask not available)
+   [+] - Socks request/reply are added in log with level 3
+
+  --- Nov 20 1998 ---
+   [+] - "Advanced" button in Copy/Move/Delete dialog box
+         (You can perform this operations with Include/Exclude options)
+   [-] - Positioning a cursor on new directory after its creating.
+   [-] - Http parse line fixed (now understands tag "<BR>")
+   [-] - Some problem with .ini files. (Flush buffers)
+   [-] - FTP Shortcut bug fixed
+   [-] - Removing non empty directories
+
+  --- Nov 10 1998 ---
+   ProxyFTP 1.4 (beta 3)
+   [+] - Passwords now can keep in other registry key.
+         (See unofficial.txt)
+   [*] - File size with commas
+   [-] - Fixed EAccessViolation on empty FTP directory 
+   [-] - Saving host params when "[Connect] as default" is Off
+   [-] - HTTP/FTP line parsing with some proxies/servers
+
+  --- Nov 05 1998 ---                  
+   ProxyFTP 1.4 (beta 2.1917)
+   [!] - SOCKS5 proxy support
+   [!] - Autodetect of HTTP proxy now does not work.
+         You must set "HTTP proxy type" in "Proxy options" dialog box!
+   [+] - "Interface options"/"Show total copy indicator"
+   [+] - Ctrl+Home on FTP goes to home (Startup) directory
+         (if empty command line)
+   [+] - If your HTTP proxy return an empty folder - you can look some
+         information by pressing CTRL+L (F3 on "..")
+
+  --- Nov 01 1998 ---
+   ProxyFTP 1.4 (beta 1)
+   [!] - WinProxy support
+   [!] - Proxy options/HTTP proxy type
+   [+] - Interface options/Replace Panel mode 0
+   [+] - Interface options/Upload uppercase files in lowercase
+   [+] - Interface options/Show progress bar on View/Edit
+   [+] - Connection options/Log file level
+   [+] - Edit host/ASCII transfer mode (Copy dialog/ASCII transfer mode)
+   [+] - "Newer" button in "Destination exists" dialog box
+   [+] - F6 can removing directories
+   [+] - Mask filename available on F5/F6
+   [+] - Beep on connect
+
+  --- Sep 22 1998 ---
+   [+] - Netscape proxy now support
+   [+] - "Proxy options/Http proxy type" button
+   [-] - When you have active FTP server with ProxyFTP and you press <ENTER>
+         in another file panel for use windows associations (or used Windows
+         command "start") - ProxyFTP go to "sleep" mode ;). Fixed
+   [+] - F3 on ".." shows welcome message
+
+  --- Sep 10 1998 ---
+   [+] - History in all dialogs
+   [+] - Files with spaces in name now work properly.
+         (Include such as "Name   " and "    ")
+   [+] - CTRL+L now shows some information
+   [*] - "Interface/Show original file case" removed (Default is TRUE)
+   [*] - "Interface/Process subfolders" removed (Default is TRUE)
+   [*] - "Interface/Internal cache size" removed (Default is 64)
+   [*] - "Connect/Data buffer size" removed (Default is 32k)
+   [+] - Delete subfolders
+   [+] - "[Connect] as default button" in interface options
+   [+] - FAR Shortcut work in hosts panel
+   [+] - Links now appear as files (but work properly on dirs)
+   [*] - Socket ReadString algorithm changed...
+   [-] - Http Proxy parse bug fix. Now tested with:
+         *) Novell BorderManager 4.11
+         *) WinGate 2.1
+         *) Squid 1.1.15
+         *) MS Proxy 2.0
+   [-] - Upload bug fixed
+   [-] - Reconnect at login failure bug fixed
+   [-] - FTP proxy (default user/pass) bug fixed
+   [-] - Http parse bug fixed (dirs as files)
+   [-] - CTRL+'\' bug fixed (Root dir)
+   [-] - Fixed EAccessViolation in Hosts panel (F4 on "..")
+
+  --- Aug 31 1998 ---
+   [+] - "Retry count" in connection options
+   [+] - Exchange File name and Description in Hosts panel
+   [+] - Show percent on copy/move
+   [+] - Total bar indicator
+   [+] - [Connect] button in Edit host dialog (default)
+   [*] - ESC now works properly (i hopes ;)
+   [-] - Http list parse bug fixed
+
+  --- Aug 20 1998 ---
+   [+] - Restore last view mode for hosts panel and ftp browser
+   [+] - Import hosts list from standard FTP plugin
+   [*] - "Server To Server mode" updated
+   [*] - Internal cache updated
+   [-] - FTP proxy bug fixed (user@host)
+   [-] - CTRL+F bug fixed.
+   [-] - 'Break connection after operation' bug fixed
+
+  --- Aug 10 1998 ---
+   [-] - Some bugs fixed
+
+  --- Jul 27 1998 ---
+   [+] - SHIFT+F5 copying files in "Server to server" transfer mode
+   [+] - "Show original names for links" option (Interface)
+   [+] - "Internal cache size" option (Interface)
+   [+] - process subfolders in operations
+   [+] - Help files now available
+   [+] - Russian language support
+   [-] - "Exception: List index out of bounds" fixed
+
+  --- Jul 20 1998 ---
+   [+] - ALT+F6 save current url to registry
+   [*] - Optimized internal cache use
+   [-] - About 7k bugs fixed ;)
+
+  --- Jul 14 1998 ---
+   [+] - Change file owner on ftp server
+   [+] - Open from shortcut support
+
+  --- Jul 13 1998 ---
+   [+] - CTRL+SHIFT+INSERT will send full URL to clipboard;
+   [+] - SHIFT+F7 can select character table
+
+  --- Jul 12 1998 ---
+   [-] - Fixed "EAccessViolation exception" on open host.
+
+  --- Jul 10 1998 ---
+   [+] - Language tables support
+   [+] - CTRL+S will send command line directly to ftp server (FTP mode only)
+
+  --- Jul 09 1998 ---
+   [+] - "Internal plugin cache" options in "Interface options" menu
+   [+] - "Default options" menu
+   [+] - "Use proxy" options for each site
+   [+] - resume function over HTTP Proxy server (if available)
+   [+] - "HTTP Proxy" basic authorization
+
+  --- Jun 20 1998 ---
+   [+] - Add data from data connection for LIST command
+   [+] - FTP passive mode
+   [+] - FTP proxy server support
+   [-] - Some bugs fixed
+
+  --- May 20 1998 ---
+   [+] - Resume function for FTP server
+   [-] - Some bugs fixed
+
+  --- May 14 1998 ---
+   [+] - ProxyFTP version 0.1 beta
+
+
+ III. Summary:
+
+  All bugs reports and your wishes send to: proxykit@newmail.ru
+                                   fido is: 2:5004/18.32@fidonet.org
+                                       ICQ: 17217849
+
+  ProxyFtp Home page:                     http://proxykit.newmail.ru
+
+  Vasily V. Moshninov                                    may 20 1999

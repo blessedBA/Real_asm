@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="Windows-1251"?>
+<!DOCTYPE hrd SYSTEM "../hrd.dtd">
+<hrd>
+<!--
+  ansi text generation
+-->
+  <assign value="0" stext="[0m" etext="[0m" descr="default"/>
+
+  <assign value="02" stext="" etext="" descr="dText"/>
+  <assign value="03" stext="[0m" etext="[0m" descr="dRow"/>
+  <assign value="04" stext="[0m" etext="[0m" descr="dColumn"/>
+
+  <assign value="10" stext="[1;32m" etext="[0m" descr="dNumber"/>
+  <assign value="11" stext="[1;32m" etext="[0m" descr="dNumDec"/>
+  <assign value="12" stext="[1;32m" etext="[0m" descr="dNumHex"/>
+  <assign value="13" stext="[1;32m" etext="[0m" descr="dNumBin"/>
+  <assign value="14" stext="[1;32m" etext="[0m" descr="dNumOct"/>
+  <assign value="15" stext="[1;32m" etext="[0m" descr="dNumFloat"/>
+  <assign value="16" stext="[32m" etext="[0m" descr="dNumSuffix"/>
+
+  <assign value="20" stext="[1;36m" etext="[0m" descr="dString"/>
+  <assign value="21" stext="[36m" etext="[0m" descr="dString2"/>
+  <assign value="22" stext="[1;31m" etext="[0m" descr="dStringQuote"/>
+  <assign value="23" stext="[1;37m" etext="[0m" descr="dStringQuote2"/>
+  <assign value="24" stext="[1;31m" etext="[0m" descr="dCharacter"/>
+  <assign value="25" stext="[1;31m" etext="[0m" descr="dCharacter2"/>
+
+  <assign value="30" stext="[36m" etext="[0m" type="1" descr="dComment"/>
+  <assign value="31" stext="[37m" etext="[0m" descr="dComment2"/>
+  <assign value="32" stext="[36m" etext="[0m" descr="dBlockComment"/>
+  <assign value="33" stext="[36m" etext="[0m" descr="dLineComment"/>
+  <assign value="34" stext="[37m" etext="[0m" descr="dPod"/>
+
+  <assign value="40" stext="[1;33m" etext="[0m" descr="dSymbol"/>
+  <assign value="41" stext="[1;35m" etext="[0m" descr="dSymbol2"/>
+  <assign value="42" stext="[1;33m" etext="[0m" descr="dPrefix"/>
+
+  <assign value="50" stext="[1;33m" etext="[0m" descr="dOperator"/>
+
+  <assign value="60" stext="[1;33m" etext="[0m" descr="dKeyword"/>
+  <assign value="61" stext="[31m"   etext="[0m" descr="dKeyword2"/>
+  <assign value="62" stext="[1;33m" etext="[0m" descr="dType"/>
+
+  <assign value="70" stext="" etext="" type="2" descr="dFunction"/>
+  <assign value="71" stext="[1;36m" etext="[0m" descr="dRegister"/>
+  <assign value="72" stext="[1;36m" etext="[0m" descr="dConstant"/>
+  <assign value="73" stext="[1;36m" etext="[0m" descr="dBoolean"/>
+
+  <assign value="80" stext="[32m" etext="[0m" descr="dVar"/>
+  <assign value="81" stext="[32m" etext="[0m" descr="dVar2"/>
+  <assign value="82" stext="[32m" etext="[0m" descr="dIdentifier"/>
+
+  <assign value="90" stext="[1;32m" etext="[0m" descr="dDirective"/>
+  <assign value="91" stext="[32m"   etext="[0m" descr="dDirective2"/>
+
+  <assign value="100" stext="[1;32m"  etext="[0m" descr="dParam"/>
+  <assign value="101" stext="[32m"    etext="[0m" descr="dParam2"/>
+
+  <assign value="110" stext="[1;33m" etext="[0m" descr="dTag"/>
+  <assign value="111" stext="[1;33m" etext="[0m" descr="dOpenTag"/>
+  <assign value="112" stext="[1;33m" etext="[0m" descr="dCloseTag"/>
+
+  <assign value="120" stext="[1;35m"      etext="[0m" descr="dLabel"/>
+  <assign value="121" stext="[34m[47m" etext="[0m" descr="dInverseLabel"/>
+
+  <assign value="130" stext="[1;37m" etext="[0m" sback="[47m" eback="[0m" descr="dInsert"/>
+  <assign value="131" stext="[1;37m" etext="[0m" sback="[47m" eback="[0m" descr="dInsertStart"/>
+  <assign value="132" stext="[1;37m" etext="[0m" sback="[47m" eback="[0m" descr="dInsertEnd"/>
+
+  <assign value="140" stext="[30m" etext="[0m" sback="[41m" eback="[0m" type="3" descr="dError"/>
+  <assign value="141" stext="[1;35m"     etext="[0m" descr="dErrorText"/>
+  <assign value="142" stext="[1;31m" etext="[0m" sback="[43m" eback="[0m" type="3" descr="dTODO"/>
+  <assign value="143" stext="[1;31m" etext="[0m" sback="[43m" eback="[0m" type="3" descr="dDebug"/>
+
+  <assign value="150" stext="[1;31m" etext="[0m" descr="dPath"/>
+  <assign value="151" stext="[1;31m" etext="[0m" descr="dURL"/>
+  <assign value="152" stext="[1;33m" etext="[0m" descr="dEMail"/>
+
+  <assign value="160" stext="[1;33m" etext="[0m" descr="dDate"/>
+  <assign value="161" stext="[1;32m" etext="[0m" descr="dTime"/>
+
+  <assign value="170" stext="[31m"  etext="[0m" type="#100" descr="dpOpenStruct"/>
+  <assign value="171" stext="[31m"  etext="[0m" type="#101" descr="dpCloseStruct"/>
+  <assign value="172" stext="[1;35m[40m" etext="[0m" type="#100" descr="dpOpenTag"/>
+  <assign value="173" stext="[1;35m[40m" etext="[0m" type="#101" descr="dpCloseTag"/>
+
+</hrd>

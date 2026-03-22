@@ -1,0 +1,15 @@
+REGEDIT4
+
+[HKEY_CURRENT_USER\Software\Far\KeyMacros\Editor]
+
+; при английской раскладке
+[HKEY_CURRENT_USER\Software\Far\KeyMacros\Editor\AltR]
+"Sequence"="F11 r"
+"Description"="Rus <-> Lat"
+"DisableOutput"=dword:00000001
+
+; при русской раскладке
+[HKEY_CURRENT_USER\Software\Far\KeyMacros\Editor\AltК]
+"Sequence"="F11 r"
+"Description"="Rus <-> Lat"
+"DisableOutput"=dword:00000001

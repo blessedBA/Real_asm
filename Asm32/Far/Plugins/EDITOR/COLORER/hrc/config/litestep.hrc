@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="Windows-1251"?>
+<!DOCTYPE hrc SYSTEM "../hrc.dtd">
+<?xml-stylesheet type="text/xsl" href="../hrc.xsl"?>
+<!--
+    litestep rc files
+With Help of:
+    cail: the best shell! :)
+-->
+<hrc>
+
+<scheme name="litestep_steprc">
+   <!-- Linear Comments -->
+   <regexp match="/(;.*$)/" region0="dComment"/>
+   <!-- Strings -->
+   <regexp match="/(\'.*?\')/" region0="dString"/>
+   <regexp match='/(\".*?\")/' region0="dString"/>
+
+   <regexp match="/(\!\w+)/" region0="dKeyword"/>
+
+   <regexp match='/([A-Za-z]:\\[^,=?]*?)$/' region0="dPath"/>
+   <regexp match='/([A-Za-z]:\\[^\s]*?)[\s,=:]/' region0="dPath"/>
+   <regexp match='/([\w_\-\~]*?\.bmp)/i' region0="dPath"/>
+
+   <!-- Numbers  -->
+   <regexp match="/\b([\da-fA-F]+)\B/" region0="dNumber"/>
+   <regexp match="/\b([0-9]+)\B/" region0="dNumber"/>
+
+   <keywords ignorecase="ignorecase" region="dKeyword">
+      <symb name="="/>
+      <word name="LoadModule"/>
+      <word name="SetDesktopArea"/>
+      <word name="HotListName"/>
+      <word name="FolderBackPix"/>
+      <word name="DefaultBackPix"/>
+      <word name="*Hotkey"/>
+      <word name="*Popup"/>
+      <word name="*Wharf"/>
+      <word name="*Shortcut"/>
+      <word name="Folder"/>
+   </keywords>
+   <keywords ignorecase="ignorecase" region="dVar">
+      <word name="Win"/>
+      <word name="Ctrl"/>
+      <word name="Alt"/>
+      <word name="BackSpace"/>
+      <word name="up"/>
+      <word name="down"/>
+      <word name="left"/>
+      <word name="right"/>
+   </keywords>
+</scheme>
+
+</hrc>

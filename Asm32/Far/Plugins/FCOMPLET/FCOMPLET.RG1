@@ -1,0 +1,40 @@
+REGEDIT4
+
+[HKEY_CURRENT_USER\Software\Far\KeyMacros\Shell]
+
+[HKEY_CURRENT_USER\Software\Far\KeyMacros\Shell\`]
+"Sequence"="F11 i n"
+"DisableOutput"=dword:00000001
+"EmptyCommandLine"=dword:00000000
+"NotEmptyCommandLine"=dword:00000000
+
+[HKEY_CURRENT_USER\Software\Far\KeyMacros\Shell\~]
+"Sequence"="F11 i p"
+"DisableOutput"=dword:00000001
+"EmptyCommandLine"=dword:00000000
+"NotEmptyCommandLine"=dword:00000000
+
+[HKEY_CURRENT_USER\Software\Far\KeyMacros\Shell\Ctrl¿]
+"Sequence"="F11 i l"
+"DisableOutput"=dword:00000001
+"EmptyCommandLine"=dword:00000000
+"NotEmptyCommandLine"=dword:00000000
+
+[HKEY_CURRENT_USER\Software\Far\KeyMacros\Shell\Alt`]
+"Sequence"="`"
+"DisableOutput"=dword:00000001
+"EmptyCommandLine"=dword:00000000
+"NotEmptyCommandLine"=dword:00000000
+
+[HKEY_CURRENT_USER\Software\Far\KeyMacros\Shell\AltShift¿]
+"Sequence"="~"
+"DisableOutput"=dword:00000001
+"EmptyCommandLine"=dword:00000000
+"NotEmptyCommandLine"=dword:00000000
+
+[HKEY_CURRENT_USER\Software\Far\KeyMacros\Shell\CtrlShiftN]
+"Sequence"="F11 i s"
+"DisableOutput"=dword:00000001
+"EmptyCommandLine"=dword:00000000
+"NotEmptyCommandLine"=dword:00000000
+

@@ -1,0 +1,155 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<title>colorer's regular expressions small manual</title>
+<link rel="stylesheet" type="text/css" href="../core/styles.css">
+</head>
+<body>
+
+<h1>Colorer's library regular expressions</h1>
+
+<h2>Entrance</h2>
+<p>
+All work of Colorer library is based on regular expressions (regexp) using.
+They let you to create universal syntax rules of highlighting in HRC -
+but regexp is an independent instrument, which could be used in
+different applications. Here you'll find description of my regular expressions
+syntax. I assume, that you know what it is - and why and how they are used. At
+first I'll describe regexp's syntax, and after shall try to help you to
+understand them. At all you can read some other documents - perl
+regexps (man perlre) or something other...
+</p>
+
+<p>
+Regular expressions consist of set of characters. Some of them
+are simple - and some are metacharacters. All metacharacters (escapes)
+divides into three categories: first - zerolength (\b, \B and so on);
+second - class metacharacters (\w, \s '.').
+Third class is an operators. Regular expressions operators could be
+applied to single character, to block in brackets, and to other operators.
+You can use brackets to group some sequences.
+</p>
+<p>
+Colorer's regular expressins (cregexp) are like Perl regexp in their base
+syntax. There are differences in some extended operators.
+</p>
+
+<h2>Syntax</h2>
+<p>
+All regexps must be in slashes /.../
+After the end slash could be a parameters:
+<ul>
+    <li>i  -  ignore symbols case.
+    <li>x  -  ignore direct spaces and crlf (for comfort)
+    <li>s  -  suppose, that regexp is single line - it means, than
+              '.' class should include \r\n symbols.
+</ul>
+</p>
+<p>
+Each symbol in regexp linearly compared with target string. Everything,
+that don't like metacharacters means simple character.
+</p>
+
+<h3>Metacharacters</h3>
+<pre>
+    ^     Match the beginning of line
+    $     Match the end of line
+    .     Match any character (except \r\n)
+    [ ]   Match characters in set
+    [^ ]  Match characters not in set
+          Here all the operators are disabled, but you can
+          use other metacharacters,  and  range  operator:
+          a-z means all chars from first to second (a - z)
+    \#    Next symbol '#' after slash (except a-z and 1-9)
+    \b    Start of word
+    \B    End of word
+    \xNN  NN - ASCII char (hex)
+    \n    0x10 (lf)
+    \r    0x13 (cr)
+    \t    0x09 (tab)
+    \s    tab/space/cr/lf
+    \S    Non-space
+    \w    Word symbol (chars, digits, _)
+    \W    Non-word symbol
+    \d    Digit
+    \D    Non-Digit
+    \u    Uppercase symbol
+    \l    Lowercase symbol
+</pre>
+
+<h3>Extended metacharacter</h3>
+<p>
+These metacharacters are incompatible with Perl
+</p>
+<pre>
+    \c    means 'non-word before'
+    \N    Link inside of regexp to one of its brackets.
+          N  - needed brackets pair.  This operator  works
+          only with non-operator symbols in a bracket.
+</pre>
+And these could be disabled during compilaton as highlight-dependent
+<pre>
+#ifdef COLORERMODE
+    ~     matches for start of parent scheme (end of start start).
+    \m    Change start of regexp
+    \M    Change end of regexp
+    \yN   Link  to  the   external  regexp (in End  to the
+          Start param). N - needed brackets pair.
+    \YN   Like previous - but ignores symbol case.
+#endif
+</pre>
+
+
+<h3>Operators</h3>
+<p>
+Here we are. They can't be used without everything. Each operator must
+apply to the appropriate character, metacharacter,  or block of  their
+combination (brackets).
+<pre>
+    ( )   Group and remember characters to form one pattern.
+    |     Match previous or next pattern.
+    *     Match previous pattern 0 or more times.
+    +     Match previous pattern 1 or more times.
+    ?     Match previous pattern 0 or 1 times.
+    {n}   Repeat n times.
+    {n,}  Repeat n or more times.
+    {n,m} Repeat from n to m times.
+</pre>
+If you'll add ? after operator, it becomes nongreedy. For example *
+operator becomes nongreedy after substitution *? Greedy operators try
+to take as much in string, as they can. NonGreedy take by minimum.
+</p>
+
+
+<h3>Extended operators</h3>
+<pre>
+    ?#N   Look-behind. N - symbols number.
+    ?~N   Inverted Look-behind.
+    ?=    Look-ahead.
+    ?!    Inverted Look-ahead.
+</pre>
+<p>
+Note, that two last operators exist in Perl - in form of (?=foobar).
+But colorer uses syntax (foobar)?=
+</p>
+
+<h2>examples</h2>
+<pre>
+/foobar/
+    will match "foobar", "foobar barfoo"
+/ FOO bar /ix
+    will match "foobar" "FOOBAR" "foobar and two other foos"
+/(foo)?bar/
+    will match "foobar", "bar"
+/^foobar$/
+    will match _only_ with "foobar"
+/([\d\.])+/
+    will match any number
+/((foo)|(bar))+/
+    will match "foofoofoobarfoobar", "bar"
+/f[obar]+r/
+    will match "foobar", "for", "far"
+</pre>
+
+</body>
+</html>

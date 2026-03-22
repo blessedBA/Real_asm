@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="Windows-1251"?>
+<!DOCTYPE hrc SYSTEM "../hrc.dtd">
+<?xml-stylesheet type="text/xsl" href="../hrc.xsl"?>
+<!--
+    DEF Syntax
+    Alexander Voronenko <Alexander.Voronenko@p47.f100.n452.z2.fidonet.org>
+-->
+
+<hrc>
+
+<scheme name="def">
+
+ <!-- Strings -->
+   <regexp match='/".*?"/' region0="dString"/>
+   <regexp match="/'.*?'/" region0="dString"/>
+
+ <!-- Numbers -->
+   <regexp match="/\b [0-9]* \B/x" region0="dNumDec"/>
+   <inherit scheme="mCHexNumb"/>
+
+ <!-- Comments -->
+   <regexp match="/;.*$/" region0="dComment"/>
+
+ <!-- Symbols -->
+   <keywords region="dSymbol">
+      <symb name="@"/><symb name="."/><symb name=","/>
+      <symb name="?"/><symb name="_"/><symb name="="/>
+   </keywords>
+
+ <!-- Reserved Words -->
+  <keywords ignorecase="ignorecase" region="dKeyWord">
+    <word name="PRIVATE"/>
+    <word name="NT"/>
+    <word name="PRELOAD"/>
+    <word name="MOVEABLE"/>
+    <word name="DISCARDABLE"/>
+    <word name="NONDISCARDABLE"/>
+    <word name="OS2"/>
+    <word name="WINDOWS"/>
+    <word name="DOS4"/>
+    <word name="RESIDENTNAME"/>
+    <word name="NONE"/>
+    <word name="SINGLE"/>
+    <word name="MULTIPLE"/>
+    <word name="FIXED"/>
+    <word name="MOVABLE"/>
+    <word name="EXECUTEONLY"/>
+    <word name="EXECUTEREAD"/>
+    <word name="READONLY"/>
+    <word name="READWRITE"/>
+    <word name="READ"/>
+    <word name="WRITE"/>
+    <word name="EXECUTE"/>
+    <word name="SHARED"/>
+    <word name="NONSHARED"/>
+    <word name="WINDOWAPI"/>
+    <word name="WINDOWCOMPAT"/>
+    <word name="NOTWINDOWCOMPAT"/>
+    <word name="LOADONCALL"/>
+    <word name="NONAME"/>
+    <word name="NODATA"/>
+    <word name="PURE"/>
+    <word name="IMPURE"/>
+
+  </keywords>
+
+  <keywords ignorecase="ignorecase" region="dDirective">
+    <word name="VERSION"/>
+    <word name="CODE"/>
+    <word name="DATA"/>
+    <word name="DESCRIPTION"/>
+    <word name="EXETYPE"/>
+    <word name="EXPORTS"/>
+    <word name="HEAPSIZE"/>
+    <word name="IMPORTS"/>
+    <word name="LIBRARY"/>
+    <word name="NAME"/>
+    <word name="OBJECTS"/>
+    <word name="OLD"/>
+    <word name="PROTMODE"/>
+    <word name="REALMODE"/>
+    <word name="SEGMENTS"/>
+    <word name="SECTIONS"/>
+    <word name="STACKSIZE"/>
+    <word name="SUBSYSTEM"/>
+    <word name="STUB"/>
+    <word name="PHYSICAL"/>
+    <word name="VIRTUAL"/>
+    <word name="DEVICE"/>
+    <word name="IOPL"/>
+    <word name="NOIOPL"/>
+    <word name="CONFORMING"/>
+    <word name="NONCONFORMING"/>
+    <word name="NONPERMANENT"/>
+    <word name="PERMANENT"/>
+    <word name="RESIDENT"/>
+    <word name="CONTIGUOUS"/>
+    <word name="DYNAMIC"/>
+    <word name="MIXED1632"/>
+    <word name="INVALID"/>
+    <word name="ALIAS"/>
+    <word name="INITGLOBAL"/>
+    <word name="INITINSTANCE"/>
+    <word name="TERMGLOBAL"/>
+    <word name="TERMINSTANCE"/>
+    <word name="CLASS"/>
+  </keywords>
+</scheme>
+
+</hrc>

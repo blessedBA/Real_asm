@@ -1,0 +1,10 @@
+.Language=English, English
+.PluginContents=FarVss PlugIn
+
+@Contents
+$ #Help on Far PlugIn for Vss#
+  Help information will be here soon.
+
+@Config
+$ #Help on Far PlugIn for Vss configuration#
+  Help information will be here soon too.

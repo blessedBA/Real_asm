@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="Windows-1251"?>
+<!DOCTYPE hrc SYSTEM "../hrc.dtd">
+<?xml-stylesheet type="text/xsl" href="../hrc.xsl"?>
+<!--
+    PHP scheme
+With Help of:
+    Zini nAlexei <zn@zn.mldnet.com>
+    Kirill Hryapin <kx@mail.ru>
+    cail: really, sometimes i think, that i can
+    understand language without understanding it :)
+-->
+<hrc>
+
+<define name="phpText"     value="dInsert"/>
+<define name="phpOpenTag"  value="dOpenTag"/>
+<define name="phpCloseTag" value="dCloseTag"/>
+
+<include name="net/html.hrc"/>
+<include name="net/asp.hrc"/>
+<include name="net/phpscrpt.hrc"/>
+
+<!-- meta asp schemes - for asp includes -->
+<scheme name="phpBlock">
+   <block start="/(&lt;\?(php)?)/" end="/(\?&gt;)/" scheme="php_phpScript"
+          region="phpText" region00="phpOpenTag" region10="phpOpenTag"
+          region01="dpOpenStruct" region11="dpCloseStruct"/>
+</scheme>
+<scheme name="phpInverseBlock">
+   <block start="/(\?&gt;)/" end="/(&lt;\?(php)?)/" scheme="php_html" lowpriority="lowpriority"
+          region="dText" region00="aspText" region10="aspText"/>
+</scheme>
+
+
+<!-- meta html script schemes redefinition -->
+<scheme name="php_htmlScripts">
+   <block start='/ (&lt;(script [^>]+ (phpscript[\d\.]*) [^>]*) >) /ix'
+          end="/(&lt;\/(script)\>)/i" scheme="php_html_php"
+          region00="dpOpenTag" region10="dpCloseTag"
+          region01="htmlTagBr" region02="htmlOpenTag" region03="htmlString"
+          region11="htmlTagBr" region12="htmlCloseTag"/>
+  <inherit scheme="aspScripts">
+     <virtual scheme="aspBlock" subst="phpBlock"/>
+  </inherit>
+</scheme>
+<scheme name="php_cString">
+   <inherit scheme="phpBlock"/>
+   <inherit scheme="cStringCore"/>
+</scheme>
+<scheme name="php_html_php">
+   <inherit scheme="phpBlock"/>
+   <inherit scheme="phpScript">
+     <virtual scheme="cStringCore" subst="php_cString"/>
+     <virtual scheme="phpScript" subst="php_html_php"/>
+   </inherit>
+</scheme>
+
+<!-- base php inline code -->
+<scheme name="php_phpScript">
+   <regexp match="/\/\/.*? \M ((\?&gt;)|$)/ix" region0="dComment"/>
+   <inherit scheme="phpInverseBlock"/>
+   <inherit scheme="phpScript">
+     <virtual scheme="phpScript" subst="php_phpScript"/>
+   </inherit>
+</scheme>
+<scheme name="php_html">
+   <inherit scheme="asp_html">
+     <virtual scheme="htmlScripts" subst="php_htmlScripts"/>
+     <virtual scheme="aspBlock" subst="phpBlock"/>
+   </inherit>
+</scheme>
+<scheme name="php">
+   <inherit scheme="aspInclude">
+     <virtual scheme="aspInverseBlock" subst="phpInverseBlock"/>
+     <virtual scheme="aspBlock" subst="phpBlock"/>
+     <virtual scheme="asp_VBScript" subst="php_phpScript"/>
+     <virtual scheme="asp_html" subst="php_html"/>
+   </inherit>
+</scheme>
+
+</hrc>

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="Windows-1251"?>
+<!DOCTYPE hrc SYSTEM "../hrc.dtd">
+<?xml-stylesheet type="text/xsl" href="../hrc.xsl"?>
+<!--
+  Colorer sheme file for IDL (Inderface Description Language)
+  by Dennis Trachuk (dennis.trachuk@nm.ru)
+-->
+<hrc>
+
+<define name="idlWord" value="dKeyword"/>
+<define name="idlUuid" value="dKeyword2"/>
+<define name="idlMods" value="dParam"/>
+
+<include name="base/cpp.hrc"/>
+
+<scheme name="idl">
+
+  <regexp match="/ (uuid) \s*? (\() \s*? ([\-0-9a-fA-F]{36}) \s*? (\)) /x"
+          region1="idlWord" region2="dSymbol" region3="idlUuid" region4="dSymbol"/>
+  <regexp match="/ (lcid) \s*? (\() \s*? ([\-0-9a-fA-F]{36}) \s*? (\)) /x"
+          region1="idlWord" region2="dSymbol" region3="idlUuid" region4="dSymbol"/>
+
+  <regexp match="/\[ \s*? (in)|(out)|(retval)|(default) \s*? \]/x" region0="idlMods"/>
+
+  <inherit scheme="cpp">
+    <virtual scheme="cpp" subst="idl"/>
+  </inherit>
+
+  <!-- idl keywords -->
+  <keywords region="idlWord">
+    <word name="aggregatable"/>
+    <word name="appobject"/>
+
+    <word name="bindable"/>
+
+    <word name="call_as"/>
+    <word name="coclass"/>
+    <word name="control"/>
+    <word name="cpp_quote"/>
+
+    <word name="defaultbind"/>
+    <word name="defaultcollelem"/>
+    <word name="dispinterface"/>
+    <word name="displaybind"/>
+    <word name="dllname"/>
+    <word name="dual"/>
+
+    <word name="helpcontext"/>
+    <word name="helpfile"/>
+    <word name="helpstring"/>
+    <word name="helpstringcontext"/>
+    <word name="helpstringdll"/>
+    <word name="hidden"/>
+
+    <word name="id"/>
+    <word name="importlib"/>
+    <!--word name="in"-->
+    <word name="interface"/>
+    <word name="immediatebind"/>
+
+    <word name="methods"/>
+    <word name="module"/>
+
+    <!--word name="lcid"-->
+    <word name="library"/>
+    <word name="licensed"/>
+    <word name="local"/>
+
+    <word name="nonbrowsable"/>
+    <word name="nonextensible"/>
+
+    <word name="object"/>
+    <word name="odl"/>
+    <word name="oleautomation"/>
+    <word name="optional"/>
+    <!--word name="out"-->
+
+    <word name="pointer_default"/>
+    <word name="properties"/>
+    <word name="propget"/>
+    <word name="propput"/>
+
+    <word name="replaceable"/>
+    <word name="requestedit"/>
+    <word name="restricted"/>
+    <!--word name="retval"-->
+
+    <word name="source"/>
+
+    <word name="uidefault"/>
+    <!--word name="uuid"-->
+    <word name="unique"/>
+
+    <word name="version"/>
+
+  </keywords>
+</scheme>
+
+</hrc>

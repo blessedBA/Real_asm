@@ -1,0 +1,78 @@
+.Language=English,English
+.PluginContents=Shell link support
+
+@Contents
+$ #Shell link support#
+   Here, a shell link is a data object that contains information used to
+access another object in the shell's namespace. The objects that can be
+accessed through shell links are files, folders, disk drivers and printers.
+   This FAR plugin module can create shell links to files or folders - that 
+is, objects visible through FAR file panels.
+
+   ~Create shell link to an object~@CreateShellLink@
+
+   ~Resolve folder link~@ResolveFolderLink@
+
+   ~Shell link support options~@ShellLinkerCfg@
+
+@CreateShellLink
+$ #Create shell link to an object#
+ When you creating shell link, you may set these its parameters:
+
+ #Where#                           Path  to  shell link file -  desktop
+                                 or another panel folder by default -
+                                 and  its name consisting of object
+                                 name and .lnk extension
+
+ #Description#                     Shell  link  description  consisting
+                                 of  configuration  defined  constant
+                                 part and object name
+
+     Default  values  of these fields are defined in  dialog
+~Shell link support options~@ShellLinkerCfg@
+     When  group of shortcuts is created, field {Where} must contain
+path only and field {Description} must contain constant part only.
+     Press  #Create# button when you agree with values entered,  and
+shell link will be created in {Where} placeholder.
+     If  link file supposed to be created on desktop by default, you
+can create it in another panel folder by pressing #On panel# button.
+Vice  versa,  pressing #On desktop# button changes destination  path
+from another panel folder to desktop one.
+     You  can  change link file name case by pressing #Case# button.
+The order is "File name.Ext" -> "File Name.Ext" -> "FILE NAME.EXT" -
+> "file name.ext", one step by time.
+
+@ResolveFolderLink
+$ #Resolve folder link#
+     Shell link support plugin allows to change current panel folder
+to  linked one by pressing #Enter# key on shell link file,  if  it's
+not a link to another type object.
+     This  feature can be turned off , if you wish, in dialog
+~Shell link support options~@ShellLinkerCfg@ dialog
+
+@ShellLinkerCfg
+$ #Shell link support options#
+ In this dialog you can set these parameters:
+
+ #Resolve folder links#            This   checkbox   defines,   is   it
+                                 possible  to  change  current  panel
+                                 folder  to  linked one  by  pressing
+                                 #Enter# on shell link file or not
+
+ #Folder link mask#                File  mask  or set of masks  divided
+                                 by   commas.  Plugin  considers  any
+                                 file  matched  as a  shell  link  to
+                                 folder  and,  therefore,  tries   to
+                                 resolve it.
+
+ #Description prefix#              This  text  is  a constant  part  of
+                                 description  of newly created  shell
+                                 link
+
+ #Create shell links by default:#  This buttons define default path  to
+                                 newly created shell link file:
+
+ #On panel#                        in another panel current folder
+
+ #On desktop#                      in desktop folder
+

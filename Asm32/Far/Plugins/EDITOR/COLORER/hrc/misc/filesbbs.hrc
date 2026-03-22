@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="Windows-1251"?>
+<!DOCTYPE hrc SYSTEM "../hrc.dtd">
+<?xml-stylesheet type="text/xsl" href="../hrc.xsl"?>
+<!--
+    files.bbs
+-->
+<hrc>
+
+<scheme name="filesbbs">
+  <!-- strings -->
+  <regexp match="/(\'.*?\')/" region0="dString"/>
+  <regexp match='/(\".*?\")/' region0="dString"/>
+  <regexp match='/([\w_\~\-]*?\.\w{3}\W|$)/i' region0="dPath"/>
+
+  <inherit scheme="mNetAddresses"/>
+  <inherit scheme="mDate"/>
+  <inherit scheme="mTime"/>
+  <!-- numbers  -->
+  <regexp match="/\bv?([0-9]+)\B/" region0="dNumber"/>
+  <regexp match="/([\xB0-\xDF\xFE]+)/" region0="dSymbol"/>
+</scheme>
+
+</hrc>

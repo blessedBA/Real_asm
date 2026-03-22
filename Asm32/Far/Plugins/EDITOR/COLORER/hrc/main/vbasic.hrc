@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="Windows-1251"?>
+<!DOCTYPE hrc SYSTEM "../hrc.dtd">
+<?xml-stylesheet type="text/xsl" href="../hrc.xsl"?>
+<!--
+    VB Syntax description
+With help of:
+    Igor Kovalev <ig@te.net.ua>
+    Valery Tsyplenkov <gorilla800lbs@hotmail.com>
+-->
+<hrc>
+
+<define name="vbString"   value="dString"/>
+<define name="vbComment"  value="dComment"/>
+<define name="vbSymb"     value="dSymbol"/>
+<define name="vbWord"     value="dKeyword"/>
+<define name="vbNumb"     value="dNumber"/>
+<define name="vbId"       value="dVar"/>
+<define name="vbLabel"    value="dLabel"/>
+
+<scheme name="vbasic">
+   <!-- Comments -->
+   <regexp match="/'.*$/" region0="vbComment"/>
+   <regexp match="/\brem\B.*$/ix" region0="vbComment"/>
+   <!-- Strings -->
+   <regexp match='/".*?"/' region0="vbString"/>
+   <!-- Numbers  -->
+   <regexp match="/\c\$[\da-fA-F]+\B/" region0="vbNumb"/>
+   <regexp match="/\c&amp;H[\da-fA-F]+\B/" region0="vbNumb"/>
+   <regexp match="/\b[0-9.]+(e|E[\-+]?\d+)?\B/" region0="vbNumb"/>
+   <regexp match="/\bFalse\b/" region0="dBoolean"/>
+   <regexp match="/\bTrue\b/" region0="dBoolean"/>
+   <!-- Line continuation -->
+   <regexp match="/\b(_)$/" region0="vbWord"/>
+
+   <block start="/(\()/" end="/(\))/" scheme="vbasic"
+          region00="dSymbol" region01="dpOpenStruct"
+          region10="dSymbol" region11="dpCloseStruct"/>
+   <block start="/(\[)/" end="/(\])/" scheme="vbasic"
+          region00="dSymbol" region01="dpOpenStruct"
+          region10="dSymbol" region11="dpCloseStruct"/>
+   <!-- Identifiers -->
+   <regexp match="/Function (\w+)/" region0="vbWord" region1="dFunction"/>
+   <regexp match="/Sub (\w+)/" region0="vbWord" region1="dFunction"/>
+   <regexp match="/Property Get (\w+)/" region0="vbWord" region1="dFunction"/>
+   <regexp match="/Property Set (\w+)/" region0="vbWord" region1="dFunction"/>
+   <regexp match="/Property Let (\w+)/" region0="vbWord" region1="dFunction"/>
+   <!-- Labels -->
+   <regexp match="/^\w+(:)$/" region0="vbLabel" region1="vbSymb"/>
+   <!-- Symbols -->
+   <keywords region="vbSymb">
+      <symb name="="/><symb name="^"/><symb name="+"/><symb name="&lt;"/>
+      <symb name="-"/><symb name="*"/><symb name="/"/><symb name=";"/>
+      <symb name=":"/><symb name="("/><symb name="."/><symb name="&gt;"/>
+      <symb name="#"/><symb name=")"/><symb name="["/><symb name="]"/>
+      <symb name=","/><symb name="&amp;"/>
+   </keywords>
+   <!-- Words -->
+   <keywords ignorecase="ignorecase" region="vbWord">
+       <word name="abs"/>
+       <word name="appactivate"/>
+       <word name="array"/>
+       <word name="as"/>
+       <word name="asc"/>
+       <word name="atn"/>
+       <word name="attribute"/>
+       <word name="begin"/>
+       <word name="beep"/>
+       <word name="boolean"/>
+       <word name="byte"/>
+       <word name="byval"/>
+       <word name="call"/>
+       <word name="case"/>
+       <word name="cbool"/>
+       <word name="cbyte"/>
+       <word name="ccur"/>
+       <word name="cdate"/>
+       <word name="cdate"/>
+       <word name="cdbl"/>
+       <word name="chdir"/>
+       <word name="chdrive"/>
+       <word name="chr"/>
+       <word name="chr"/>
+       <word name="cint"/>
+       <word name="circle"/>
+       <word name="class"/>
+       <word name="clear"/>
+       <word name="clng"/>
+       <word name="clng"/>
+       <word name="close"/>
+       <word name="command"/>
+       <word name="compare"/>
+       <word name="const"/>
+       <word name="cos"/>
+       <word name="createobject"/>
+       <word name="csng"/>
+       <word name="cstr"/>
+       <word name="curdir"/>
+       <word name="currency"/>
+       <word name="cvar"/>
+       <word name="cverr"/>
+       <word name="date"/>
+       <word name="dateadd"/>
+       <word name="datediff"/>
+       <word name="datepart"/>
+       <word name="dateserial"/>
+       <word name="datevalue"/>
+       <word name="ddb"/>
+       <word name="deftype"/>
+       <word name="dim"/>
+       <word name="dir"/>
+       <word name="do"/>
+       <word name="doevents"/>
+       <word name="double"/>
+       <word name="each"/>
+       <word name="else"/>
+       <word name="elseif"/>
+       <word name="empty"/>
+       <word name="end"/>
+       <word name="environ"/>
+       <word name="eof"/>
+       <word name="erase"/>
+       <word name="err"/>
+       <word name="error"/>
+       <word name="exit"/>
+       <word name="exp"/>
+       <word name="explicit"/>
+       <word name="fileattr"/>
+       <word name="fileattr"/>
+       <word name="filecopy"/>
+       <word name="filedatetime"/>
+       <word name="filelen"/>
+       <word name="fix"/>
+       <word name="for"/>
+       <word name="format"/>
+       <word name="form"/>
+       <word name="freefile"/>
+       <word name="function"/>
+       <word name="fv"/>
+       <word name="get"/>
+       <word name="getattr"/>
+       <word name="getobject"/>
+       <word name="gosub"/>
+       <word name="goto"/>
+       <word name="hex"/>
+       <word name="hour"/>
+       <word name="if"/>
+       <word name="iif"/>
+       <word name="input"/>
+       <word name="input #"/>
+       <word name="instr"/>
+       <word name="int"/>
+       <word name="integer"/>
+       <word name="ipmt"/>
+       <word name="irr"/>
+       <word name="isarray"/>
+       <word name="isdate"/>
+       <word name="isempty"/>
+       <word name="iserror"/>
+       <word name="ismissing"/>
+       <word name="isnull"/>
+       <word name="isnumeric"/>
+       <word name="isobject"/>
+       <word name="kill"/>
+       <word name="lbound"/>
+       <word name="lcase"/>
+       <word name="left"/>
+       <word name="len"/>
+       <word name="let"/>
+       <word name="line"/>
+       <word name="line input #"/>
+       <word name="loc"/>
+       <word name="lock"/>
+       <word name="lof"/>
+       <word name="log"/>
+       <word name="long"/>
+       <word name="loop"/>
+       <word name="lset"/>
+       <word name="ltrim"/>
+       <word name="me"/>
+       <word name="mid"/>
+       <word name="minute"/>
+       <word name="mirr"/>
+       <word name="mkdir"/>
+       <word name="module"/>
+       <word name="month"/>
+       <word name="msgbox"/>
+       <word name="name"/>
+       <word name="name"/>
+       <word name="new"/>
+       <word name="next"/>
+       <word name="now"/>
+       <word name="not"/>
+       <word name="nothing"/>
+       <word name="nper"/>
+       <word name="npv"/>
+       <word name="object"/>
+       <word name="oct"/>
+       <word name="on"/>
+       <word name="open"/>
+       <word name="option"/>
+       <word name="option base"/>
+       <word name="option explicit"/>
+       <word name="pmt"/>
+       <word name="ppmt"/>
+       <word name="print"/>
+       <word name="print #"/>
+       <word name="private"/>
+       <word name="property"/>
+       <word name="pset"/>
+       <word name="public"/>
+       <word name="put"/>
+       <word name="pv"/>
+       <word name="qbcolor"/>
+       <word name="raise"/>
+       <word name="randomize"/>
+       <word name="rate"/>
+       <word name="redim"/>
+       <word name="reset"/>
+       <word name="resume"/>
+       <word name="return"/>
+       <word name="rgb"/>
+       <word name="right"/>
+       <word name="rmdir"/>
+       <word name="rnd"/>
+       <word name="rset"/>
+       <word name="rtrim"/>
+       <word name="second"/>
+       <word name="seek"/>
+       <word name="seek"/>
+       <word name="select"/>
+       <word name="sendkeys"/>
+       <word name="set"/>
+       <word name="setattr"/>
+       <word name="sgn"/>
+       <word name="shell"/>
+       <word name="sin"/>
+       <word name="single"/>
+       <word name="sln"/>
+       <word name="space"/>
+       <word name="spc"/>
+       <word name="sqr"/>
+       <word name="static"/>
+       <word name="stop"/>
+       <word name="str"/>
+       <word name="strcomp"/>
+       <word name="strconv"/>
+       <word name="string"/>
+       <word name="sub"/>
+       <word name="switch"/>
+       <word name="syd"/>
+       <word name="system"/>
+       <word name="tab"/>
+       <word name="tan"/>
+       <word name="then"/>
+       <word name="time"/>
+       <word name="timer"/>
+       <word name="timeserial"/>
+       <word name="timevalue"/>
+       <word name="to"/>
+       <word name="trim"/>
+       <word name="typename"/>
+       <word name="ubound"/>
+       <word name="ucase"/>
+       <word name="unlock"/>
+       <word name="until"/>
+       <word name="val"/>
+       <word name="variant"/>
+       <word name="vartype"/>
+       <word name="vbwizard"/>
+       <word name="version"/>
+       <word name="weekday"/>
+       <word name="wend"/>
+       <word name="while"/>
+       <word name="width #"/>
+       <word name="with"/>
+       <word name="write #"/>
+   </keywords>
+</scheme>
+
+</hrc>

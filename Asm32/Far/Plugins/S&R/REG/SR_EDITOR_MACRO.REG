@@ -1,0 +1,23 @@
+REGEDIT4
+; Macros for replace with S&R standard search&replace in the editor
+; 'S' - hot key (use F4 in "Plugin commands" menu)
+
+[HKEY_CURRENT_USER\Software\Far\KeyMacros\Editor\F7]
+"Sequence"="F11 S 1"
+"Description"="SR: Search"
+"DisableOutput"=dword:00000001
+
+[HKEY_CURRENT_USER\Software\Far\KeyMacros\Editor\CtrlF7]
+"Sequence"="F11 S 2"
+"Description"="SR: Search and Replace"
+"DisableOutput"=dword:00000001
+
+[HKEY_CURRENT_USER\Software\Far\KeyMacros\Editor\ShiftF7]
+"Sequence"="F11 S 3"
+"Description"="SR: Continue"
+"DisableOutput"=dword:00000001
+
+[HKEY_CURRENT_USER\Software\Far\KeyMacros\Editor\AltF7]
+"Sequence"="F11 S 4"
+"Description"="SR: Continue (reverse search)"
+"DisableOutput"=dword:00000001

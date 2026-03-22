@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="Windows-1251"?>
+<!DOCTYPE hrc SYSTEM "../hrc.dtd">
+<?xml-stylesheet type="text/xsl" href="../hrc.xsl"?>
+<!--
+    Scn (MNTrack scripts)
+With help of:
+    Evgeniy Zaitsev <Evgeniy.Zaitsev@f2005.n5020.z2.fidonet.org>
+-->
+
+<hrc>
+
+<define name="SString"   value="dString"/>
+<define name="SComment"  value="dComment"/>
+<define name="SSymb"     value="dComment"/>
+<define name="SWord"     value="dKeyword"/>
+<define name="SNumb"     value="dNumBin"/>
+<define name="SNumh"     value="dNumHex"/>
+<define name="SNumd"     value="dNumDec"/>
+<define name="SDirec"    value="dDirective"/>
+<define name="SLabel"    value="dLabel"/>
+
+<scheme name="mntrackscript">
+   <!-- Comment  ;..... -->
+   <regexp match="/(;.*)/" region0="SComment"/>
+   <!-- String '......' -->
+   <regexp match="/(\'.*?\')/" region0="SString"/>
+   <!-- Numbers - Bin -->
+   <regexp match="/\b([01]+b)\B/" region0="SNumb"/>
+   <!-- Numbers - Hex -->
+   <regexp match="/\b([0-9a-fA-F]+h)\B/" region0="SNumh"/>
+   <!-- Numbers - Dec -->
+   <regexp match="/\b([0-9.]+(e|E[-+]?\d+)?)\B/" region0="SNumd"/>
+   <!-- Labels -->
+   <regexp match="/^\s*?(:.*$)/" region0="SLabel"/>
+   <!-- Symbols -->
+   <keywords region="SSymb">
+      <symb name=";"/><symb name="="/><symb name="+"/><symb name="-"/>
+      <symb name="/"/><symb name="*"/><symb name="$"/><symb name="|"/>
+      <symb name="^"/><symb name="("/><symb name=")"/><symb name="["/>
+      <symb name="]"/><symb name=","/><symb name="."/><symb name=":"/>
+      <symb name="!"/><symb name="~"/><symb name="&lt;"/><symb name="&gt;"/>
+      <symb name="%"/><symb name="{"/><symb name="}"/><symb name="?"/>
+   </keywords>
+   <!-- MNTrack KeyWords -->
+   <keywords ignorecase="ignorecase"  region="SWord">
+      <word name="INTL"/>
+      <word name="ZON"/>
+      <word name="DIR"/>
+      <word name="LOK"/>
+      <word name="KFS"/>
+      <word name="CFM"/>
+      <word name="XMA"/>
+      <word name="IMM"/>
+      <word name="TFS"/>
+      <word name="A/S"/>
+      <word name="HUB"/>
+      <word name="OUTLOG"/>
+      <word name="LOGSTART"/>
+      <word name="LOGEND"/>
+      <word name="LOGDROP"/>
+      <word name="QUIT"/>
+      <word name="GOTO"/>
+      <word name="JMP"/>
+      <word name="JE"/>
+      <word name="JNE"/>
+      <word name="SUBJ"/>
+      <word name="INSUBJ"/>
+      <word name="TONAME"/>
+      <word name="FROMNAME"/>
+      <word name="FROMADR"/>
+      <word name="FROMADR3D"/>
+      <word name="TOADR"/>
+      <word name="TOADR3D"/>
+      <word name="TOZONE"/>
+      <word name="TONET"/>
+      <word name="TONODE"/>
+      <word name="TOPOINT"/>
+      <word name="FROMZONE"/>
+      <word name="FROMNET"/>
+      <word name="FROMNODE"/>
+      <word name="FROMPOINT"/>
+      <word name="LOOP"/>
+      <word name="DUPE"/>
+      <word name="MSGID"/>
+      <word name="TOLISTED"/>
+      <word name="FROMLISTED"/>
+      <word name="EMPTY"/>
+      <word name="INBODY"/>
+      <word name="MSGSIZE"/>
+      <word name="UUE"/>
+      <word name="PVT"/>
+      <word name="CRA"/>
+      <word name="RCV"/>
+      <word name="SNT"/>
+      <word name="ATT"/>
+      <word name="TRS"/>
+      <word name="ORP"/>
+      <word name="K/S"/>
+      <word name="LOC"/>
+      <word name="HLD"/>
+      <word name="FRQ"/>
+      <word name="RRQ"/>
+      <word name="RRC"/>
+      <word name="ARQ"/>
+      <word name="URQ"/>
+      <word name="MOVE"/>
+      <word name="COPY"/>
+      <word name="SEMAPHORE"/>
+      <word name="DELETE"/>
+      <word name="DELETEATTACH"/>
+      <word name="WRITETOJAMECHO"/>
+      <word name="BOUNCE"/>
+      <word name="FORWARD"/>
+      <word name="MAKEMSG"/>
+      <word name="SETPVT"/>
+      <word name="CLEARPVT"/>
+      <word name="SETCRA"/>
+      <word name="CLEARCRA"/>
+      <word name="SETRCV"/>
+      <word name="CLEARRCV"/>
+      <word name="SETSNT"/>
+      <word name="CLEARSNT"/>
+      <word name="SETATT"/>
+      <word name="CLEARATT"/>
+      <word name="SETTRS"/>
+      <word name="CLEARTRS"/>
+      <word name="SETORP"/>
+      <word name="CLEARORP"/>
+      <word name="SETK/S"/>
+      <word name="CLEARK/S"/>
+      <word name="SETLOC"/>
+      <word name="CLEARLOC"/>
+      <word name="SETHLD"/>
+      <word name="CLEARHLD"/>
+      <word name="SETFRQ"/>
+      <word name="CLEARFRQ"/>
+      <word name="SETRRQ"/>
+      <word name="CLEARRRQ"/>
+      <word name="SETRRC"/>
+      <word name="CLEARRRC"/>
+      <word name="SETARQ"/>
+      <word name="CLEARARQ"/>
+      <word name="SETURQ"/>
+      <word name="CLEARURQ"/>
+      <word name="BUSYSYSTEMCHECK"/>
+      <word name="BUSYSYSTEMSET"/>
+      <word name="BUSYSYSTEMUNSET"/>
+      <word name="PACK"/>
+      <word name="PACKPKT"/>
+      <word name="FREQ"/>
+      <word name="SETSUBJ"/>
+      <word name="SETFROMNAME"/>
+      <word name="SETTONAME"/>
+      <word name="INFROMNAME"/>
+      <word name="INTONAME"/>
+      <word name="MAKEPKT"/>
+      <word name="VIA"/>
+      <word name="EXEC"/>
+      <word name="WRITETOFILE"/>
+      <word name="EXISTATTACH"/>
+      <word name="APPENDTOFILE"/>
+      <word name="SECOND"/>
+      <word name="MINUTE"/>
+      <word name="HOUR"/>
+      <word name="STRIPPATH"/>
+   </keywords>
+   <!-- MNTrack Directives -->
+   <keywords ignorecase="ignorecase" region="SDirec">
+      <word name="BREAK"/>
+      <word name="NOBREAK"/>
+      <word name="UPCASE"/>
+      <word name="NOCASE"/>
+      <word name="REALCASE"/>
+      <word name="BUSYSYSTEMFLAGS"/>
+      <word name="NOBUSYSYSTEMFLAGS"/>
+   </keywords>
+
+</scheme>
+
+
+</hrc>

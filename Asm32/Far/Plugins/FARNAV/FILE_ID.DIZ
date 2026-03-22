@@ -1,0 +1,22 @@
+      ProxyKit for FAR manager
+   Far Navigator (ProxyFtp) plugin
+          version 1.9.b4
+
+This module is designed as an extension
+to FAR and intended for performing the
+various operations with files and
+directories on FTP and HTTP servers.
+
+ - Browse HTTP servers
+ - Browse FTP servers
+ - Work with FTP/HTTP/SOCKS proxies
+ - "Server To Server" transfer mode
+ - Resume function
+ - Custom connection parameters
+   (Idle timeout, retry count, ...)
+ - FAR language tables support
+ - Sources files included
+ - And more...
+
+Send all wishes to proxykit@newmail.ru
+(c) 1998-2003      Vasily V. Moshninov

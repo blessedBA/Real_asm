@@ -1,0 +1,274 @@
+.Language=English,English
+
+"Mailbox options"
+"&Mailbox       :"
+"&User Name     :"
+"&E-Mail        :"
+"SMTP"
+"À &Server   :"
+"Port:"
+"POP3 /"
+"Ã Se&rver   :"
+"Ã &Login    :"
+"Ã Pass&word :"
+" Ok "
+" Cancel "
+
+"Error"
+"You must fill all fields except Login/Password!"
+"A mailbox with the same name already exists"
+"Out of memory"
+"Invalid characters in string fields"
+"Delete mailbox(es)"
+"Are you sure you want to delete selected mailbox(es)?"
+
+"SMTP/POP3/IMAP4"
+
+"Error in received data"
+"Data transmission error"
+"Can't connect to POP3 server"
+"Wrong username"
+"Wrong password"
+"Error disconnecting from server"
+"Can't delete message"
+"Error while doing reset"
+"Error retrieving statistics"
+"Error getting message list"
+"Error retrieving message"
+
+"User"
+"Password"
+"Login:"
+
+"Delete"
+"Do you wish to delete %d message(s)?"
+"Delete"
+"Cancel"
+
+"Undel"
+
+"Mailbox name"
+"POP3(IMAP4) Server"
+"Message"
+"Size"
+"From"
+
+"Copy"
+"Move"
+"Copy message(s) to:"
+"Move message(s) to:"
+
+"Warning"
+"Overwrite?"
+"Yes"
+"All"
+"Skip"
+"Skip all"
+"File %s already exists"
+
+"Service not available, closing transmission channel (421)"
+"Mailbox unavailable (450)"
+"Local error in processing (451)"
+"Insuffisient system storage (452)"
+"Syntax error (500)"
+"Syntax error in parameters (501)"
+"Command not implemented (502)"
+"Bad sequence of commands (503)"
+"Command parameter not implemented (504)"
+"Mailbox unavailable (550)"
+"User not local (551)"
+"Exceeded storage allocation (552)"
+"Mailbox name not allowed (553)"
+"Transaction failed (554)"
+"SMTP error"
+"Can't connect to SMTP server"
+
+"Sending as message: %s"
+"&Recipient :"
+"&Subject   :"
+"Send      :"
+"&Text as is (%d bit)"
+"Text in &Base64"
+"&Attached file"
+" All "
+
+"You must select a mailbox"
+
+"Transferring: %s"
+"Current transfer: %7ld/%-7ld bytes, %7ld CPS"
+
+"Message #%d"
+"Recipient address error"
+"Error opening file"
+
+"Mail"
+
+"Connecting to SMTP server..."
+"Sending user name..."
+"Sending recipient..."
+"Sending message header..."
+"Disconnecting..."
+
+"Connecting to POP3 server..."
+"Retrieving message list..."
+"Deleting message..."
+"Disconnecting..."
+"Undeleting..."
+
+"&HTML as is"
+"HT&ML in Base64"
+"Original text charset :"
+"OEM/Undefined"
+"KOI-8 (russian)"
+"Windows-1251 (russian)"
+"US-ASCII"
+"Selected charset not installed"
+
+"Recon"
+
+"Encode to:"
+"Do not encode"
+
+"Select mailbox to send:"
+
+"Date"
+"Subject"
+
+"FARMail options"
+"Plugin properties:"
+"&Add to Disks menu"
+"Disk menu &hotkey ('1'-'9')"
+"Panel properties:"
+
+"Column &types in messages panel      :"
+"Column &widths in messages panel     :"
+"Fixed &length of message name        :"
+"Message files &extension             :"
+"&Show messages panel in full size"
+
+"POP3..."
+"À &Activity maintenance :"
+"min."
+
+"&Organization  :"
+"&Default mailbox"
+
+"Address book"
+"F4:Edit  F7:New  F8:Delete  SPACE:Select"
+
+"Edit address"
+"New address record"
+
+"&Name       :"
+"&E-Mail     :"
+"&Comment    :"
+
+"Current record will be deleted! Continue?"
+
+"&Yes"
+"&No"
+
+"Default charset in incoming mail"
+
+"&OEM/unknown"
+"&KOI-8"
+"W&indows-1251"
+
+"Can't start: You have an old version of FAR"
+
+" &Send message "
+" &Quote "
+
+"Quoting parameters"
+"Quotation string:"
+
+"FARMail*"
+"IMAP4"
+
+"&Connection timeout:"
+"sec."
+
+"Can't connect to IMAP4 server"
+"Connecting to IMAP4 server..."
+": error executing command"
+"Authentication error"
+"IMAP4 not supported by server"
+"Retrieving mailbox structure..."
+
+"Folder name"
+"Fl"
+"Ttl"
+"Rcn"
+"Uns"
+
+"Do you want to send all files in one message?"
+" Yes "
+" No "
+
+"Sending all files in message"
+
+"Connection aborted"
+
+"&Quick view:      "
+"lines ("
+"bytes)"
+
+"QView"
+"QEdit"
+
+"New"
+"F4,ENTER:Edit  F7:New  F8:Delete"
+"AddrBk"
+
+"&Use CC/BCC fields"
+"CC        :"
+"BCC       :"
+
+"Text encoding:"
+" More... "
+
+"Advanced settings"
+"&Save outgoing messages"
+"&Directory:"
+"Search for &header information in message"
+"&Try to resume broken message download (IMAP4 only)"
+
+"Resume"
+"Can't resume download."
+"Assign unique names"
+
+" R&un script "
+
+"Script parameters"
+"Script filename:"
+
+"Line: "
+
+" &New message "
+" &Reply "
+
+"Scripts:"
+
+"&New message:"
+"&Reply:"
+
+"&Unique names format:"
+
+"Syntax error"
+"Illegal type conversion"
+"Out of memory"
+"Undefined variable"
+"Illegal function call"
+"Internal editor error"
+"Error loading script"
+"Stack overflow"
+"Unexpected WEND"
+"Unexpected BREAK"
+"Unexpected ELSE"
+"Unexpected ENDIF"
+
+"Take file date and time from message"
+"Charset:"
+"Table:"
+
+"Division by zero"

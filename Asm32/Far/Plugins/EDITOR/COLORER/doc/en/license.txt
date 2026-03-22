@@ -1,0 +1,35 @@
+
+Copyright (c) 1999-2001  Cail Lomecb<ruiv@uic.nnov.ru>   colorer library
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+    0. Colorer  library provides  services to highlight source codes, it
+also  includes  simple  regexp  and  xml(sgml)  parsers.  You can freely
+redistribute,   modify,   and   use  colorer  library  in  any  projects
+(commercial  or  not)  in  source and binary forms (note, that HRC codes
+also  assumed,  as source codes), with or without modification, provided
+that the following conditions are met:
+
+    1. Redistribution   in  source  and  binary  forms must include this
+copyright note (or it russian copy) without changes.
+
+    2. Redistribution in  source or binary form must include somewere in
+program output, advertising materials mentioning features or use of your
+software,  in the documentation and/or other materials provided with the
+distribution the following acknowledgment:
+  ``This software uses Colorer Library syntax coloring/regexp codes
+by Cail Lomecb <ruiv@uic.nnov.ru>, http://www.uic.nnov.ru/~ruiv/''
+
+    3. You must send  me colorer registration form (freely) if you using
+colorer in any form.
+
+    4. You  cannot  derive  new versions of ``colorer library''. You may
+produce  your  own  software,  based  on colorer work, but you can't use
+colorer name to distribute it.
+
+    5. ``Colorer'' library  is provided by Cail Lomecb ``AS IS'' without
+any forms of warranties, assumptions and other difficult english terms.
+
+    6. You  can  use  russian version of colorer license if you can read
+russian and understand it.
+                                              Thanks
+                                                    Cail Lomecb

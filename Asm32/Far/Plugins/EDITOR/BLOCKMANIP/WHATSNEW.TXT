@@ -1,0 +1,28 @@
+1.4
+    1. Bug fixed
+
+       - Remove empty string during converting to veetical block
+
+    2. Add "Overwrite block" item.
+       Overwrite Vertical block if overwrite mode is enabled
+
+1.3
+
+    1. Bugs fixed:
+
+       - Strange reselection of one-string blocks
+
+    2. Changed vertical blocks reselection. It calls "greedy" reselection
+       in configuration.
+
+    3. Added strings' aligment in blocks converted to vertical.
+                 
+    4. Added terminal spaces removing in blocks converted to stream.
+
+    5. Added Config menu to deact new features - see above (pp 2-4)
+
+1.0 beta 2
+
+    1. Bugs fixed:
+
+       - Compiled without using clbr110.dll -  it's Watcom runtime library

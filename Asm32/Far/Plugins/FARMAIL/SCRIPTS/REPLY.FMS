@@ -1,0 +1,127 @@
+rem
+rem An example of reply script for FARMail.
+rem Note that this script doesn't process multiline fields and
+rem MIME-encoded fields.
+rem
+
+to_field      = ""
+subject_field = ""
+
+i = 0
+
+while ( i<nlines() )
+
+   current_line = line(i)
+
+   if ( current_line == "" )
+      rem End of message header; exit the loop
+      break
+   endif
+
+   rem
+   rem        Skip whitespaces
+   rem 
+
+   j = 0
+   while ( ( current_line[j] == 32 || current_line[j] == 9 ) && current_line[j] != 0 )
+      j = j + 1
+   wend
+   current_line = substr( current_line, j, strlen(current_line) )
+
+   rem
+   rem Searching for recipient's address in "reply-to" field.
+   rem
+
+   j = strstr( strlwr(current_line), "reply-to:" )
+   if ( !j )
+      j = 9;
+      while ( ( current_line[j] == 32 || current_line[j] == 9 ) && current_line[j] != 0 )
+         j = j + 1
+      wend
+      to_field = substr( current_line, j, strlen(current_line) )
+   else
+      rem
+      rem If there is nothing in "reply-to", let's check "from" field.
+      rem
+      j = strstr( strlwr(current_line), "from:" )
+      if ( !j )
+
+         j = 5;
+         while ( ( current_line[j] == 32 || current_line[j] == 9 ) && current_line[j] != 0 )
+            j = j + 1
+         wend
+         to_field = substr( current_line, j, strlen(current_line) )
+
+      else
+
+         j = strstr( strlwr(current_line), "subject:" )
+         if ( !j )
+
+            j = 8;
+            while ( ( current_line[j] == 32 || current_line[j] == 9 ) && current_line[j] != 0 )
+               j = j + 1
+            wend
+            subject_field = substr( current_line, j, strlen(current_line) )
+            if ( strstr( strlwr(subject_field), "re:" ) )
+
+               rem There is no "Re:" in the beginning of the subject field,
+               rem so let's add it.
+
+               subject_field = "Re: "+subject_field
+
+            endif
+         endif
+
+      endif
+   endif
+
+   i = i + 1
+
+wend
+
+
+rem 
+rem Removing message header
+rem
+
+while ( i )
+   delline(0)
+   i = i - 1
+wend
+
+
+rem
+rem Quoting
+rem 
+
+i = nlines()-1
+while ( i>=0 )
+ setline( " > "+line(i) , i )
+ i = i-1
+wend
+
+
+rem
+rem Inserting 5 empty strings for technical information
+rem
+
+i = 0
+while ( i<5 )
+   insline(i,0)
+   i = i+1
+wend
+
+
+setline( "%start%", 0 )
+setline( " set %to% = "+to_field, 1 )
+setline( " set %subj% = "+subject_field, 2 )
+setline( "%end%", 3 )
+
+i = nlines()-1
+
+insline(i,1)
+insline(i+1,1)
+insline(i+2,1)
+
+setline( " Best regards,", i+2 )
+setline( "     Vasya Pupkin", i+3 )

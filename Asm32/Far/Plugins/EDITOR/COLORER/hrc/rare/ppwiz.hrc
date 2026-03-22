@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="Windows-1251"?>
+<!DOCTYPE hrc SYSTEM "../hrc.dtd">
+<?xml-stylesheet type="text/xsl" href="../hrc.xsl"?>
+<!--
+    ppwizard (.IT .IH) defs based on
+
+    Html Defs
+With Help of:
+    JULY <lubimovi@usa.net>
+-->
+<hrc>
+
+<define name="ppString"  value="dString"/>
+<define name="ppComment" value="dComment"/>
+<define name="ppPar"     value="dParam"/>
+<define name="ppTag"     value="dKeyword"/>
+<define name="ppNumb"    value="dNumber"/>
+
+<include name="net/html.hrc"/>
+
+<scheme name="ppwizCore">
+   <keywords ignorecase="ignorecase" region="ppTag">
+      <symb name="\"/>
+      <symb name="&lt;$"/>
+      <symb name="{$"/>
+      <symb name="}"/>
+   </keywords>
+   <keywords ignorecase="ignorecase" region="ppPar">
+      <word name="#include"/>
+      <word name="#define"/>
+   </keywords>
+   <inherit scheme="htmlCore"/>
+</scheme>
+
+<scheme name="Ppwiz">
+   <inherit scheme="html">
+     <virtual scheme="htmlCore" subst="ppwizCore"/>
+   </inherit>
+   <inherit scheme="ppwizCore"/>
+</scheme>
+
+</hrc>

@@ -1,0 +1,60 @@
+
+Advanced file select v1.51
+컴컴컴컴컴컴컴컴컴컴컴컴컴
+
+        23 December 1999
+
+	Changes in this version:
+
+! fixed bug of '.' parsing. Plugin goes to infinite loop.
+! Happy New 2000 Year ;-)
+
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴�
+
+	10 Jule 1999
+
+
+	Changes in this version:
+
++ Dialog interface is changes due to some enhancements.
++ All editor lines have history box.
+% It is possible to use 0 file size. Use empty field if you want to
+ignore file size.
++ Added Time field. You may set time in format:
+	[hh][:mm]             - must equal
+        [hh][:mm]..           - more than or equal
+        ..[hh][:mm]           - less than or equal
+        [hh][:mm]..[hh][:mm]  - between (include borders)
+% Date format changes too. Use this format:
+	[dd]/[mm]/[yy]                  - must equal               
+        [dd]/[mm]/[yy]..                - more than or equal       
+        ..[dd]/[mm]/[yy]                - less than or equal       
+        [dd]/[mm]/[yy]..[dd]/[mm]/[yy]  - between (include borders)
+  If entered year less than 50 - using 2000 + year, otherwise
+  1900+year.
++ Added "Reset" button to clear all editor lines and checkboxes.
++ It is possible to set an "Exclude attributes". Files must not have
+selected attributes.
+% File size must be entered in format like Date & Time:
+	size[k|m|g]                - equal to
+	size[k|m|g]..              - more than or equal
+        ..size[k|m|g]              - less than or equal
+        size[k|m|g]..size[k|m|g]   - between (include borders)
+
+  Suffixes K, M and G equal to Kilo, Mega and Giga.
+! Fixed some bugs (I think :-)
+
+
+	Comments and bug reports are welcome to:
+        	
+        	tsoftgroup@ors.kirov.ru
+        	tsoftgroup@chat.ru
+                2:5056/10.77@fidonet
+                icq: 11754666
+
+
+  I hope, that the new version will appear much more convenient and
+  more useful.
+
+  With best regards, 
+  Vladimir Tarasov / TSoft Group

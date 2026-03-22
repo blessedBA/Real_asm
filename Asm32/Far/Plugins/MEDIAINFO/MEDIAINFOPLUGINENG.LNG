@@ -1,0 +1,19 @@
+﻿.Language=English,English
+
+"Media Info"
+
+"Add to the panel plugin menu"
+"Add to the viewer plugin menu"
+"Use the editor instead of dialog box"
+"Prefix:"
+"Language:"
+"Auto"
+"Template file (MediaInfo format):"
+
+"OK"
+"Cancel"
+
+"Move to editor"
+"Copy to clipboard"
+
+"Error loading MediaInfo.dll library"

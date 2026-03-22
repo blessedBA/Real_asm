@@ -1,0 +1,13 @@
+.Language=English,English
+.PluginContents=Version Info
+
+@Contents
+$^#Version info#
+
+    This plugin module is intended to view information about
+version of file which is selected on the panel. The plugin works only in
+Far 1.70 build 1634 and above. It does not allow to save information to a file, but
+you may use ~Dir2File.srp~@<..\Dir2File\>Contents@ or #clipboard# for this purpose.
+
+    If you will enter new filename in the dialog and will press #OK#, program
+will show the information about typed filename.

@@ -1,0 +1,61 @@
+REGEDIT4
+
+[HKEY_CURRENT_USER\Software\Far\KeyMacros\Editor\CtrlAlt0]
+"Sequence"="F11 7 AltT 0 Enter"
+"DisableOutput"=dword:00000001      
+"EmptyCommandLine"=dword:00000001
+"NotEmptyCommandLine"=dword:00000000
+
+[HKEY_CURRENT_USER\Software\Far\KeyMacros\Editor\CtrlAlt1]
+"Sequence"="F11 7 AltT 1 Enter"
+"DisableOutput"=dword:00000001      
+"EmptyCommandLine"=dword:00000001
+"NotEmptyCommandLine"=dword:00000000
+
+[HKEY_CURRENT_USER\Software\Far\KeyMacros\Editor\CtrlAlt2]
+"Sequence"="F11 7 AltT 2 Enter"
+"DisableOutput"=dword:00000001      
+"EmptyCommandLine"=dword:00000001
+"NotEmptyCommandLine"=dword:00000000
+
+[HKEY_CURRENT_USER\Software\Far\KeyMacros\Editor\CtrlAlt3]
+"Sequence"="F11 7 AltT 3 Enter"
+"DisableOutput"=dword:00000001      
+"EmptyCommandLine"=dword:00000001
+"NotEmptyCommandLine"=dword:00000000
+
+[HKEY_CURRENT_USER\Software\Far\KeyMacros\Editor\CtrlAlt4]
+"Sequence"="F11 7 AltT 4 Enter"
+"DisableOutput"=dword:00000001      
+"EmptyCommandLine"=dword:00000001
+"NotEmptyCommandLine"=dword:00000000
+
+[HKEY_CURRENT_USER\Software\Far\KeyMacros\Editor\CtrlAlt5]
+"Sequence"="F11 7 AltT 5 Enter"
+"DisableOutput"=dword:00000001      
+"EmptyCommandLine"=dword:00000001
+"NotEmptyCommandLine"=dword:00000000
+
+[HKEY_CURRENT_USER\Software\Far\KeyMacros\Editor\CtrlAlt6]
+"Sequence"="F11 7 AltT 6 Enter"
+"DisableOutput"=dword:00000001      
+"EmptyCommandLine"=dword:00000001
+"NotEmptyCommandLine"=dword:00000000
+
+[HKEY_CURRENT_USER\Software\Far\KeyMacros\Editor\CtrlAlt7]
+"Sequence"="F11 7 AltT 7 Enter"
+"DisableOutput"=dword:00000001      
+"EmptyCommandLine"=dword:00000001
+"NotEmptyCommandLine"=dword:00000000
+
+[HKEY_CURRENT_USER\Software\Far\KeyMacros\Editor\CtrlAlt8]
+"Sequence"="F11 7 AltT 8 Enter"
+"DisableOutput"=dword:00000001      
+"EmptyCommandLine"=dword:00000001
+"NotEmptyCommandLine"=dword:00000000
+
+[HKEY_CURRENT_USER\Software\Far\KeyMacros\Editor\CtrlAlt9]
+"Sequence"="F11 7 AltT 9 Enter"
+"DisableOutput"=dword:00000001      
+"EmptyCommandLine"=dword:00000001
+"NotEmptyCommandLine"=dword:00000000

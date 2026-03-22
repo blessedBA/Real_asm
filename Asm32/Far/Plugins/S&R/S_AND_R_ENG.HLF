@@ -1,0 +1,2084 @@
+.Language=English,English
+.PluginContents=Search and Replace
+
+@Contents
+$^#Search and Replace (version 2.5 of 06.02.2006)#
+
+    S&R allows to find and replace data (~any~@CT@ codepage, including Unicode)
+or/and hex-codes sequence. Works in panels, in editor and in viewer.
+It's possible to use regular expressions and to translate files' codepages!
+
+    ~Search and Replace in files~@MainDialog@
+    ~Search and Replace in editor~@Editor@
+    ~Search in viewer~@Viewer@
+    ~Files codepages translating~@Recode@
+    ~Support of plugin modules~@SRPlugins@
+    ~Temporary panel support~@TmpPanel@
+    ~Working with config-file~@INI@
+    ~Command line~@CMD@
+    ~Configuration~@Config@
+    ~Thanks~@thanks@
+    ~About the author...~@author@
+
+^~License~@reg@
+
+    #If you want to support program's development, please donate some money.#
+#My purses in ~WebMoney.ru~@http://WebMoney.ru@#
+#(~www.wmtransfer.com~@http://www.wmtransfer.com@) system: Z787475721790 (for USD),#
+#E876273527569 (for Euro), R538290555814 (for RUR).#
+
+@reg
+$^#License#
+
+    See License.txt.
+
+ ~Contents~@Contents@
+
+@author
+$ #About the author of this plug-in#
+    According to my passport, my name is #Ivan Vladimirovich Sintyurin#, friends
+call me #Spinoza# (long ago there was Netherlandish philosopher with such
+a name).
+
+    Use my plug-in for your own sake and don't forget to vote for it at
+plugring:
+
+^~http://plugring.farmanager.com/cgi-bin/voter.cgi?ID=229~@http://plugring.farmanager.com/cgi-bin/voter.cgi?ID=229@
+
+    One, who doesn't like it - recall F8. One, who has found bugs - inform me.
+Just don't storm, have pity on my nerves...
+
+    My site: ~http://www.moris.ru/~~spinoza~@http://www.moris.ru/~spinoza@
+    E-mail : ~spinoza@@mail.ru~@mailto:Spinoza@@mail.ru?Subject=S_AND_R@
+
+ #P.S. You can play on-line games at the site!#
+
+ ~Contents~@Contents@
+
+@Recode
+$^#Files codepage translation#
+
+    Yes, you haven't heard amiss - s&r can translate files from any
+codepage (OEM, ANSI or ~any~@CT@ one installed in Far, except Unicode) into
+any other! You can do it the following way:
+ 1. Run this plug-in in panels.
+ 2. Search string: #.*# (or #/.*/# - it depends on ~configuration~@CfgSearch@)
+    Replacement string: #$0#
+    [ ] Delete trash
+    [#x#] Regular expressions
+    [#x#] The whole file as single line
+    #Table#               - refers to original files codepage
+    #[x] Translate into:# - codepage you want to translate into.
+ 3. Other options is your own choice.
+ 4. Press #OK#.
+
+   Also you can save these settings as a ~scheme~@SchemeIs@ not to waste time
+setting them up later, but to choose them from menu.
+
+ ~Contents~@Contents@
+@PMenu
+$^#Search and Replace in panels#
+
+  1. ~Search and Replace in files~@MainDialog@
+  2. ~Search in files~@MainDialog@ (the same as previous, but only
+     search will be performed)
+  3. ~Replace in files~@MainDialog@ (the same as first, but only
+     replace will be performed)
+  4. ~Temporary panel~@TmpPanel@
+  0. ~Plugin commands~@SRPlugins@
+
+^#Available commands:#
+
+    #Enter#      Execute menu item.
+
+    #Esc#        Close the menu.
+
+    #Ctrl-PgUp#  Same as #Esc#
+
+    #Ctrl-PgDn#  Same as #Enter#
+
+
+ ~Contents~@Contents@
+@SRPlugins
+$^#Support of plugin modules#
+
+    #External SRP modules# (plugins for S&R) may be used to implement new S&R
+commands. For example, "rename files" command is realized by a plugin module.
+
+    All plugins are stored in separate folders within the '#SRPlugins#' folder
+(default), which is in the same folder as s_and_r.dll. Information about plugin
+modules is stored in the cache (SRPCache), which is located in the same folder as
+SRPlugins. You can change this folder in the ~configuration~@CfgOther@. Note,
+that relative links in the srp-modules help will work only if the '#SRPlugins#'
+folder is stored in s_and_r.dll folder.
+
+    For operations acceleration automatic scan for new plugin modules is
+not supported. It will be done only if:
+ - SRPCache file is not found
+ - SRPCache has wrong format
+ - language information stored in SRPCache differs from current Far
+   language
+ - user himself has demanded SRPCache usage (ctrl-r in the menu)
+
+    For resources expenditures decrease, plugin modules will be unloaded
+from memory immediately after their usage, therefore you can delete / change them
+"on the fly" without restarting S&R. If you are sure that some plugins are useless
+for you, you may remove them to save disk space.
+
+^#Available commands:#
+
+    #Enter#      Start plugin module.
+
+    #F4#         Assign hot key to menu item.
+
+    #Esc#        Close the menu.
+
+    #Ctrl-Up#    Move menu item up.
+
+    #Ctrl-Down#  Move menu item down.
+
+    #Ctrl-PgUp#  Go to previous menu.
+
+    #Ctrl-PgDn#  Same as #Enter#
+
+    #Ctrl-R#     Perform plugin modules list update. Use this command
+               if you have changed or deleted old plugin module or
+               added a new one.
+
+    #Shift-F1#   Show #Contents# topic of selected plugin module.
+
+ ~Contents~@Contents@
+@FileMask
+$^#File masks format#
+
+    File mask can be one of two kinds: #mask is a regular expression# and
+#FAR standard mask#. First character of file mask defines file mask type.
+If the first character is '#/#', mask is considered to be a
+#regular expression#.
+    #Examples#:
+     /^.+\.bak$/i  - file mask is a regexp
+     *.bak         - standard file mask
+
+^#File-mask is a regular expression#
+
+    See ~regexps help~@RegExp@. Some ~settings~@CfgSearch@
+"#Replace $ to \r\n when searching with regexps#" and
+"#Work without // when searching with regexps#" are ignored for file mask
+string.
+
+^#File-mask is not a regular expression#
+
+    In this case format of a file mask is almost the same as standard
+~masks of files~@:FileMasks@ in FAR. Existing differences are:
+ 1. You can use '#,#' & '#;#' as separator of masks.
+ 2. You can specify "#exclude masks#" (i.e. mask of files not to be
+processed), having carved out it from the main mask by '#|#' character.
+
+^#Examples of using exclusion masks#:
+ 1. *.cpp
+    All files with "cpp" extension.
+ 2. *.*#|#*.bak,*.tmp
+    All files, except files with "bak" or "tmp" extension.
+ 3. *.*#|#
+    Error: exclude mask is not specified.
+ 4. *.*#|#*.bak#|#*.tmp
+    Error: character '#|#' may be used only once.
+ 5. #|#*.bak
+    Same as *#|#*.bak
+
+ ~Contents~@Contents@
+@MainDialog
+$^#Search and Replace in files#
+
+    If you use ~regexps~@SANDRWithRE@, there are two sections for you:
+    1. What can ~search string~@RegExp@ contain.
+    2. What can ~replace string~@ReplaceRegExp@ contain.
+
+    If you don't use regexps, see help on search and replace
+~strings format~@stringformat@.
+
+    In panels nothing is considered to be found, if the amount of data found is
+equal to zero.
+
+    Program performs no replacements and asks no extra questions if
+replace data is equal to search data.
+
+ #File-mask#           Enter ~mask~@FileMask@ of target items to process here
+                     (see "#Target#" dropdown list)
+
+ #Replace with#        If this option is set, replacing will be
+                     performed, else - simple search will.
+
+ #Make a backup#       Copies have BAK extension, if such a file
+ #copy#                already exists, suffix will be 000.BAK (or
+                     001.BAK, 002.BAK, 003.BAK etc)
+
+ #Confirmation#        If this option is set, you'll have to ~confirm~@SureReplace@
+ #of replacement#      replacements.
+
+ #Save replace#        Name of the file to receive the replacement
+ #data to file#        data. If this field is not empty all replacement
+                     data will be placed into the specified file -
+                     the same result as if you're working with option
+                     #Delete trash#, but original files will not be
+                     changed. It's possible to use environment
+                     variables here. Replace string cannot be null.
+
+ #Search in selected#  Process only selected elements of the folder.
+                     If several folders are selected, searching there
+                     (if #Process subfolders# option is set) goes
+                     with the specified mask. If nothing is selected,
+                     file/folder under cursor is processed.
+
+ #Search with#         All files in the current folder and subfolders,
+ #file-mask#           matching specified file-mask are to be
+                     processed, if the corresponding option is set.
+
+ #Search in folders#   Search with file-mask is performed in
+                     ~folders list~@DirList@ (and in their subfolders, if
+                     #Process subfolders# option is set).
+
+ #Target#              Using this dropdown list you can specify type
+                     of file system object to process. If the list is
+                     disabled, only files will be processed. List
+                     appears in dialog only in FAR 1.70 build 1634
+                     and above.
+
+ #More options#        Use ~extended~@ExtendedSearchOptions@ search parameters. To set them up,
+                     press the nearby button.
+
+ #Case sensitive#      To adjust this parameter, when searching with
+                     ~regexps~@RegExp@, in depend of ~settings~@CfgSearch@ use the #i#
+                     parameter or this option.
+
+ #Regular#             Enable work with ~regular expressions~@SANDRWithRE@
+ #expressions#         in search and replace strings.
+
+ #Whole words#         Plug-in will search only for ~words~@word@.
+                     Option makes sense when searching without
+                     regexps.
+
+ #The whole file as#   When searching with ~regexps~@RegExp@, depending on
+ #a single line#       the ~configuration~@CfgSearch@ use #s# parameter or this
+                     option.
+
+ #Allow using#         When searching with ~regexps~@RegExp@, depending on
+ #explaining#          the ~configuration~@CfgSearch@ use #x# parameter
+ #spaces#              or this option.
+
+ #Delete trash#        Only the replace string will be written to the
+                     file, all the rest of the data will be erased.
+                     Replace string cannot be null!
+
+ #Table#               Plug-in searches data in this ~codepage~@CT@. You can
+                     press this button and choose another codepage
+                     (OEM, ANSI, Unicode or any other installed
+                     in Far). If you choose "#All character tables#"
+                     search will be performed in following order:
+                     1. If custom character tables are installed:
+                        OEM, custom character tables, Unicode.
+                     2. If custom character tables are absent:
+                        OEM, ANSI, Unicode.
+
+ #Translate#           If this option is set, plug-in will translate
+                     replacement data in selected codepage (selection
+                     is performed after pressing button "#into:#").
+                     This feature is not accessible when working with
+                     Unicode. Notice, that not the whole file is
+                     translated, but only the replacement data.
+                     If you like, you may translate the whole file!
+                     ~Details...~@Recode@
+
+ #Count#               Proceed with #search# with specified criteria and
+                     display number of search string occurrences
+                     found. Replacement string is ignored. Use the
+                     hotkey #Ctrl-C# for quick pressing on this
+                     button (this will work only in FAR 1.70 build
+                     1634 and above).
+
+ #Scheme#              Call ~schemes~@SchemeIs@ manipulations ~menu~@Scheme@.
+                     You can choose one of the first 10 schemes
+                     without opening the menu using the following
+                     keys combination: #Alt-Shift-0#, #Alt-Shift-1#,
+                     ..., #Alt-Shift-9# (this will work only in FAR
+                     1.70 build 1634 and above).
+
+ #Save#                Save current parameters as a ~scheme~@SchemeIs@
+                     (you'll be prompted for the scheme name).
+
+ ~Contents~@Contents@
+@DirList
+$^#Folders list format#
+
+    Folders list is a semicolon-delimited (or a comma-delimited) folders names
+list. If folder name contains '#;#' or '#,#' character it must be enclosed by
+quotes. It's possible to use environment variables here.
+Folder name can be both relative and absolute.
+    If the first symbol in folders list is '#*#', the rest of the list is
+ignored, and this symbol is replaced by the list of root folders of all
+fixed disks.
+
+^#Example 1:#
+
+    Active folder: #e:\work#
+    Folders list: #temp;%windir%;..\gate\test;"samples;"#
+
+    Search is performed in the following folders:
+    1. #e:\work\temp#
+    2. #d:\win2k# (contents of %windir% environment variable)
+    3. #e:\gate\test#
+    4. #e:\work\samples;#
+
+^#Example 2:#
+
+    List similar to #*temp;%windir%;..\gate\test# will be replaced by
+#c:\;d:\;e:\;f:\# (in case of fixed disks #c#, #d#, #e#, #f# presence),
+and search goes as usual.
+
+ ~Contents~@Contents@
+@stringformat
+$^#Search and Replace strings format#
+
+    Search may be case sensitive and case insensitive!
+
+    If #case insensitive# search is performed,
+the only thing being searched is the one you've typed as a search
+string, and it is replaced with the contents of replace string (i.e. signal
+symbol #%# is ignored - it is treated as a mere symbol).
+
+    In other cases the string may contain as text, as hex-codes sequence.
+Signal symbol #%# is just for that. It marks the beginning and the end
+of hex-codes. To use #%# symbol as a mere one, type it twice.
+
+@-
+^#Search and replacement strings examples#
+^#(case sensitive mode):#
+@+
+
+ String:     Program's inner presentation (symbols):
+
+ #ABC#         A, B, C
+ #ABC%%#       A, B, C, %
+ #ABC%%%0d0a%# A, B, C, %, 0x0D, 0x0A
+
+@-
+^#Search and replacement strings examples#
+^#(case insensitive mode):#
+@+
+
+ String:     Program's inner presentation (symbols):
+
+ #ABC%%#       A, B, C, %, %
+
+ ~What mistakes could be expected?~@WrongString@
+
+ ~Contents~@Contents@
+@WrongString
+$^#Possible# user's mistakes in search/replacement strings
+$^(only in case sensitive mode)
+
+ 1. Odd number of '#%#' symbols
+ 2. Odd number of symbols between '#%#'
+    Wrong: %d0a%, right %0d0a%
+ 3. Hex-codes sequence may not contain symbols outside of
+    #0-9#, #A-F#, #a-f# range
+
+ ~Contents~@Contents@
+@RegExp
+$^#Search regexps syntax description#
+$^#from Konstantin Stupnik (with my comments)#
+
+    The syntax almost completely coincides with Perl.
+
+    General syntax is: #regexp# or /#regexp#/#options#
+(depend of ~configuration~@CfgSearch@).
+
+    #Options#:
+    i - ignore case (see also ~configuration~@CfgSearch@).
+    s - process all input as single-line text. '.' matches any
+        character (see also ~configuration~@CfgSearch@).
+    m - process all input as multi-line text. ^ and $
+        match respectively any beginning/end of any "internal"
+        line (see also ~configuration~@CfgSearch@).
+    x - spacer. Ignored if not preceded by a backslash. Useful
+        for structuring complex expressions (see also ~configuration~@CfgSearch@).
+
+    #regexp# - sequence of characters and metacharacters. Letters and numbers
+act as characters. All the rest potentially is metacharacters, since
+everything that is not a letter or a digit should be explicitly specified as
+a character. Thus, to enter a non-alphanumeric character you will need to
+enter also a preceding \ (backslash).
+
+    All slashes (#/# and #\#) in your regexp have to be prefixed by the special
+symbol "#\#", because single slash can be confused with other special symbols
+or with the end of regular expression.
+
+
+^#Metacharacters#
+    \ - specifies that the next character will be treated as a
+        character (not as a metacharacter).
+    ^ - beginning of line. If the #m# option is specified, then
+        the beginning of any line within the text is matched,
+        otherwise - only the beginning of the whole text.
+    $ - end of line. If the #m# option is specified, then the
+        end of any line within the text is matched, otherwise
+        - only the end of the whole text.
+        #Comment:# in viewer and panels files processed by
+some part at once, that's why special symbol $ means
+#end of data when working in panels and viewer# (for small files $
+matches the end of file) and #end of the line when working in editor#.
+If you want $ to mean end of the line (\r\n) when working in
+panels and in viewer, it must be set up in ~configuration~@CfgSearch@.
+
+    |  - alternative ( OR ). Matches either the expression before
+         or the expression after |.
+
+    () - grouping. Grouping serves either for using backreferences
+         or to specify the matching fragment within the parentheses
+         for replacement.
+    [] - class of characters. A Class of characters determines lists
+         or ranges of characters. It matches any of the characters
+         listed within the #[]# (or within one of the listed ranges).
+         Continuous ranges are specified as [a-z].
+         Generally you cannot use other metacharacters inside
+         classes. Placing a #^# in the first position of a set
+         inverts it (the set becomes negative). If you want to use
+         the #^# as a character, it should either be not in the first
+         position or be preceded by a backslash.
+
+    Apart from grouping, round brackets are used for the following operations:
+    (?:pattern)  - same as regular grouping, except for this match
+                   won't be saved and thus obtains no reference
+                   number (N).
+    (?=pattern)  - zero-width positive lookahead assertion.
+                   For example, #\w+(?=\s)# matches a word followed
+                   by whitespace, without including the whitespace
+                   in the MatchResult.
+    (?!pattern)  - zero-width negative lookahead assertion. For
+                   example #foo(?!bar)# matches any occurrence of "foo"
+                   that isn't followed by "bar". Remember that this
+                   is a zero-width assertion, which means that
+                   #a(?!b)d# will match #ad# because #a# is followed by
+                   a character that is not #b# (the #d#) and a #d#
+                   follows the zero-width assertion.
+    (?<=pattern) - zero-width positive backward assertion. The
+                   pattern should be of fixed length.
+    (?<!pattern) - zero-width negative backward assertion. The
+                   pattern should be of fixed length, i.e.
+                   quantifiers cannot be used.
+
+    Also you can create brackets with name: (?{name}pattern)
+    Name can be empty (in such case you cannot refer to this brackets) or must
+contain word symbols (\w) and spaces (\s).
+
+
+
+^#Quantifiers#
+     Each character, group or class can be followed by one of quantifiers:
+
+     ?      - greedy match (0 or 1 times).
+     ??     - non-greedy match (0 or 1 times).
+     *      - greedy match (0 or more times).
+     *?     - non-greedy match (0 or more times)
+     +      - greedy match (1 or more times).
+     +?     - non-greedy match (1 or more times).
+     {n}    - match exactly n times.
+     {n,}   - greedy match (n or more times).
+     {n,}?  - non-greedy match (n or more times).
+     {n,m}  - greedy match (greater or equal than n,
+              less or equal than m times).
+     {n,m}? - non-greedy match (greater or equal
+              than n, less or equal than m times).
+     {,m}   - equal to {0,m}
+     {,m}?  - equal to {0,m}?
+
+
+^#Greedy and non-greedy quantifiers#
+
+     A greedy quantifier attempts to match as much of text as possible. Only
+if the next iteration is unsuccessful it "releases" the captured characters
+(this is called "rollback" - a rather time- and resource-consuming procedure).
+     E.g. if we attempt to match the "A.*Z" expression against the string:
+"AZXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX" then the #.*# will first capture all of
+the string and then will sequentially roll back until it finds the Z
+character. If we use the non-greedy quantifier "A.*?Z", then the Z character
+will be found immediately. A non-greedy quantifier is also called a #minimizing#
+quantifier, since it tends to capture the minimal possible amount of
+characters and tries to add more only if it did not match the string.
+
+
+^#Special characters#
+
+Backslash should be used before non-alphabetic characters. Alphabetic
+characters preceded by a backslash designate special characters:
+
+    .  - any character except for line feed. If there is an #s#
+         in the options, then matches any character.
+         #Comment:# see option "~The whole file as a single line~@MainDialog@"
+         and ~search configuration~@CfgSearch@.
+    \t - tab (0x09)
+    \n - new line (lf, 0x0a)
+    \r - return(cr, 0x0d)
+    \f - form feed (0x0c)
+    \a - bell (0x07)
+    \e - escape (0x1b)
+    \xNN - a character in hexadecimal notation,
+           where N belongs to the set [0-9A-Fa-f].
+    \Q - beginning of metacharacter quotation
+    \E - end of metacharacter quotation
+    \w - letter, digit or '_'.
+    \W - not \w
+    \s - whitespace character (tab/space/lf/cr).
+    \S - not \s
+    \d - digit
+    \D - not \d
+    \i - letter
+    \I - not \i
+    \l - lowercase character
+    \L - not a lowercase character
+    \u - uppercase character
+    \U - not an uppercase character
+    \b - null token matching a word boundary
+         \b means that a character which is a part of a
+         word (\w) is located on the right or on the left
+         of the current position, with a spacer/separator
+         character (\W) on the opposite side.
+    \B - not \b
+    \A - text beginning (not depends on option #m# state)
+    \Z - text end (not depends on option #m# state)
+
+    \O - Point of a "non-return". If when matching this
+         character is passed, the matching algorythm
+         results with "no match" at once. It is meant to
+         be used in a complicated expression after a
+         obliged passage with a quantifier. This special
+         character may be used, when the amount of data
+         to be processed is very big.
+         Example:
+         /.*?name\O=(['"])(.*?)\1\O.*?value\O=(['"])(.*?)\3/
+         Lines with "name=" but without "value=" are to be
+         processed (in fact - skipped) faster.
+
+    \NN - backreference to previously matched group in
+          round brackets. NN - decimal integer (0-15).
+          Each bracket except (?:pattern), (?=pattern),
+          (?!pattern), (?<=pattern), (?<!pattern) and
+          (?{name}pattern) has number (depends on order
+          of appearing of opening bracket).
+          Example: "(['"])hello\1" matches the "hello" and
+          'hello'.
+
+    \p{name} - inner regexp reference to it's parsed
+               bracket with specified #name#.
+
+
+^#Examples#
+ "foobar"
+    matches "foobar", "foobar barfoo"
+ / FOO bar /ix
+    matches "foobar" "FOOBAR"
+ "(foo)?bar"
+    matches "foobar", "bar"
+ "^foobar$"
+    matches _only_ "foobar" (not "foofoofoobarfoobar")
+ "[\d\.]+"
+    Any number with decimal point
+ "(foo|bar)+"
+    matches "foofoofoobarfoobar", "bar"
+ "\Q.)))$\E"
+    equal to "\.\)\)\)\$"
+
+ ~Contents~@Contents@
+@ReplaceRegExp
+$^#Replace string operators#
+
+    In string of replacement apart from customary characters you can use
+special operators - regular expressions for replacement string. They are
+conditionally divided into three groups - those, which work everywhere,
+which work only when processing files group (i.e. in panels) and influential
+to other operators (manipulating width of output).
+
+^#1. Operators which work everywhere#
+
+ \\          The '\' symbol
+ \[          The '[' symbol
+ \{          The '{' symbol
+ \-          The '-' symbol
+ \$          The '$' symbol
+
+ \t          0x09 (tab)
+ \n          0x0A (lf).
+ \r          0x0D (cr).
+ In editor, when S&R meets "\r", "\n" or "\r\n" it inserts one new string in a
+file.
+
+ \t          0x09 (tab)
+ \L          Lowercase symbols starting current position
+             (affects symbols till \U, \u, \l, \I, \i, \/ or \E)
+ \U          Uppercase symbols starting the current position
+             (affects symbols till \L, \l, \u, \I, \i, \/ or \E)
+ \I          Invert case of symbols (uppercase lowercased symbols
+             and lowercase uppercased symbols) starting the
+             current position (affects symbols till \L, \l,
+             \U, \u, \i, \/ or \E)
+ \/          Stop changing case (used to cancel \U, \L or \I)
+ \l          Lowercase next symbol
+ \u          Uppercase next symbol
+ \i          Invert case of next symbol
+
+ \Q          Beginning of operators quotation - all in quotation
+             will be processed as text, not a regexp, till
+             operator \E
+ \E          Means end of operators quotation if follows after
+             \Q, otherwise - command to stop case changing
+             (the same as \/)
+
+ \xNN        NN is a hex-code
+ \D{#T#}       Date and time of replacement performed.
+             #T# stands for the proper value:
+             Y - year
+             M - month
+             D - day
+             h - hour
+             m - minute
+             s - second
+ $0 - $9,    Found groups numbers. The corresponding group
+ $A - $F     is substituted in the string while processing.
+             Numbers to groups are given in the order of
+             opening brackets in regular expression.
+             $0 means the whole occurrence.
+ $#{#name#}#     Found pattern with specified #name#.
+ $#{#name#}#     Environment variable with specified #name#.
+ $$          Equals "\r\n".
+
+ \##          Substitute ~counter~@counter@ value
+ \##{number}  Substitute ~counter~@counter@ value, incremented by #number# in
+             parentheses.
+ \##{#-#number} Substitute ~counter~@counter@ value, decremented by #number# in
+             parentheses.
+ \##{number#h#} Substitute ~counter~@counter@ value as hexadecimal, incremented
+             by hexadecimal number in parentheses.
+
+ \##{number,#size#}, \##{#-#number,#size#} or \##{number#h#,#size#}
+             Similar to the previous counter insertion operators, but
+             the number of digits of substituted number is also
+             checked. If it's less than #size# parameter value, then
+             it is prefixed with corresponding number of zeroes.
+             #size# parameter value is limited by 2 and 10.
+
+ \##{number,#size#,#s#} or \##{#-#number,#size#,#s#}
+             Similar to the previous counter insertion operators, but
+             #+# or #-# sign is always included.
+
+^#2. Operators which are working only with processing of files group#
+
+ \P         Path to an object, equal to \P{F,\,L}
+ \P{#T#,#D#,#N#}  path to an object which is being processed.
+            #T# - type, can be one of following:
+                F - full folder name with path
+                P - the same as F, but without drive letter
+                    (i.e. only that is arranged after the character
+                    '#:#')
+                N - only name of the folder
+                D - only drive letter
+                    (i.e. only that is arranged before the character
+                    '#:#')
+                R - relative path
+                #Comments:# in all cases except #R# path will be given
+                without separator character at the end of string.
+            #D# - separator character which must separate folders
+                names in a path. Can by, for example, \ or /
+            #N# - specify the type of the folder name
+                L - normal (long)
+                S - short
+ $I         Internet shortcut, use it only for *.url files.
+ \V{#N#}      Version of the file which is being processed (from
+            versioninfo resource).
+            #N# can be one of following:
+                0 -  "CompanyName"
+                1 -  "FileDescription"
+                2 -  "FileVersion"
+                3 -  "InternalName"
+                4 -  "LegalCopyright"
+                5 -  "OriginalFilename"
+                6 -  "ProductName"
+                7 -  "ProductVersion"
+                8 -  "Comments"
+                9 -  "LegalTrademarks"
+                A -  "Language"
+                B -  "FileType"
+                C -  "FileOS"
+                D -  "FileFlags"
+                E -  file version (data from VS_FIXEDFILEINFO)
+                F -  product version (data from VS_FIXEDFILEINFO)
+                #Remark:# verioninfo is processed only if file
+                size less 4G.
+ \F         Name of the object, equal to \F{F,L}
+ \F{#T#,#N#}    Name of the object which is being processed.
+            #T# - the type, can be one of following:
+                F - name.extension
+                N - name
+                E - extension
+            #N# - specify type of the name:
+                L - normal (long)
+                S - short
+ \Y{#T#,#P#}    Date and time of the object which is being processed.
+            #T# - the same as "T" parameter of the \D{#T#} operator.
+            #P# - specify kind of the date and time:
+                A - last access
+                M - last change
+                C - creation
+ \S         Size in bytes of the object which is being processed
+            (equal to \S{B})
+ \S{#RS#}   Size of the object which is being processed
+            #R# - specifies a unit of measurements (size in bytes is
+            divided by a unit of measurements and is approximated
+            to the nearest larger number):
+                B - bytes
+                K - kilobytes
+                M - megabytes
+                G - gigabytes
+            #S# - symbol for placing between groups of categories.
+                  If this parameter does not exist number will not
+                  divided on groups of categories.
+
+
+^#3. Manipulating width of output#
+
+    Using special suffix you can specify #width of output# for one of following
+operators: counter (\##, \##{...}), group ($0-$F), environment variable ($(...)),
+date and time (\D{...}, \Y{...}), path (\P, \P{...}), shortcut ($I), version
+(\V{...}), name (\F, \F{...}), size (\S). A suffix will be processed as the
+sequence of customary characters for the other operators.
+
+    If the sequence of characters, substituted by the operator, will be less
+than width of output, its #alignment# will be performed by necessary amount
+of symbols-fillers (spaces by default) addition according to width of output.
+If the substituted sequence is longer than width of output, its superfluous
+part will be cut, and the dots will be pasted into a place of cut.
+
+    Format of the suffix:
+  #-#{#A#,#NNN#}
+   #A#   - type of alignment, can be one of following:
+         #R# - right
+         #L# - left
+         #C# - center
+   #NNN# - size of output width: decimal value between 1 and 255.
+
+    By default cutting superfluous happens on the right, but you can change this
+order, in this case the suffix must have the next format:
+  #-#{#A#,#NNN#,#T#}
+    #A#, #NNN# - see above.
+    #T#  - specify which part must be cut, can be:
+         #R# - cut right part
+         #L# - cut left part
+
+    If you want use symbol-filler which is differ from space, suffix format
+will be the following:
+  #-#{#A#,#NNN#,#T#,#S#}
+    #A#, #NNN#, #T# - see above
+    #S#  - symbol-filler. If you want use brace ("}"),
+         put before brace one backslash ("\").
+
+    Example of using suffix:
+    "$1-{C,20}" - paste no more than 20 characters from the first
+                  retrieved group and center them.
+ ~Contents~@Contents@
+@counter
+$^#Counter#
+
+    #Counter# is a variable, incremented by one as every replacement is
+performed. Initial value is zero.
+
+    When working in panels, depending on the ~configuration~@CfgReplace@
+counter sets equal to 0 for every processed file or stays the same for all
+of the files.
+
+ ~Contents~@Contents@
+@WrongRegExp
+$^#Wrong regexps in search/replace string#
+
+    See regular expressions syntax:
+    ~Search regexps~@RegExp@
+    ~Replace regexps~@ReplaceRegExp@
+
+ ~Contents~@Contents@
+@SANDRWithRE
+$^#Search and Replace with regular expressions#
+
+    To work with regular expressions while searching, regexp parsing module
+by ~Konstantin Stupnik~@thanks@ is used. See author's regexps
+~description~@RegExp@. ~Remark~@CT@.
+
+    ~Replacement string operators~@ReplaceRegExp@ are different and their
+coincidence with any other regexps is occasional.
+
+ ~Contents~@Contents@
+@thanks
+$^#Thanks, or "The country should know its heroes" :)#
+
+    I would like #to thank#:
+
+ 1.  #Eugene Roshal# for... FAR! :-)
+
+ 2.  #Konstantin Stupnik# for refinement of regexps parser.
+     E-mail: xecutor@@sendmail.ru
+
+ 3.  #Igor Ruskih# for ideas, testing, wonderful Colorer and its
+                 sources.
+     E-mail: ruiv@@uic.nnov.ru
+     WWW   : http://www.uic.nnov.ru/~~ruiv
+
+ 4.  #Igor Lyubimov# for ideas flow and self-denying testing.
+     E-mail: mr_july@@mail.ru
+
+ 5.  #Anton Lykov# for translating help&faq into English, and
+                 for testing.
+     E-mail: last@@last.ulsu.ru
+
+ 6.  #Alexander Krynko# for translating hlf&lng to Ukrainian.
+     E-mail: sky@@prog.pib.com.ua
+
+ 7.  #DoctoR# for translating hlf&lng to Ukrainian.
+     E-mail: doctor@@skeptik.net
+     WWW   : http://dr-gng.dp.ua
+
+ 7.  #Vova Oleynik# for translating hlf&lng to Ukrainian.
+     E-mail: voleynik@@mail.ru
+
+ 9.  #Konstantin Dyakov# for translating help into English.
+     E-mail: dyakovkm@@paris.com
+     WWW   : http://dyakovkm.newmail.ru
+
+ 10.  #Valentin Skirdin# for sources of "versioninfo" plugin module
+                      and for testing.
+     E-mail: vskirdin@@mail.ru
+     WWW   : http://www.halyava.ru/skirda
+
+ 11. #Nataliya Lukyanova# for translating manual into English.
+     E-mail: nat_lu2002@@yahoo.co.uk
+
+
+ ~Contents~@Contents@
+@SureReplace
+$^#Replace confirmation#
+
+  #Offset#        Offset of data found (decimal)
+
+  #Save to#       ~Name~@MainDialog@ of file for placing replacement data,
+                if you specify to do this.
+
+^#Make your choice#
+
+  #Replace#       Proceed with replacement
+  #All in file#   Proceed with replacement in the whole file
+                without confirmations
+  #All in files#  Proceed with replacement in all files
+                without confirmations
+  #Skip#          Do not replace this occurrence
+  #Skip in this#  Do not replace anything in this file
+  #file#
+  #Cancel#        Stop processing (all the changes for the current
+                file are cancelled).
+
+  Pressing #ESC# is similar to pressing the #"Cancel"# button.
+
+ ~Contents~@Contents@
+@Config
+$^#Search and Replace options#
+
+     Configuration editing in "Search and Replace" is implemented by
+special 2nd level plug-in, which is represented by files config.msg and
+config.srp, this plug-in should be located in "S&R\System\Config" folder.
+
+  ~Search options~@CfgSearch@
+  ~Replacement options~@CfgReplace@
+  ~History options~@CfgHistory@
+  ~Messages options~@CfgMsg@
+  ~Temporary panel~@CfgTempPanel@
+  ~File-type settings~@FATypes@
+  ~Other options~@CfgOther@
+
+ ~Contents~@Contents@
+@CfgSearch
+$^#Search options#
+
+  #Replace $ to \r\n#     This option affects only work in panels
+  #when searching with#   and viewer. Set it, and in search string
+  #regexps#               you will be able to type #$# to indicate
+                        end of the line. This option is ignored in
+                        editor. It is treated as turned off, and
+                        #$# always means "~end of line~@RegExp@".
+                        #Remark:# you can turn off this option in
+                        S&R 2.0 and above if option "#Work without //#
+                        #when searching with regexps#" is on, because
+                        ~m~@RegExp@ option exists.
+
+  #Work without //#       When this option is set, there is no
+  #when searching#        necessity to enclose the search string in
+  #with regexps#          slashes. In this case the options ~i~@RegExp@
+                        (ignore the case) and ~x~@RegExp@ is set up
+                        automatically depending on the "Case
+                        sensitive" and "Allow using explaining
+                        spaces" settings, the ~s~@RegExp@ option depending
+                        on the "The whole file as a single line"
+                        setting, and the ~m~@RegExp@ option is turned on
+                        always.
+
+  #Use string from#       This option affects only work in ~editor~@Editor@:
+  #a history if there#    #Search the word under the cursor#, #Reverse#
+  #is no word under#      #search of the word under the cursor#, #Find all#
+  #the cursor#            #occurrences of the word under cursor#. If this
+                        option is set and there is no word under the
+                        cursor, the "word" is equal to what you've
+                        used as the search string at last time.
+
+  #Store found#           If this option is set, the program will not
+  #occurrences in#        always rescan file while performing some
+  #cache (in editor)#     functions, which show the menu with found
+                        lines. This feature decreases time for
+                        performing of such functions. You can force
+                        rescan file by pressing #Ctrl-R# in the ~menu~@EdLOF@.
+                        The cache is stored separately for each
+                        opened file.
+
+  #Select found#          Default value for the option with same name
+  #in editor#             in ~search~@EdSearch@ and ~replace~@Replace@ dialogs in editor.
+
+  #Pick up the word#      If this option is set on when you open
+  #in editor#             ~search~@EdSearch@, ~replace~@Replace@ and ~delete not matched lines~@EdDelete@
+                        dialogs the current word under cursor will be
+                        put into search line.
+
+  #Open search dialog#    This option affects keypresses processing
+  #in the locked#         in ~editor~@Editor@ in "disable text modification"
+  #editor#                mode. If this option is set, search dialog
+                        will be opened in the case, described above,
+                        otherwise plugin will open no dialogs.
+
+  #Only create log#       After files search finishes, list
+                        of found items is written to a file,
+                        and plug-in stops.
+
+  #Show menu#             After files search finishes, list
+                        of found items is shown as a ~menu~@FoundFiles@.
+                        This option exists in dialog only under
+                        FAR with version less 1.70 build 1634.
+
+  #Temporary panel#       Found files are placed to the
+                        ~temporary panel~@TmpPanel@. If temporary panel
+                        plug-in will not work, found files will
+                        be shown in a usual ~menu~@FoundFiles@.
+
+  #Word consists of#      If this option is not set, a ~word~@word@
+  #characters and digits# is treated as a sequence of letters
+                        characters, otherwise - as a sequence of
+                        letters and digits.
+
+  #Additional symbols#    This parameter supplies the previous one.
+  #of words#
+
+  #Search from next#      Start search in ~editor~@Editor@  and ~viewer~@Viewer@
+  #position in editor#    from the next position after cursor,
+  #and viewer#            which differs from current position
+                        by one symbol in a direction, other than one,
+                        in which search is being performed (affects
+                        only #Search# item).
+
+  #Do not process#        This option affects only work in #editor# when
+  #overlapping#           using forward processing (from file beginning
+  #occurrences during#    to the end). Affects ~replacement~@EdReplace@ and ~count~@EdSearch@.
+  #replacement and#
+  #counting#
+
+  #Do not process#        This option affects only ~editor~@Editor@ and ~viewer~@Viewer@
+  #overlapping#           #forward# processing (from file beginning to
+  #occurrences when#      the end). Affects search #continuation#.
+  #continuing searching#
+
+ ~Contents~@Contents@
+@CfgReplace
+$^#Replacement options#
+
+  #Reset the counter#     This option concerns ~\##~@ReplaceRegExp@ regexp in
+  #for each file#         replacement string. If it's set, the value
+                        substituted instead of "\##", will be set to
+                        0 for every file.
+
+  #Delete empty string#   Default value for the option with same name
+                        in ~replace~@Replace@ dialog in editor.
+
+ ~Contents~@Contents@
+@CfgHistory
+$^#History options#
+
+  #Own history#           Plug-in stores history for strings
+                        "#Search for#", "#Replace with#",
+                        "#Search with file-mask#" and
+                        "#Save replace data to file#" in its own
+                        keys in the registry.
+
+  #System history#        System history is used.
+
+  #Another history#       You may set up registry keys names to store
+                        history.
+
+    Notice that there is no system history for "Search in folders" string,
+so if you choose "system history", this parameter will nevertheless use
+"own history".
+
+ ~Contents~@Contents@
+@CfgMsg
+$^#Messages options#
+
+  #Show final message#    If this option is set, at the and of work
+                        in panels, editor and viewer will be shown
+                        some result message. This option is ignored
+                        when you #count# in ~panels~@MainDialog@, ~editor~@EdSearch@ and ~viewer~@ViSearch@,
+                        and result message shows always. If this
+                        option is not set following two options is
+                        ignored (behavior is the same if this options
+                        are not set).
+
+  #Show a message if#     If this option is set, then if
+  #nothing was found#     nothing was found, the corresponding
+                        message is shown. Otherwise plug-in
+                        just stops working.
+
+  #Show message if#       This option affects only work in panels.
+  #work is interrupted#   If option is turned on and work in panels
+  #by ESC#                was interrupted by ESC, information message
+                        will be shown to user. If option is turned
+                        off, additional message will not be shown.
+
+ ~Contents~@Contents@
+@CfgTempPanel
+$^#Temporary panel configuration#
+
+    In this dialog you may change the following options:
+
+ #Add to disks menu#   Enables adding the "Temporary" item to the disks
+                     menu.
+
+ #Disks menu hotkey#   Hotkey for the temporary panel item in
+                     the disks menu. You can enter a value from
+                     1 to 9 or leave this field empty to autoassign.
+
+    Plugin has own settings for panel mode ##4 ("wide mode"). You can change:
+ #Column types#
+ #Column widths#
+ #Status line column types#
+ #Status line column widths#
+ #Fullscreen view#
+
+    See ~standard help of FAR~@:PanelViewModes@ for details.
+
+ #Put found files#     If this option is set S&R will put found
+ #list in empty#       files list into the first empty panel and
+ #panel#               you will not loose last search result. If
+                     S&R does not find an empty panel, it will put
+                     found files list into the panel, which follows
+                     the last used one. If this option is not set
+                     S&R will put found files list into the last
+                     used panel.
+
+ #Process#             If this option is set, S&R will process
+ #OPEN_FINDLIST#       OPEN_FINDLIST command. FAR sends this command
+ #command#             to plugin, when it wishes to put files to
+                     temporary panel. So if this option is set, S&R
+                     will receive files list instead of standard
+                     FAR temporary panel, when you choose #Panel#
+                     in FAR search dialog (~Alt-F7~@:FindFile@).
+
+ ~Contents~@Contents@
+@CfgOther
+$^#Other options#
+
+  #Show file name in#     Turning this option off increases plug-in's
+  #console title#         working speed a little...
+
+  #Remove selection#      If this option is not set, then files
+  #from files#            selection is not lost, if it is possible.
+                        Selection anyway will be removed if you
+                        press #enter# on any file in the menu
+                        with found stuff list.
+
+  #Process selected#      If this option is set, in respective
+  #text if exist#         dialogs in ~editor~@Editor@ option
+  #selected area#         "Selected text" will be chosen
+                        automatically, if selection exists, and
+                        "Global search" otherwise.
+
+  #Process selected#      If this option is set and panel contains
+  #items if panel#        selected items, the option "search in
+  #contains selected#     selected" will be turned on by default
+  #items#                 in panels dialog. This option influences
+                        work with a ~config-file~@INI@.
+
+  #Search without#        Setting this option causes option
+  #regular expressions#   "Regular expressions" in all dialogs
+  #by default#            to be turned off by default.
+
+  #Empty search#          If this option is set S&R at first start
+  #and replace string#    after beginning of FAR session will
+  #at first#              empty search and replace line in any
+                        dialogs.
+
+  #Save time#             If this option is turned on, when
+  #of the last change#    replacing in panels processed files time
+                        of last change is not changed.
+
+  #Show found in editor#  For your convenience, you may set, where
+                        to show found line when #searching# and
+                        #setting position from found lines list# in
+                        editor. "#Smart#" option means the line is
+                        shown according to plug-in's choice (as it
+                        was in all versions before 1.3). Other
+                        options' names are self-meant :) When
+                        #replacing#, these options are ignored and
+                        plug-in assumes "#Smart#" option set.
+
+  #Change top screen#     This option affects word under cursor
+  #line if found#         search in ~editor~@Editor@ (items 5 and 6).
+  #string exists in#      If this option is set and found string
+  #current screen#        exists in current screen option "#Show found#
+                        #in editor#" will be processed. If this option
+                        is not set and found string exists in current
+                        screen file will be shown from the same line
+                        as line which was before search.
+
+  #Path for settings#     The name of folder for storage of
+  #storage#               configuration files. In current S&R version
+                        this option is ignored.
+
+  #Path for plugins#      The name of folder for storage of
+                        ~user's plugins~@SRPlugins@ and cache (SRPCache)
+                        Specified directory must exist. If this
+                        option is empty, program stores configuration
+                        files in the same folder as s_and_r.dll.
+                        It's possible to use environment variables
+                        here. Example: #%APPDATA%\S_And_R#
+
+ ~Contents~@Contents@
+@NoReplace
+$^#Replace string is empty!#
+
+  Replace string cannot be empty in this case. Change work conditions.
+
+ ~Contents~@Contents@
+@SchemeIs
+$^#Scheme#
+
+    #Scheme# is a set of search/replacement parameters for multiple use.
+
+ ~Contents~@Contents@
+@Scheme
+$^#Scheme#
+
+  #Enter#      Choose current ~scheme~@SchemeIs@
+  #Esc#        Choose nothing
+  #Ins#        Add a new scheme
+  #F4#         ~Edit~@EditScheme@ current scheme
+  #F5#         Copy current scheme. You'll be ~prompted for a new name~@EnterNameOfScheme@
+  #F6#         ~Rename~@EnterNameOfScheme@ current scheme
+  #Del#        Delete current scheme
+  #Ctrl-Up#    Move the scheme up
+  #Ctrl-Down#  Move the scheme down
+
+ ~Contents~@Contents@
+@EnterNameOfScheme
+$^#Enter the scheme's name#
+
+    ~Scheme's~@SchemeIs@ name cannot be longer than 127 symbols. There is no
+sense in names longer 50 symbols. If you want to set a hot-key for this scheme,
+prefix the letter with a '#&#' symbol.
+
+ ~Contents~@Contents@
+@EditScheme
+$^#Edit scheme#
+
+    All the parameters are similar to corresponding fields and options of the
+main dialog. They just aren't checked to be correct.
+
+    "#Rename#" button allows to change the ~scheme's~@SchemeIs@ name.
+
+ ~Contents~@Contents@
+@FoundFiles
+$^#Found files#
+
+  You see the list of found files. You can use the following commands to
+work with it:
+
+  #Enter#  Jump to the selected file
+  #F2#     Save list to a file
+  #F3#     View the file
+  #F4#     Edit the file
+  #Esc#    Finish working with the list
+
+ ~Contents~@Contents@
+@NotOnPluginPanel
+$^#The usual file panel is required for this operation!#
+
+    File-mask search is available only in a file panel...
+
+ ~Contents~@Contents@
+@ExtendedSearchOptions
+$^#Additional search setup#
+
+    Here you can set some special search parameters.
+
+    #Size# is set in bytes: from 1 to 18446744073709551615. If you type non-numeral
+data in dialog fields, they will change to zero. If no checkmark near this
+string, its value is ignored.
+
+    #Date# is set in DD.MM.YYYY format. If there is no cross at the field,
+its value is ignored. You may point, which date/time to compare, pressing
+the corresponding button.
+
+    #Attributes# can be specified only in Far 1.70 build 1634 and above.
+    Options meaning:
+       #[ ]# Attribute must be turned off
+       #[x]# Attribute must be turned on
+       #[?]# Attribute is ignored
+
+    #Search in symbolic links# - this option affects subfolders
+procession. If option is turned off, program will not search in folders which
+are ~symbolic links~@:HardSymLink@ (FILE_ATTRIBUTE_REPARSE_POINT). If
+no additional search parameters used, program will search in symbolic links.
+
+    #Exclude directories# - ~exclude folders mask~@EDMask@, files in these
+folders will not be processed. If this field is not empty and folder's name
+matches the mask, folder will not be processed. Exclusion: matched folder's
+name is name of the current folder and option ~search in selected~@MainDialog@
+is turned on - in this case selected files in this folder will be processed as
+usual. Notice that folders tree traversal will be performed anyway.
+
+ ~Contents~@Contents@
+@EDMask
+$^#Exclude directories mask#
+
+   Mask of folders to exclude (files in such folders will not be processed) is
+similar to ~file mask~@FileMask@. Mask can contain environment variables.
+Mask compares to full folders names. Notice that name of folder to match is
+always without symbol "#\#" at the end.
+
+^#Examples:#
+ 1. D:\MYFOLDER
+    Don't process files in d:\myfolder
+ 2. D:\MYFOLDER\*
+    Don't process files in subfolders of d:\myfolder
+ 3. /^D:\\MYFOLDER\\.*$/i
+    The same as previous, but mask is a regular expression.
+ 4. %TEMP%#;#%TEMP%\*
+    Don't process files in temp folder and in all it's subfolders.
+ 5. %WINDIR%#;#%WINDIR%\*#|#%WINDIR%\Fonts
+    Don't process files in operating system folder and in all it's
+    subfolders except subfolder "Fonts".
+ 6. D:
+    Don't process files in root of disk D (D:\).
+ 7. *WINNT*
+    Don't process files in folder, which name contains
+    substring "WINNT", and all it's subfolders.
+ 8. /^.*?WINNT[^\\]*?$/i
+    Don't process files in folder, which name contains
+    substring "WINNT".
+
+ ~Additional search setup~@ExtendedSearchOptions@
+ ~Contents~@Contents@
+@INI
+$^#Working with an config-file#
+
+   Plug-in allows you to make replacement, reading parameters from an
+config-file. It may be useful, when replacing data with size up to 2550 bytes
+(there is a limitation of 512 bytes in the dialog). Such an options file
+may have any extension and consists of some predefined sections and
+variables (see ~example.sr~@example.sr@).
+   To run plug-in type the following in the ~command line~@CMD@:
+
+^#s&r:i/"Name of the file with settings"#
+
+   You can specify relative or full path if you want. Path may contain
+environment variables.
+
+ ~Contents~@Contents@
+@example.sr
+$^#example.sr#
+@-
+#[S&R]#
+// Version. Default value - 1
+// In S&R 2.0 (and above) this variable must be equal 4.
+#Ver=4#
+
+// MODE OF THE WORK (used if Ver>1)
+// Mode=0 - replace
+// Mode=1 - search
+// Mode=2 - count
+// Default value - 0
+#Mode=0#
+
+// "Save replace data to file"
+// (used if Ver>3).
+// If file with same name exists work cancelled.
+#SaveTo=#
+
+// Do not show final messages with information about finished work
+// (used if Ver>2)
+// 1 - show such messages
+// 0 - forbid such messages
+// Default value - 0
+#NoFinalMsg=0#
+
+// RegExp=1 - search with regular expressions, otherwise -
+// simple search. Default value - 0
+#RegExp=0#
+
+// Lines=1 - "The whole file as a single line" (if RegExp=1).
+// Default value - 0. This option affects only if the
+// "Work without // when searching with regexps" option in
+// "Options/Search" is set.
+#Lines=0#
+
+// DeleteTrash=1 - delete trash, otherwise - usual replacement.
+// Default value - 0
+#DeleteTrash=0#
+
+// Bak=1 - make backups. Default value - 1
+#Bak=1#
+
+// Cfm=1 - ask for replacement confirmation. Default value - 1
+#Cfm=1#
+
+// Selected=1 - process selected files, otherwise files to process
+// are taken from the Mask variable. Default value - 1
+// When processing this parameter, the state of an option
+// "Process selected items if panel contains selected items"
+// is taken into account
+#Selected=1#
+
+// File-mask. Rules are the same as for the dialog.
+// Default value - *
+#Mask=*.txt#
+
+// Search: 0 - files, 1 - folders, 2 - files and folders
+#Target=0#
+
+// Sub=1 - process subfolders. Default value - 0
+#Sub=0#
+
+// Sensitive=1 - case sensitive search. Default value - 0
+#Sensitive=0#
+
+// CodePage=0 - OEM codepage, 1-ANSI, 2-Unicode, 3-FAR codepage
+// In the last case, the table, equal to Table variable, is used.
+// Default value - 0
+#CodePage=0#
+
+// FAR's ~codepage name~@CT@, e.g. "CP-1251   (Windows russian)"
+// or "KOI-8". If no table with such a name, it assumes,
+// that CodePage=0
+#Table=#
+
+[ESO]
+// Section "Additional search setup"
+// Mode=1 - use this parameters, 0 - ignore
+#Mode=0#
+
+// File size (from 0 to 18446744073709551615 bytes)
+// ...must be more or equal
+#MinS=0#
+// ...must be less or equal
+#MaxS=0#
+// Use MinS parameter: 1 - yes, 0 - no
+#PrcMinS=0#
+// Use MaxS parameter: 1 - yes, 0 - no
+#PrcMaxS=0#
+
+// Date (DD.MM.YYYY)
+// ...must be more or equal
+#MinT=0#
+// ...must be less or equal
+#MaxT=0#
+// Use MinT parameter: 1 - yes, 0 - no
+#PrcMinT=0#
+// Use MaxT parameter: 1 - yes, 0 - no
+#PrcMaxT=0#
+// Date type:
+// 0 - creation, 1 - last access, 2 - last change
+#TimeT=0#
+
+// File attributes
+// String contains 8 bytes with some purpose: 01234567
+// 0 - use attributes: 1 - yes, 0 - no
+// 1 - Search in symbolic links: 1 - yes, 0 - no
+// 2 - attribute "archive" must be:
+//     0 - off, 1 - on, 2 - ignored
+// 3, 4, 5, 6, 7 - purpose is the same as "2" - for attributes
+//     "read-only", "hidden", "system",
+//     "compressed", "encrypted"
+#Attr=01222222#
+
+#[SEARCH]#
+// Search string. It separated into parts (up to 10) for your
+// convenience. Maximum size of each line is 255 bytes.
+// While working plug-in concatenates all the lines into one.
+// Initial and final spaces in line are ignored.
+// If the line is in quotes, they are threw away.
+// That's why you've got to quote the string, if you'd like
+// to use spaces in the beginning or in the end of the line.
+// The rules are the same as in dialog.
+#line0="John "#
+#line1="Doe"#
+#line2=#
+#line3=#
+#line4=#
+#line5=#
+#line6=#
+#line7=#
+#line8=#
+#line9=#
+
+#[REPLACE]#
+// Replacement string. Format is similar to the [SEARCH] section.
+#line0="John"#
+#line1="ny"#
+#line2=" "#
+#line3="Doe"#
+#line4=#
+#line5=#
+#line6=#
+#line7=#
+#line8=#
+#line9=#
+@+
+
+ ~Contents~@Contents@
+@CMD
+$^#Additional abilities of the command line#
+
+    Search:       #S&R:Search/"search string"#
+    Search and Replace:
+                  #S&R:Replace/"search string" "replacement string"#
+    Search and Replace, reading parameters from an ~config-file~@INI@:
+                  #S&R:INI/FileName#
+    Run plug-in in dialog mode:
+                  #S&R:#
+
+    #All# the rest parameters are taken from the registry (i.e. they are
+equal to those, you've typed last time you ran plug-in in the usual way).
+
+    It is possible to use only first commands' letters. Instead of "/" it's
+possible to use "\" or space.
+    If you are mistaken in typing, you'll get help.
+    If you type search/replacement string with mistakes, plug-in will run
+dialog mode (except "s&r:ini/FileName" command).
+
+ ~Contents~@Contents@
+@FileIsRO
+$^#The file is read only#
+
+ #Process#        Plug-in will unset the read-only attribute, process
+                 the file, and set the attribute.
+ #All#            Process all files with this attribute
+ #Skip#           Skip this file
+ #Skip all#       Skip all read-only files
+ #Cancel#         Stop working
+
+ Pressing #ESC# is similar to pressing #"Cancel"# button.
+
+ ~Contents~@Contents@
+@word
+$^#Word#
+
+   #Word# when searching #without regexps# is treated as a sequence of letters
+of letters and/or digits (specified in ~configuration~@CfgSearch@), and contents
+of "Additional symbols of words" string (specified in ~configuration~@CfgSearch@).
+
+   Maximum length of words processed by the plug-in in editor is 511 bytes.
+
+ ~Contents~@Contents@
+@ViSearch
+$^#Search in viewer#
+
+    If you use ~regular expressions~@SANDRWithRE@, follow ~this way~@RegExp@,
+otherwise - follow ~this way~@stringformat@.
+
+    In viewer nothing is considered to be found, if the amount of data found is
+equal to zero.
+
+ #Case sensitive#     To adjust this parameter, when searching with
+                    ~regexps~@RegExp@, in depend of ~settings~@CfgSearch@ use the #i#
+                    parameter or this option.
+
+ #Regular#            Enable work with ~regular expressions~@SANDRWithRE@
+ #expressions#        in search and replace strings.
+
+ #Reverse search#     Search is performed from the current position
+                    to file beginning.
+
+ #The whole file as#  When searching with ~regexps~@RegExp@, depending on
+ #a single line#      the ~configuration~@CfgSearch@ use #s# parameter or this
+                    option.
+
+ #Allow using#        When searching with ~regexps~@RegExp@, depending on
+ #explaining#         the ~configuration~@CfgSearch@ use #x# parameter
+ #spaces#             or this option.
+
+ #Whole words#        Plug-in will search only for ~words~@word@.
+                    Option makes sense when searching without
+                    regexps.
+
+^#Dialog buttons appointment:#
+
+  #OK#         Search for the first occurrence of search string. Search
+             starts from cursor position or from the next position
+             after cursor, depending on ~settings~@CfgSearch@.
+
+  #Count#      Perform search and display number of found
+             occurrences of search string. Use the hotkey
+             #Ctrl-C# for quick pressing on this button
+             (this will work only in FAR 1.70 build 1634
+             and above).
+
+  #Scheme#     Call ~schemes~@SchemeIs@ manipulations ~menu~@Scheme@.
+             You can choose one of the first 10 schemes
+             without opening the menu using the following
+             keys combination: #Alt-Shift-0#, #Alt-Shift-1#,
+             ..., #Alt-Shift-9# (this will work only in FAR
+             1.70 build 1634 and above).
+
+  #Save#       Save current parameters as a ~scheme~@SchemeIs@
+             (you'll be prompted for a scheme name). In current
+             S&R version search scope parameters are not saved.
+
+ ~Contents~@Contents@
+@Viewer
+$^#Search in viewer#
+
+    Plug-in works in viewer only in Far 1.70 build 1634 and later.
+    If plug-in's search feature cannot be performed, plug-in will
+automatically call Far standard search (F7 or Shift-F7).
+
+ 1. ~Search~@ViSearch@           Standard search replacement for viewer.
+ 2. #Continue#         Continue searching with the same parameters,
+                     which you've used last time. Position search
+                     starts from depends on ~configuration~@CfgSearch@.
+ 3. #Continue#         This command is similar to the previous one,
+    #(reverse search)# but search will be performed in the reverse
+                     direction.
+ 0. ~Plugin commands~@SRPlugins@  Show plugins menu.
+
+    Using ~macros~@:KeyMacro@ you can make keypresses #F7#, #Shift-F7# and
+#AltF7# in editor to run corresponding plug-in commands. Macros ready to use
+are in ~sr_viewer_macro.reg~@sr_viewer_macro@ file.
+
+ ~Contents~@Contents@
+@Editor
+$^#Search and Replace in editor#
+
+ 1. ~Search~@EdSearch@           Replacement for a standard search in editor
+ 2. ~Replace~@EdReplace@          Replacement for a standard search and replace
+                     in editor
+ 3. #Continue#         Continue search/replace with the same parameters
+                     depending on what you used last time. Position
+                     search begins at, depends on ~configuration~@CfgSearch@.
+ 4. #Continue#         This command is similar to previous one, but
+    #(reverse search)# search is performed in reverse direction.
+ 5. #Search the word#  Plug-in will search for the ~word~@word@,
+    #under the cursor# cursor is positioned on, without displaying
+                     dialog. Search is performed without regexps,
+                     it is case insensitive, from cursor, forward
+                     (all the rest options are equal to those, which
+                     were set last time in dialog). See also
+                     ~configuration~@CfgSearch@.
+ 6. #Reverse search#   This command is similar to previous one, but
+    #of the word#      search will be performed in reverse direction.
+    #under the cursor#
+ 7. ~Delete not~@EdDelete@       This command deletes all the lines, which don't
+    ~matched lines~@EdDelete@    contain at least one occurrence of search
+                     string.
+ 8. #Find all#         Similar to #Find all occurrences# from
+    #occurrences of#   ~search dialog~@EdSearch@, but ~the word~@word@
+    #the word under#   under cursor is searched, no main dialog is
+    #cursor#           shown. Search is regexp-less, case insensitive,
+                     global (all the rest options are equal to those,
+                     which were set last time in dialog). See also
+                     ~configuration~@CfgSearch@.
+ 9. #Find all#         Search of all sections of the file on the base
+    #sections of#      of files groups ~settings~@FATypes@.
+    #the file#
+ F. #Choose file-type# Choose ~type~@FATypes@ of current file (type affects
+                     search of all occurrences and sections).
+                     In brackets you can see current file-type.
+ T. #Find all#         This command is equal to "Find all sections
+    #sections of the#  of the file", but search will be performed
+    #file, using#      with file-type settings, which are
+    #settings of#      chosen in the ~menu~@FATypes@. This choice does
+    #another type#     not affect real current file-type, which
+                     is used in other editor commands.
+
+ 0. ~Plugin commands~@SRPlugins@  Show plugins menu.
+
+    Plug-in can process the whole file, or selected text only.
+~For addition...~@EdSelected@
+
+    Using ~macros~@:KeyMacro@, you can set up the keys
+#F7#, #Ctrl-F7#, #Shift-F7# and #Alt-F7# in editor to run corresponding commands
+of the plug-in. Ready-to-use macros are in ~sr_editor_macro.reg~@sr_editor_macro@ file.
+
+    If editor is in "disable text modification" mode (~Clrl-L~@:Editor@) and
+you will press any letter or digit ~search dialog~@EdSearch@ automatically
+will be opened and typed symbol will be placed in the search line. This
+behavior exists only in FAR 1.70 build 1634 and above, it can be turned off in
+the ~configuration~@CfgSearch@.
+
+ ~Contents~@Contents@
+@sr_editor_macro
+$^#sr_editor_macro.reg#
+@-
+REGEDIT4
+; 'S' - hot key
+
+[HKEY_CURRENT_USER\Software\Far\KeyMacros\Editor\F7]
+"Sequence"="F11 S 1"
+"Description"="SR: Search"
+"DisableOutput"=dword:00000001
+
+[HKEY_CURRENT_USER\Software\Far\KeyMacros\Editor\CtrlF7]
+"Sequence"="F11 S 2"
+"Description"="SR: Search and Replace"
+"DisableOutput"=dword:00000001
+
+[HKEY_CURRENT_USER\Software\Far\KeyMacros\Editor\ShiftF7]
+"Sequence"="F11 S 3"
+"Description"="SR: Continue search/replace"
+"DisableOutput"=dword:00000001
+
+[HKEY_CURRENT_USER\Software\Far\KeyMacros\Editor\AltF7]
+"Sequence"="F11 S 4"
+"Description"="SR: Continue search/replace (reverse search)"
+"DisableOutput"=dword:00000001
+
+@+
+
+ ~Contents~@Contents@
+@sr_viewer_macro
+$^#sr_viewer_macro.reg#
+@-
+REGEDIT4
+; 'S' - hot key
+
+[HKEY_CURRENT_USER\Software\Far\KeyMacros\Viewer\F7]
+"Sequence"="F11 s 1"
+"DisableOutput"=dword:00000001
+"Description"="SR: Search in Viewer"
+
+[HKEY_CURRENT_USER\Software\Far\KeyMacros\Viewer\ShiftF7]
+"Sequence"="F11 s 2"
+"DisableOutput"=dword:00000001
+"Description"="SR: Continue search"
+
+[HKEY_CURRENT_USER\Software\Far\KeyMacros\Viewer\Space]
+"Sequence"="F11 s 2"
+"DisableOutput"=dword:00000001
+"Description"="SR: Continue search"
+
+[HKEY_CURRENT_USER\Software\Far\KeyMacros\Viewer\AltF7]
+"Sequence"="F11 s 3"
+"DisableOutput"=dword:00000001
+"Description"="SR: Continue search (reverse search)"
+
+@+
+
+ ~Contents~@Contents@
+@EdSearch
+$^#Search in editor#
+
+    If you use ~regular expressions~@SANDRWithRE@, follow ~this way~@RegExp@,
+otherwise - follow ~this way~@stringformat@.
+
+    FAR specific: file is processed only by lines - you cannot find two or
+several lines at once, also you cannot find eol-symbols.
+
+ #Pick up the word#   This button adds current word under cursor
+ #under cursor#       to the end of search string. Also see
+                    ~configuration~@CfgSearch@.
+
+ #Case sensitive#     To set this parameter when using ~regexps~@RegExp@
+                    depending on ~configuration~@CfgSearch@
+                    use the #i# parameter or this option.
+
+ #Regular#            Enable work with ~regular expressions~@SANDRWithRE@
+ #expressions#        in search and replace strings.
+
+ #Reverse search#     Searching from the current position to the
+                    beginning of the file (or to the beginning of
+                    selected area).
+
+ #Select found#       Select by stream block found data. Also
+                    see ~configuration~@CfgSearch@.
+
+ #Whole words#        Plug-in will search only for ~words~@word@.
+                    Option makes sense when searching
+                    without regexps.
+
+ #Allow using#        When searching with ~regexps~@RegExp@, depending on
+ #explaining#         the ~configuration~@CfgSearch@ use #x# parameter
+ #spaces#             or this option.
+
+ #Scope, Origin#      See ~description~@EdSelected@.
+
+ #Show the section# This option affects #"Find All"#. If it is turned on,
+                  then after number of the line in found occurrences
+                  menu file section name is also shown (depends on
+                  ~settings~@FATypes@, e.g., for program sources it may be
+                  function name, for an ini-file - name of the
+                  section etc.), in which occurrence is found. Option
+                  is ignored during reverse search, when working in
+                  selected area, and absence of settings for given
+                  filetype. Notice that when this option is turned
+                  on, search always starts from the beginning of the
+                  line, not from the current position, even if
+                  #From cursor# option is selected.
+
+^#Other dialog buttons appointment:#
+
+  #OK#         Search for the first occurrence of search string. Search
+             starts from cursor position or from the next position
+             after cursor, dependently on ~settings~@CfgSearch@.
+
+  #Count#      Perform search and display number of found
+             occurrences of search string. Use the hotkey
+             #Ctrl-C# for quick pressing on this button
+             (this will work only in FAR 1.70 build 1634
+             and above).
+
+  #Find All#   Search for lines, containing at least one
+             occurrence of search string, display menu with
+             found lines list and, making it possible
+             to jump to any of them selectively. Use the
+             hotkey #Ctrl-A# for quick pressing on this
+             button (this will work only in FAR 1.70 build
+             1634 and above).
+
+  #Scheme#     Call ~schemes~@SchemeIs@ manipulations ~menu~@Scheme@.
+             You can choose one of the first 10 schemes
+             without opening the menu using the following
+             keys combination: #Alt-Shift-0#, #Alt-Shift-1#,
+             ..., #Alt-Shift-9# (this will work only in FAR
+             1.70 build 1634 and above).
+
+  #Save#       Save current parameters as a ~scheme~@SchemeIs@
+             (you'll be prompted for a scheme name). In current
+             S&R version search scope parameters are not saved.
+
+ ~Contents~@Contents@
+@EdDelete
+$^#Delete not matched lines#
+
+    This command #deletes all the lines#, which do not contain at least one
+occurrence of search string. USE THIS PLUG-IN FUNCTION VERY CAREFULLY.
+
+    If you use ~regular expressions~@SANDRWithRE@,
+follow ~this way~@RegExp@, otherwise - ~here~@stringformat@.
+
+    FAR specific: file is processed only by lines - you cannot find two or
+several lines at once, also you cannot find eol-symbols.
+
+ #Pick up the word#   This button adds current word under cursor
+ #under cursor#       to the end of search string. Also see
+                    ~configuration~@CfgSearch@.
+
+ #Case sensitive#     To adjust this parameter when searching with
+                    ~regexps~@RegExp@ depending on ~settings~@CfgSearch@
+                    use the #i# parameter or this option.
+
+ #Regular#            Enable work with ~regular expressions~@SANDRWithRE@
+ #expressions#        in search and replace strings.
+
+ #Reverse search#     Search is performed from the current position to
+                    the beginning of the file (or selection area).
+
+ #Only whole words#   Plug-in will search only for ~words~@word@.
+                    Option affects only search without regexps.
+
+ #Allow using#        When searching with ~regexps~@RegExp@, depending on
+ #explaining#         the ~configuration~@CfgSearch@ use #x# parameter
+ #spaces#             or this option.
+
+ #Scope, Origin#      See ~description~@EdSelected@.  If "Selected text"
+                    option is chosen, then all lines are processed,
+                    starting from the first, which contains
+                    selection, and finishing at last, which also
+                    contains selection (if search is reverse one,
+                    then vice versa).
+
+^#Other dialog buttons appointment:#
+
+  #OK#         Start.
+
+  #Scheme#     Call ~schemes~@SchemeIs@ manipulations ~menu~@Scheme@.
+             You can choose one of the first 10 schemes
+             without opening the menu using the following
+             keys combination: #Alt-Shift-0#, #Alt-Shift-1#,
+             ..., #Alt-Shift-9# (this will work only in FAR
+             1.70 build 1634 and above).
+
+  #Save#       Save current parameters as a ~scheme~@SchemeIs@
+             (you'll be prompted for a scheme name). In current
+             S&R version search scope parameters are not saved.
+
+ ~Contents~@Contents@
+
+@EdReplace
+$^#Search and Replace in editor#
+
+    If you use ~regexps~@SANDRWithRE@, there are two sections for you:
+    1. What can ~search string~@RegExp@ contain.
+    2. What can ~replace string~@ReplaceRegExp@ contain.
+
+    If you don't use regexps, see help on search and replace
+~strings format~@stringformat@.
+
+    FAR specific: file is processed only by lines - you cannot find two or
+several lines at once, also you cannot find eol-symbols.
+
+
+ #Pick up the word#   This button adds current word under cursor
+ #under cursor#       to the end of search string. Also see
+                    ~configuration~@CfgSearch@.
+
+ #Case sensitive#     To set this option, when searching with ~regexps~@RegExp@
+                    depending on the ~configuration~@CfgSearch@ use
+                    the #i# parameter or this option.
+
+ #Regular#            Enable work with ~regular expressions~@SANDRWithRE@
+ #expressions#        in search and replace strings.
+
+ #Reverse search#     Searching from the current position to the
+                    beginning of the file (or to the beginning of
+                    selected area).
+
+ #Select found#       Select by stream block found data. Also
+                    see ~configuration~@CfgSearch@.
+
+ #Whole words#        Plug-in will search only for ~words~@word@.
+                    Option makes sense when searching
+                    without regexps.
+
+ #Delete empty#       If this option set and after replacement is
+ #lines#              performed changed line will not contains
+                    any symbols this line will be deleted. Also
+                    see ~configuration~@CfgReplace@
+
+ #Allow using#        When searching with ~regexps~@RegExp@, depending on
+ #explaining#         the ~configuration~@CfgSearch@ use #x# parameter
+ #spaces#             or this option.
+
+ #Scope, Origin#      See ~description~@EdSelected@.
+
+^#Other dialog buttons appointment:#
+
+  #OK#         Start searching/replacing.
+
+  #Scheme#     Call ~schemes~@SchemeIs@ manipulations ~menu~@Scheme@.
+             You can choose one of the first 10 schemes
+             without opening the menu using the following
+             keys combination: #Alt-Shift-0#, #Alt-Shift-1#,
+             ..., #Alt-Shift-9# (this will work only in FAR
+             1.70 build 1634 and above).
+
+  #Save#       Save current parameters as a ~scheme~@SchemeIs@
+             (you'll be prompted for a scheme name). In current
+             S&R version search scope parameters are not saved.
+
+ ~Contents~@Contents@
+
+@EdSelected
+$^#File area to be processed#
+
+^#Scope#
+
+ #Global search#      Operation in all file.
+
+ #Selected text#      Operation in selected area only.
+                    If the cursor is outside of area of selection,
+                    the operation will be carried out from boundaries
+                    of selected area irrespective of a status of a
+                    following option.
+
+^#Origin#
+
+ #From cursor#        Plug-in searches (replaces), starting from
+                    current cursor position (similar to internal
+                    FAR search/replace).
+
+ #Entire scope#       Plug-in searches (replaces), starting from
+                    start/end of a file or a selected area.
+
+
+ ~Contents~@Contents@
+@TmpPanel
+$^#Temporary panel support#
+
+    Plug-in can place ~found files list~@CfgSearch@ in a temporary panel,
+which is similar to a usual file panel.
+
+    Files copied to temporary panel are not copied physically,
+just links are created. When you process files in temporary panel,
+all the changes mirror to real files on their places. E.g. deleting
+a file in temporary panel causes real file deleting too. Use command
+"#F7-Remove#" to remove selected files' names from temporary panel without
+their physical deletion.
+
+    To close temporary panel and go to the file cursor is positioned on,
+press #Ctrl-PgUp#.
+
+    When you move cursor the current folder is changed according item under
+cursor. After you close temporary panel by pressing on "..", you will appear
+in such new current folder.
+
+    #Alt-Shift-F12# - open the menu to switch between available panels
+(you can see number of the current panel in its title).
+    #Alt-Shift-0#...#Alt-Shift-9# - quick switching between first 10 panels.
+
+    To save the current contents of the panel to a list file, you
+can use the hotkey #Alt-Shift-F2#.
+
+    To open ~temporary panel configuration~@CfgTempPanel@ dialog,
+you can use hotkey #Alt-Shift-F9#.
+
+    Temporary panel redefines panel mode ##4 ("wide mode"), see
+~configuration~@CfgTempPanel@ for details.
+
+    Temporary panel in "Search and Replace" is implemented with
+special 2nd level plug-in, which is represented by files temppanel.msg and
+temppanel.srp, this plug-in should be located in "S&R\System\TempPanel"
+folder. Temporary panel works only in Far 1.70 and later versions.
+
+    S&R using this plugin can replace standard FAR Temporary panel
+(distributed with FAR) - just delete standard plugin (tmppanel.dll).
+
+ ~Contents~@Contents@
+@CNLoadTP
+$^#Cannot load temporary panel#
+
+    ~Temporary panel~@TmpPanel@ plug-in failed to load, found files will
+be shown in a usual ~menu~@FoundFiles@.
+    If you do not like this message to be shown every time, turn off temporary
+panel in ~settings~@CfgSearch@ or place file
+~temppanel.srp~@TmpPanel@ in "S&R\System\TempPanel" folder.
+
+ ~Contents~@Contents@
+@FATypes
+$^#Choose file type#
+
+    In this menu you can choose, create, remove and ~change~@EditFAType@
+settings for different filetypes. Keyboard hotkeys are the same as in
+~schemes choosing menu~@Scheme@. These settings affect #sections# search in
+the file being edited (see ~Find all occurrences~@EdSearch@ and
+~Find all sections of the file~@Editor@).
+
+ ~Contents~@Contents@
+@EditFAType
+$^#Edit filetype settings#
+
+  #File mask#    ~Mask~@FileMask@ of the files of this type.
+
+  #Section's#    ~Regular expression~@RegExp@ to find file #sections#.
+  #name#
+  #template#
+
+  #Ignore#       ~Regular expression~@RegExp@, describing the line
+               which is not a section at all.
+
+  #Menu's item#  ~Regular expression~@ReplaceRegExp@ for replace string.
+  #template#     According this template found lines menu item will
+               be formed. If this field is empty behavior the same
+               as template equal ~$0~@ReplaceRegExp@.
+
+   Notice that regexps in this case should be enclosed by slashes
+(/..../) every time, i.e. the following ~settings~@CfgSearch@ make #no affect#:
+@-
+^#Replace $ with \r\n when searching with regexps#
+^and
+^#Work without // when searching with regexps#
+@+
+
+ ~Contents~@Contents@
+@EdLOF
+$^#Editor: found lines list#
+
+^#Available commands:#
+
+    #Enter#      Close the menu and go to selected line.
+
+    #Ctrl-Enter# Go to selected line and show the menu again.
+
+    #Esc#        Close the menu and return to the position,
+               from which search was started.
+
+    #F4#         ~Edit filetype settings~@EditFAType@. Use this command
+               only if the menu was built for recognized filetype.
+
+    #Ctrl-R#     Perform search again and build new found lines list.
+               Use this command if you have enabled cache in
+               ~configuration~@CfgSearch@ and you feel that list which you
+               see is not valid.
+
+    #Ctrl-F#     Turn on/off #lines filter#.
+
+    #Ctrl-H#     Turn on/off #hot keys# auto assignment. The command is
+               meaningful only if filter is turned off.
+
+ ~Contents~@Contents@
+@CT
+$^#Additional information about codepages support#
+
+    Work with #Unicode# is performed via translation from #Unicode# to #OEM#
+and back.
+
+    If you work with ~regexps~@SANDRWithRE@ you have #no warranties# for
+normal work with #EBCDIC# codepage. This is limitation of regexp parsing
+module by ~Konstantin Stupnik~@thanks@.
+
+ ~Contents~@Contents@
+@SFExists
+$^#File for saving replace data already exists!#
+
+    File for saving replace data already exists. Make your choice:
+
+    #Stop#          Stop work and return to ~previous dialog~@MainDialog@.
+
+    #Overwrite#     Overwrite existing file. Old file contents will be
+                  #lost#!
+
+    #Append#        Append replace data to the end of existing file.
+
+    Pressing #ESC# equal pressing #"Stop"#.
+
+ ~Contents~@Contents@
+@PDone
+$^#Panels: Work finished#
+
+    S&R shows short work summary:
+
+  #Processed files total#  Number of files, which were processed using
+                         file-mask or others criteria.
+
+  #Found files#            Number of files, which contains search
+                         sequence.
+
+  #Changed files total#    Number of changed files.
+
+  #Created files total#    Number of created files. This variable
+                         equals 1 if special file for saving
+                         ~replace data~@MainDialog@ was created.
+                         Bak-files are ignored.
+
+  #Total found#            The search sequence was found so much time.
+
+  #Total replacements#     Number of performed replacements.
+  #performed#
+
+
+~Contents~@Contents@

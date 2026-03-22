@@ -1,0 +1,8 @@
+.Language=English,English
+.PluginContents=Summator
+
+@Contents
+$ #Summator#
+        This plugin allows to sum   numbers in built-in editor. The result is
+placed in Clipboard. The numbers can be disposed in column, in one or several
+lines.

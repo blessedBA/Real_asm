@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="Windows-1251"?>
+<!DOCTYPE hrc SYSTEM "../hrc.dtd">
+<?xml-stylesheet type="text/xsl" href="../hrc.xsl"?>
+
+<!--
+    Java properties
+with help of:
+    Vlad Dutov <vladonmailru@mail.ru>
+    Konstantin Stupnik <skv@sh.novosoft.ru>
+    cail: some fixes with multyline properties
+-->
+
+<hrc>
+
+<scheme name="javaProp">
+   <!--Comments -->
+   <block start="/^([\!\#])/" end="/$/" scheme="javaProperty" region="dComment" region00="dComment"/>
+
+   <block start="/^\s*(.*?)\s*([\s=:])/" end="/[^\\]?#1 $/x"
+      scheme="javaProperty"
+      region01="dString" region02="dSymbol"/>
+</scheme>
+
+<scheme name="javaProperty">
+   <regexp match="/\\\\/i" region0="dString"/>
+   <regexp match="/\\u[\da-fA-F]+/i" region0="dString"/>
+   <!-- Inet address  (just let be)-->
+   <inherit scheme="mNetAddresses"/>
+   <!-- Date, Time -->
+   <inherit scheme="mDate"/>
+   <inherit scheme="mTime"/>
+
+   <keywords region="dSymbol">
+      <symb name=";"/><symb name="="/><symb name="+"/><symb name="-"/>
+      <symb name="/"/><symb name="*"/><symb name="&amp;"/><symb name="|"/>
+      <symb name="^"/><symb name="("/><symb name=")"/><symb name="["/>
+      <symb name="]"/><symb name=","/><symb name="."/><symb name=":"/>
+      <symb name="!"/><symb name="~"/><symb name="&lt;"/><symb name=">"/>
+      <symb name="%"/><symb name="{"/><symb name="}"/><symb name="?"/>
+      <symb name="_"/><symb name="\"/>
+   </keywords>
+
+   <!-- Java Date -->
+   <keywords ignorecase="ignorecase" region="dComment2">
+      <word name="Mon"/>
+      <word name="Tue"/>
+      <word name="Wed"/>
+      <word name="Thu"/>
+      <word name="Fri"/>
+      <word name="Sat"/>
+      <word name="Sun"/>
+
+      <word name="Jan"/>
+      <word name="Feb"/>
+      <word name="Mar"/>
+      <word name="Apr"/>
+      <word name="May"/>
+      <word name="Jun"/>
+      <word name="Jul"/>
+      <word name="Aug"/>
+      <word name="Sep"/>
+      <word name="Oct"/>
+      <word name="Nov"/>
+      <word name="Dec"/>
+   </keywords>
+</scheme>
+
+</hrc>

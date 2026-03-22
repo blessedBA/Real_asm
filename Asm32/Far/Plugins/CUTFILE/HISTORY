@@ -1,0 +1,18 @@
+history of Cut File Plugin for FAR
+----------------------------------
+
+version 1.1	June 1999	Dennis Selsky
+---------------------------------------------
+Few bugs fixed:
+- files with international characters in filenames were not found;
+- files with spaces in filenames were not assemble by using command:
+	copy /b file 1.zip.000+file 1.zip.002 file 1.zip
+  now using:
+	copy /b "file 1.zip.000"+"file 1.zip.002" "file 1.zip"
+  instead.
+Features added:
+- possibility of specifying piece size in bytes.
+
+version 1.0	May 1999	Dennis Selsky
+---------------------------------------------
+Initial release.

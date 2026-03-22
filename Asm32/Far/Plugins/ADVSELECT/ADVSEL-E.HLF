@@ -1,0 +1,71 @@
+.Language=English,English
+.PluginContents=Advanced file select
+
+@Contents
+$ #Advanced file select#
+
+    This plugin allows to select files in active panel with some
+useful criteria. You may to set a files mask, file size, date(and
+time) of file and, finally, you may select necessary file attributes
+(i.e. Archive, System, ReadOnly, Hidden, Directory and Compressed
+[NTFS only]).
+    In the options dialog you can choose selection mode: Set, Clear
+or Invert. Option "Clear selection first" allows to switch off any
+selected files in active panel.
+
+    It is not necessary to set files size, date, time and attributes at
+one time. 
+
+    #Size format:#
+    size[k|m|g]               - must equal               
+    size[k|m|g]..             - more than or equal       
+    ..size[k|m|g]             - less than or equal       
+    size[k|m|g]..size[k|m|g]  - between (include borders)
+
+    Suffixes K, M and G equal to Kilo, Mega and Giga.
+
+
+    #Time format:#
+    [hh][:mm]             - must equal
+    [hh][:mm]..           - more than or equal
+    ..[hh][:mm]           - less than or equal
+    [hh][:mm]..[hh][:mm]  - between (include borders)
+
+
+    #Date format:#
+    [dd][/|-]mm][/|-[CC]YY]
+    [dd][/|-]mm][/|-[CC]YY]..
+    ..[dd][/|-]mm][/|-[CC]YY]
+    [dd][/|-]mm][/|-[CC]YY]..[dd][/|-]mm][/|-[CC]YY]
+
+    where:
+    dd - Day
+    mm - Month
+    yy - Year
+    cc - Century
+
+
+    #Some examples:#
+    //99       ->  whole 1999
+    /10/98     ->  any day/10/1998
+    //97..//99 ->  begin from 1/1/1997 to 31/12/1999
+    ../10/99   ->  before Oct of 1999
+    5/5/98..   ->  after 5 May 1998 ...
+    10/5       ->  10/05/any year
+    5/5/1      ->  5/05/2001
+    and so on...
+
+
+    ~ Author ~@Copyright@
+
+    #Copyright (c) 1999 Vladimir Tarasov#
+
+@Copyright
+$ #The author of the plugin#
+        The author of this plugin - #Vladimir Tarasov#. To contact
+with me just e-mail to:
+        tsoftgroup@@ors.kirov.ru
+        tsoftgroup@@yahoo.com
+        2:5056/10.77@@fidonet
+        icq: 11754666
+        http://i.am/tsoft

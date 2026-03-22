@@ -1,0 +1,1017 @@
+ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ·
+³"Search and Replace" - life and developmentº ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ·
+ÔÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍËÍÍÍÍÍÍÍ¼ ³        L E G E N D :       º
+                                    ÈÍÍÍÍÍÍÍÍÍµ+ added in current version  º
+ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ·         ³- deleted in current versionº
+³Author:  Ivan Sintyurin AKA Spinozaº         ³* changed in current versionº
+³WWW:  http://www.moris.ru/~spinoza ÌÍÍÍÍÍÍÍÍÍµ! bug fixed                 º
+³E-mail:      spinoza@mail.ru       º         ÔÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ¼
+ÔÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ¼
+
+   If you want to support program's development, please donate some
+money.  My  purses  in  WebMoney.ru  (www.wmtransfer.com)   system:
+Z787475721790 (for USD), E876273527569  (for  Euro),  R538290555814
+(for RUR).
+
+
+ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄ·
+³2.5/06.02.2006º
+ÔÍÍÍÍÍÍÍÍÍÍÍÍÍÍ¼
+ * License: DONATIONWARE.
+ - Software work time limitation.
+ ! When saving replacement to a  file in the root  directory,  it's
+   name determined incorrectly.
+ + In the dialog of hotkey assignment for the plug-in of 2nd  level
+   the name of corresponding plug-in is displayed.
+
+ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄ·
+³2.4/18.01.2005º
+ÔÍÍÍÍÍÍÍÍÍÍÍÍÍÍ¼
+ ! Editor: error when manipulating  width  of  output  in  filetype
+   settings.
+ * FATypes.reg: record for "Visual Basic".
+ + Editor, Viewer, Panels: Ctrl-C in search dialog executes "Count"
+   function.
+ + Editor: Ctrl-A in search dialog executes "Find All" function.
+
+ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄ·
+³2.3/02.05.2004º
+ÔÍÍÍÍÍÍÍÍÍÍÍÍÍÍ¼
+ ! Editor:  in  "Search"  and  "Delete  not  matched  lines"  menus
+   condition of "Regular expressions" option was being ignored when
+   loading if  "Search  without  regular  expressions  by  default"
+   option was off.
+ ! Editor: error when using "Search" command at the end of a file.
+ ! When processing the "\S{RS}" operator, extra zero  symbols  were
+   being inserted into the line.
+ + sr_editor_macro_like_MSVC.reg, sr_viewer_macro_like_MSVC.reg.
+
+ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄ·
+³2.2/11.10.2003º
+ÔÍÍÍÍÍÍÍÍÍÍÍÍÍÍ¼
+ * LICENSE
+ ! "External SRP modules" menu did not save hotkeys after  starting
+   of any plugin.
+ ! Editor: Ctrl-F and Ctrl-H in "found lines list"  works  only  in
+   the current FAR session.
+ * Search regexps: found errors were fixed.
+ ! Panels: errors in replace when using named brackets.
+ ! Editor: program did not found a word in the line beginning  when
+   search was performed in the selected area without regexps.
+ ! Names of some variables in the registry were  being  mixed  when
+   saved.  Probably,  you  will  need  to  adjust   the   following
+   parameters:
+    - Save replace data to file
+    - Exclude directories
+    - Message options/Show message if work is interrupted  by  ESC,
+      Show final message.
+    - Search options/Open search dialog in the locked editor.
+    - Other options/Empty search and replace string at first.
+   I am sorry.
+ ! Selecting option  "Search  options/Open  search  dialog  in  the
+   locked editor" resulted in opening  search  dialog  under  Win9x
+   even if user have pressed cursor-keys.
+ * Some options' default values were changed.
+ * Search  regexps:   you  can  use  quantifiers  in  look-backward
+   operations (see help for details).
+ * Work with file attributes, "smart" dialogs and  work  in  viewer
+   and some other features require FAR 1.70 build 1634 and above.
+ + Command line: you can use environment variables when  specifying
+   name of configuration file.
+ * The program informs that it stops because  the  amount  of  data
+   found is equal to zero. Earlier in this  situation  the  program
+   was silent.
+ * Replace regexps: \S{RS} is approximated aside increases.
+ * FATypes.reg: improved record for "C/C++"
+ * F3 continue work:
+   sr_editor_macro_like_msword.reg
+   sr_viewer_macro_like_msword.reg
+ * FAQ
+ * dll size increased from 245760 to 249856.
+
+ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄ·
+³2.1/08.04.2003º
+ÔÍÍÍÍÍÍÍÍÍÍÍÍÍÍ¼
+ ! Didn't process selected folders on temporary panel.
+ ! Subfolders procession error when folder names changed while they
+   are processed (for example, NewName.srp couldn't rename  folders
+   tree at once).
+ ! Viewer: unicode search did not work.
+ ! Cosmetic in panels: if one panel or both of them are hidden, and
+   the search is finished with "Nothing was found" message, a  part
+   of unneeded progress bar was still  visible  under  the  message
+   box.
+ ! Editor: problem when searching '$'  metacharacter  in  non-empty
+   line.
+ ! Panels: command line did not work.
+ ! Second level plugins' version have been  being  taken  from  the
+   cache, so it could be non-actual.
+ ! Didn't clear named brackets when repeating search.
+ * Symbolic links  processing  logic  have  been  changed:  job  is
+   performed with actual  name,  real  name  is  used  for  service
+   purposes only (to check if  the  folder  is  processed  for  the
+   second time).
+ * Search regexps were improved, found errors were fixed.
+ + Editor: you can turn off automatic search dialog's appearance in
+   "disable text modification" mode (see search configuration).
+ * Viewer: S&R works now if viewer is in hex mode.
+ * Dialogs: use Alt-Shift-digit instead of Ctrl-Alt-digit for quick
+   switching between schemes.
+ * Replace regexps: output width minimal value reduced from 4 to 1.
+ + sr_viewer_macro_like_msword.reg
+   sr_quickview_macro_like_msword.reg
+   sr_infopanel_macro_like_msword.reg
+   sr_editor_macro_like_msword.reg
+ * FAQ
+ * dll size increased from 241664 to 245760.
+
+ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄ·
+³2.0/10.02.2003º
+ÔÍÍÍÍÍÍÍÍÍÍÍÍÍÍ¼
+Attention! Search regexp parsing module  have  been  changed.  Some
+replacement string regexps have been changed.
+
+ * License
+ ! Sections SEARCH/REPLACE were parsed only up to the  first  empty
+   line.
+ ! Wrong replace operator '\D' processing  if  it  was  used  after
+   '\Y'.
+ ! Panels: search using all character tables sometimes did not find
+   anything.
+ ! Panels: r/o-files processing confirmation message is shown  even
+   if there was nothing to replace in these files.
+ ! Panels: files processing was not stopped after pressing "Skip in
+   this file" button.
+ ! Editor: progress-bar freezed sometimes.
+ ! Replace operator '\S' did not work with numbers more than 4Gb.
+ + Now files with size more than 4Gb are processed.
+ + S&R checks necessary version of S&R for  second  level  plugins.
+   You have to configure hot-keys for second level plugins  if  you
+   have used such hot-keys.
+ * FROM  NOW  PROGRAM  USES  SEARCH  REGEXPS  PARSING  MODULE  FROM
+   KONSTANTIN STUPNIK. Take care  before  using  your  old  regexps
+   (schemes), because  this  module  has  different  regexp  syntax
+   which almost completely coincides with Perl, but it differs from
+   the old syntax.
+ + Setting "Path for plugins"  ("Other  options")  affects  plugins
+   search.
+ * Option "Show found in  editor"  ("Other  options")  is  "In  the
+   middle of the screen" by default.
+ * Option "Replace $ with  \r\n when  searching  with  regexps"  is
+   turned off by default. If you used old S&R versions I  recommend
+   you to turn this option off.
+ + S&R shows some additional info on search regexps errors.
+ * Panels: program uses less memory while it scans disks.
+ * Panels: time of the last access is not changed if the  file  has
+   not been changed.
+ * Panels: changed files  counter  does  not  increase  if  program
+   cannot create bak-file.
+ * FATypes.reg: improved records for True-tpl.ini,  "C/C++",  "Text
+   file", FAQ, Esc.xml, perl, INI-file, JavaScript.
+ + FATypes.reg: records for Assembler, RFC, ChangeLog, Call Command
+   resource, "colorer hrc", "nnCron tab".
+ + Panels: you may save replace data to a specified file.
+ + SaveTo - new parameter in config-file.
+ * Editor: when you perform forward or reverse search of word  under
+   cursor, dialog's option "Reverse search" is ignored.
+ * Editor: when  you  perform  reverse  search  word  under  cursor
+   (command "6" in menu) search starts always from position,  which
+   is equal to the beginning of the current word.
+ + Program does not perform replacement if replace data is equal to
+   search data.
+ + In FAR 1.70 build 1282 and above S&R can differentiate  a  panel
+   with real files from other panels.
+ * Option "Show message if  nothing  was  found"  affects  work  in
+   editor and viewer.
+ + Option "Show final message" ("Message options")  allows  you  to
+   turn the message with work result off. Turned on by default.
+ + Editor: if option "Select found" is turned on  S&R  will  select
+   several lines too.
+ + Editor: dynamic change of selected area size when S&R  processes
+   selected area.
+ + Editor: option "Delete  empty  lines"  is  individual  for  each
+   editor. Its default value  is  configured  in  the  "Replacement
+   options".
+ + Editor: option "Select found" is individual for each editor. Its
+   default value is configured in the "Search options".
+ - Editor: option "Pick up the word" has moved to "Other options".
+ + Editor: option "Change top screen line if found string exists in
+   current screen" ("Other options")  affects  word  under  cursor.
+   Turned off by default.
+ + Option "Process selected items if panel contains selected items"
+   affects work with config-file.
+ + Simple check on duplication in  second  level  plugins  hot-keys
+   assignment.
+ + Editor:  if  editor  is  in  "disable  text  modification"  mode
+   (Clrl-L) and you  press  any  letter  or  digit,  search  dialog
+   automatically will be opened and typed symbol will be placed  in
+   the search line. This behavior exists only  in  FAR  1.70  build
+   1282 and above.
+ + Editor: if you try to perform replacement  or  deletion  of  not
+   matched lines when editor  is  in  "disable  text  modification"
+   mode, S&R will give the corresponding message and stop its work.
+   This behavior exists only in FAR 1.70 build 1282 and above.
+ * Work with file attributes, "smart" dialogs and  work  in  viewer
+   require FAR 1.70 build 1282 and above.
+ + S&R can replace standard  FAR  "Temporary  panel"  plugin  using
+   temppanel.srs.
+ * Replace regexps: instead of the operator  "\I"  you  should  use
+   "$I" operator for "Internet shortcut".
+ * Search regexps: file processing is optimized.
+ + New replace regexps:
+   $(name)  Environment variable with specified name.
+   \Q       Beginning  of  operators  quotation  - all in quotation
+            will be processed as text, not a regexp, till  operator
+            \E
+   \E       Means  end of operators  quotation if follows after \Q,
+            otherwise - command to stop case changing (the same  as
+            \/)
+   \I, \i   Invert case of symbols
+   \V{E}    file version (data from VS_FIXEDFILEINFO)
+   \V{F}    product version (data from VS_FIXEDFILEINFO)
+ + You can copy schemes using F5 key.
+ + Replace regexps: you can specify any symbol-fill character  (not
+   only space), when specifying width of output.
+ * File masks are sorted and got rid of duplication before using.
+ * Cosmetic: in message with filenames  S&R  tries  to  show  drive
+   letter for names, which do not fit in message space.
+ + Editor: in file-types settings  you  can  specify  full  replace
+   regular expression.
+ + Two different items  available  in  panels  menu:  "Search"  and
+   "Replace".
+ + You can specify a unit of measurements and  symbol  for  placing
+   between groups of categories when using replace operator "\S".
+ + Editor: button "Pick up the word under cursor" in dialogs.
+ + Dialogs in panels, editor and viewer:  you  can  choose  one  of
+   first 10 schemes without opening the menu  using  the  following
+   keys combination: Ctrl-Alt-0, Ctrl-Alt-1, ..., Ctrl-Alt-9  (this
+   will work only in FAR 1.70 build 1282 and above).
+ * Panels: in the message, which appears when you press  Esc  while
+   processing some file, a button to stop processing all the  files
+   is placed first. Be attentive!
+ + Editor: commands "Choose file-type" and "Find  all  sections  of
+   the file, using settings of another type" in menu.
+ + other_macro.reg: in editor Alt-S is equal to "Find all  sections
+   of the file", Alt-W is equal to "Find  all  occurrences  of  the
+   word under cursor", Alt-C - "Choose file-type",  Alt-X  -  "Find
+   all sections of the file, using settings of another type".
+ + Option "ignore spaces" for replacing search regexp operator "x".
+ + Replacement confirmation dialogs dynamically change their  width
+   depending on console width.
+ * After changing second level plugins' settings menu  for choosing
+   plugins is not closed, it is closed only after cancellation of a
+   choice.
+ + Panels: dropdown list "Target" (this  works  only  in  FAR  1.70
+   build 1282 and above).
+ + You can specify "additional search" options in config-file.
+ * Panels: if in FAR 1.70 build 1282 and above showing  found  list
+   in menu is enabled, S&R nevertheless tries to place  found  list
+   in temporary panel.
+ + You can open second level plugins menu simultaneously in several
+   FAR sessions.
+ + Viewer: plugin reports about files reading errors.
+ * FAQ
+ * dll size increased from 176128 to 241664.
+
+ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄ·
+³1.9/28.12.2001º
+ÔÍÍÍÍÍÍÍÍÍÍÍÍÍÍ¼
+ ! Plugin did't work in editor or viewer, which was opened  from
+   found files menu.
+ ! Crash if replace regexp refered to not existing brackets.
+ ! F4 key worked even in empty plugins menu.
+ ! Looping when doing "Find all" if nothing was  found  and  option
+   "Show the partition" was turned off.
+ ! Memory allocation errors.
+ ! Plugin loses security attributes of changed file in panels.
+ ! Plugin loses "compressed" and "encrypted" attributes of  changed
+   files in panels.
+ ! Editor: processing "Origin" option error.
+ ! Editor: editing   options   for  not  existing  (or  not   used)
+   file-types.
+ ! Ini-file always was searched in the current folder.
+ ! Error with search using all installed character tables.
+ * SRPCache contains current FAR language information.
+ * Cosmetic changes in found lines list in editor.
+ * Setting  position   from   found   lines   list   depends   on
+   "Configuration/Others/Show found in editor" option.
+ * Cosmetic  changes   with  settings  current  position  while
+   building  found lines list.
+ * "Smart"  dialog's  logic  have  been  changed  (Notice:  "smart"
+   dialogs available only in FAR 1.70 build 883 and above).
+ + Filter in editor's found lines list (see help).
+ + Hot keys auto assignment  in  editor's  found  lines  list  (see
+   help).
+ + FATypes.reg:  records for  perl,   TechInfo  (see  FAR  folder),
+   history.txt (this file :-), improved C/C++ record.
+ + Additional search setup: settings for symbolic links procession.
+ + Additional search setup: exclude directories mask.
+ * Additional search  setup:  attributes  are  ignored  by  default
+   ([?]).
+ * Improved search regexps parsing module from  Igor Ruskih.
+ * Shift-F7 in editor now is equal (I  hope  :-)  to  internal  FAR
+   Shift-F7.
+ + Parameters "Reverse search", "Scope" and "Origin" are individual
+   for each editor.
+ * Cosmetic in panels dialog: "Count" button is moved down.
+ + Possible to update SRP list after failed  loading  of  any
+   SRP.
+ + Changed behavior of Shift-F1 in SRP menu.
+ + Option "Configuration/Others/Show message if work is interrupted
+   by ESC".
+ * ESC processing improved.
+ + Option "Configuration/Others/Process  selected  items  if  panel
+   contains selected items". Off by default.
+ * FAQ
+ * Some hotkeys have been changed.
+ * dll size increased from 167936 to 176128.
+
+ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄ·
+³1.8/28.09.2001º
+ÔÍÍÍÍÍÍÍÍÍÍÍÍÍÍ¼
+Attention! Processing of "|" operator in search regexps was changed.
+
+ ! Now program works  with  environment  variables,  which  contain
+   symbols with codes above 0x7F.
+ ! Crash during non-standard versioninfo processing for some  files
+   (thanks to Vadim Klebanov for help).
+ ! Crash during versioninfo processing for some packed files.
+ ! Cosmetic bug in "Configuration/History".
+ ! Cosmetic bug in found lines list (editor).
+ ! Memory leak while performing replace in unicode.
+ ! Plugin modules ignored language changes. This is fixed, but only
+   for FAR 1.70 build 817 and above (you have to wait 4th  beta  of
+   FAR 1.70).
+ + Record for Clipper in fatypes.reg, some additional  examples  in
+   newnamescheme.reg (thanks to Alexey Yatsenko)
+ + Additional examples in dir2file_scheme.reg.
+ * Terminology was changed: "Partition" -> "Section".
+ + Option "Path for settings storage" (in "Configuration/Others").
+ + New type of path for replace regexp \P{...}: R - relative path.
+ * Mask "|*.bak" is processed as "*|*.bak".
+ + Date value will be always stored in "Additional search setup".
+ * Improved search regexps parsing module from  Konstantin Stupnik.
+ + New search string regexps:
+   (?{name}  ) - group symbols in a pattern with specified name and
+                 memorize.
+   \p{name}    - inner regexp reference to it's parsed bracket with
+                 specified name.
+ + New replacement string regexp:
+   ${name}     - found pattern with specified name.
+ * The "|" operator is now processed as in Perl.
+ * The dialog in panels is approximate to standard Alt-F7.
+ + Option "Use string from a history if there is no word under  the
+   cursor" in "Configuration/Search". Off by default.
+ + You can use all installed character tables for search in panels.
+ + In editor button to change file-type has its own hotkey.
+ + In editor's menu with file-types  cursor  sets  to  the  current
+   file-type.
+ * In editor's found lines menu cursor sets to the  line  which  is
+   the nearest to the current position in the file.
+ + Ctrl-Enter in editor's found lines menu: "Go  to  selected  line
+   and show the menu again".
+ + You can open dialog to edit settings for current file-type  from
+   menu with found lines too.
+ + Temporary panel configuration features.
+ + You can rename schemes in menu.
+ + Progress-bar in  editor  and  viewer  contains  some  additional
+   information.
+ + "Smart" dialogs. Required FAR 1.70 build 881 and above (you have
+   to wait 4th beta of FAR 1.70).
+ + Option  "Store  found  occurrences  in  cache  (in  editor)"  in
+   "Configuration/Search".
+ * Option "Replace with" in panels does not  depend  on  editor  or
+   viewer.
+ + S&R can open non-modal editor in FAR 1.70 beta 1 and above.
+ * File position in editor will be restored  if  editor  is  opened
+   from menu in panels.
+ + NoFinalMsg - new ini-file variable.
+ * FAQ
+ * dll size increased from 139264 to 167936.
+
+ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄ·
+³1.7/14.06.2001º
+ÔÍÍÍÍÍÍÍÍÍÍÍÍÍÍ¼
+
+ ! Bug with "Search without regular expressions by default" option.
+ ! Cosmetic bug with progress-bar in editor.
+ ! Wrong processing \u and \l regular expressions in search string.
+ ! Exception when closing editors.
+ - Option "File mask is regular expression" is not necessary, since
+   there is an autodetection of file mask type (see help).
+ + New option "Confirmation of replacement" in editor.
+ * When item 3 or 4 of s&r menu in editor is  chosen,  search  will
+   always start, even if replacement had started before.
+ + You can use FAR standard mask (wildcards and brackets, not  only
+   wildcards as before).
+ + Really true support of plugin modules. Now all information about
+   plugin modules for S&R is  described  in  the  separate  file  -
+   srp_history.
+ * "Time of last change" is  selected  by  default  in  "Additional
+   search setup".
+ + New variable for ini-file: Mode
+ + Exclude mask (see help).
+ + File with regular expressions description: regexps.txt
+ + sr_filepanel_macro.reg - example of macros for file panels.
+ + ctrlshiftf11.reg - example of macros  to  open  menu  of  plugin
+   commands in editor, viewer, panels etc.
+ + Output width manipulating (replacement regular expressions).
+ + New replacement string regexps:
+   \-            - the '-' symbol
+
+   Operators which are working only when processing files group:
+   \P, \P{T,D,N} - path to an object which is being processed.
+   \I            - Internet shortcut, use it only for *.url files.
+   \V{N}         - Version of the file which is being processed
+                   (from versioninfo resource)
+   \F, \F{T,N}   - Name of the object which is being processed.
+   \Y{T,P}       - Date and time of the object which is being
+                   processed.
+   \S            - Size of the object which is being processed.
+ * Improved processing of selected area in editor.
+ + Some registry variables have been changed. You must do following
+   operations:
+   1. Export following registry key to reg-file:
+      HKCU\Software\Far\Plugins\S_And_R
+   2. Open the reg-file in editor and do case sensitive replace
+      using regular expressions:
+      Search for  : ^"(code)(page)"=
+      Replace with: "\u$1\u$2"=
+   3. Search for  : ^("Char(Table)")(=.+)$
+      Replace with: $1=-\n"$2Num"$3
+   4. Search for  : ^("MaskIsRe"=).+$
+      Replace with: $1\-
+   5. Save changes to file and import it back to the registry.
+ + In editor it is possible to specify starting point for search in
+   selected area.
+ + Errors checking in folders list.
+ + Folder name in folders list can be both relative and full.
+ + You can use comma as a separator in folders list.
+ + Improved "Find All" function in editor.
+ * Some hot-keys in dialogs have been changed. Don't get tangled :)
+ + You can open temporary panel from menu in panels.
+ * Thanks to DoctoR (doctor@@skeptik.net, http://dr-gng.dp.ua)  for
+   translating hlf&lng to Ukrainian.
+ * FAQ
+ * dll size increased from 122880 to 139264.
+
+ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄ·
+³1.6/23.04.2001º
+ÔÍÍÍÍÍÍÍÍÍÍÍÍÍÍ¼
+
+   This version implements some of it's features  using  2nd  level
+plug-ins, which are loaded as they  are  needed,  not  to  allocate
+memory for nothing.
+
+ ! Errors in plug-in's dialog in panels, concerning default  cursor
+   position (detected in FAR 1.6x).
+ + "Compressed" and "Encrypted" attributes processing.
+ + New option "Save time of the last change" in
+   "Configuration/Others".
+ + Now it's possible to search for files  of  null  length.  Notice
+   that settings "More then or equal" and "Less then or equal"  are
+   now checkboxes, so you 'll  have  to  look  through/rebuild  the
+   schemes, where these parameters have been used.
+ - 15000 files limit when searching in panels.
+ + When searching, matches list is shown in temporary  panel,  this
+   feature is implemented by a special plug-in temppanel.srp  -  it
+   and its messages file (temppanel.msg) should be  placed  in  the
+   same folder, as s_and_r.dll.
+ + Configuration is now performed by a special 2nd level plug-in  -
+   config.srp and config.msg. It  should  be  placed  in  the  same
+   folder, as s_and_r.dll.
+ * In "Find all occurrences" mode it's possible  to  cause  plug-in
+   show file partitions names, in which  search  string  occurrence
+   have been found. Partitions processing depends on  settings  for
+   type of the file being edited. E.g., for program sources, it may
+   be function name, for an ini -file  -  section  name  etc.  File
+   Reg\FATypes.reg contains an example of settings for several file
+   types. If you have similar settings for  different  file  types,
+   send them to me and they will be included in  the  distribution.
+   Idea  have  been  taken  from  Find-All  plug-in  by  Alexander
+   Nazarenko.
+ + New function when working in editor - "Find  all  partitions  of
+   the file". Works with the same settings as the previous item.
+ + New replacement string regexps:
+   \D{T} - replacement perform date and time.  "T" stays for  meant
+   value; Y - year, M - month, D - day, h - hour,  m - minute,  s -
+   second.
+   \#{-number} - substitute counter value, decremented by  "number"
+   in parentheses.
+   \#{numberh} - substitute hex counter value, incremented by a hex
+   "number" in parentheses.
+   \#{number,size}, \#{-number,size} or \#{numberh,size}  -  number
+   of digits in the number being substituted is  checked.  If  it's
+   less than "size" parameter, the corresponding number  of  zeroes
+   prefix counter value.
+   \#{number,size,s} or \#{-number,size,s} - sign of the number  is
+   always shown: + or -.
+ * Counter  increments   with   every   replacement   (earlier   it
+   incremented with every \# regexp usage).
+ + Files replacement with regexps usage ability. Implemented   with
+   2nd level plug-in newname.srp (newname.msg is it's message file).
+   If this plug-in is placed in the same folder as s_and_r.dll, then
+   a menu will be shown during S&R  startup  in  panels  to  choose
+   search or files renaming. This plug-in appearance  in  distribu-
+   tion means that my another plug-in NewName will develop no more,
+   'cose it's features  are  covered  by  newname.srp.  newname.srp
+   schemes example, designed to replace standard FileCase  plug-in,
+   are placed in newnamescheme.reg.
+ * Possible to save schemes with the same name,  if  letters'  case
+   differs.
+ * FAQ
+ + Some settings are available only for manual registry editing.
+   See description in readme.
+ + sr_infopanel_macro.reg and sr_quickview_macro.reg - macros, used
+   to replace standard search in info panel and quick  view  panel.
+   Work only in FAR 1.70 build 559 and later.
+ * dll size increased from 110592 to 122880.
+
+ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄ·
+³1.5/07.03.2001º
+ÔÍÍÍÍÍÍÍÍÍÍÍÍÍÍ¼
+
+ ! Plug-in crash, when replacing in editor, using  a  scheme  saved
+   from search dialog (bug added in 1.3).
+ * Plug-in dialog in panels changed.
+ + Ability to search/replace in folders list. E.g.,  you  may  just
+   specify %path% and all the folders listed in this variable, will
+   be processed.
+ + New function in editor  -  "Find all  occurrences  of  the  word
+   under cursor"
+ + File-mask may be a regular expression.
+ * dll size increased from 106496 to 110592.
+
+ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄ·
+³1.4/01.03.2001º
+ÔÍÍÍÍÍÍÍÍÍÍÍÍÍÍ¼
+ - Looping when replacing with  a  blank  string  in  editor,  when
+   regexp matched the whole line.
+
+ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄ·
+³1.3/27.02.2001º
+ÔÍÍÍÍÍÍÍÍÍÍÍÍÍÍ¼
+
+ ! User couldn't interrupt not matched lines deletion with ESC.
+ ! Using \xNN regexp in replacement string caused a  part  of  this
+   string to disappear :((
+ ! When using system history, if before starting plug-in  one  per-
+   formed internal Far search, corresponding dialogs  lines  didn't
+   get last used parameters time to time...
+ ! Trash in replacement  confirmation  dialog  in  editor  in  non-
+   standard console size.
+ ! Errors, concerning cursor moving when performing replacements in
+   editor, and all  the  corresponding  problems  (e.g.,  sometimes
+   replacement in vertical blocks malfunctioned etc.)
+ ! File creation date is not changed when replacing in panels.
+ * If plug-in first works in selected area, and then user deselects
+   it and want to continue plug-in's work (menu items 3 and 4),  it
+   will be continued from the cursor.  Earlier  versions  displayed
+   "Selection not found" message, and no continuation was possible.
+ * Two replacement string regexps  meanings  exchanged.  Since  now
+   "$$" means end of line (equal to \r\n),  and  "\$"  -   the  '$'
+   symbol.
+ + Possible to use schemes in "Delete not matched lines" dialog.
+ * Correcting place of displaying of found occurrence in editor.
+ + In "Configuration/Others" you  can  specify,  where  to  display
+   found occurrence when searching in editor: as before  (default),
+   at the top. in the middle or at the bottom of the screen.
+ + Option "Search  without  regular   expressions  by  default"  in
+   "Configuration/Other". Off by default.
+ + Work in viewer (only in Far 1.70 build 410 and later).
+ * sr_editor_macro.reg contain macros to  replace  standard  editor
+   search/replacement. sr_viewer_macro.reg contain  macros  to  re-
+   place  standard  viewer  search.  All  other   macros   are   in
+   other_macro.reg
+ + When works lasts rather long time, a progress-bar is  shown.  It
+   indicates plug-in works, not is hang up :)
+ * Option "Work without // when searching with regexps"  is  on  by
+   default. Default is to use system history  in  search,  replace-
+   ment,  masks strings.
+ * Copies of the original file always have ".BAK" extension.
+ + Option "Do not process overlapping occurrences  when  continuing
+   searching" in "Configuration/Search". It affects  only  work  in
+   editor and only forward search (from the beginning of  the  file
+   to the end).  Affects  search  continuing. Off by default.
+ * Some hot-keys in dialogs have been changed. Don't get tangled :)
+ - CodeTableName registry variable is not needed any more.  If  you
+   like, delete it yourself. You may automate this process by doing
+   the following:
+   1. Type in command line:
+      regedit /ea sr.reg HKEY_CURRENT_USER\Software\Far\Plugins\S_And_R
+   2. Open file sr.reg in editor and perform the following
+      replacement in it with s&r using regexps:
+      Search: ("CodeTableName"=).+?$
+      Replace with: $1-
+   3. Import changed sr.reg into registry
+ * When searching in panels, you may not specify search string.
+ + It's possible to translate codepage of replacement data into any
+   codepage installed in Far. This feature is not  accessible  when
+   working with Unicode. Hm... So s&r became just a file recoder...
+   FarTrans was deleted because it got unnecessary :-)
+ * Pressing a hyperlink in help causes your browser or mail  client
+   to run. This works only in Far versions 1.70 and later.
+ + Possible to specify processed files  attributes.  It  will  work
+   only in Far 1.70 build 321 and later.
+ * Plug-in uses updated version of regexps parser. It caused a  lot
+   of old bugs to disappear, and some new, maybe, to appear... :)
+ * FAQ
+ + ReadMe
+ * dll size increased from 81920 to 106496. Is it too much? Do  not
+   know, just find a program  with  _the  same_  functionality  and
+   compare the size...
+
+
+ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄ·
+³1.2/14.12.2000º
+ÔÍÍÍÍÍÍÍÍÍÍÍÍÍÍ¼
+
+Attention! Some replacement string regexps have been changed.
+
+ ! Second attempt to  deliver  from  plug-in's  falling  down  when
+   returning from the editor, opened by  the  plug-in  itself,  and
+   s&r was called there at least once (was a stable bug under w2k).
+ ! When searching text in OEM code page some  letters-like  pseudo-
+   graphics symbols found.
+ ! Looping during reverse replace
+ ! Sometimes in editor trash inserted in the end of the  line  when
+   replacing something. By the way, it's not a bug of the  plug-in,
+   but the one of Far or plug-ins, which redraw the screen.
+ * According to numerous requests $0 - $9 and $A - $F are  used  to
+   substitute found groups into replacement string.
+ * \E regexp now means end of case change, not the 14th group.
+ + New replacement string regexp:
+   $$ - the '$' symbol
+ + Added macros to search the word under cursor in sr_macro.reg
+ * Focus in dialogs is automatically  replaced  to  search  string,
+   "OK" button or other options depending on what user have pressed
+   last time, and on error in parameters, if it exist.
+ + Blank lines in editor now are processed.
+ + New settings option - "Search from next position in the editor".
+   If it is set, search in editor will start from the next position
+   after cursor. This option affects only "Search" function. Off by
+   default.
+ * When working in panels, number of found, not processed files, as
+   it has been before, is displayed.
+ * If search of files was interrupted  on  some  reason,  but  some
+   files were found before this, usual  menu  to  work  with  found
+   files will be displayed.
+ * Plug-in passes files, which it cannot open, and continues  work.
+   It stopped before.
+ + Option  to  work  in  editor  -  "Do  not  process   overlapping
+   occurrences". On by default. Details in hlf.
+ * One cannot save more than one scheme with the same name.
+ + New editor function - "Delete  not  matched  lines"  -  deleting
+   lines, which do not contain at least  one  occurrence of  search
+   string.
+ + Now  it's  possible  to  search  in  selected  folders.  Options
+   "Process subfolders" and "More options" work with every  search,
+   not only when searching with file-mask.
+ * Working with unicode changed - during unicode  files  search/re-
+   placement, first, they are converted into oem,  then  search  is
+   performed.  During  replacement,  conversion  oem -> unicode  is
+   performed. Of course, I've  tested  plug-in  work  with  unicode
+   files, but one can't be enough sure at all the things,  so  KEEP
+   OPTION "SAVE A COPY OF THE ORIGINAL FILE" FOR AT LEAST SOME TIME
+   SET, get safer :) What have I made all of it for? Look this file
+   items below.
+ + Reverse bytes order unicode files processing.  These  are  files
+   with first two bytes FEFF. Previously only FFFE-files processed.
+ + Case insensitive search in unicode.
+ + Words search in unicode.
+ + When working with unicode, now it's allowed to use regexps.
+ + Now you can count the number of search string occurrences  found
+   not only in editor, but also in panels ("Count" button).
+ * FAQ
+ * dll size increased from 73728 to 81920. You know, where  to  get
+   free cheese :*)
+
+ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄ·
+³1.1/11.11.2000º
+ÔÍÍÍÍÍÍÍÍÍÍÍÍÍÍ¼
+
+ ! Selected text replace looped, if selected block size was  single
+   symbol, and replacement string  (more  precisely  -  replacement
+   symbol) was equal to the search string.
+ ! Cursor didn't like to set on a found file, if its name contained
+   square brackets.
+ ! Under NT/2000 console title messages  were  put  in  some  wrong
+   codepage.
+ ! Correct (hope ;) work with vertical blocks in  editor,  if  they
+   contain tab symbols, and FAR's "Expand Tabs to spaces" option is
+   not set.
+ ! Correct work in editor with empty blocks,  which  place  out  of
+   line bounds.
+ ! Plug-in crashed when returning from an  editor,  opened  by  the
+   plug-in itself, and at least once s&r was run in the editor.
+ ! Wrong offset was displayed in  replacement  confirmation  dialog
+   for large files.
+ ! A lot of little bugs when working in editor - I'd get tired if I
+   enumerate them :-)
+ + In  editor  found  occurrence  is   selected,  when   displaying
+   replacement confirmation dialog, independently from  the  option
+   of the same name.
+ + Possible to use empty string as a replacement one in editor.
+ + If after performing replacement changed line contains no symbols
+   it  will  be  deleted  (this  rule  may  be  turned  off   using
+   "Configuration/Replacement").
+ + New menu item in editor - "Continue (reverse search"  -  similar
+   to "Continue" item, but search  will  be  performed  in  reverse
+   direction. According to this new feature, file sr_macro.reg  was
+   changed.
+ + Searching for words  (see  "Configuration/Search")  is  possible
+   without using regexps.
+ + Global search in editor is possible.
+ + New menu items in editor: "Search the word under the cursor" and
+   "Reverse search  of  the  word  under  the  cursor".  They  make
+   possible  to  find  the  next occurrence  of   the   word   (see
+   "Configuration/Search"),  cursor  is  positioned   on,   without
+   displaying the dialog.
+ + New option in search/replacement dialog in  editor  -  "Pick  up
+   word". If this option is set, the word, cursor is positioned at,
+   is being automatically inserted in the search string.
+ + If no selected blocks, in editor, option "Selected text" is  not
+   shown.
+ + Automatic parameter choose: "From cursor" or "Selected text", it
+   depends on existence of selected block in editor. May be  turned
+   off in "Configuration/Others" (option is turned off by default).
+ + In editor, if replacement  string  contains  line  feed  symbols
+   sequences (\r, \n, \r\n), the corresponding number of  lines  is
+   inserted in the file.
+ + In  editor  search/replacement  dialog  new  button   appeared -
+   "Count" - to  display  number  of  found occurrences  of  search
+   string.
+ + In  editor  search  dialog  new  button  appeared - "Find All" -
+   to search lines, containing at least  one occurrence  of  search
+   string, display a menu with found lines list, making it possible
+   to jump to any of them selectively.
+ + New  replacement  string  regexps   "\#"   and   "\#{number}"  -
+   respectively substitute counter  value  and  substitute  counter
+   value, increased by specified number. See  also  "Configuration/
+   Replacement".
+ * A lot of little inner changes, even don't remember all  of  them
+   now :)
+ * FAQ.txt
+ - Since now plug-in always builds filelist, so option "Build files
+   list" and BuildList registry key are not needed  any  more.  You
+   can delete the latter by importing file  RemoveOddKeys.reg  into
+   registry.
+ + Help, faq and history have been translated into  English. Thanks
+   to Konstantin Dyakov and Anton Lykov.
+ * dll size increased from 61440 to 73728.
+
+ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄ·
+³1.0/02.10.2000º
+ÔÍÍÍÍÍÍÍÍÍÍÍÍÍÍ¼
+
+ ! Trying to stop processing a file with size more than  6 Mb  one
+   needed to answer the same question several times.
+ ! Sometimes number of changed files, shown in the  message  about
+   work performed, was wrong.
+ ! Scheme setting up codepage select errors.
+ ! Files selection was removing, even  if  the  user quitted  from
+   plug-in, doing nothing there.
+ ! Igor Ruskih  sent  me  a  new  regexps  parser,  in  which, for
+   example, bug of russian letters  from  0x90  to  0x9F was fixed
+   (e.g., when searching in case insensitive mode, it didn't  find
+   words, containing these letters).
+ * Special symbol "\s" treats now as tab/space/lf/cr
+ + Special symbol "." may be optionally treated as "any symbol" or
+   "any symbol except \r and \n". Depending on the  configuration,
+   it is set up with the "s" parameter, or "Process several lines"
+   option.
+ * Options are separated in the sections.
+ * Option "Case insensitive" is changed to "Case sensitive"
+ + Now it is allowed not to enclose the search string with slashes
+   when  working  with  regexps.  This  option  is   set   up   in
+   "Configuration/Search" (turned off by default).
+ + When running from command line it's  possible  to  use  "\"  or
+   space instead "/".
+ + "Remove selection from  files"  in  "Configure/Others"  (on  by
+   default). If it is off, files selection is not  lost,  if  it's
+   possible.
+ + It's  possible  to  make  plug-in  building  files-list   while
+   replacing. It leads to stop looping,  occurs sometimes at  some
+   "lucky men". It depends on  an  option  in  "Configure/Replace"
+   (on by default). Setting it off will increase speed, but think,
+   before doing it...
+ + It's possible to move a scheme up/down-wards using ctrl+up  and
+   ctrl+down keys.
+ + Work in editor of  FAR:  plug-in  replaces  search  in  replace
+   abilities in editor, adding to it ability to work with  regexps
+   and ability to process only  selected  text.  For  convenience,
+   I recommend set a  macro  to  F7,  Ctrl+F7,  Shift+F7,  calling
+   similar commands of plug-in  (you  may  use  ready-to-use  file
+   sr_macro.reg, just set 'S' as a hotkey  for  the  plug-in,  and
+   then import the file into registry).
+ + Ability  to  make  replacements  reading  parameters  from   an
+   ini-file. It is useful when replacing data with size up to 2550
+   bytes (dialog has a limitation of 512 bytes).
+ + Ukrainian lng&hlf
+   (thanks to Alexander Krynko <sky@cc.pib.alex-ua.com>)
+ * FAQ.txt
+ * dll size increased from 45056 to 61440... Do you  think  every-
+   thing goes for free? ;-)
+
+ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄ·
+³0.9/14.07.2000º
+ÔÍÍÍÍÍÍÍÍÍÍÍÍÍÍ¼
+
+ ! Plug-in analyzed replacement field even in case of search only
+ - Upper left corner indicator removed
+ - Command line view/edit/go feature are threw away, 'cose this
+   plug-in is not a place for them. Don't worry, they are going to
+   be built into FAR...
+ + Possible to run plug-in for searching or replacing something
+   directly from the command line.
+ * Esc pressing checks more rare, than it was before.
+ + File attributes are saved.
+ + Read-only files are processed too.
+ * Some changes in English lng, caused by users' wishes. Some mistakes
+   have been corrected...
+ + Console title is changed for working time.
+ + Possible to make plug-in showing processed file name in console title.
+   It may be set in configuration.
+ + After search finishes, number of found files is shown in console title.
+ + After search and replacement finishes, number of found files is shown in
+   final message.
+ * Search algorithm changed. Besides other changes, I stopped using
+   files projected into memory. I read file in pieces, but it causes
+   plug-in use sometimes up to 6Mb of memory. Don't worry, it frees it
+   in the end usually... :-) As a result of modification of the major
+   part of the code, search and replacement (and especially search only)
+   are running far more faster! I just want to say, that I do not
+   guarantee full absence of bugs (AS IS and so on...) in plug-in, so
+   at least for the first time, don't turn saving original file option off!
+
+ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄ·
+³0.8/25.06.2000º
+ÔÍÍÍÍÍÍÍÍÍÍÍÍÍÍ¼
+
+ ! Far died, if found files menu output was disabled
+ * Now s&r:goto//path command is case insensitive
+ * Now possible (and it's needed) to use '\' instead of double one in command
+   line
+ + Any "S&R:" command may include system environment options
+
+ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄ·
+³0.7/24.06.2000º
+ÔÍÍÍÍÍÍÍÍÍÍÍÍÍÍ¼
+
+ * "Search only!" option removed, instead of it now one needs to set "Replace
+   with" option, and unset this option to use only search. It is more
+   intuitive...
+ + New command line features:
+   S&R:v//<command - transmits "command" to the command processor, saves
+                     it's output in a temporary file, which is later opened
+                     in viewer
+   S&R:e//<command - similar for editor
+   All the rest preferences in hlf... This idea was an advice of Ilya Gershman.
+   (loudly) Thanks!
+
+   S&R:g//path     - jump to specified folder/file
+ + Possible to cancel showing menu with found files, then files list will be
+   automatically saved (sense of this feature will get clearer in future
+   versions...).
+ + Possible to specify log name end (sense of this feature will get clearer
+   in future versions...)
+ * FAQ.txt
+ ! No enter focus in configuration dialog.
+ * "Stupid" file-masks check developments (see also FAQ#20).
+
+ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄ·
+³0.6/13.06.2000º
+ÔÍÍÍÍÍÍÍÍÍÍÍÍÍÍ¼
+
+ ! Root folder selected files were not shown.
+ ! Was no reaction to Esc in some cases while folders tree was worked through.
+ + Some "stupid" file-masks check.
+ + Upper left corner indicator, showing if plug-in is working, and is not halt
+   :-) (btw, nevertheless plug-in sometimes goes asleep for some seconds,
+   but I cannot determine the reason... the main fact is that it awakes in the
+   end :-)
+ + Number of files processed while searching is shown.
+ + Ability to call FAR viewer/editor from the command line/user menu/files
+   associations:
+     S&R:v//filename - opens the file in viewer
+     S&R:e//filename - opens the file in editor
+   Just don't ask me, what's the relation to search and replacement :-)
+   That's my wish...
+
+ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄ·
+³0.5/04.06.2000º
+ÔÍÍÍÍÍÍÍÍÍÍÍÍÍÍ¼
+
+ ! '&' symbol in replacement confirmation dialog misses no more.
+ * In replacement confirmation dialog whole strings are shown (till now
+   they were shown up to the first 0x00 symbol)
+ ! Sometimes irregular stuff had been passed to regexps parser, so sometimes
+   regexps like /\bword\B/ and /^/ were shown incorrectly...
+ + Possibly to use system history for the "Replace with" field. Forgot to
+   do it in the previous version... :-)
+ + Now it's possible to use any history for search, replacement, masks fields
+   (see Configuration).
+ * Now plug-in works in temporary panel (and similar), but only when searching
+   in selected files.
+ * Reworked everything concerning searching files by mask. Now no additional
+   files lists are built. Search is performed at once in a file, found
+   according to a mask. As a result - memory requirements decreased, and
+   number of files processed when searching or replacing have no limitations.
+ * Simple search brings no more than 15000 files, but I think, it will be
+   enough for you? :-)
+ + Special $ symbol when working with regexps is treated as \r\n
+   (see Configuration)
+ + Possible to specify minimal and/or maximum size of searched files.
+ + Possible to specify preferred date (or time period) for searched files.
+ + Decimal offset of found stuff is written to a log.
+ + ESC press handling while searching in the current file.
+ * FAQ.txt
+ - A couple of registry keys are no more used (SystemHistory and ShowProgress).
+   You can delete them by importing RemoveOddKeys.reg into registry
+ * dll size increased from 40960 to 45056... Gettin' older and bigger... :-)))
+
+ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄ·
+³0.4/21.05.2000º
+ÔÍÍÍÍÍÍÍÍÍÍÍÍÍÍ¼
+
+ ! Sometimes an irregular message appeared during replacement confirmation
+   (e.g., when working with unicode).
+ ! Zero sized files are handled correctly.
+ ! Far died. Bug seems to be found and destroyed...
+ * Filenames in dialogs and messages are shown with full path (missized part
+   is left-cut). It's easier now to work, imho...
+ * New regexps parsing module from Igor Ruskih.  Now regexps work is correct
+   in any codepage (as he says ;-)
+ * Codepage choosing method is changed. Codepage name is shown in the main
+   dialog.
+ * Message shown while building files list have been changed (no use in
+   pressing Esc that time).
+ + While searching, filename of processed file is shown.
+ + In replacement confirmation offset of found data, number of characters being
+   replaced, and number of characters replacing them are shown.
+ + "Stupid" regexps check (like /a*/). Now using it may cause finding
+   nothing, but, imnsho, it's better than looping...
+ + Possible to delete unneeded information from file - everything except
+   what have been found (e.g., it may help in logs cleaning, maillisting etc).
+ + "Scheme" notion appeared - it means previously saved plug-in settings.
+   Working with schemes allows you to save frequently used search and
+   replacement settings, being ready to use them next time! All the schemes
+   are saved:
+   - for a user by default:
+   HKEY_CURRENT_USER\Software\Far\Plugins\S_And_R\Scheme
+   - for Guest user:
+   HKEY_CURRENT_USER\Software\Far\Users\Guest\Plugins\S_And_R\Scheme
+ + Possible to use system history for "Search" and "Search by mask" fields.
+ + Possibility to work with found files list: jump to a file, save found
+   files list in a file, view, edit specified file. I think, you'll like
+   it... :-)
+ * Because of possibility to save several times in files with different names,
+   after quitting plug-in it brings user to the last log.
+ * FAQ.txt
+ * dll size increased from 36864 to 40960...
+ * Don't remember the rest ;-)
+
+ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄ·
+³0.3/23.04.2000º
+ÔÍÍÍÍÍÍÍÍÍÍÍÍÍÍ¼
+
+ ! Number of processed files was equal of number performed replacements.
+   Sorry :-)
+ ! Some cosmetic bugs fixed in error messages
+ ! Not all subfolders checked
+ + Cursor automatically appears in "Search" field (it was not a bug,
+   I just forgot to do it in previous versions)
+ + It's possible to perform only search. This feature is not yet fully
+   developed. Currently, search results are written to a file.
+ + In search/replace strings it's possible to use regexps!
+   Hurrah*3! Now I like this plug-in :-)
+   At the moment, no guarantee it will carefully work with codepages,
+   except OEM (i.e. nothing may be found on other codepages)
+ + ESC press handling added
+ + It's possible to replace with a null line
+ + When choosing a codepage, the corresponding radio-button automatically
+   sets
+ + Replacement confirmation dialog
+ + Configuration menu
+ + Message about nothing was found (see Configuration)
+ + Amount of found stuff is displayed
+ * FAQ changed (see faq.txt)
+ + english LNG
+ * dll size increased from 16384 to 36864, but it worth...
+
+ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄ·
+³0.2/02.04.2000º
+ÔÍÍÍÍÍÍÍÍÍÍÍÍÍÍ¼
+ + Possible to search/replace text in FAR tables codepages
+ + Possibility of case insensitive search (except Unicode)
+ + A tiny FAQ
+
+ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄ·
+³0.1/28.03.2000º
+ÔÍÍÍÍÍÍÍÍÍÍÍÍÍÍ¼
+ I thought: "Why not?"
+ And it has born... Use it!
+ No errors detected, but this version lived little...
+ÚÄÄÄ·
+³EOFº
+ÔÍÍÍ¼

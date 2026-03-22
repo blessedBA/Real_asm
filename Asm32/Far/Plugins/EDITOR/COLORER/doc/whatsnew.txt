@@ -1,0 +1,144 @@
+
+                  ÄÄÄÍÍÍ whats new in colorer plugin ÍÍÍÄÄÄ
+
+
+ÄÄÍÍ colorer forever ÍÄÍ 18.03.2001 ÍÍÄÄ
+  2. all primary changes see in library distributive.
+  0. some base files in library were moved, so, you need
+     to run colorer/bin/install.exe to make paths in registry
+     correct.
+  0. now plugin tryes search paths in LOCAL_MACHINE, if it can't find
+     them in CURRENT_USER.
+  1. increased speed in errors/functions searching.
+  3. in functions/errors list position sets to nearest top
+     function/error (idea by Igor Paikin)
+  4. some fixes in column/row highlighting, changes in configuration
+     menu, all messages was moved into lgn files
+     (from newColorer4ever 0.04 by Andrzej Novosiolov <andrzej@ukrnet.net>)
+  3. filters in function/error lists
+     (patch by Ondrej Brablc <brablc@yahoo.com>)
+  4. new menu item (Select region) selects current region under cursor.
+     idea by Alexander Myodov (Honeyman 2:5015/112.29)
+
+
+ÄÄÍÍ colorer for you ÍÄÍ 08.08.2000 ÍÍÄÄ
+  0. now library and plugin distributes separately.
+     see whatsnew.txt in library distributive.
+  1. plugin now uses extended library features of syntax
+     parsing - pair constructions, jumps, functions and
+     errors lists.
+  2. you can set hrc and hrd paths.
+  3. background hrc changes log is now optional.
+  4. colorer.exe now in library distributive,
+     there you'll find all documentation also...
+
+
+ÄÄÍÍ colorer free craze ÍÄÍ 08.03.2000 ÍÍÄÄ
+  0. multiple users can have their own base HRCs.
+  1. fixed tabulation problem.
+  2. logging colorer base compiling (c:\_colorer.log)
+  3. partial HRC base load and compiling.
+  4. now you can use maximum 15 colors in 'regexp' and
+     'block' (color0 - colorF)
+  5. color defines structure changes.
+     (see /includes/_defines/_colors.hrc)
+  6. brackets highlighting in editor.
+     setted by 'brcolor' and 'brtype' parameters.
+  7. added languages lexx/yacc, eiffel, better perl, c,
+     pascal, tex, and other...
+  8. extended tags in tag <type> - <colors> and <params>
+     with default set abilities.
+  9. you can colorize block schemes not only till the end of
+     line - but and till end of screen (parameter fullback)
+  a. 'maxlinelen' parameter - maximum line length.
+     'backparse' parameter - number of lines to skip in big
+     files (bignum :)
+  b. all external programs connected into one colorer.exe
+     also this program doesn't depend on colorer.dll
+  á. dll-interface removed. but you can compile external
+     library to continue support them.
+  d. colorer is now free library - it distributes with all
+     it's source codes.
+
+
+ÄÄÍÍ Ver 3.0 ÍÄÍ 20.11.99 ÍÍÄÄ
+  0. So, now Colorer is little slower, than viewer :)
+  1. Ou, is there were a problems with blocks? :)
+  2. Now Colorer has interface for using it abilities in external
+     programs (Addons/).
+  3. In selecting highlighting menu pointer set on current scheme.
+  4. Principle of parent scheme back-moving was changed - now
+     parameter Prior=Low|High in <RegExp ..> tag manages its
+     priority. If Priority equal to Low, than parent scheme has bigger
+     priority.
+  5. Changes in internal structure.
+  6. Working of Row/Column is changed alittle...
+  7. RegExps now by default supports Dos-codepage.
+  8. syntax of operator \~n was changed to \yN - it means old.
+  9. Added regexp operator \n (with some limitations).
+
+
+ÄÄÍÍ Ver 2.8 ÍÄÍ 17.09.99 ÍÍÄÄ
+  0. Fixed bug with colorer Fault on one-lined files with block
+     comment.
+  1. There are new regexp operators added:
+     ?#n : This is a look-behind operator. n - chars number
+           to look.
+     ?~n : Inversed look-behind operator.
+     ?=  : look-ahead operator.
+     ?!  : Inversed look-ahead operator.
+     \c  : RegExp means non-word-before.
+     \m and \M: They define start and end of regexp match (by
+           defaut they are equal to real regexp's start and end)
+  2. Now you can easy choose color themes or create you own in
+     'Defines' directory.
+  3. <Include Scheme="..."> Tag Added. Now You can include
+     defines from one Scheme to another!
+  4. New tag <Switch Match="//" Scheme="...">. It extends
+     parameter StLine. Using it in Scheme definition forces
+     Colorer to check first line for regexp match - and if it is -
+     switch to new Scheme.
+  5. Added descriptions for Active Server Pages (Yea! :-),
+     Rc-files, Lisp, and others...
+  6. Far 1.63 registry bug compatible :-)
+  7. Fixed a bug in recursive procedure.
+  8. Now Single-line regexps can move match of their parent
+     Block structure.
+
+ÄÄÍÍ Ver 2.666 ÍÄÍ 10.07.99 ÍÍÄÄ
+  0. Colorer's Hrc format has been changed.
+  1. <Block> tag's using was changed. Now you can define any
+     custom schemes, which can realise any kind of transparensy,
+     nested structures, internal highlight switching.
+  2. More schemes were defined.
+  3. Now You can set your own editor's background color.
+  4. Some bugs were fixed in RegExp library.
+
+
+ÄÄÍÍ Ver 2.1 ÍÄÍ 17.06.99 ÍÍÄÄ
+  0. So, I've wrote my own Regular expressions library.
+     Now Colorer has really Killing Speed!
+  1. <Define...> tag can use now earlier defined constants...
+  2. Now You can define Files for highliting not only with the
+     extensions, but with first line (StLine par - see Perl Example).
+  3. You can use manual setting of current Syntax type with Selecting
+     it in Colorer's menu in Editor mode (F11 - Colorer - ...)
+  4. More complete syntax descriptions.
+  5. Bug with memory leak (during reloading) is fixed now.
+     Memory leak during Far Editor work is ER's Bug. :-(
+  6. Transparent regexps tags are avaiable now.
+  7. Default Colorer's setup assumes now standard Far
+     color Settings - Cyan text and Blue ground - so, default
+     strings colors settings in all modules is White :-)
+  8. Some new defines are added.
+  9. Bug with keywords search function is now corrected.
+     Some of them could be ignored, if there were defined words
+     with MatchCase and without MatchCase together.
+
+ÄÄÍÍ Ver 2.0  ÍÄÍ 24.05.99 ÍÍÄÄ
+
+ÄÄÍÍ Ver 1.62 ÍÄÍ 28.04.99 ÍÍÄÄ
+
+ÄÄÍÍ Ver 1.0 ÍÍÄÄ
+
+ÄÄÍÍ Ver 0.9 ÍÍÄÄ

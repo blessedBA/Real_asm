@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="Windows-1251"?>
+<!DOCTYPE hrc SYSTEM "hrc.dtd">
+<?xml-stylesheet type="text/xsl" href="hrc.xsl"?>
+<!-- Here  You'll  find base colors defines. You _must_ use only them in your
+     scripts.  It  guarantee,  that  user  can freely change style of colored
+     files.  Also  you  must  support  syntax-dependent colors. It means than
+     you  must  set f.e. numbers coloring only with dNumbers style. This will
+     guarantee portability of HRC codes.
+     by cail lomecb <ruiv@uic.nnov.ru> -->
+
+<hrc>
+<!-- value of "0" is reserved - it means `empty' region - so,
+     if you want to remove region detection, simply change its
+     value to zero -->
+<define name="default" value="0"/>
+<!-- reserved value
+     -->
+<define name="xxx"     value="1"/>
+
+<!-- default text and background for use in main file
+     (it's substitute must always contain as fore as background colors) -->
+<define name="dText"       value="2"/>
+<!-- row and column -->
+<define name="dRow"        value="3"/>
+<define name="dColumn"     value="4"/>
+<!-- syntax check region
+     must be transparent i think :) -->
+<define name="dSyntax"     value="5"/>
+
+<!-- numbers in different systems -->
+<define name="dNumber"    value="10"/>
+<define name="dNumDec"    value="11"/>
+<define name="dNumHex"    value="12"/>
+<define name="dNumBin"    value="13"/>
+<define name="dNumOct"    value="14"/>
+<define name="dNumFloat"  value="15"/>
+<define name="dNumSuffix" value="16"/>
+
+<!-- strings. dString2 means, than this is a 'sub'-string
+     such strings are used inside other strings - this
+     string must be darker, than the dString -->
+<define name="dString"  value="20"/>
+<define name="dString2" value="21"/>
+<!-- this is a strings (or regexps mostly in
+     perl) edges. Some bright color recommended -->
+<define name="dStringQuote"  value="22"/>
+<!-- `soft' string edges -->
+<define name="dStringQuote2" value="23"/>
+<!-- this is a character constants and spec
+     symbols in them -->
+<define name="dCharacter"   value="24"/>
+<define name="dCharacter2"  value="25"/>
+
+<!-- simple comments -->
+<define name="dComment"    value="30"/>
+<!-- dComment2 mean same as a dString2 define - comment
+     in comment -->
+<define name="dComment2"     value="31"/>
+<define name="dBlockComment" value="32"/>
+<define name="dLineComment"  value="33"/>
+<define name="dPod"          value="34"/>
+
+<!-- symbols, punctuation marks -->
+<define name="dSymbol"     value="40"/>
+<!-- main structured marks symbols such as { } ; and so on -->
+<define name="dSymbol2"    value="41"/>
+<!-- some rare prefix symbols -->
+<define name="dPrefix"     value="42"/>
+
+<!-- one-char-operators -->
+<define name="dOperator"   value="50"/>
+<!-- reserved keywords, types -->
+<define name="dKeyword"    value="60"/>
+<define name="dKeyword2"   value="61"/>
+<!-- base types -->
+<define name="dType"       value="62"/>
+
+<!-- functions, procedures -->
+<define name="dFunction"   value="70"/>
+<!-- assembler registers -->
+<define name="dRegister"   value="71"/>
+<!-- constant, constant definition -->
+<define name="dConstant"   value="72"/>
+<!-- true and false constants -->
+<define name="dBoolean"    value="73"/>
+
+<!-- variables and identifiers -->
+<define name="dVar"        value="80"/>
+<define name="dVar2"       value="81"/>
+<define name="dIdentifier" value="82"/>
+
+<!-- preprocessor directives, macroses -->
+<define name="dDirective"  value="90"/>
+<define name="dDirective2" value="91"/>
+<!-- parameters -->
+<define name="dParam"  value="100"/>
+<define name="dParam2" value="101"/>
+
+<!-- html-like tags -->
+<define name="dTag"        value="110"/>
+<define name="dOpenTag"    value="111"/>
+<define name="dCloseTag"   value="112"/>
+
+<!-- labels -->
+<define name="dLabel"      value="120"/>
+<!-- Inversed labels - highlighted with different background -->
+<define name="dInverseLabel" value="121"/>
+
+<!-- big text block inserts (fe asp codes) -->
+<define name="dInsert"      value="130"/>
+<!-- start and end of insertion -->
+<define name="dInsertStart" value="131"/>
+<define name="dInsertEnd"   value="132"/>
+
+<!-- bad construction - must be contrast with other text -->
+<define name="dError"     value="140"/>
+<define name="dErrorText" value="141"/>
+<!-- todo, problems -->
+<define name="dTODO"   value="142"/>
+<!-- todo, debug information -->
+<define name="dDebug"  value="143"/>
+
+<!-- file paths, web attributes -->
+<define name="dPath"   value="150"/>
+<define name="dURL"    value="151"/>
+<define name="dEMail"  value="152"/>
+<!-- date, time -->
+<define name="dDate"   value="160"/>
+<define name="dTime"   value="161"/>
+
+<!-- paired constructions - if you want to disable it, set
+     them to zeroes. Note, that if you using this regions, you
+     must _always_ provide them in pairs Open-Close -->
+<!-- single symbols, comments edges and so on... -->
+<define name="dpOpenStruct"  value="170"/>
+<define name="dpCloseStruct" value="171"/>
+<!-- big construction - assumes background highlighting -->
+<define name="dpOpenTag"     value="172"/>
+<define name="dpCloseTag"    value="173"/>
+
+<!-- different editor working regions (GUI assumed) -->
+<!-- text selection -->
+<define name="deSelection"      value="180"/>
+<!-- Editor border -->
+<define name="deSelMargin"      value="181"/>
+<define name="deCurError"       value="182"/>
+<define name="deBookmark"       value="183"/>
+<define name="deBreakpoint"     value="184"/>
+<define name="deCurStatement"   value="185"/>
+<define name="deSupersededCode" value="186"/>
+<!-- different IDE Windows colors -->
+<define name="dwMemory"    value="190"/>
+<define name="dwAssembly"  value="191"/>
+<define name="dwWatch"     value="192"/>
+<define name="dwCalls"     value="193"/>
+<define name="dwValues"    value="194"/>
+<define name="dwVariables" value="195"/>
+
+</hrc>

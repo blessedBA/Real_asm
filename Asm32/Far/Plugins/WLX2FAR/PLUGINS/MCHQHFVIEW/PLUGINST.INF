@@ -1,0 +1,6 @@
+[plugininstall] 
+description=Plugin to view history-files QIP PDA, QIP Infium (*.QHF; *.AHF) in Total Commander
+descriptionRus=ѕлагин дл€ Total Commander, позвол€ющий просматривать содержимое файлов истории QIP PDA, QIP Infium (*.QHF; *.AHF)
+type=wlx 
+file=MchQHFView.wlx
+defaultdir=MchQHFView

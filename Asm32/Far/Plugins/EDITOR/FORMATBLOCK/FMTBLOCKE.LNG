@@ -1,0 +1,36 @@
+.Language=English,English
+
+"Formatting a block"
+
+"&Left margin"
+"&Right margin"
+"&Paragraph"
+
+"&Alignment"
+"Left"
+"Right"
+"Center"
+"Full justify"
+
+"&Template"
+"Ok"
+"Cancel"
+
+" Left[%d] Right[%d] Paragraph[%d] Alignment[%s]"
+
+"Left"
+"Right"
+"Center"
+"Full justify"
+
+"Templates"
+"Template settings"
+
+"Edit: Del, F4"
+"Edit: F4"
+
+" <none>"
+
+"Delete"
+"Do you wish to delete template"
+"Delete"

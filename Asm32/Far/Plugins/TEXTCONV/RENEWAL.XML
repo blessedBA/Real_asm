@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<renewal>
+	<plugin guid="{DD10A9C6-ECAC-4BFA-BB07-4A1E92744162}">
+		<home arch="any">http://code.google.com/p/farplugs</home>
+		<url arch="any">http://code.google.com/p/farplugs/downloads/list</url>
+		<changelog arch="any">http://farplugs.googlecode.com/svn/trunk/TextConv/dist/ChangeLog</changelog>
+		<regex arch="x64">//farplugs.googlecode.com/files/FarTextConv_(\d+)\.(\d+)_x64\.zip</regex>
+		<regex arch="x86">//farplugs.googlecode.com/files/FarTextConv_(\d+)\.(\d+)_x86\.zip</regex>
+		<srcpath arch="any">TextConv</srcpath>
+	</plugin>
+</renewal>

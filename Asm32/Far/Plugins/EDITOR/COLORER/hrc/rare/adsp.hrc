@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="Windows-1251"?>
+<!DOCTYPE hrc SYSTEM "../hrc.dtd">
+<?xml-stylesheet type="text/xsl" href="../hrc.xsl"?>
+<!--
+    ADSP-21xx assembler Syntax description v2.666 (3/08/99)
+With help of:
+    Alexander Trush  http://adsp.da.ru  <trush@ropnet.ru>  2:5020/392.40
+-->
+<hrc>
+
+<define name="adString"      value="dString"/>
+<define name="adComment"     value="dComment"/>
+<define name="adDef"         value="dParam"/>
+<define name="adLabel"       value="dLabel"/>
+<define name="adMnemonic"    value="dKeyword"/>
+<define name="adReg"         value="dKeyword"/>
+<define name="adWord"        value="dKeyword"/>
+<define name="adSymbol"      value="dSymbol"/>
+<define name="adPrefix"      value="dPrefix"/>
+<define name="adFlags"       value="dParam"/>
+<define name="adNumb"        value="dNumBin"/>
+<define name="adNumh"        value="dNumHex"/>
+<define name="adNumo"        value="dNumOct"/>
+<define name="adNumd"        value="dNumDec"/>
+<define name="adConditions"  value="dDirective"/>
+
+<scheme name="adSP">
+   <!-- Numbers - Dec -->
+   <regexp match="/\b(\d+)\B/" region0="adNumd"/>
+   <!-- Numbers - Hex -->
+   <regexp match="/\b([0Hh][xX#][0-9a-fA-F]+)\B/" region0="adNumh"/>
+   <!-- Numbers - Bin -->
+   <regexp match="/\b([bB]#[01]+)\B/" region0="adNumb"/>
+   <!-- Numbers - Octal -->
+   <regexp match="/\b(0[0-7]+)\B/" region0="adNumo"/>
+
+   <!-- Strings -->
+   <regexp match="/('.*?')/" region0="adString"/>
+   <regexp match='/(".*?")/' region0="adString"/>
+
+   <!-- Linear Comments -->
+   <regexp match="/\/\/.*$/" region0="adComment"/>
+   <block start="/\/\*/" end="/\*\//" scheme="Comment"
+          region="adComment" region00="dpOpenStruct" region10="dpCloseStruct"/>
+   <block start="/\{/"  end="/\}/" scheme="Comment"
+          region="adComment" region00="dpOpenStruct" region10="dpCloseStruct"/>
+
+   <!-- Labels -->
+   <regexp match="/(^\s*?(\@\@)?\w*?:)/i" region0="adLabel"/>
+   <regexp match="/(JUMP)|(CALL)|(DO)\s*?(\b\w*?\B)/i"
+           region1="adMnemonic" region2="adMnemonic" region3="adMnemonic" region4="adLabel"/>
+   <regexp match="/(JUMP)|(CALL)\s*?(\(I[4567]\))/i"
+           region1="adMnemonic" region2="adMnemonic" region3="adLabel"/>
+
+   <!-- Base adr & length of label     x=%label; y=^label; -->
+   <regexp match='/([%^])(\b\w*?\B)/' region1="adPrefix" region2="adLabel"/>
+
+   <!-- Symbols -->
+   <keywords region="adSymbol">
+      <symb name="="/><symb name=";"/>
+      <symb name="+"/><symb name="-"/><symb name="*"/>
+      <symb name="/"/><symb name="$"/><symb name="|"/>
+      <symb name="["/><symb name="]"/>
+      <symb name=","/><symb name="."/><symb name=":"/>
+      <symb name="!"/><symb name="~"/><symb name="&lt;"/><symb name="&gt;"/>
+      <symb name="?"/>
+      <symb name="(" region="adMnemonic"/>
+      <symb name=")" region="adMnemonic"/>
+   </keywords>
+
+   <!-- #include <...> -->
+   <regexp match='/(\.include)\s*([&lt;"].*?[>"])/' region1="adDef" region2="adString"/>
+
+  <keywords ignorecase="ignorecase" region="adDef">
+      <word name="#include"/>
+      <word name="#define"/>
+      <word name="#undef"/>
+      <word name="#if"/>
+      <word name="#ifdef"/>
+      <word name="#ifndef"/>
+      <word name="#else"/>
+      <word name="#endif"/>
+      <word name="#elif"/>
+      <word name="#pragma"/>
+      <word name="#error"/>
+      <word name="#line"/>
+      <word name="#endinclude"/>
+   </keywords>
+
+   <!-- Flags -->
+   <regexp match="/\bFL[123]\B/i"   region0="adFlags"/>
+   <keywords ignorecase="ignorecase"  region="adFlags">
+      <word name="FLAG_IN"/>
+      <word name="NOT FLAG_IN"/>
+      <word name="FLAG_OUT"/>
+   </keywords>
+
+   <!-- Conditions -->
+   <keywords ignorecase="ignorecase"  region="adConditions">
+      <word name="EQ"/> <word name="NE"/>
+      <word name="LT"/> <word name="GE"/>
+      <word name="LE"/> <word name="GT"/>
+      <word name="AC"/> <word name="NOT AC"/>
+      <word name="AV"/> <word name="NOT AV"/>
+      <word name="MV"/> <word name="NOT MV"/>
+      <word name="NEG"/><word name="POS"/>
+      <word name="CE"/> <word name="FOREVER"/>
+   </keywords>
+
+   <!-- Asm KeyWords -->
+   <keywords ignorecase="ignorecase" region="adDef">
+      <word name=".CONST"/>
+      <word name=".MODULE"/>
+      <word name=".ENDMOD"/>
+      <word name=".SYSTEM"/>
+      <word name=".ENDSYS"/>
+      <word name=".ENTRY"/>
+      <word name=".EXTERNAL"/>
+      <word name=".GLOBAL"/>
+      <word name=".LOCAL"/>
+      <word name=".PORT"/>
+      <word name="SEG"/>
+      <word name=".DMSEG"/>
+      <word name=".SEGMENT"/>
+      <word name=".VAR"/>
+      <word name=".INIT"/>
+      <word name=".INIT24"/>
+      <word name=".PAGE"/>
+      <word name=".NEWPAGE"/>
+      <word name=".MACRO"/>
+      <word name=".ENDMACRO"/>
+      <word name=".PAGELENGTH"/>
+      <word name=".LEFTMARGIN"/>
+      <word name=".INDENT"/>
+      <word name=".PAGEWIDTH"/>
+      <word name="BM"/>
+      <word name="BOOT"/>
+      <word name="CODE"/>
+      <word name="DATA"/>
+      <word name="CIRC"/>
+      <word name="NAME"/>
+      <word name="RAM"/>
+      <word name="ROM"/>
+      <word name="STATIC"/>
+      <word name="INTERNAL"/>
+      <word name=".ADSP2100"/>
+      <word name=".ADSP2100P"/>
+      <word name=".ADSP2101"/>
+      <word name=".ADSP2101P"/>
+      <word name=".ADSP2101MV"/>
+      <word name=".ADSP2102"/>
+      <word name=".ADSP2105"/>
+      <word name=".ADSP2105P"/>
+      <word name=".ADSP2111"/>
+      <word name=".ADSP2159"/>
+      <word name=".ADSP2159P"/>
+      <word name=".ADSP2159MV"/>
+      <word name=".ADSP2171"/>
+      <word name=".ADSP2171P"/>
+      <word name=".ADSP2171MV"/>
+      <word name=".ADSP2111P"/>
+      <word name=".ADSP2150"/>
+      <word name=".ADSP2150P"/>
+      <word name=".ADSP2151"/>
+      <word name=".ADSP2151P"/>
+      <word name=".ADSP2181"/>
+      <word name=".EMU"/>
+      <word name=".EMULATOR"/>
+      <word name=".MMAP0"/>
+      <word name=".MMAP1"/>
+      <word name=".MMAP"/>
+   </keywords>
+
+   <keywords ignorecase="ignorecase"  region="adMnemonic">
+      <word name="ABS"/><word name="PASS"/>
+      <word name="AND"/><word name="OR"/><word name="XOR"/><word name="NOT"/>
+      <word name="ASHIFT"/><word name="LSHIFT"/><word name="SHIFT"/>
+      <word name="EXP"/><word name="EXPADJ"/><word name="NORM"/>
+      <word name="BY"/><word name="HI"/><word name="HIX"/><word name="LO"/>
+      <word name="DIVS"/><word name="DIVQ"/>
+      <word name="DM"/><word name="PM"/><word name="IO"/><word name="MODIFY"/>
+      <word name="DO"/><word name="UNTIL"/>
+      <word name="ENA"/><word name="DIS"/>
+      <word name="NOP"/><word name="TRAP"/><word name="IDLE"/>
+      <word name="IF"/><word name="JUMP"/>
+      <word name="POP"/><word name="PUSH"/>
+      <word name="RND"/><word name="SAT"/>
+      <word name="CALL"/><word name="RTI"/><word name="RTS"/>
+      <word name="SET"/><word name="RESET"/><word name="TOGGLE"/>
+      <word name="TSTBIT"/><word name="SETBIT"/>
+      <word name="CLRBIT"/><word name="TGLBIT"/>
+      <word name="SS"/><word name="SU"/><word name="US"/><word name="UU"/>
+   </keywords>
+
+   <!-- Asm Registers -->
+   <regexp match="/\b([aAmM][xXyY][01])\B/i" region0="adReg"/>
+   <regexp match="/\b([aAmM][fFrR])\B/i"     region0="adReg"/>
+   <regexp match="/\b([iImMlL][0-7])\B/i"    region0="adReg"/>
+   <regexp match="/\b(MR[012])\B/i"          region0="adReg"/>
+   <regexp match="/\b(SR[01])\B/i"           region0="adReg"/>
+   <regexp match="/\b(S[bBeEiIrR])\B/i"      region0="adReg"/>
+   <regexp match="/\b([rRtT]X[01])\B/i"      region0="adReg"/>
+   <regexp match="/\b([aAmMsS]STAT)\B/i"     region0="adReg"/>
+
+   <keywords ignorecase="ignorecase"  region="adReg">
+      <word name="CNTR"/>
+      <word name="ICNTL"/>
+      <word name="OWRCNTR"/>
+      <word name="IFC"/>
+      <word name="IMASK"/>
+      <word name="PC"/>
+      <word name="C"/>
+      <word name="PX"/>
+      <word name="TOPPCSTACK"/>
+      <word name="DMOVLAY"/>
+      <word name="PMOVLAY"/>
+      <word name="NONE"/>
+      <word name="LOOP"/> <!-- Loop stack    -->
+      <word name="STS"/>  <!-- Status stacks -->
+   </keywords>
+
+   <keywords ignorecase="ignorecase"  region="adDef">
+      <word name="ALT_REG"/>
+      <word name="SEC_REG"/>
+      <word name="AR_SAT"/>
+      <word name="TIMER"/>
+      <word name="M_MODE"/>
+      <word name="G_MODE"/>
+      <word name="AV_LATCH"/>
+      <word name="BIT_REV"/>
+   </keywords>
+
+<!--
+System bulder
+~~~~~~~~~~~~
+ABS CODE CONST DATA ENDSYS PM PORT RAM ROM INTERNAL SEG
+SYSTEM TARGET BOOT PAGESIZE
+
+Asm21:
+~~~~~~~
+AUX CACHE CLR CLRBIT INTS LOOP NAME NEWPAGE OF INDENT REGBANK SETBIT SEGMENT
+SHIFT SS DMSEG PMSEG PMDATASEG STS TGLBIT TRUE TSTBIT  E_MODE M_MODE TIMER
+FI FO IFC OWRCNTR PAGE BOOT STATIC SET SETDATA RESET TOGGLE
+-->
+</scheme>
+
+</hrc>

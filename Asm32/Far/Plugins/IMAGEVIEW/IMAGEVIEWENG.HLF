@@ -1,0 +1,45 @@
+.Language=English,English
+.PluginContents=Image viewer
+.Options CtrlColorChar=|
+
+@Contents
+
+  #Scaling#
+  Increase scale:                          |37+|-
+  Decrease scale:                          |37-|-
+  Scale to window size:                    |37~~|-
+  Scale to 10%:                            |371|-
+  Scale to 20%:                            |372|-
+  Scale to 30%:                            |373|-
+  ...
+  Scale to 90%:                            |379|-
+  Scale to 100%:                           |370|-
+
+  #Positioning#
+  Moving on canvas:                        |37Up, Down, Left, Rigth|-
+  Fast positioning:                        |37Ctrl-Up, Ctrl-Down, Ctrl-Left, Ctrl-Rigth|-
+
+  #Transformations#
+  Flip horizontal:                         |37F|-
+  Flip vertical:                           |37Shift-F|-
+  Rotate clockwise:                        |37R|-
+  Rotate counter-clockwise:                |37Shift-R|-
+
+  #File operations#
+  Previous file in the active panel:       |37PgUp, Backspañe|-
+  Next file in the active panel:           |37PgDown, Space|-
+  The first file in the active panel:      |37Home|-
+  The last file in the active panel:       |37End|-
+  Select current file in the active panel: |37Ins|-
+  Delete current file:                     |37F8, Del|-
+
+  #Other features#
+  Help:                                    |37F1|-
+  Exit:                                    |37Esc, F10|-
+
+
+^* * *
+
+^Source code and updates you can get at project page:
+
+^~http://code.google.com/p/farplugs~@http://code.google.com/p/farplugs@

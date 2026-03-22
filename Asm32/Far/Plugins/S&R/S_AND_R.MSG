@@ -1,0 +1,137 @@
+[English]
+NA=N/A
+
+tU=File type is unknown to the system
+tAPP=Application
+tDLL=Dynamic-link library
+tDU=Driver type is unknown to Windows
+tDCOMM=Communication driver
+tDPRN=Printer driver
+tDKB=Keyboard driver
+tDLNG=Language driver
+tDDISPLAY=Display driver
+tDMOUSE=Mouse driver
+tDNET=Network driver
+tDSYS=System driver
+tDINSTALLABLE=Installable driver
+tDSOUND=Sound driver
+tDINP=Input driver
+tFU=Font type is unknown to Windows
+tFRASTER=Raster font
+tFVECTOR=Vector font
+tFTRUETYPE=TrueType font
+tVXD=Virtual device
+tSTATICLIB=Static-link library
+
+oU=Unknown OS
+oDOS=DOS
+oOS216=OS/2 16
+oOS232=OS/2 32
+oNT=WinNT
+oW16=Win16 API
+oPM16=PM16
+oPM32=PM32
+oW32=Win32 API
+oDOS_W16=Win16 API (DOS)
+oDOS_W32=Win32 API (DOS)
+oOS216_PM16=PM16 (OS/2 16)
+oOS232_PM32=PM32 (OS/2 32)
+oNT_W32=Win32 API (WinNT)
+
+fDBG=[file contains debug information]
+fPRE=[development version,  not a commercially released product]
+fPATCH=[file has been modified]
+fPRIVATEBLD=[file was not built using standard release procedures]
+fSPECIALBLD=[a variation of a normal file of the same version number]
+
+[Russian]
+NA=N/A
+
+tU=Неопределенный тип файла
+tAPP=Приложение
+tDLL=Динамически подключаемая библиотека
+tDU=Драйвер неизвестного типа
+tDCOMM=Коммуникационный драйвер
+tDPRN=Драйвер принтера
+tDKB=Драйвер клавиатуры
+tDLNG=Драйвер языка
+tDDISPLAY=Драйвер дисплея
+tDMOUSE=Драйвер мыши
+tDNET=Драйвер для работы с сетью
+tDSYS=Системный драйвер
+tDINSTALLABLE=Устанавливаемый драйвер
+tDSOUND=Звуковой драйвер
+tDINP=Драйвер ввода
+tFU=Шрифт неизвестного типа
+tFRASTER=Растровый шрифт
+tFVECTOR=Векторный шрифт
+tFTRUETYPE=TrueType шрифт
+tVXD=Виртуальное устройство
+tSTATICLIB=Статически подключаемая библиотека
+
+oU=Неопределенная ОС
+oDOS=DOS
+oOS216=OS/2 16
+oOS232=OS/2 32
+oNT=WinNT
+oW16=Win16 API
+oPM16=PM16
+oPM32=PM32
+oW32=Win32 API
+oDOS_W16=Win16 API (DOS)
+oDOS_W32=Win32 API (DOS)
+oOS216_PM16=PM16 (OS/2 16)
+oOS232_PM32=PM32 (OS/2 32)
+oNT_W32=Win32 API (WinNT)
+
+fDBG=[содержит данные для отладки]
+fPRE=[непредназначено для реализации]
+fPATCH=[файл изменен]
+fPRIVATEBLD=[частный билд]
+fSPECIALBLD=[специальный билд]
+
+[Ukrainian]
+NA=N/A
+
+tU=Невизначений тип файлу
+tAPP=Програма
+tDLL=Динамiчно пiдключаєма бiблиотека
+tDU=Драйвер невизначеного типу
+tDCOMM=Комунiкацiйний драйвер
+tDPRN=Драйвер принтера
+tDKB=Драйвер клавiатури
+tDLNG=Драйвер мови
+tDDISPLAY=Драйвер дисплею
+tDMOUSE=Драйвер мишi
+tDNET=Драйвер для роботи з мережею
+tDSYS=Системний драйвер
+tDINSTALLABLE=Встановлюємий драйвер
+tDSOUND=Звуковий драйвер
+tDINP=Драйвер вводу
+tFU=Шрифт невiдомого типу
+tFRASTER=Растровий шрифт
+tFVECTOR=Векторний шрифт
+tFTRUETYPE=TrueType шрифт
+tVXD=Вiртуальний пристрiй
+tSTATICLIB=Статично пiдключаєма бiблиотека
+
+oU=Невизначена ОС
+oDOS=DOS
+oOS216=OS/2 16
+oOS232=OS/2 32
+oNT=WinNT
+oW16=Win16 API
+oPM16=PM16
+oPM32=PM32
+oW32=Win32 API
+oDOS_W16=Win16 API (DOS)
+oDOS_W32=Win32 API (DOS)
+oOS216_PM16=PM16 (OS/2 16)
+oOS232_PM32=PM32 (OS/2 32)
+oNT_W32=Win32 API (WinNT)
+
+fDBG=[вмiщують данi для вiдлагодження]
+fPRE=[версiя, не призначена для реалiзацiє]
+fPATCH=[файл змiнено]
+fPRIVATEBLD=[приватний бiлд]
+fSPECIALBLD=[спецiальний бiлд]

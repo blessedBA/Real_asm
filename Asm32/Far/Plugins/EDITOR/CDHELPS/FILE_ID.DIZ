@@ -1,0 +1,27 @@
+cdHelps plugin Ver 1.5.0
+    for Far Manager 1.6x
+
+Context-dependent help and Activator
+
+Этот плагин добавляет к редактору Far'а
+возможность вызвать контекстно-зависимую
+помощь (HLP-, CHM-файлы), а так же позволяет
+активизировать из редактора URL-приложения.
+Помнит последние параметры: ключевое
+слово и номер файла подсказки.
+
+This cdHelps Plugin adds to the internal
+editor Far possibility to cause context-
+dependent help. Plugin in the same way is
+an activator for calling URL-applications.
+Plugin in the same way remembers last
+parameters: keyword and number of file
+of help.
+
+20.03.2000
+-------------------------------------------
+Valentin Skirdin
+WWW     http://www.halyava.ru/skirda/
+        http://www.uic.nnov.ru/~ruiv/plugring/
+E-mail  vskirdin@mail.ru
+FIDO    2:5025/3.69

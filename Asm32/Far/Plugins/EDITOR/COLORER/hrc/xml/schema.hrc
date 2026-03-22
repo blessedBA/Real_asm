@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="Windows-1251"?>
+<!DOCTYPE hrc SYSTEM "../hrc.dtd">
+<?xml-stylesheet type="text/xsl" href="../hrc.xsl"?>
+<!--
+    xsd syntax
+    derived from xml
+-->
+<hrc>
+
+<include name="xml/xml.hrc"/>
+
+<scheme name="xsdTags">
+   <keywords region="xmlOpenTag">
+     <word name="annotation"/>
+     <word name="documentation"/>
+     <word name="element"/>
+     <word name="attribute"/>
+     <word name="simpleType"/>
+     <word name="complexType"/>
+     <word name="schema"/>
+     <word name="maxExclusive"/>
+     <word name="pattern"/>
+     <word name="enumeration"/>
+     <word name="unique"/>
+     <word name="selector"/>
+     <word name="field"/>
+     <word name="keyref"/>
+     <word name="key"/>
+     <word name="import"/>
+     <word name="include"/>
+     <word name="sequence"/>
+     <word name="choice"/>
+     <word name="attributeGroup"/>
+     <word name="group"/>
+     <word name="notation"/>
+   </keywords>
+</scheme>
+
+<scheme name="xsdTagList">
+   <!-- block start="/\b(xsd)(\:) \M [\w\-]+/ix" end="/~[\w\-]+\m/" scheme="xsdTags"
+          region01="xmlNameSpace" region02="dSymb"/ -->
+   <inherit scheme="xsdTags"/>
+   <inherit scheme="xmlTagList"/>
+</scheme>
+<scheme name="xsdParamList">
+   <keywords region="xmlParam">
+     <word name="ref"/>
+     <word name="name"/>
+     <word name="type"/>
+     <word name="value"/>
+     <word name="base"/>
+     <word name="fixed"/>
+     <word name="minOccurs"/>
+     <word name="maxOccurs"/>
+     <word name="content"/>
+     <word name="order"/>
+   </keywords>
+   <inherit scheme="xmlParamList"/>
+</scheme>
+
+<scheme name="schema">
+  <inherit scheme="xml">
+    <virtual scheme="xmlTagList" subst="xsdTagList"/>
+    <virtual scheme="xmlParamList" subst="xsdParamList"/>
+  </inherit>
+</scheme>
+
+</hrc>

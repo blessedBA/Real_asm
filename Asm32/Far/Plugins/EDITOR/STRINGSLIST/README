@@ -1,0 +1,35 @@
+
+*English*
+
+Plugin generates a string list for more comfortable navigation in the text.
+For example: function list in C/C++ source code.
+The criterion of definition of function is set by regular expression.
+Plugin will work with FAR 1.60 and later.
+
+For more details read the help for plugin's setup.
+
+The bugreports, wishes and regular expressions for definition of functions
+for various types of files are welcomed.
+
+>! Before using of module, run FileTypes.reg.
+
+Sorry for bad english. It is result of translation by Stylus98 :)
+
+
+*Russian*
+
+Цель плагина - получить список строк для более удобной навигации по тексту.
+Например, по списку функций в исходной тексте на С/С++.
+Хотя я чаще использую для чтения RFC.
+Критерий определения функции задается регулярным выражением.
+Плагин будет работать с FAR версий 1.60 и выше.
+
+Более подробное описание находится в справке к окну настройки модуля.
+
+Приветствуются регулярные выражения для определения функций для различных
+типов файлов, багрепорты, пожелания.
+
+>! Перед использованием модуля запустите FileTypes.reg.
+
+Contacts: Alexey I. Kardashevsky, aik@agava.com, alexhome@aha.ru, 2:5020/607.5.
+Если вам понравился продукт - напишите, мне просто интересно :)

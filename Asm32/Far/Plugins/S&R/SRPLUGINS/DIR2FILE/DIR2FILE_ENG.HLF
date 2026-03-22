@@ -1,0 +1,88 @@
+.Language=English,English (English)
+.PluginContents=File list creator (Dir2File)
+
+@Contents
+$^#File list creator (Dir2File)#
+
+      This module allows you to generate a file list containing records
+for each object matching search criteria specified. The records are created
+on the basis of templates which (hopefully) you have already used as S&R
+"replacement strings". The module will only work in Far 1.70 build 1634 and
+above. To avoid unnecessary redundancy, this help file does not contain
+information, which consists in standard ~Search and Replace (S&R)~@<..\..\>@ plugin
+documentation.
+
+      Using this plugin you may view lots of pictures in your favourite
+browser, process multiple archives (e.g. rar, zip and arj at the same time),
+merge #Favourites# (and other url-files) into one html-page, rename lots of files
+according to a certain rule (though renaming files is more convinient with
+~newname.srp~@<..\NewName\>Contents@), find out versions of files and lots more.
+Virtually unlimited functionality may even scare you if you're new to this plugin :)
+
+
+^#Dialog description:#
+
+      Some options and buttons are similar to those in the parent plugin
+~Search and Replace~@<..\..\>MainDialog@.
+
+      If #Search in selected# is checked and #Process subfolders# is disabled, then
+selected folders will be processed according to their own template just like ordinary
+files.
+
+  #Enter name#        Records are to be placed into this file.
+  #of file#
+  #to create#
+
+  #First line#        It is written at the beginning of the output file
+                    before processing starts. It is a
+                    ~regular expression~@<..\..\>RegExp@ for replacement
+                    string.
+
+  #Last line#         This line is appended to the end of the output
+                    file after processing has been finished. It is a
+                    ~regular expression~@<..\..\>ReplaceRegExp@ for replacement string.
+
+      Below you will find description of options for several groups of
+objects (four groups of files and folders options).
+They are the following:
+
+  #Type#              It is a ~file mask~@<..\..\>FileMask@. If the found object
+  #(file-mask)#       matches the mask, it is associated with the
+                    group for the mask.
+
+  #Search template#   It is applied to file name. It's a ~regular~@<..\..\>RegExp@
+                    ~expression~@<..\..\>RegExp@ for search string. The result of
+                    template and file name comparison may be used in
+                    replace template (i.e. you can refer to brackets
+                    found by this expression). You may leave this
+                    field empty. It is necessity to enclose the
+                    ~search string~@<..\..\>RegExp@ in slashes: #/#regexp#/#options.
+
+  #Replace template#  A ~regular expression~@<..\..\>ReplaceRegExp@ for replacement
+                    string. Its result is written in the target
+                    output file.
+
+      Additional settings:
+
+  #Codepage #         This button allows you to choose any codepage
+  #of the output#     installed in FAR.
+  #file#
+
+  #Initiate value#    This option affects the next
+  #of the counter#    replacement string ~regexp~@<..\..\>ReplaceRegExp@- counter (#\###).
+  #by zero...#
+
+  #Common counter#    If this option is disabled, each replace template
+                    will have its own independent
+                    ~counter~@<..\..\>ReplaceRegExp@. Otherwise the counter will
+                    be shared by all of the 5 output templates.
+
+  #Scheme#            Calls scheme management dialog.
+                    Use #Alt-Shift-0#...#Alt-Shift-9# for quick
+                    switching between first 10 schemes.
+
+  #Save#              Save current settings as a scheme
+                    (you will be prompted to enter scheme name).
+
+      See also #Reg\dir2file_scheme.reg# - it contains several
+examples of schemes.

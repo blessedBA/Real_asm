@@ -1,0 +1,54 @@
+REGEDIT4
+
+[HKEY_CURRENT_USER\Software\Far\PluginHotkeys]
+
+[HKEY_CURRENT_USER\Software\Far\PluginHotkeys\Plugins/FarVss/farvss.dll]
+"Hotkey"="O"
+
+[HKEY_CURRENT_USER\Software\Far\PluginHotkeys\Plugins/FarVss/farvss.dll%1]
+"Hotkey"="I"
+
+[HKEY_CURRENT_USER\Software\Far\PluginHotkeys\Plugins/FarVss/farvss.dll%2]
+"Hotkey"="G"
+
+[HKEY_CURRENT_USER\Software\Far\PluginHotkeys\Plugins/FarVss/farvss.dll%3]
+"Hotkey"="A"
+
+[HKEY_CURRENT_USER\Software\Far\PluginHotkeys\Plugins/FarVss/farvss.dll%4]
+"Hotkey"="D"
+
+[HKEY_CURRENT_USER\Software\Far\KeyMacros]
+
+[HKEY_CURRENT_USER\Software\Far\KeyMacros\Editor]
+
+[HKEY_CURRENT_USER\Software\Far\KeyMacros\Editor\CtrlAltO]
+"Sequence"="F11 O"
+
+[HKEY_CURRENT_USER\Software\Far\KeyMacros\Editor\CtrlAltI]
+"Sequence"="F11 I"
+
+[HKEY_CURRENT_USER\Software\Far\KeyMacros\Editor\CtrlAltG]
+"Sequence"="F11 G"
+
+[HKEY_CURRENT_USER\Software\Far\KeyMacros\Editor\CtrlAltA]
+"Sequence"="F11 A"
+
+[HKEY_CURRENT_USER\Software\Far\KeyMacros\Editor\CtrlAltD]
+"Sequence"="F11 D"
+
+[HKEY_CURRENT_USER\Software\Far\KeyMacros\Shell]
+
+[HKEY_CURRENT_USER\Software\Far\KeyMacros\Shell\CtrlAltO]
+"Sequence"="F11 O"
+
+[HKEY_CURRENT_USER\Software\Far\KeyMacros\Shell\CtrlAltI]
+"Sequence"="F11 I"
+
+[HKEY_CURRENT_USER\Software\Far\KeyMacros\Shell\CtrlAltG]
+"Sequence"="F11 G"
+
+[HKEY_CURRENT_USER\Software\Far\KeyMacros\Shell\CtrlAltA]
+"Sequence"="F11 A"
+
+[HKEY_CURRENT_USER\Software\Far\KeyMacros\Shell\CtrlAltD]
+"Sequence"="F11 D"

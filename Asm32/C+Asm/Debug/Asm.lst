@@ -1,0 +1,101 @@
+Microsoft (R) Macro Assembler Version 10.00.40219.01	    05/13/13 01:02:47
+Asm.asm							     Page 1 - 1
+
+
+
+				.model flat, C
+
+				;------------------------------------------------
+
+				printf			proto format: ptr, args: vararg
+
+				;------------------------------------------------
+ 00000000			.data
+
+ 00000000 53 75 62 46 75	PrintfFmt		db "SubFunc(): %d - %d = %d", 0dh, 0ah, 0
+	   6E 63 28 29 3A
+	   20 25 64 20 2D
+	   20 25 64 20 3D
+	   20 25 64 0D 0A
+	   00
+
+				;------------------------------------------------
+ 00000000			.code
+
+ 00000000			SubFunc			proc a: dword, b: dword
+ 00000000  55		   *	    push   ebp
+ 00000001  8B EC	   *	    mov    ebp, esp
+ 00000003  56							push esi
+
+ 00000004  8B 45 08						mov eax, a
+ 00000007  2B 45 0C						sub eax, b
+ 0000000A  8B F0						mov esi, eax
+
+ 0000000C  56							push esi
+ 0000000D  FF 75 0C						push b
+ 00000010  FF 75 08						push a
+ 00000013  68 00000000 R					push offset PrintfFmt
+ 00000018  E8 00000000 E					call printf
+ 0000001D  83 C4 10						add esp, 4*4
+
+								invoke printf, offset PrintfFmt, a, b, esi
+ 00000020  56		   *	    push   esi
+ 00000021  FF 75 0C	   *	    push   dword  ptr ss:[ebp]+00000000Ch
+ 00000024  FF 75 08	   *	    push   dword  ptr ss:[ebp]+000000008h
+ 00000027  68 00000000 R   *	    push   dword  ptr OFFSET FLAT: PrintfFmt
+ 0000002C  E8 00000000 E   *	    call   printf
+ 00000031  83 C4 10	   *	    add    esp, 000000010h
+
+ 00000034  8B C6						mov eax, esi
+ 00000036  5E							pop esi
+								ret
+ 00000037  C9		   *	    leave  
+ 00000038  C3		   *	    ret    00000h
+
+ 00000039			SubFunc			endp
+
+				;--------------------------------------------------
+
+				end
+Microsoft (R) Macro Assembler Version 10.00.40219.01	    05/13/13 01:02:47
+Asm.asm							     Symbols 2 - 1
+
+
+
+
+Segments and Groups:
+
+                N a m e                 Size     Length   Align   Combine Class
+
+FLAT . . . . . . . . . . . . . .	GROUP
+_DATA  . . . . . . . . . . . . .	32 Bit	 0000001A Para	  Public  'DATA'	
+_TEXT  . . . . . . . . . . . . .	32 Bit	 00000039 Para	  Public  'CODE'	
+
+
+Procedures, parameters, and locals:
+
+                N a m e                 Type     Value    Attr
+
+SubFunc  . . . . . . . . . . . .	P Near	 00000000 _TEXT	Length= 00000039 Public C
+  a  . . . . . . . . . . . . . .	DWord	 bp + 00000008
+  b  . . . . . . . . . . . . . .	DWord	 bp + 0000000C
+printf . . . . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External C
+
+
+Symbols:
+
+                N a m e                 Type     Value    Attr
+
+@CodeSize  . . . . . . . . . . .	Number	 00000000h   
+@DataSize  . . . . . . . . . . .	Number	 00000000h   
+@Interface . . . . . . . . . . .	Number	 00000001h   
+@Model . . . . . . . . . . . . .	Number	 00000007h   
+@code  . . . . . . . . . . . . .	Text   	 _TEXT
+@data  . . . . . . . . . . . . .	Text   	 FLAT
+@fardata?  . . . . . . . . . . .	Text   	 FLAT
+@fardata . . . . . . . . . . . .	Text   	 FLAT
+@stack . . . . . . . . . . . . .	Text   	 FLAT
+PrintfFmt  . . . . . . . . . . .	Byte	 00000000 _DATA	
+
+	   0 Warnings
+	   0 Errors

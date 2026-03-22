@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<renewal>
+	<plugin guid="{9A12EB3A-6B5C-416A-B755-A21FDD73C7B2}">
+		<url arch="any">http://code.google.com/p/farplugs/downloads/list</url>
+		<home arch="any">http://code.google.com/p/farplugs</home>
+		<changelog arch="any">http://farplugs.googlecode.com/svn/trunk/DiskMenu/dist/ChangeLog</changelog>
+		<regex arch="x64">//farplugs.googlecode.com/files/FarDiskMenu_(\d+)\.(\d+)_x64\.zip</regex>
+		<regex arch="x86">//farplugs.googlecode.com/files/FarDiskMenu_(\d+)\.(\d+)_x86\.zip</regex>
+		<srcpath arch="any">DiskMenu</srcpath>
+	</plugin>
+</renewal>

@@ -1,0 +1,11 @@
+REGEDIT4
+
+[HKEY_CURRENT_USER\Software\Far\KeyMacros\Editor\CtrlAltHome]
+@="Go to begin of the block"
+"Sequence"="F11 k b"
+"DisableOutput"=dword:00000001
+
+[HKEY_CURRENT_USER\Software\Far\KeyMacros\Editor\CtrlAltEnd]
+@="Go to end of the block"
+"Sequence"="F11 k e"
+"DisableOutput"=dword:00000001

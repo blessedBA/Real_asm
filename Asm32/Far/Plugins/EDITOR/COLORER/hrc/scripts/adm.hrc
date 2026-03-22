@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="Windows-1251"?>
+<!DOCTYPE hrc SYSTEM "../hrc.dtd">
+<?xml-stylesheet type="text/xsl" href="../hrc.xsl"?>
+<!--
+    ADM Syntax description
+With help of:
+    Kreevosheyev Vitaly (aka Shatl)  <shatl@nasnet.kiev.ua>
+-->
+<hrc>
+
+<define name="admComment" value="dComment"/>
+<define name="admKwd"     value="dKeyword"/>
+<define name="admStrings" value="dString"/>
+<define name="admStrVal"  value="dString"/>
+
+<scheme name="adm">
+  <!-- Strings -->
+  <regexp match="/(\x22.*\x22)/" region0="admStrings"/>
+  <!-- String values -->
+  <regexp match="/(\!\!(\S.*?))/" region0="admStrVal"/>
+  <!-- Linear comments -->
+  <regexp match="/(\;.*$)/" region0="admComment"/>
+
+  <inherit scheme="mDecNumb"/>
+
+  <keywords ignorecase="ignorecase" region="admKwd">
+    <word name="CLASS"/>
+    <word name="CATEGORY"/>
+    <word name="END"/>
+    <word name="POLICY"/>
+    <word name="PART"/>
+    <word name="VALUEON"/>
+    <word name="VALUEOFF"/>
+    <word name="KEYNAME"/>
+    <word name="VALUENAME"/>
+    <word name="VALUE"/>
+    <word name="VALUEPREFIX"/>
+    <word name="ACTIONLIST"/>
+  </keywords>
+
+  <keywords ignorecase="ignorecase" region="admStrVal">
+    <word name="CHECKBOX"/>
+    <word name="NUMERIC"/>
+    <word name="EDITTEXT"/>
+    <word name="COMBOBOX"/>
+    <word name="TEXT"/>
+    <word name="DROPDOWNLIST"/>
+    <word name="LISTBOX"/>
+  </keywords>
+</scheme>
+</hrc>

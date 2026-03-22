@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="Windows-1251"?>
+<!DOCTYPE hrc SYSTEM "../hrc.dtd">
+<?xml-stylesheet type="text/xsl" href="../hrc.xsl"?>
+<!--
+    colorer hrd
+-->
+
+<hrc>
+
+<include name="scripts/hrc.hrc"/>
+
+<scheme name="hrdCode">
+  <inherit scheme="mDecNumb"/>
+  <inherit scheme="clComment"/>
+  <regexp match="/\x22.*?\x22/" region0="dString"/>
+  <regexp match="/\x27.*?\x27/" region0="dString"/>
+  <keywords region="dKeyword">
+    <word name="&lt;assign"/>
+    <word name="&lt;"/>
+    <word name="/>"/>
+  </keywords>
+  <keywords region="dParam">
+    <word name="value"/>
+    <word name="fore"/>
+    <word name="back"/>
+    <word name="descr"/>
+    <word name="stext"/>
+    <word name="etext"/>
+    <word name="sback"/>
+    <word name="eback"/>
+    <word name="type"/>
+  </keywords>
+</scheme>
+
+<scheme name="colorerhrd">
+  <block start="/(&lt;hrd>)/" end="/(&lt;\/hrd>)/" scheme="hrdCode"
+         region00="dpOpenStruct" region10="dpCloseStruct"
+         region01="dKeyword" region11="dKeyword"/>
+  <inherit scheme="clComment"/>
+</scheme>
+
+</hrc>

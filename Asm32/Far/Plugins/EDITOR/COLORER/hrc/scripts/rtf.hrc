@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="Windows-1251"?>
+<!DOCTYPE hrc SYSTEM "../hrc.dtd">
+<?xml-stylesheet type="text/xsl" href="../hrc.xsl"?>
+<!--
+    RTF files
+-->
+
+<hrc>
+
+<scheme name="RTF">
+   <regexp match="/(\d+)/" region0="dNumber"/>
+   <regexp match="/(\\)([\w\-]+)/" region1="dString" region2="dString2"/>
+   <keywords ignorecase="ignorecase" region="dKeyword">
+      <symb name="{" region="dpOpenStruct"/>
+      <symb name="}" region="dpCloseStruct"/>
+      <symb name="\\" region="dString"/>
+   </keywords>
+</scheme>
+
+</hrc>

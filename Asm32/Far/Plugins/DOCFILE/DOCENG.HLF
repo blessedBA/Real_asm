@@ -1,0 +1,29 @@
+.Language=English,English
+.PluginContents=DocFile Browser plugin
+
+@Contents
+$^#DocFile Browser Plugin 1.02#
+$^#Copyright (c) 1999-2002 Igor Pavlov#
+   This FAR module allows to work with compound files: MS Office
+documents and some other files . Files in the compound file are
+handled in the same manner as if they were in a folder.
+
+   ~Getting from document~@ExtractDocFile@
+
+   ~DocFile Browser configuration~@DocFileConfig@
+
+
+
+ Web site:  #www.7-zip.org#
+
+ E-mail:    #support@@7-zip.org#
+
+@ExtractDocFile
+$ #Getting from document#
+    In this dialog you may enter the path to extract files.
+
+@DocFileConfig
+$ #DocFile Browser configuration#
+    In this dialog you may change following parameters:
+
+ #Plugin Enabled#         Enables / Disables plugin.

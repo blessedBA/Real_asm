@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="Windows-1251"?>
+<!DOCTYPE hrc SYSTEM "../hrc.dtd">
+<?xml-stylesheet type="text/xsl" href="../hrc.xsl"?>
+<!--
+    Visual Modeler
+With Help of:
+
+-->
+
+<hrc>
+
+<scheme name="VisMod">
+   <!-- Strings -->
+   <regexp match="/(\'.*?\')/" region0="dString"/>
+   <regexp match='/(\".*?\")/' region0="dString"/>
+   <regexp match='/(\|.*$)/'    region0="dComment"/>
+   <!-- Numbers  -->
+   <regexp match="/\b([0-9]+)\B/" region0="dNumber"/>
+   <keywords region="dSymbol">
+      <symb name=";"/><symb name="="/><symb name="+"/><symb name="-"/>
+      <symb name="/"/><symb name="*"/><symb name="&amp;"/><symb name="|"/>
+      <symb name="^"/><symb name="("/><symb name=")"/><symb name="["/>
+      <symb name="]"/><symb name=","/><symb name="."/><symb name=":"/>
+      <symb name="!"/><symb name="~"/><symb name="&lt;"/><symb name="&gt;"/>
+      <symb name="%"/><symb name="{"/><symb name="}"/><symb name="?"/>
+      <symb name="#"/><symb name="@"/>
+   </keywords>
+   <keywords region="dKeyword" ignorecase="ignorecase">
+      <word name="object"/>
+      <word name="stereotype"/>
+      <word name="label"/>
+      <word name="TRUE"/>
+      <word name="FALSE"/>
+   </keywords>
+</scheme>
+
+</hrc>

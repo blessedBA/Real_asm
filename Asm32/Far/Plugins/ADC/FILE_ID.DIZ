@@ -1,0 +1,16 @@
+ADC Plugin for FAR 1.47
+-----------------------
+This program is a plugin intended to work
+with FAR version 1.52 or higher. Plugin
+implements virtual file system based on ADC
+database files. Plugin has following
+features: lighting fast (up to ten times
+faster than ADC itself!) database processing;
+option to treat archives as ordinary
+folders; ability to view your databases
+from remote computer without ADC installed
+on that computer (for example via network);
+support for ADC categories and descriptions,
+all the virtual file system functionality
+provided by FAR (file find, save path
+shortcut, etc).

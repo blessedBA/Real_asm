@@ -1,0 +1,123 @@
+WLX2FAR: History
+----------------
+
+Legend:  + added
+         * changed
+         ! fixed
+         - removed
+
+version 0.1.6 (13/06/2006)
+--------------------------
+ ! Bug fixed with synchronizing of the console window.
+
+version 0.1.5 (13/05/2006)
+--------------------------
+ ! Bug fixed with 2 Far instances (continuing).
+
+version 0.1.4 (11/02/2006)
+--------------------------
+ ! Bug fixed with 2 Far instances.
+
+version 0.1.3 (06/08/2005)
+--------------------------
+ + Add extra option to disable startup information (asked by Alex
+   Yaroslavsky at yandex.ru / trexinc)
+ ! Bug fixed in calculating wlx2far module length (critical) (reported by Alex
+   Yaroslavsky at yandex.ru / trexinc)
+
+version 0.1.2 (25/06/2005)
+--------------------------
+ ! Bug fixed in ends spaces in wlx plugin mask, added space trims (reported by
+   John Doe at mail.zp.ua / johndoe)
+ ! Bug fixed in calculating first QView panels positions (reported by
+   WARP ItSelf at mail.ru / WARP_ItSelf)
+ ! Bug fixed in lister positioning while FAR window moving
+
+version 0.1.1 (14/06/2005)
+--------------------------
+ + Add wlx meta plugins support
+ + Add ability to change wlx plugin position in menu by pressing CtrlUp/CtrlDown.
+   Plugin position attracts to its execution and searching process by mask.
+ ! Bug fixed in executing wlx plugins from folder with non OEM characters
+
+version 0.1.0 (10/06/2005)
+--------------------------
+ ! Bug fixed with QView panel position when FAR changes it sizes (reported by
+   WARP ItSelf at mail.ru / WARP_ItSelf)
+
+version 0.0.9 (27/05/2005)
+--------------------------
+ + Add user lister and quick viewer hotkeys via ini file
+ + Add pseudo tooltips on lister buttons (suggested by John Doe at mail.zp.ua / johndoe)
+ + Save lister sizes in registry
+ + New advanced macros in archive
+ * All MessageBox changed into Info.Message (suggested by John Doe at mail.zp.ua / johndoe)
+ ! Bug fixed with mouse double clicks
+
+version 0.0.8 (22/05/2005)
+--------------------------
+ + Add buttons to lister window
+    - Pin to FAR window
+    - Close tab
+    - Destroy all tabs
+ + Add new command wlx:Arguments - open a new bookmark in lister with default
+   plugin for arguments Arguments in current directory (suggested by John Doe
+   at mail.zp.ua / johndoe)
+ * Add warning message when wlx2far couldn't find appropriate wlx plugin for
+   specified arguments or requested wlx plugin doesn't present (suggested by
+   John Doe at mail.zp.ua / johndoe)
+ ! Bug fixed in plugin name calculation (reported by John Doe at mail.zp.ua / johndoe)
+ ! Bug fixed in console window placing (mouse cursor was shifted by some pixels)
+
+version 0.0.7 (17/05/2005)
+--------------------------
+ ! Bug fixed in wlx opening. If wlx plugin can't open file, broken
+   lister opened
+ ! Bug fixed with default buttons in plugin's dialogs.
+   (reported by John Doe at mail.zp.ua / johndoe)
+
+version 0.0.6 (14/05/2005)
+--------------------------
+ ! Bug fixed in QView panels that was hidden or topmost randomly
+
+version 0.0.5 (14/05/2005)
+--------------------------
+ + Autosearch wlx plugins at startup option (suggested by Alex Yaroslavsky
+   at yandex.ru / trexinc)
+ + Default plugin folder setting
+ ! Pin to FAR window now working correctly
+
+version 0.0.4 (12/05/2005)
+--------------------------
+ + Autosearch wlx plugins in subfolder "Plugins" (suggested by Alex Yaroslavsky
+   at yandex.ru / trexinc)
+ + Autosearch command wlx2far:searach with path argument
+ + Dynamic load/unload wlx plugins (suggested by Alex Yaroslavsky at yandex.ru / trexinc)
+ + Pin lister to FAR window switch
+ + Subdivide plugin file name and alias. Now plugin may called with
+   alias and full file name
+ * Using FSF.ExpandEnvironmentStr for default plugin mask and
+   argument in opening procedure
+ * Using FSF.Unquote for argument in opening procedure
+ * Add new plugin from plugins menu cause to chose current
+   file from active FAR panel as plugin file name
+ * Open plugin in lister from plugins menu cause to chose current
+   file from active FAR panel as plugin argument
+ * wlx2far.ini format changed. Add plugin alias support
+
+version 0.0.3 (09/05/2005)
+--------------------------
+ * Now linking with msvcrt.lib
+ ! Bug fixed in plugin menu ("Show lister" instead of "Hide Lister")
+
+version 0.0.2 (09/05/2005)
+--------------------------
+ + Add QView support.
+ * Second public release. Changed almost everything! Now WLX2FAR run
+   as true FAR plugin and working as a quick viewer tool and multitabbed lister.
+ - Removed supporting of "native" gui4far plugins.
+
+version 0.0.1 (18/04/2005)
+--------------------------
+ + First public release. Not true FAR plugin. Using as a console
+   application. To use recommended ConsoleServer by Sergey Oblomov.

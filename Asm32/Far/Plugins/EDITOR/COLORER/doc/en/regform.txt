@@ -1,0 +1,27 @@
+-----------------------  colorer 4ever regform  ------------------------
+
+  your name/organization:
+    [                                  ]
+  your email:
+    [                                  ]
+
+  How often and why are you using colorer?
+    [_] rarely.
+    [_] often, I work in it.
+    [_] I use it in organization.
+    [_] I use it as a library in free project.
+    [_] I use it as a library in commercial project.
+    [_] other:  [                                 ]
+
+  What applications are you using together with colorer (FAR? others?)
+    [
+
+    ]
+
+  Your wishes and suggestions about colorer library.
+    [
+
+    ]
+
+------------------------------------------------------------------------
+                                       ruiv@uic.nnov.ru / lomecb@chat.ru

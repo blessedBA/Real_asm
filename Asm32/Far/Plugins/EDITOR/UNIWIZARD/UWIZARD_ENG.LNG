@@ -1,0 +1,37 @@
+.Language=English,English
+
+"Unicode Wizard"
+
+"Decode"
+"Encode"
+"Always process only selected area"
+"Translate result to the current editor's codepage"
+
+"Cannot create file"
+"Selection area not found"
+
+"Panel"
+"Editor"
+"Viewer"
+
+"OK"
+
+"Unicode Wizard (version %d.%d)"
+"FAR 1.7x PlugIn module"
+
+"Author :"
+"Ivan Sintyurin AKA Spinoza"
+"E-mail :  spinoza@mail.ru"
+"WWW:"
+"http://www.moris.ru/~spinoza"
+"DISTRIBUTION: see License.txt"
+
+"...place for your advertisment..."
+
+"Autodetect"
+"Unicode"
+"Unicode Big Endian"
+"UTF-7"
+"UTF-8"
+"Quoted-printable"
+"Base64"

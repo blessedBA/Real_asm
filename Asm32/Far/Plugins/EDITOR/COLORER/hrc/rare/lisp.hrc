@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="Windows-1251"?>
+<!DOCTYPE hrc SYSTEM "../hrc.dtd">
+<?xml-stylesheet type="text/xsl" href="../hrc.xsl"?>
+<!--
+    lisp files 
+    Improved and adapted for AutoCAD
+    by Konstantin Khlopenkov on 05.02.2001	
+
+-->
+<hrc>
+
+<scheme name="Lisp">
+   <regexp match="/(;.*)$/" region1="dComment"/>
+
+   <block start="/( (\() \s* defun)\M .*? (C:)? ([\w|-|:]+) /ix" end="/( \) )/x" scheme="Lisp"
+          region00="dpOpenStruct" region01="dKeyword" region02="dSymbol" region03="dPrefix" region04="dFunction"
+          region10="dpCloseStruct" region11="dSymbol"/>
+
+   <block start="/( (\() \s* [^;]*? ) \M [;\s\)\(]|$ /x" end="/( \) )/x" scheme="Lisp"
+          region00="dpOpenStruct" region10="dpCloseStruct"
+          region01="dKeyword" region02="dSymbol" region11="dSymbol"/>
+
+   <inherit scheme="mStdStr"/>
+
+   <!-- Numbers -->
+   <inherit scheme="mCHexNumb"/>
+   <inherit scheme="mFloatNumb"/>
+
+   <keywords region="dSymbol">
+      <symb name=";"/><symb name="="/><symb name="+"/><symb name="-"/>
+      <symb name="/"/><symb name="*"/><symb name="&amp;"/><symb name="|"/>
+      <symb name="^"/><symb name="["/><symb name="'"/>
+      <symb name="]"/><symb name=","/><symb name="."/><symb name=":"/>
+      <symb name="!"/><symb name="~"/><symb name="&lt;"/><symb name="&gt;"/>
+      <symb name="%"/><symb name="{"/><symb name="}"/><symb name="?"/>
+      <symb name="(" region="dError"/>
+      <symb name=")" region="dError"/>
+   </keywords>
+</scheme>
+</hrc>

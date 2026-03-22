@@ -1,0 +1,654 @@
+<?xml version="1.0" encoding="Windows-1251"?>
+<!DOCTYPE hrc SYSTEM "../hrc.dtd">
+<?xml-stylesheet type="text/xsl" href="../hrc.xsl"?>
+<!--
+    TSQL Defines
+With help of:
+    Sergey <sergey@magnet.novoch.ru>
+    Konstantin E. Protopopov
+    Stas Mehanoshin <rampitec@tu.spb.ru>
+    Akzhan Abdulin <akzhan@beep.ru>
+    27 Dec 2000
+    * Keywords fixed: ucommited to uncommitted, commited to committed
+    + ANSI SQL92 quoted identifiers
+    + Server-side cursor types (FAST_FORWARD, FORWARD_ONLY, DYNAMIC, STATIC, KEYSET, OPTIMISTIC, SCROLL_LOCKS, INSENSITIVE, READ_ONLY)
+    + Missed TYPE_WARNING, SCHEMABINDING keywords
+    + Locking hints highlighting
+    + Microsoft SQL Server 2000
+     + new FUNCTION, RETURNS keywords
+     + new identity functions (SCOPE_IDENTITY, IDENT_CURRENT)
+     + new data types (BIGINT, sql_variant)
+     + INSTEAD OF triggers
+     + FOR XML keyword
+    + Interbase/Firebird Support initiated
+    * Goto label highlighing fixed - no spaces allowed now. Required to unify SQL dialects (Interbase 4ex.).
+    cail
+    Sat 10 Feb 19:20:28 2001
+    * ported into 4ever
+    Vadim Lopushansky <soft@notabene.itgo.com>
+-->
+<hrc>
+
+<define name="sqlQuotedIdentifier" value="dStringQuote"/>
+<define name="sqlString"  value="dString"/>
+<define name="sqlComment" value="dComment"/>
+<define name="sqlNumb"    value="dNumber"/>
+<define name="sqlWord"    value="dKeyword"/>
+<define name="tsqlWord"   value="dKeyword"/>
+<define name="ibsqlWord"  value="dKeyword"/>
+
+<define name="tsqlFunc"   value="dKeyword2"/>
+<define name="tsqlLockingHint" value="dKeyword2"/>
+<define name="plSqlExcept" value="dConstant"/>
+<define name="plSqlPackage" value="dKeyword2"/>
+
+<include name="rare/sqlkw.hrc"/>
+
+<scheme name="SQL">
+   <!-- linear comments -->
+   <regexp match="/(--.*$)/" region0="sqlComment"/>
+   <regexp match="/^\s*(REM\s+).*$/i" region0="sqlComment" region1="sqlComment" /> <!-- added  -->
+   <block start="/\/\*/" end="/\*\//" scheme="Comment"
+          region="sqlComment" region00="dpOpenStruct" region10="dpCloseStruct"/>
+   <!-- strings -->
+   <regexp match='/("((\\.)|[^\\"])*?")/' region0="SQLQuotedIdentifier"/>
+   <regexp match="/('((\\.)|[^\\'])*?')/" region0="sqlString"/>
+   <!-- Numbers -->
+   <inherit scheme="mCHexNumb"/>
+   <inherit scheme="mFloatNumb"/>
+   <inherit scheme="mDecNumb"/>
+   <!-- Variables -->
+   <regexp match="/\@\@\w*/" region0="dVar"/>
+   <regexp match="/\@\w*/" region0="dVar"/>
+   <regexp match="/^\s*\w+\s* : \M [\w\s]|$/x" region0="dLabel"/>
+   <regexp match="/\:\w*/" region0="dVar"/>
+   <regexp match="/^\s*(&lt;&lt;)[\w_\$\@]+(>>)/" region0="dLabel" region1="dpOpenStruct" region2="dpCloseStruct"/>
+   <!-- objects -->
+   <regexp match="/^\M\s*(create\s+(or\s+replace\s+)?
+           ((procedure)|(function)|(trigger)|(package(\s+body)?)|
+            (table)|(view)|(sequence)|(constraint)|(user)|
+            ((unique\s+)?index))).*$/ix"
+           region0="dFunction"/>
+   <!-- parencies -->
+   <block start="/(\()/" end="/(\))/" scheme="SQL"
+          region00="dSymbol" region01="dpOpenStruct"
+          region10="dSymbol" region11="dpCloseStruct"/>
+   <!-- + -->
+   <!-- parencies PLSQL -->
+   <block start="/\b(if)\B/i" end="/\b(end([\s])*if)\B/i" scheme="SQL"
+          region00="tsqlWord" region10="tsqlWord"
+          region01="dpOpenStruct" region11="dpCloseStruct"/>
+   <block start="/\b(loop)\B/i" end="/\b(end([\s])*loop)\B/i" scheme="SQL"
+          region00="tsqlWord" region10="tsqlWord"
+          region01="dpOpenStruct" region11="dpCloseStruct"/>
+   <block start="/\b(begin)\B/i" end="/\b(end)\B/ix" scheme="SQL"
+          region00="tsqlWord" region10="tsqlWord"
+          region01="dpOpenStruct" region11="dpCloseStruct"/>
+   <block start="/\b(create(\s)*or(\s)*replace(\s)*package(.)*(\s)*is)\B/i" end="/\b(end)\B/i" scheme="SQL"
+          region00="tsqlWord" region10="tsqlWord"
+          region01="dpOpenStruct" region11="dpCloseStruct"/>
+   <!-- +. -->
+   <!-- ODBC Reserved Keywords -->
+   <keywords ignorecase="ignorecase" region="tsqlWord">
+      <word name="ABSOLUTE"/>
+      <word name="ACTION"/>
+      <word name="ADA"/>
+      <word name="ADD"/>
+      <word name="ALL"/>
+      <word name="ALLOCATE"/>
+      <word name="ALTER"/>
+      <word name="AND"/>
+      <word name="ANY"/>
+      <word name="ARE"/>
+      <word name="AS"/>
+      <word name="ASC"/>
+      <word name="ASSERTION"/>
+      <word name="AT"/>
+      <word name="AUTHORIZATION"/>
+      <word name="BEGIN"/>
+      <word name="BETWEEN"/>
+      <word name="BIGINT"/>
+      <word name="BIT"/>
+      <word name="BIT_LENGTH"/>
+      <word name="BOTH"/>
+      <word name="BY"/>
+      <word name="CASCADE"/>
+      <word name="CASCADED"/>
+      <word name="CASE"/>
+      <word name="CAST"/>
+      <word name="CATALOG"/>
+      <word name="CHAR"/>
+      <word name="CHAR_LENGTH"/>
+      <word name="CHARACTER"/>
+      <word name="CHARACTER_LENGTH"/>
+      <word name="CHECK"/>
+      <word name="CLOSE"/>
+      <word name="COALESCE"/>
+      <word name="COLLATE"/>
+      <word name="COLLATION"/>
+      <word name="COLUMN"/>
+      <word name="COMMIT"/>
+      <word name="CONNECT"/>
+      <word name="CONNECTION"/>
+      <word name="CONSTRAINT"/>
+      <word name="CONSTRAINTS"/>
+      <word name="CONTINUE"/>
+      <word name="CORRESPONDING"/>
+      <word name="CREATE"/>
+      <word name="CROSS"/>
+      <word name="CURRENT"/>
+      <word name="CURRENT_DATE"/>
+      <word name="CURRENT_TIME"/>
+      <word name="CURRENT_TIMESTAMP"/>
+      <word name="CURRENT_USER"/>
+      <word name="CURSOR"/>
+      <word name="DATE"/>
+      <word name="DAY"/>
+      <word name="DEALLOCATE"/>
+      <word name="DEC"/>
+      <word name="DECIMAL"/>
+      <word name="DECLARE"/>
+      <word name="DEFAULT"/>
+      <word name="DEFERRABLE"/>
+      <word name="DEFERRED"/>
+      <word name="DELETE"/>
+      <word name="DESC"/>
+      <word name="DESCRIBE"/>
+      <word name="DESCRIPTOR"/>
+      <word name="DIAGNOSTICS"/>
+      <word name="DISCONNECT"/>
+      <word name="DISTINCT"/>
+      <word name="DOMAIN"/>
+      <word name="DOUBLE"/>
+      <word name="DROP"/>
+      <word name="ELSE"/>
+      <word name="END"/>
+      <word name="END-EXEC"/>
+      <word name="ESCAPE"/>
+      <word name="EXCEPT"/>
+      <word name="EXCEPTION"/>
+      <word name="EXEC"/>
+      <word name="EXECUTE"/>
+      <word name="EXISTS"/>
+      <word name="EXTERNAL"/>
+      <word name="EXTRACT"/>
+      <word name="FALSE"/>
+      <word name="FETCH"/>
+      <word name="FIRST"/>
+      <word name="FLOAT"/>
+      <word name="FOR"/>
+      <word name="FOREIGN"/>
+      <word name="FORTRAN"/>
+      <word name="FOUND"/>
+      <word name="FROM"/>
+      <word name="FULL"/>
+      <word name="GET"/>
+      <word name="GLOBAL"/>
+      <word name="GO"/>
+      <word name="GOTO"/>
+      <word name="GRANT"/>
+      <word name="GROUP"/>
+      <word name="HAVING"/>
+      <word name="HOUR"/>
+      <word name="IDENTITY"/>
+      <word name="IMMEDIATE"/>
+      <word name="IN"/>
+      <word name="INCLUDE"/>
+      <word name="INDEX"/>
+      <word name="INDICATOR"/>
+      <word name="INITIALLY"/>
+      <word name="INNER"/>
+      <word name="INPUT"/>
+      <word name="INSENSITIVE"/>
+      <word name="INSERT"/>
+      <word name="INT"/>
+      <word name="INTEGER"/>
+      <word name="INTERSECT"/>
+      <word name="INTERVAL"/>
+      <word name="INTO"/>
+      <word name="IS"/>
+      <word name="ISOLATION"/>
+      <word name="JOIN"/>
+      <word name="KEY"/>
+      <word name="LANGUAGE"/>
+      <word name="LAST"/>
+      <word name="LEADING"/>
+      <word name="LEFT"/>
+      <word name="LEVEL"/>
+      <word name="LIKE"/>
+      <word name="LOCAL"/>
+      <word name="LOOP"/>
+      <word name="MATCH"/>
+      <word name="MINUTE"/>
+      <word name="MODULE"/>
+      <word name="MONTH"/>
+      <word name="NAMES"/>
+      <word name="NATIONAL"/>
+      <word name="NATURAL"/>
+      <word name="NCHAR"/>
+      <word name="NEXT"/>
+      <word name="NO"/>
+      <word name="NONE"/>
+      <word name="NOT"/>
+      <word name="NULL"/>
+      <word name="NULLIF"/>
+      <word name="NUMERIC"/>
+      <word name="OCTET_LENGTH"/>
+      <word name="OF"/>
+      <word name="ON"/>
+      <word name="ONLY"/>
+      <word name="OPEN"/>
+      <word name="OPTION"/>
+      <word name="OR"/>
+      <word name="ORDER"/>
+      <word name="OUTER"/>
+      <word name="OUTPUT"/>
+      <word name="OVERLAPS"/>
+      <word name="PAD"/>
+      <word name="PARTIAL"/>
+      <word name="PASCAL"/>
+      <word name="POSITION"/>
+      <word name="PRECISION"/>
+      <word name="PREPARE"/>
+      <word name="PRESERVE"/>
+      <word name="PRIMARY"/>
+      <word name="PRIOR"/>
+      <word name="PRIVILEGES"/>
+      <word name="PROCEDURE"/>
+      <word name="PUBLIC"/>
+      <word name="READ"/>
+      <word name="REAL"/>
+      <word name="REFERENCES"/>
+      <word name="RELATIVE"/>
+      <word name="RESTRICT"/>
+      <word name="REVOKE"/>
+      <word name="RIGHT"/>
+      <word name="ROLLBACK"/>
+      <word name="ROWS"/>
+      <word name="SCHEMA"/>
+      <word name="SCROLL"/>
+      <word name="SECOND"/>
+      <word name="SECTION"/>
+      <word name="SELECT"/>
+      <word name="SESSION"/>
+      <word name="SESSION_USER"/>
+      <word name="SET"/>
+      <word name="SIZE"/>
+      <word name="SMALLINT"/>
+      <word name="SOME"/>
+      <word name="SPACE"/>
+      <word name="SQL"/>
+      <word name="SQLCA"/>
+      <word name="SQLSTATE"/>
+      <word name="SQLWARNING"/>
+      <word name="SUBSTRING"/>
+      <word name="SYSTEM_USER"/>
+      <word name="TABLE"/>
+      <word name="TEMPORARY"/>
+      <word name="THEN"/>
+      <word name="TIME"/>
+      <word name="TIMESTAMP"/>
+      <word name="TIMEZONE_HOUR"/>
+      <word name="TIMEZONE_MINUTE"/>
+      <word name="TO"/>
+      <word name="TRAILING"/>
+      <word name="TRANSACTION"/>
+      <word name="TRANSLATION"/>
+      <word name="TRIM"/>
+      <word name="TRUE"/>
+      <word name="UNION"/>
+      <word name="UNIQUE"/>
+      <word name="UNKNOWN"/>
+      <word name="UPDATE"/>
+      <word name="USAGE"/>
+      <word name="USING"/>
+      <word name="VALUE"/>
+      <word name="VALUES"/>
+      <word name="VARCHAR"/>
+      <word name="VARYING"/>
+      <word name="VIEW"/>
+      <word name="WHEN"/>
+      <word name="WHENEVER"/>
+      <word name="WHERE"/>
+      <word name="WITH"/>
+      <word name="WORK"/>
+      <word name="WRITE"/>
+      <word name="YEAR"/>
+      <word name="ZONE"/>
+   </keywords>
+   <!-- SQL Syntax -->
+   <keywords ignorecase="ignorecase" region="sqlWord">
+      <word name="add"/>
+      <word name="all"/>
+      <word name="alter"/>
+      <word name="and"/>
+      <word name="any"/>
+      <word name="as"/>
+      <word name="asc"/>
+      <word name="authorization"/>
+      <word name="backup"/>
+      <word name="begin"/>
+      <word name="between"/>
+      <word name="body"/>
+      <word name="break"/>
+      <word name="browse"/>
+      <word name="bulk"/>
+      <word name="by"/>
+      <word name="cascade"/>
+      <word name="case"/>
+      <word name="check"/>
+      <word name="checkpoint"/>
+      <word name="close"/>
+      <word name="clustered"/>
+      <word name="coalesce"/>
+      <word name="column"/>
+      <word name="commit"/>
+      <word name="committed"/>
+      <word name="compute"/>
+      <word name="confirm"/>
+      <word name="constraint"/>
+      <word name="contains"/>
+      <word name="containstable"/>
+      <word name="continue"/>
+      <word name="controlrow"/>
+      <word name="create"/>
+      <word name="cross"/>
+      <word name="current"/>
+      <word name="current_date"/>
+      <word name="current_time"/>
+      <word name="current_timestamp"/>
+      <word name="current_user"/>
+      <word name="cursor"/>
+      <word name="database"/>
+      <word name="dbcc"/>
+      <word name="deallocate"/>
+      <word name="declare"/>
+      <word name="default"/>
+      <word name="delete"/>
+      <word name="deny"/>
+      <word name="desc"/>
+      <word name="disk"/>
+      <word name="distinct"/>
+      <word name="distributed"/>
+      <word name="double"/>
+      <word name="drop"/>
+      <word name="dummy"/>
+      <word name="dynamic"/>
+      <word name="else"/>
+      <word name="encryption"/>
+      <word name="end"/>
+      <word name="errlvl"/>
+      <word name="errorexit"/>
+      <word name="escape"/>
+      <word name="except"/>
+      <word name="exec"/>
+      <word name="exit"/>
+      <word name="fast_forward"/>
+      <word name="file"/>
+      <word name="fillfactor"/>
+      <word name="floppy"/>
+      <word name="for"/>
+      <word name="foreign"/>
+      <word name="forward_only"/>
+      <word name="freetext"/>
+      <word name="freetexttable"/>
+      <word name="from"/>
+      <word name="full"/>
+      <word name="function"/>
+      <word name="goto"/>
+      <word name="grant"/>
+      <word name="group"/>
+      <word name="having"/>
+      <word name="holdlock"/>
+      <word name="identity"/>
+      <word name="identity_insert"/>
+      <word name="identitycol"/>
+      <word name="if"/>
+      <word name="in"/>
+      <word name="index"/>
+      <word name="insensitive"/>
+      <word name="insert"/>
+      <word name="instead"/>
+      <word name="intersect"/>
+      <word name="into"/>
+      <word name="is"/>
+      <word name="isolation"/>
+      <word name="join"/>
+      <word name="key"/>
+      <word name="keyset"/>
+      <word name="kill"/>
+      <word name="left"/>
+      <word name="level"/>
+      <word name="like"/>
+      <word name="lineno"/>
+      <word name="load"/>
+      <word name="mirrorexit"/>
+      <word name="national"/>
+      <word name="nocheck"/>
+      <word name="nonclustered"/>
+      <word name="not"/>
+      <word name="null"/>
+      <word name="nullif"/>
+      <word name="of"/>
+      <word name="off"/>
+      <word name="offsets"/>
+      <word name="on"/>
+      <word name="once"/>
+      <word name="only"/>
+      <word name="open"/>
+      <word name="opendatasource"/>
+      <word name="openquery"/>
+      <word name="openrowset"/>
+      <word name="optimistic"/>
+      <word name="option"/>
+      <word name="or"/>
+      <word name="order"/>
+      <word name="outer"/>
+      <word name="over"/>
+      <word name="package"/>
+      <word name="percent"/>
+      <word name="perm"/>
+      <word name="permanent"/>
+      <word name="pipe"/>
+      <word name="plan"/>
+      <word name="precision"/>
+      <word name="prepare"/>
+      <word name="primary"/>
+      <word name="print"/>
+      <word name="privileges"/>
+      <word name="proc"/>
+      <word name="procedure"/>
+      <word name="processexit"/>
+      <word name="public"/>
+      <word name="raiserror"/>
+      <word name="read"/>
+      <word name="read_only"/>
+      <word name="readtext"/>
+      <word name="reconfigure"/>
+      <word name="references"/>
+      <word name="repeatable"/>
+      <word name="replication"/>
+      <word name="restore"/>
+      <word name="restrict"/>
+      <word name="return"/>
+      <word name="returns"/>
+      <word name="revoke"/>
+      <word name="right"/>
+      <word name="rollback"/>
+      <word name="row"/>
+      <word name="rowcount"/>
+      <word name="rowguidecol"/>
+      <word name="rule"/>
+      <word name="save"/>
+      <word name="schema"/>
+      <word name="schemabinding"/>
+      <word name="scroll_locks"/>
+      <word name="select"/>
+      <word name="serializable"/>
+      <word name="session_user"/>
+      <word name="set"/>
+      <word name="setuser"/>
+      <word name="shutdown"/>
+      <word name="some"/>
+      <word name="sql_variant"/>
+      <word name="static"/>
+      <word name="statistics"/>
+      <word name="system_user"/>
+      <word name="table"/>
+      <word name="tape"/>
+      <word name="temp"/>
+      <word name="temporary"/>
+      <word name="textsize"/>
+      <word name="then"/>
+      <word name="to"/>
+      <word name="top"/>
+      <word name="tran"/>
+      <word name="transaction"/>
+      <word name="trigger"/>
+      <word name="truncate"/>
+      <word name="tsequal"/>
+      <word name="type_warning"/>
+      <word name="uncommitted"/>
+      <word name="union"/>
+      <word name="unique"/>
+      <word name="update"/>
+      <word name="updatetext"/>
+      <word name="use"/>
+      <word name="values"/>
+      <word name="varying"/>
+      <word name="view"/>
+      <word name="waitfor"/>
+      <word name="when"/>
+      <word name="where"/>
+      <word name="while"/>
+      <word name="with"/>
+      <word name="work"/>
+      <word name="writetext"/>
+      <word name="xml"/>
+      <!-- + -->
+      <word name="replace"/>  <!-- moved -->
+      <word name="REVERSE"/>  <!-- moved -->
+      <!-- +. -->
+   </keywords>
+   <!-- Interbase/Firebird SQL Syntax -->
+   <keywords ignorecase="ignorecase" region="ibsqlWord">
+      <word name="AFTER"/>
+      <word name="BEFORE"/>
+      <word name="DO"/>
+      <word name="GEN_ID"/>
+      <word name="GENERATOR"/>
+      <word name="PAGE_SIZE"/>
+      <word name="PASSWORD"/>
+      <word name="RETURNING_VALUES"/>
+      <word name="SUSPEND"/>
+      <word name="TERM"/>
+      <word name="VARIABLE"/>
+   </keywords>
+   <!-- SQL Locking Hints -->
+   <keywords ignorecase="ignorecase" region="tsqlLockingHint">
+      <word name="holdlock"/>
+      <word name="nolock"/>
+      <word name="paglock"/>
+      <word name="readcommitted"/>
+      <word name="readpast"/>
+      <word name="readuncommitted"/>
+      <word name="rowlock"/>
+      <word name="tablock"/>
+      <word name="tablockx"/>
+      <word name="updlock"/>
+      <word name="xlock"/>
+   </keywords>
+   <!-- TSQL functions -->
+   <keywords ignorecase="ignorecase" region="tsqlFunc">
+      <word name="CHAR"/>
+      <word name="CHARINDEX"/>
+      <word name="DIFFERENCE"/>
+      <word name="IDENT_CURRENT"/>
+      <word name="LEFT"/>
+      <word name="LEN"/>
+      <word name="LOWER"/>
+      <word name="LTRIM"/>
+      <word name="NCHAR"/>
+      <word name="PATINDEX"/>
+      <word name="PATINDEX"/>
+      <word name="QUOTENAME"/>
+      <word name="REPLICATE"/>
+      <word name="RIGHT"/>
+      <word name="RTRIM"/>
+      <word name="SCOPE_IDENTITY"/>
+      <word name="SOUNDEX"/>
+      <word name="SPACE"/>
+      <word name="STR"/>
+      <word name="STUFF"/>
+      <word name="SUBSTRING"/>
+      <word name="TEXTPTR"/>
+      <word name="TEXTVALID"/>
+      <word name="UNICODE"/>
+      <word name="UPPER"/>
+      <word name="abs"/>
+      <word name="acos"/>
+      <word name="all"/>
+      <word name="and"/>
+      <word name="any"/>
+      <word name="ascii"/>
+      <word name="asin"/>
+      <word name="atan"/>
+      <word name="atn2"/>
+      <word name="case"/>
+      <word name="cast"/>
+      <word name="ceiling"/>
+      <word name="convert"/>
+      <word name="cos"/>
+      <word name="current_timestamp"/>
+      <word name="current_user"/>
+      <word name="cursor_status"/>
+      <word name="datalenght"/>
+      <word name="date"/>
+      <word name="dateadd"/>
+      <word name="datediff"/>
+      <word name="datename"/>
+      <word name="datepart"/>
+      <word name="decode"/>
+      <word name="degrees"/>
+      <word name="exp"/>
+      <word name="floor"/>
+      <word name="getdate"/>
+      <word name="identity"/>
+      <word name="log"/>
+      <word name="log10"/>
+      <word name="object_id"/>
+      <word name="object_name"/>
+      <word name="objectproperty"/>
+      <word name="odbc"/>
+      <word name="openquery"/>
+      <word name="openrowset"/>
+      <word name="parsename"/>
+      <word name="power"/>
+      <word name="rand"/>
+      <word name="readtext"/>
+      <word name="sin"/>
+      <word name="updatetext"/>
+      <word name="writetext"/>
+      <!-- + --> <!-- moved -->
+      <word name="AVG"/>
+      <word name="CONVERT"/>
+      <word name="COUNT"/>
+      <word name="LOWER"/>
+      <word name="MAX"/>
+      <word name="MIN"/>
+      <word name="SQLCODE"/>
+      <word name="SQLERROR"/>
+      <word name="SUM"/>
+      <word name="TRANSLATE"/>
+      <word name="UPPER"/>
+      <word name="USER"/>
+      <word name="dump"/>
+      <!-- +. -->
+   </keywords>
+
+   <inherit scheme="plSqlkw"/>
+
+</scheme>
+
+</hrc>
+

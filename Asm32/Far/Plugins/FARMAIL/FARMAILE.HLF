@@ -1,0 +1,945 @@
+.Language=English,English
+.PluginContents=FARMail
+
+@Contents
+$^#FARMail v2.0.#
+
+ - ~About FARMail~@About@
+ - ~How to use~@How@
+ - ~Mailbox settings~@MailboxSettings@
+ - ~POP3 messages panel~@POP@
+ - ~IMAP4 messages panel~@IMAP@
+ - ~Mail sending options~@SendOptions@
+ - ~Header information in message~@Header@
+ - ~Script writing~@Script@
+ - ~Address book~@AdrBook@
+ - ~Plug-in settings~@PluginSettings@
+ - ~FAQ~@FAQ@
+ - ~Known bugs~@Bugs@
+ - ~Technical information~@Tech@
+ - ~Author~@Author@
+
+@About
+$^#About this plug-in#
+
+  FARMail is a FAR plug-in allowing to work with Internet mail messages from
+FAR. Its two main purposes are:
+
+ - to administrate messages on POP3 and IMAP4 servers, that is to view,
+delete and download messages for later offline processing;
+
+ - to quickly send short messages or files via SMTP without quitting FAR.
+
+  Messages downloaded from POP3(IMAP4) servers are saved "as is", without any
+processing. Outgoing messages can be sent "as is", encoded in base64 or
+attached.
+
+
+
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ ~Contents~@Contents@                                              ~Next~@How@
+
+@How
+$^#How to work with FARMail#
+
+ #Installation#
+ #ÄÄÄÄÄÄÄÄÄÄÄÄ#
+
+  1. Create subdirectory "FARMail" in "Far\Plugins\" directory.
+  2. Copy files from FARMail archive to this subdirectory.
+  3. Restart FAR.
+
+ #Work#
+ #ÄÄÄÄ#
+
+  To start work You must at first ~enter valid mailbox(es)~@MailboxSettings@. After that
+every time You select FARMail from plugins menu (or from Disks menu), You will
+see a list of all mailboxes represented as folders in FAR file panel. To
+select a mailbox simply "enter" it, that is - press ENTER (Note: You must
+be connected to Internet). If You didn't specify Your login and/or password,
+You will be prompted to enter them. If You work with IMAP4 server, You will
+see a list of folders in Your mailbox, select the one You want.
+Then You will see a list of messages on
+server, represented as files with names starting from 1 and extensions
+specified in FARMail settings (".MSG" by default). You can see also message size,
+sender, date and subject. Now You can view, move, copy or delete messages as files. There are
+also some special functions, which will be described later.
+
+  To send a message or file select files You want in a file panel
+and copy (or move) file(s) to FARMail panel by pressing F5 or F6. It's not
+necessary to enter a mailbox, mail will be sent automatically if You have
+only one mailbox, otherwise You can select a mailbox from popup menu.
+After a standart FAR prompt You will see a more complex dialog with
+~mail sending options~@SendOptions@. Fill all necessary fields and press Ok.
+Your message will be sent. Of course You will not see it in mailbox panel.
+Note: only files can be sent, not folders.
+
+  If You send more than one file, You will be asked if You want to send
+all files in one message. In this case all selected files will be sent attached
+to one message.
+
+  You can also send a message from FAR internal editor. Just select FARMail
+from plugins menu, then select "Send message". Choose an appropriate server,
+recipient etc. If You reply to someone, You can quote all text - select
+FARMail from plugins menu, then select "quote". If You want more
+complicated processing, You can write Your own scripts for new message
+and reply. There are some examples in folder "Scripts".
+
+
+
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ ~Contents~@Contents@                                      ~Prev~@About@  ~Next~@MailboxSettings@
+
+
+@MailboxSettings
+$^#Mailbox settings#
+
+  To edit existing mailbox, press F4 on selected mailbox. To enter new
+mailbox, press Shift-F4 in FARMail panel. To delete selected mailbox(es),
+press F8.
+
+"Mailbox options" dialog looks like this:
+
+ ÉÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ Mailbox options ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ»
+ º  Mailbox       : Vasya Pupkin's mailbox                º
+ º  User Name     : Vasya Pupkin                          º
+ º  E-Mail        : vasya@@hell.org                        º
+ º  Organization  : Vasya & Co Ltd                        º
+ º  [ ] Default mailbox                                   º
+ ÇÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¶
+ º  SMTP                                                  º
+ º   À Server   : mail.hell.org               Port: 25    º
+ º                                                        º
+ ÇÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¶
+ º  () POP3 / ( ) IMAP4                                  º
+ º   Ã Server   : pop.hell.org                Port: 110   º
+ º   Ã Login    : vasya                                   º
+ º   Ã Password : ******                                  º
+ º   À Activity maintenance : 0 min.                      º
+ ÈÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ¼
+ [  Ok  ][  Cancel  ]
+
+Here You must enter:
+
+#Mailbox# - Mailbox name, must be unique;
+
+#User Name# - User name, which will be used in outgoing messages;
+
+#E-Mail# - User email address for outgoing messages;
+
+#Organization# - Organization name (not necessary);
+
+#Default# - If checked, this mailbox will be selected by default
+in the mailboxes menu while sending;
+
+#SMTP server# - SMTP server address and port (usually 25);
+
+#POP3/IMAP4 server# - POP3 or IMAP4 server (may be the same as SMTP server) and port
+(usually 110 for POP3 and 143 for IMAP4);
+
+#Login# - Your login for POP3(IMAP4) server;
+
+#Password# - Your password for POP3(IMAP4) server;
+
+#Activity maintenance# - If more than 0, empty commands will be sent
+to incoming mail server with this period.
+
+  You must fill all fields except login/password and organization.
+E-Mail must be in format "name@@domain" only.
+Password is saved in registry slightly encrypted, but it's better
+not to enter it if You are not sure that nobody else can work on Your
+computer. Unencrypted passwords entered in version 1.0 are also valid,
+they will be encrypted automatically first time You change something
+in the mailbox. Note that it's not necessary to select a default mailbox.
+
+
+
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ ~Contents~@Contents@                                      ~Prev~@How@  ~Next~@POP@
+
+
+@POP
+$^#POP3 messages panel#
+
+  This panel contains messages names and some information about these
+messages. When You enter a mailbox, You automatically lock it. So You can't
+see any new mail until You reconnect. Also any other mail clients can't
+access locked messages. Message numbers don't change until You leave the
+server. While connected, You can undelete all erased messages by pressing
+F7. But this option works only before You leave server! When You leave, all 
+changes will be saved. You can also reconnect to server without leaving
+panel by pressing Shift-F7 or Ctrl-R. Use Shift-F1 to edit address book,
+Shift-F2 and Shift-F3 to edit/view only first lines of a message.
+
+  When You copy messages on disk, You can turn on the option "Assign
+unique names". In this case file names will be different from message names.
+
+
+
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ ~Contents~@Contents@                                      ~Prev~@MailboxSettings@  ~Next~@IMAP@
+
+
+@IMAP
+$^#IMAP4 messages panel#
+
+  When You enter an IMAP4 mailbox, You see a list of all folders in Your
+mailbox. Usually You can create, delete and rename folders (this is not
+possible in this version of FARMail, wait for future versions). There can be
+a hierarchy of folders, but in this version all folders are represented
+as a flat structure. There must be at least one folder INBOX, which is
+the default folder for incoming mail.
+
+  In the folders' panel there are fields:
+
+#Folder name# - that is the name of the folder :)
+
+#Fl# - this means "flags". If the folder is "marked" by server, You'll
+see a "!" symbol. "Marked" means that the folder probably contains messages
+that have been added since the last time the folder was selected.
+Note that some servers don't give this information. If the folder
+can't be selected, You'll see a "N" symbol.
+
+#Ttl# - total number of messages in folder;
+
+#Rcn# - number of recent messages;
+
+#Uns# - number of unseen messages;
+
+  Note that if Your server don't support IMAP4rev1 protocol, number of
+messages will be always 0.
+
+  When You select a folder, You get a list of all messages in the
+folder. This list is similar to the list of messages on POP3 server.
+But the feature of IMAP4 is that multiple mail clients can access
+the same folder simultaneously. So messages can be deleted by other
+mail clients, or new mail may come. In this case messages are 
+renumbered. On IMAP4 servers You can use the Ctrl-R
+sequence to refresh message list without reconnecting.
+
+  You can assign unique numbers while copying messages on disk - just
+like wuth POP3 servers.
+
+  You can also resume broken message download. To do this, turn on
+the appropriate option in program settings. After that all downloaded
+messages will be saved on disk, even if only a part of message was
+downloaded. Broken messages will have the "hidden" attribute and a
+special header field with necessary information. Then You can connect
+again to Your server and copy this message onto itself (Note: don't
+use automatic names assign, and don't copy more than 1 message! This
+feature works only when You copy 1 message onto itself. Also don't
+change incomplete message!). You will be asked to resume or overwrite
+message. Select "resume" and FARMail will try to resume download.
+
+
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ ~Contents~@Contents@                                      ~Prev~@POP@  ~Next~@SendOptions@
+
+
+@SendOptions
+$^#Mail sending options#
+
+ This is an example of send dialog:
+
+ ÉÍÍÍÍÍÍÍÍÍÍÍÍÍÍ Sending as message: SomeText.txt ÍÍÍÍÍÍÍÍÍÍÍ»
+ º Recipient : John Doe <jd@@hell.org>                   (?) º
+ º CC        :                                          (?) º
+ º BCC       :                                          (?) º
+ º Subject   : any subject                                  º
+ ÇÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¶
+ º Send      :() Text as is (7 bit)      ( ) HTML as is     º
+ º            ( ) Text in Base64          ( ) HTML in Base64 º
+ º            ( ) Attached file                              º
+ ÇÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¶
+ º Original text charset :      ³ Encode to:                 º
+ º   ( ) OEM/Undefined          ³  ( ) KOI-8 (russian)       º
+ º   () US-ASCII               ³  ( ) Windows-1251 (russian)º
+ º   ( ) KOI-8 (russian)        ³  () Do not encode         º
+ º   ( ) Windows-1251 (russian) ³  ( ) ISO-8859-5           º
+ º   ( ) ISO-8859-5            ³                            º
+ ÈÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÏÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ¼
+ [  Ok  ] [  All  ] [  Cancel  ]
+
+
+#Recipient# - User name and email of person You write to, must be in
+form User <name@@domain>, name@@domain or <name@@domain>. You can select a
+user from history list of from ~address book~@AdrBook@. You can enter multiple
+recipients, divided by ";";
+
+#(?)# - Select recipient(s) from address book;
+
+#CC, BCC# - Carbon copy and blind carbon copy fields. Note that You'll
+see these fields only if the appropriate checkbox in plugin settings
+is selected;
+
+#Subject# - Message subject;
+
+#Send# - Here You can select the way Your message is sent.
+FARMail tries to choose the appropriate method. Possible options are:
+    1. #"Text as is"# - this means that file will be sent
+   "as is", without any modifications. This must be a
+   plain text file, with 7-bit or 8-bit characters
+   (detected automatically). Use this option if You send a
+   text file in 7-bit charset, or a text file in 8-bit
+   charset and You are sure Your mail channel can transfer
+   8-bit messages without modification.
+    2. #Text in Base64# - this means that the file You send
+   is a plain text file, but it can be modified on its way
+   to recipient (for example, if it contains 8-bit
+   characters etc). So the text will be encoded.
+    3. #Attached file# - choose this option if the file You
+   send is not a plain text file.
+    4. #HTML as is# - choose this option if You send a
+   message in form of HTML file.
+    5. #HTML in Base64# - choose this option to send a 
+   HTML-message, encoded in Base64.
+
+#Charset# - This is Your message encoding. FARMail tries to
+detect it automatically if You have character frequency
+distribution table installed. Your message's 
+header will have the appropriate "charset" parameter,
+and the field "Subject" will be encoded if necessary.
+Possible values are:
+    1. #OEM/Undefined# - this means that Your message is not
+   in KOI-8R, Windows-1251 or US-ASCII charset, so the
+   charset parameter will not be used. Choose this option
+   for attached files or text files in code pages other
+   then US-ASCII, KOI-8R or Win-1251 (OEM, for example).
+    2. #US-ASCII# - this is only for 7-bit text messages.
+    3. #KOI-8 (russian)# - choose this option if Your
+   message is written in KOI-8R encoding. An appropriate
+   "charset" will be used, and "Subject" field will be
+   encoded in KOI-8R.
+    4. #Windows-1251 (russian)# - choose this option if
+   Your message is written in Windows code page. An
+   appropriate "charset" will be used, and "Subject"
+   field will be encoded in Windows-1251 codepage.
+    5. If You have defined additional encodings
+   in program settings, You can enter here another
+   charset.
+
+#Encode to# - this option shows how to reencode Your message if
+necessary. This may be useful, for example, if Your
+message is in OEM codepage, and You want to encode it
+in KOI-8R. Possible values are:
+    1. #KOI-8#. This option is selected by default for
+   8-bit messages in OEM or Windows-1251. Your message
+   will be reencoded to KOI-8R.
+    2. #Windows-1251#. Select this option if You want to
+   reencode Your message from OEM or KOI-8R to Windows
+   codepage.
+    3. #Do not encode#. Select this option if You want to
+   send Your message "as is".
+    4. If You have defined additional encodings
+   in program settings, You can enter here another
+   charset.
+
+  If You send multiple files in one message, this dialog will be more
+simple, there will be only recipients' addresses, subject and encoding.
+This is because all files are sent attached to message and there is no
+text body to encode. The "Header encoding" setting is used to encode
+the "subject" field.
+
+  Press [ Ok ] to proceed, [ Cancel ] to stop operation. If You send more
+than one file, You will see also an [ All ] button. If You press [ All ],
+all next files will be sent the same way. Choose "All" only if You are
+sure You send identical files!
+  Note (for russian users): You must install character distribution table,
+KOI8 and Windows-1251 codepages in order to work with different codepages.
+Do not change code tables' names! FARMail searches for "KOI-8" and
+"CP-1251" substrings in these names.
+
+
+
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ ~Contents~@Contents@                                      ~Prev~@IMAP@  ~Next~@Header@
+
+
+
+@Header
+$^#Header information in message#
+
+
+  If You don't want to enter a lot of information each time You send a
+message, You can fill some necessary fields in message text. Just
+write at the beginning of the first line:
+
+ #%start%#
+
+ And all next lines will be processed like a block of technical information,
+up to the line:
+
+ #%end%#
+
+This block will not be sent to recipient. Inside it You can specify:
+
+1. Recipient's address and message subject. The syntax is: #set <variable>=<value>#.
+There are only 4 possible variables :-) You can write:
+
+  set %to%   = <list of recipients>
+  set %cc%   = <list of carbon copy recipients>
+  set %bcc%  = <list of blind carbon copy recipients>
+  set %subj% = <message subject>
+
+2. Additional header lines (up to 10). The syntax is: #header <field> = <value>#. You
+can use defined variables %to%, %cc% etc. in header field. For example,
+such a construction:
+
+ %start%
+  set %to% = Vasya Pupkin <vasya@@hell.org>
+  header X-MyComment-To = (sent to %to%)
+ %end%
+
+ will result in :
+
+ ...
+ To: Vasya Pupkin <vasya@@hell.org>
+ X-MyComment-To: (sent to Vasya Pupkin <vasya@@hell.org>)
+ ...
+
+3. All other lines are ignored. But if You want to put some comments,
+it's a good idea to begin them with a ';' symbol.
+
+Note that to use this feature, You must turn on an appropriate option
+in program settings.
+
+
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ ~Contents~@Contents@                                      ~Prev~@SendOptions@  ~Next~@Script@
+
+
+@Script
+$^#Script writing#
+
+
+ #Variables#.
+There are two kinds of variables: of #integer# and #string# type.
+You don't need to declare them manually, but You cannot use undefined
+values. All variables can be accessed anywhere in the script code.
+
+ #Assignment#.
+To assign a value, simply write #<variable>=<value>#.
+
+   #i = 0#
+   #j = "abc"#
+
+
+ #Comments#.
+Lines beginning with "#rem#" are ignored.
+
+   #rem this is a comment#
+
+
+ #Constants#.
+There are two kinds of constants: integer and string.
+A character in single quotes is an integer value. Examples:
+
+   #123#, #'A'# - integer numbers;
+   #"123"#, #"asd"# - string constants.
+
+
+ Operator #[]#.
+You can access a single character in a string
+variable: #<string variable>[<position of character>]#. Note that
+You cannot set this value, it's only for reading. Example:
+
+   #i = str[2] + 4#
+
+
+ #Arithmetic expressions#.
+You can use '#+#', '#-#', '#*#', '#/#' and '#()#'
+in expressions with integer values, and '#+#' with string
+values:
+
+   #i = -3*(j+k)*(1-l/2)#
+   #str = str + "123"#
+
+
+ #Conditional expressions#.
+A conditional expression is an integer
+value, 0 - false, otherwise true. It can be an arithmetic expression, or
+a combination below:
+
+   #a1 == a2#    true if a1 is equal to a2
+   #a1 != a2#    true if a1 is not equal to a2
+   #a1 <= a2#    true if a1 is less or equal to a2
+   #a1 < a2 #    true if a1 is less then a2
+   #a1 >= a2#    true if a1 is more or equal to a2
+   #a1 > a2 #    true if a1 is more then a2
+   #!a1     #    not a1 (only if a1 is an integer value)
+   #a1 || a2#    a1 or a2 (only if a1 and a2 are integer values)
+   #a1 && a2#    a1 and a2 (only if a1 and a2 are integer values)
+
+
+#Commands#. 
+
+1. Conditional statement.
+
+   #if# <condition is true>
+     ...
+   #else#
+     ...
+   #endif#
+
+2. Conditional loop.
+
+   #while# <condition is true>
+     ...
+   #wend#
+
+   You can use the #break# command to exit the loop immediately.
+
+
+
+#Functions#.
+
+1. integer #nlines#().
+
+   Parameters: none.
+   Returns the number of lines in internal editor.
+
+2. string #line#( integer i ).
+
+   Parameters: i - number of line in internal editor.
+   Returns line i from internal editor.
+
+3. integer #strlen#( string str ).
+
+   Parameters: str - string value.
+   Returns the length of the string str.
+
+4. integer #setline#( string str, integer i ).
+
+   Parameters: str - new line value; i - line number.
+   Sets line i in internal editor to str.
+   Returns 0;
+
+5. integer #delline#( integer i ).
+
+   Parameters: i - line number;
+   Deletes line i in internal editor.
+   Returns 0.
+
+6. integer #insline#( integer i, integer eol ).
+
+   Parameters: i - number of line; eol - end-of-line flag.
+   Inserts a new empty new line at position i. If eol is
+   equal to 0, new line will be inserted at the beginning of
+   existing line. Else - at the end of line.
+   Returns 0.
+
+7. string #string#( integer i ).
+
+   Parameters: i - an integer value.
+   Converts i to a string value.
+   Returns i converted to string type.
+
+8. integer #integer#( string str ).
+
+   Parameters: str - a string value.
+   Converts str to an integer value.
+   Returns str converted to integer type.
+
+9. integer #message#( (integer|string)var ).
+
+   Parameters: var - a value of any type.
+   Displays var on screen.
+   Returns 0.
+
+10. string #char#( integer c ).
+
+   Parameters: c - an integer value containing an ascii code.
+   Makes a 1-character string from character c.
+   Returns 1-character string.
+
+11. string #substr#( string str, integer delta, integer len ).
+
+   Parameters: str - a string value; delta - start position in str;
+               len - length of new string.
+   Returns a substring of str, beginning at position delta, with
+   length of len characters. 
+
+12. string #strlwr#( string str ).
+
+   Parameters: str - a string value.
+   Returns a string with uppercase letters converted to lowercase.
+
+13. string #strupr#( string str ).
+
+   Parameters: str - a string value.
+   Returns a string with lowercase letters converted to uppercase.
+
+14. integer #strstr#( string str, string substr ).
+
+   Parameters: str - a string value; substr - substring to search
+               in str.
+   Returns position of substr in str. If substr is not a substring
+   of str, returns -1.
+
+15. integer #random#( integer i ).
+
+   Parameters: i - an integer value.
+   Returns a random number between 0 and (i-1).
+
+
+
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ ~Contents~@Contents@                                      ~Prev~@Header@  ~Next~@AdrBook@
+
+
+@AdrBook
+$^#Address book#
+
+
+  Address book is just a list of recipients with names, email addresses
+and comments. Press the "(?)" button in the send dialog to see the list of
+all recipients. You can enter new recipient by pressing F7, edit a
+record - F4, delete a recipient - F8. Press ENTER to select a recipient.
+You can select multiple recipients, just press SPACE to mark selected
+records and then press ENTER.
+
+  If Your address book is empty on start, You will be prompted to enter
+new recipient.
+
+  You can edit the address book at any time by pressing Shift-F1.
+
+  Note that Name, e-mail and comment must be less then 80 letters.
+
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ ~Contents~@Contents@                                      ~Prev~@Script@  ~Next~@PluginSettings@
+
+
+@PluginSettings
+$^#Plugin settings#
+
+ This is the settings panel:
+
+ ÉÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ FARMail options ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ»
+ º Plugin properties:                                          º
+ º  [x] Add to Disks menu       1  Disk menu hotkey ('1'-'9')  º
+ ÇÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¶
+ º Panel properties:                                           º
+ º  Column types in messages panel      : N,S,C1,C2,C3         º
+ º  Column widths in messages panel     : 10,6,8,8,0           º
+ º  Fixed length of message name        : 3                    º
+ º  Message files extension             : EML                  º
+ º  [ ] Show messages panel in full size                       º
+ ÇÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¶
+ º  Default charset in incoming mail                           º
+ º    ( ) OEM/unknown          ( ) ISO-8859-5                  º
+ º    ( ) KOI-8                                                º
+ º    ( ) Windows-1251                                         º
+ º  Connection timeout: 60  sec.                               º
+ º  Quick view:      0    lines (0    bytes)                   º
+ º    [ ] Use CC/BCC fields                                    º
+ ÈÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ¼
+ [  Ok  ][  Cancel  ][  More ...  ]
+
+
+#Add to Disks menu# - Check this option if You want to see
+FARMail in Disks menu;
+
+#Disk menu hotkey# - It's a "disks" menu hotkey :) Enter
+'0' to autoassign;
+
+#Column types# - Here You can choose what columns You want to see in messages panel. Enter
+up to 5 codes separated by ',':
+    N: message name column;
+    S: message size;
+    C0: "From" field;
+    C1: "Date" field (a string from message header);
+    C2: "Subject" field;
+ Also now You can use standard FAR column types, for example date and time
+types (D,T,DM,DC,DA). Message date and time are stored as file creation,
+modification and last access dates.
+
+#Column widths# - Widths of all columns, separated by ','. Enter 0 to autoassign.
+
+#Fixed length# - Fixed length of file names. File names will have leading zeros if necessary.
+
+#Message file extension# - Extension for messages on server, 'MSG' by default;
+
+#Show panel in full size# - Check this option if You want to see messages panel in full screen mode;
+
+#Default charset# - If message on server doesn't have a "charset" or "X-Sun-Text-Type"
+field, default charset will be used;
+
+#Connection timeout# - Timeout period for blocking winsock operations.
+
+#Quick view# - this is the number of first lines (for POP3 connections)
+or first bytes (for IMAP4) of message text to download when using quick view or
+quick edit functions. If You set these values to 0, only message header
+will be downloaded.
+
+#Use CC/BCC fields# - select this option if You want to use CC and BCC fields
+in the send dialog.
+
+
+You can change additional settings by pressing the "More" key:
+
+ ÉÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ Advanced settings ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ»
+ º                                                             º
+ º [x] Save outgoing messages                                  º
+ º Directory: c:\mail\sent\                                    º
+ º                                                             º
+ º [x] Search for header information in message                º
+ º [x] Try to resume broken message download (IMAP4 only)      º
+ º [x] Take file date and time from message                    º
+ º                                                             º
+ º Scripts:                                                    º
+ º New message:   c:\scripts\new.fms                           º
+ º Reply:         c:\scripts\reply.fms                         º
+ º                                                             º
+ º Charset:   ISO-8859-5        Table:   ISO 8859-5            º
+ º            ISO-8859-1                 Table 8859-1          º
+ º                                                             º
+ º                                                             º
+ ÈÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ¼
+ [  Ok  ][  Cancel  ]
+
+#Save outgoing messages# - turn on this option to save all outgoing
+message in selected folder.
+
+#Search for header...# - turn on this option if You want FARMail to
+check for %start%..%end% block in Your outgoing messages.
+
+#Try to resume...# - if You turn on this option, incomplete messages
+will be saved on disk with a possibility to resume download.
+
+#Take file date...# - turn on this option to set file date and time
+to message date and time (for incoming mail).
+
+#Scripts# - enter here filenames for new message script and reply-script.
+
+#Charset and Table# - here You can specify up to 3 additional encodings.
+Just write #correct# charset name (for example, ISO-8859-5) in "Charset"
+field, and the #correct# name of FAR encoding table in "table" field
+(for example, "ISO 8859-5 (Unix russian)"). Note that You can write only
+first letters of table name, for example "ISO 8859-5".
+
+
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ ~Contents~@Contents@                                      ~Prev~@AdrBook@  ~Next~@FAQ@
+
+
+@FAQ
+$^#Frequently asked questions#
+
+ Q: I can't connect to my server..
+ A: Did You enter all the information correctly?
+
+ Q: I receive strange errors while connecting..
+ A: Don't use plugin versions before 1.2.
+ 
+ Q: But it still doesn't work!!
+ A: Hm.. Ok, so we must check the session log. Start regedit,
+    go to HKCU\software\far\plugins\farmail\common key and
+    create a new parameter - DebugSession = (DWORD)1. This is an
+    undocumented feature, working in all versions from 0.5. You will
+    get 3 files in plugin directory- farmail.out for SMTP sessions,
+    farmail.pop for POP3 sessions, farmail.imap for IMAP4 sessions.
+    May be they contain the answer.
+
+ Q: Many people work on my PC and I don't want to let them check my
+    mail!
+ A: Simply don't enter Your password in mailbox settings.
+
+ Q: Is it hard to decode my password by someone else with access to
+    my registry?
+ A: No, absolutely not!! What is more, there are more simple ways
+    to find out the real password than decoding.. I warn You one
+    more time: DO NOT SAVE YOUR PASSWORD IN REGISTRY IF YOU'RE NOT
+    SURE YOUR COMPUTER IS INACCESSIBLE TO ANYBODY ELSE!
+ 
+ Q: Why must I connect to incoming mail server to send a message?
+ A: There is no need. You may send a message to the mailboxes
+    panel without connecting to POP3 or IMAP4 server. You may also
+    send Your message from FAR editor.
+
+ Q: I was reading a mail for some minutes and when going back to
+    messages panel I receive a "data transmission error" message..
+ A: Enter an appropriate activity maintenance period in mailbox
+    settings. Or simply reconnect.
+
+ Q: When I enter an activity maintenance period for a mail server
+    on localhost, my computer hangs up..
+ A: Well.. Activity maintenance is really an incorrect feature,
+    but the great thing is that it works with remote servers :) 
+
+ Q: When I delete a message on IMAP4 server, all next messages
+    change their numbers, but on POP3 servers it works ok!
+ A: Yes, renumbering (and multiple clients access) is a feature
+    of IMAP4.
+
+ Q: So, if I have 2 messages, after deleting message number 1,
+    message number 2 will become number 1??
+ A: Right.
+
+ Q: But if any other mail client deletes message number 1, which is
+    from spam@@suckerfinder.org, then I try to delete the same
+    message number 1 - I'll delete my second, very important message
+    from president@@mycountry.gov????!!!!!
+ A: No, messages are deleted by their UIDs, not numbers. And message
+    UIDs are read every time You refresh messages panel. So if
+    You see a message from spam@@suckerfinder.org on the panel, You
+    can delete it without hesitating :)
+    
+ Q: Charset autodetection doesn't work!
+ A: Do You have language distribution table installed? (Dist.Rus.reg
+    for russian users)
+ 
+ Q: I can't change my message's encoding, I receive message
+    "selected charset not installed"!
+ A: Check out "..\far\addons\tables" directory.
+
+ Q: I still receive this &%&%ing message!!
+ A: Did You change table's name? Don't do it.
+ 
+ Q: I can't interrupt connection to server, so I have to kill FAR
+    from task manager..
+ A: It seems that You have version 1.3 or earlier :)
+
+ Q: How can I extract attached files or read text in base64 or 
+    quoted-printable with this plugin?
+ A: No way. You can use external mail viewers or import messages
+    in Your favorite email program. A console mail viewer can be
+    downloaded from my homepage (http://alsea.euro.ru).
+ 
+ Q: I want a new feature!
+ A: Hm.. Well, send Your suggestions, but I don't promise that I'll
+    make it.. Although there is always a chance :)
+
+ Q: I found a BUG!!
+ A: Check Your settings, read this help file :)
+
+ Q: &%&%, I found a BUG!!
+ A: Do You have the last version? Check out the my webpage for
+    latest info. May be it's a ~known bug~@Bugs@?
+
+ Q: Yes, I have the last version and it has a lot of bugs!
+ A: Well, send me a detailed description, log files, FAR and plugin
+    versions, operating system name. Please don't attach big files -
+    screenshots etc.
+
+
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ ~Contents~@Contents@                                      ~Prev~@PluginSettings@  ~Next~@Bugs@
+
+
+
+@Bugs
+$^#Known bugs#
+
+1. Breaking connection with Ctrl-Break sometimes doesn't work, and occasionally
+causes blue screen, unstable system behaviour and corrupted packets
+transfer :-(
+
+Cause: I don't know, there is nothing really so destructive in the code :-)
+
+Workaround: try not to break connection without real need :-)
+
+
+2. Recipient and subject, written in the %start%..%end% block in non-OEM 
+encoding, sometimes appear in dialog like garbage.
+
+Cause: autodetection simply doesn't work on short pieces of text..
+
+Workaround: try to write message header fields in OEM encoding.
+
+
+
+
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ ~Contents~@Contents@                                      ~Prev~@FAQ@  ~Next~@Tech@
+
+
+@Tech
+$^#Technical information#
+
+  #1. POP3 connection.#
+
+  Each time You "enter" a mailbox, POP3 transaction is established. Program
+sends USER and PASS commands. When You leave a mailbox, QUIT command is sent.
+STAT, LIST and TOP are used to retrieve messages list, RETR to download
+messages, DELE to delete and RSET to undelete messages. TOP is used also for
+quick view/quick edit. Well, nothing special :)
+
+  #2. SMTP connection.#
+
+  SMTP session is established each time You send a message. Program sends
+HELO command with name of the local host (returned by gethostname() function).
+Then MAIL command is send with E-Mail from mailbox settings as parameter,
+RCPT with recipient's email, DATA with message body and QUIT. FARMail
+generates message header with fields:
+
+  Date                     : current date and time;
+  From and Reply-To        : user name and email;
+  To                       : recipients' names and email, divided
+                             by ";"
+  CC                       : carbon copy recipients;
+  BCC                      : this field is not sent;
+  Subject                  : message subject;
+  X-Mailer                 : FARMail :)
+  Mime-Version             : 1.0
+  Content-Type             : text/plain for text messages "as is"
+                             and in Base64 encoding;
+                             text/html for HTML files;
+                             application/octet-stream; name=.. for
+                             attached files;
+                             multipart/mixed when sending multiple
+                             files in one message;
+                             charset parameter is equal to
+                             "us-ascii", "Koi-8r", "Windows-1251"
+                             or not used;
+  Content-Transfer-Encoding: 7(8)bit for plain text; Base64;
+  Content-Disposition      : attachment; filename=.. only for
+                             attached files
+  Organization             : Organization name (if any);
+
+  Message body for plain text 7/8 bit is generated directly from file,
+but lines of text are no more then 1000 characters. If first character
+in line is '.', this character is duplicated. So, if You send an
+executable file, for example, "as is", its code will be corrupted.
+Base64 encoding generates 76 symbols in one line.
+
+
+  #3. IMAP4 connection.#
+
+  FARMail actually uses features of IMAP4rev1 protocol, like STATUS
+command. Correct work with "pure" IMAP4 servers is not guaranteed. Sessions begin
+with LOGIN command, then FARMail sends CAPABILITY and checks for "IMAP4"
+response, not "IMAP4rev1", because some "IMAP4"-servers implement IMAP4rev1 
+features. LIST and STATUS requests are used to build a list of folders,
+SELECT enters a folder, FETCH is used to get message information, STORE
+and EXPUNGE to delete messages. Note that all actions except deleting use
+message numbers, but deleting uses message UIDs. Quick view/edit functions
+use FETCH command with BODY[TEXT]<0.n> argument.
+
+
+  #4. Address book.#
+
+  Address book is just a text file "farmail.adr" in the plugin
+directory. Each line is a recipient record. You can add Your own records
+in a text editor, just enter recipient's name, e-mail and comment, divided
+by "|". You don't need to sort records, this is done automatically.
+
+
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ ~Contents~@Contents@                                      ~Prev~@Bugs@  ~Next~@Author@
+
+
+@Author
+$^#Author#
+
+
+  Author  : Serge Alexandrov
+  FidoNet : 2:5020/975.21, 2:5020/1610.26
+  Email   : poseidon@@mtu-net.ru
+  Homepage: http://alsea.euro.ru/
+
+
+
+
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ ~Contents~@Contents@                                      ~Prev~@Tech@
+

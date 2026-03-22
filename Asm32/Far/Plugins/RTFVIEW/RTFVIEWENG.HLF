@@ -1,0 +1,68 @@
+.Language=English,English
+.PluginContents=RTF View
+.Options CtrlColorChar=\
+
+@Contents
+$ #RTF View#
+    Plugin RTF View is intended for viewing .rtf files in the
+form of the normal text with colors. The plugin does not use
+external libraries for transformation, and contains built in parser.
+
+           (c) Vladimir Valikayev
+ \0Fлллллллл\-  ~http://triv.fromru.com~@http://triv.fromru.com@, ~http://vtriv.narod.ru~@http://vtriv.narod.ru@
+ \01лллллллл\-  [triv]{@@}[fromru].[com]
+ \04лллллллл\-  2:5005/14.141
+
+   ~Plugin usage~@Syntax@
+   ~Configuring RTF View~@Config@
+
+@Syntax
+$ #RTF View usage
+
+    You can use plugin as follows::
+ #-# open .rtf file for editing (F4) and choose #RTF View# from the plugin
+commands list (F11);
+ #-# from the command line, for example:
+      #rtfv#:somefile.rtf
+
+    I have added association of .rtf files for Alt+F3 combination:
+      #rtfv:!\!.!#
+
+    When the file opens, its format is checked and if it not the .rtf file,
+it is simply ignored, any message is not deduced.
+
+
+  Look also: ~Contents~@Contents@  ~Configuring RTF View~@Config@
+
+@Config
+$ #Configuring RTF View#
+
+ #[ ] Show document's info at the end of file#
+
+
+ In the end of the file the information on the document will be deduced,
+for example:
+
+ \78Title   : Help                    \-
+ \78Subject :                         \-
+ \78Author  : Vladimir Valikayev      \-
+ \78Manager :                         \-
+ \78Company : TrivLab                 \-
+ \78Operator: Triv                    \-
+ \78Create time  : 24/08/2005 18:49:00\-
+ \78Print time   :                    \-
+ \78Revision time: 26/08/2005 15:34:00\-
+ \78Backup time  :                    \-
+
+
+ #[ ] Use colors#
+
+ If you switch off, the text will be deduced \70black on grey\- and used in the .rtf file
+colors will be ignored.
+
+  \00 \-  #Tab size#
+
+ The size of tabulation.
+
+
+  Look also: ~Contents~@Contents@

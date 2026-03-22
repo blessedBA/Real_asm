@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="Windows-1251"?>
+<!DOCTYPE hrc SYSTEM "../hrc.dtd">
+<?xml-stylesheet type="text/xsl" href="../hrc.xsl"?>
+<!--
+    Far Help Sources
+With Help of:
+    Stas Mehanoshin <rampitec@tu.spb.ru>
+-->
+
+<hrc>
+
+<scheme name="FarHelpStr">
+  <regexp match="/((\@\@)|(\~\~)|(\$)|(\^)|(\#\#)|(\%\%))/" region0="dString"/>
+</scheme>
+
+<scheme name="FarHelp">
+   <regexp match="/^\s* \M \@ [\@\$\^\w\s]+  /x" region0="dFunction"/>
+
+   <regexp match="/\b([0-9]+)\B/" region0="dNumber"/>
+   <regexp match="/((\@)[^\@]+?(\@)|$)/" region0="dSymbol" region2="dpOpenStruct" region3="dpCloseStruct"/>
+   <regexp match="/^(\$.+?$)/" region0="dString"/>
+   <inherit scheme="FarHelpStr"/>
+   <block  start="/(\#)/" end="/(\#)|$/" scheme="FarHelpStr" region="dNumber" region00="dpOpenStruct" region11="dpCloseStruct"/>
+   <regexp match="/((\~)[^\~]+?(\~))/" region0="dStringQuote" region2="dpOpenStruct" region3="dpCloseStruct"/>
+   <keywords region="dKeyword">
+      <word name=".Language"/>
+      <word name=".PluginContents"/>
+      <symb name="=" region="dString"/>
+   </keywords>
+</scheme>
+
+</hrc>

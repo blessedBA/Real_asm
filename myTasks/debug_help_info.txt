@@ -1,0 +1,9 @@
+register read
+register read --all
+register read rax rsp rbp rip
+
+memory read --size 1 --format x --count 32 0x...
+x/16xb 0x...
+x/4xw 0x...
+
+disassemble --pc

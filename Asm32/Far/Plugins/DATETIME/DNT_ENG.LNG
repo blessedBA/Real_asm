@@ -1,0 +1,100 @@
+.Language=English,English
+
+"Date-n-Time"
+
+"&Date-n-Time (Auto)"
+"Date-n-&Time (Menu)"
+"Date-n-Time (&Indicator)"
+"&Calendar"
+
+;Title
+"Date-n-Time"
+
+;Dialog mode name
+"Dialog"
+
+; %a %A - Week day abbr / FULL
+; %b %B - Month    abbr / FULL
+; %c    - Date and Time
+; %d    - Day 01-31
+; %H    - Hour 00-23
+; %I    - Hour 01-12
+; %j    - day of year 001-356
+; %m    - month num 01-12
+; %M    - Minute 00-59
+; %p    - AM / PM
+; %S    - Seconds 00-59
+; %U    - Week num (Sunday first) 00-53
+; %w    - Weekday (Sunday first) 0-6
+; %W    - Week num (Monday first) 00-53
+; %x    - Date
+; %X    - Time
+; %y %Y - Year (without century 00-99) / (WITH CENTURY)
+
+;Default date format
+"%a %d %b %X %Y"
+;Date indicator format
+" %d.%m.%Y "
+;Date indicator timeout (ms)
+"1000"
+
+;Dialog history name
+"Date-n-Time"
+
+;Edit text
+"Edit: F4,Ins,Del"
+;Plugin configure
+"Configure: F4"
+
+;Dialog Titles
+" Date-n-Time "
+"&Insert string"
+"Clip&board"
+"Skip &Dialog"
+"&Name: "
+"&Format:"
+" &OK "
+" &Save "
+"&Cancel"
+"Co&lor"                   
+"&Test"
+
+"Color"
+"&Foreground"
+"&Background"
+
+"Use &default"
+"Use &default"
+"&Set user format"
+"&Pause"
+"Use &Title"
+"Control &Keys"
+"Switch &Mode" 
+"Пн  Вт  Ср  Чт  Пт"
+"  Сб  Вс"
+"Январь"
+"Февраль"
+"Март"
+"Апрель"
+"Май"
+"Июнь"
+"Июль"
+"Август"
+"Сентябрь"
+"Октябрь"
+"Ноябрь"
+"Декабрь"
+"Calendar"
+"Set Year"
+"Set Month"
+
+"no &Use"
+"Вс"
+"Пн"
+"Вт"
+"Ср"
+"Чт"
+"Пт"
+"Сб"
+
+"Date-n-Time.dlg"

@@ -1,0 +1,113 @@
+[Default]
+Language=English
+
+[English]
+
+// 20 Help-files
+// nameN - name (not more than 64 symbols)
+// fileN - full path to help file (not more than 956 symbols)
+
+name1=English Dictionary
+file1=L:\Doc\Dict\e-r_dic.chm
+name2=Описание функций C/C++
+file2=L:\Doc\Dev\Help\bcdos.hlp
+name3=Windows API
+file3=L:\Doc\Dev\Help\win32sdk.hlp
+name4=Plugins API
+file4=L:\Doc\Dev\Help\pluginsr.hlp
+name5=
+file5=
+name6=
+file6=
+name7=
+file7=
+name8=
+file8=
+name9=
+file9=
+name10=
+file10=
+name11=
+file11=
+name12=
+file12=
+name13=
+file13=
+name14=
+file14=
+name15=
+file15=
+name16=
+file16=
+name17=
+file17=
+name18=
+file18=
+name19=
+file19=
+name20=
+file20=
+
+// That is considered by word. Always word: 0-9, A-Z, a-z, '_'
+// Add your own symbols, in addition defining word. No more than 80 symbols!
+CharWordAdd=
+
+// If this field = "1", then act rule: "Skip all symbols, not refering on word"
+// i.e. space etc. and get word.
+IsSkipNoWord=1
+
+[Russian]
+
+// 20 позиций под файлы помощи
+// nameN - имя, показанное при выборе (не более 64 символов)
+// fileN - полный путь к файлу помощи (не более 956 символов)
+
+name1=English Dictionary
+file1=L:\Doc\Dict\e-r_dic.chm
+name2=Описание функций C/C++
+file2=L:\Doc\Dev\Help\bcdos.hlp
+name3=Windows API
+file3=L:\Doc\Dev\Help\win32sdk.hlp
+name4=Plugins API
+file4=L:\Doc\Dev\Help\pluginsr.hlp
+name5=
+file5=
+name6=
+file6=
+name7=
+file7=
+name8=
+file8=
+name9=
+file9=
+name10=
+file10=
+name11=
+file11=
+name12=
+file12=
+name13=
+file13=
+name14=
+file14=
+name15=
+file15=
+name16=
+file16=
+name17=
+file17=
+name18=
+file18=
+name19=
+file19=
+name20=
+file20=
+
+// Что считается словом. Всегда слово это набор:  0-9, A-Z, a-z, '_'
+// Здесь можете добавить свои символы, которые будут относится к слову.
+// не более 80 символов!
+CharWordAdd=
+
+// Если это поле = "1", то действует правило: "Пропустить все символы,
+// не относящиеся к слову" т.е. пробелы и т.п. и добраться до самого слова.
+IsSkipNoWord=1

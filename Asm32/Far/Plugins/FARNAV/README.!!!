@@ -1,0 +1,31 @@
+
+                         ProxyKit for FAR manager.
+                      Far Navigator (ProxyFtp) plugin.
+
+   Before using this version of ProxyFtp you MUST upgrade hosts entries from
+   previous versions (ProxyFtp 1.5 or earlier). Read following instructions
+   for details:
+
+   In previous version of ProxyFtp:
+   1) Create directory on your hard drive (ex: d:\ProxyFtp);
+   2) Copy all hosts records from old version of ProxyFtp to hard drive;
+   3) Delete all hosts entries in Hosts panel;
+
+   4) Install new version of ProxyFtp;
+   5) Copy hosts records from hard drive to ProxyFtp;
+   6) Delete created directory on hard drive (ex: d:\ProxyFtp).
+
+
+
+                    Набор ProxyKit для менеджера FAR.
+                             Плагин ProxyFtp.
+
+   Перед использование этой версии ProxyFtp вы _ДОЛЖНЫ_ обновить все записи из
+   списка серверов (Только при переходе с 1.5 или более ранней версии). Для
+   этого внимательно прочтите следующую инструкцию:
+
+   1) Создайте каталог на жестком диске (н-р: d:\ProxyFtp);
+   2) Скопируйте все записи из панели серверов в ProxyFtp на жесткий диск;
+   3) Удалите все записи на панели серверов;
+   4) Скопируйте записи серверов с жесткого диска на панель ProxyFtp;
+   5) Удалите созданный каталог на жестком диске (н-р: d:\ProxyFtp).

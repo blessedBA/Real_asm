@@ -1,0 +1,482 @@
+.Language=English,English
+.PluginContents=Far Navigator (ProxyFtp)
+
+
+@Contents
+$ #Far Navigator (ProxyFtp) (version 1.9)#
+
+  ~Configuring client~@mnuConfigure@
+
+  ~Work with Hosts panel~@HostPanel@
+
+  ~Connecting to server~@ftpConnect@
+
+  ~Work with server~@ftpCommands@
+
+  ~Alphabetical list~@AlphaList@
+
+@mnuConfigure
+$ #Far Navigator - Configuring client#
+  Before the beginning of work with Far Navigator, You need to adjust some
+parameters. For entering in the configuration menu, choose #Far Navigator#
+from the FAR menu #Options#/#Plugins configuration#.
+
+  ~Interface options~@dlgInterface@    Plugin interface configuration.
+
+  ~Connection options~@dlgConnection@   Configure ftp connection options
+                      (Timeout, buffer size and etc.).
+
+  ~Default options~@dlgDefault@      Set default host options.
+
+  ~Proxy options~@dlgProxy@        Configure Proxy server.
+
+  ~About Far Navigator~@dlgAbout@      Show "About..." dialog box.
+
+
+
+  ~Go to main screen~@Contents@
+
+@HostPanel
+$ #Far Navigator - Work with Hosts panel#
+  Servers list are organized in the manner of file panel. Exists two type
+of entries: ~Private hosts~@HostsTypes@ and ~Public hosts~@HostsTypes@.
+On Hosts Panel may use the following combinations of keys:
+
+  #SHIFT+F4#         Create a new server entry in the
+                   ~Host configuration~@dlgEdit@ dialog box.
+
+  #F7#               Create an additional folder.
+
+  #F4#/#SHIFT+F6#      Edit an available server entry.
+
+  #F5#/#F6#            Copy/move a server entry from/to the local disk
+                   in ~Far Navigator special file~@ftpStruct@.
+
+  #SHIFT+F5#         Copy a host information to another record.
+
+  #F8#               Delete a server entry/folder.
+
+  #ENTER#            Connect to current server.
+
+  #CTRL+G#           Connect to ~first free server from group~@GrpLogin@
+
+
+
+  ~Go to main screen~@Contents@
+
+@ftpConnect
+$ #Far Navigator - Connecting to server#
+  You may connect to server either from command line, or through
+~Hosts panel~@HostPanel@. Format for connecting from command line
+to FTP server looks as follows:
+
+  #ftp://[user[:password]@@]host[:port][/path]#
+
+  Here prefix #ftp://# and name of server #host# are obligatory, but all rest
+parameters possible not to assign (square parentheses are lowerred).
+Skipped parameters Far Navigator will substitute from ~Default options~@dlgDefault@.
+
+  If you have FAR version 1.70 or above, you also may connect to 
+http server from command line. In this case format of command line looks 
+as follows:
+
+  #http://[user[:password]@@]host[:port][/path]#
+
+
+
+  ~Go to main screen~@Contents@
+
+@FtpCommands
+$ #Far Navigator - Work with server#
+  Work with server looks like functioning with the usual local disk on
+your computer. On FTP servers you may copy, delete, rename files and 
+directories by means of standard combinations of keys. On HTTP servers
+you may only browse folders and copy files from server. In additional, 
+you may use the following combinations of keys:
+
+  #Commands for both FTP and HTTP servers#
+
+  #CTRL+R#     Clear internal cache and re-read panel.
+
+  #SHIFT+F7#   Allows to change a character table for server.
+
+  #ALT+F6#     Saves the current host and path in ~Hosts panel~@HostPanel@.
+
+  #CTRL+ALT+S# File synchronization. As source for synchronization you 
+             may use either plugin panel or file panel. (For HTTP server 
+             you may use only plugin panel as source). During this process
+             plugin will copy all new/updated files from source panel.
+             On destination panel will be deleted all obsoleted files.
+
+  #FTP server commands#
+
+  #CTRL+A#     Displays a menu of changing the access rights or owner.
+                                                                    
+  #CTRL+S#     Translate command line to FTP server.
+
+  #SHIFT+F5#   Copy files in ~Server To Server transfer mode~@S2S@.
+
+  #ALT+F5#     All selected files will be added in ~Download queue~@DnQueue@
+
+  #F3 on ".."# Shows FTP server welcome message
+
+  #F5 on ".."# If you have no selected files on panel, You will be
+             asked for filename to copy. In this case you must enter
+             _full_ filename without mask chars.
+                                                           
+  You can use ~Advanced mode~@dlgAdvanced@ to copy/move/delete files.
+
+  Also you may use additional item in plugins menu (called by F11):
+~Far Navigator - Synchronization~@Synchronization@
+
+
+
+  ~Go to main screen~@Contents@
+
+@dlgInterface
+$ #Far Navigator - Interface options#
+  In this dialogue you adjust external parameters of Far Navigator. You may:
+
+ - Add Far Navigator in the menu of choice of disks;
+ - Create descriptions files list, dilimited with comma; 
+ - Switch On/Off a reading the files descriptions and their automatic
+   renovation;
+ - Set [connect] as default button
+   in the ~Host configuration~@dlgEdit@ dialog box.
+ - "Show progress indicator on View/Edit" will display Progress bar
+   when plugin retrieves files for View/Edit
+
+ ~Advanced options~@dlgIntAdv@
+
+
+  ~Go to main screen~@Contents@
+
+@dlgIntAdv
+$ #ProxyFtp - Advanced interface options#
+                                                       
+ - "Replace Panel mode 0" will set Panel mode 0 (Called on LCtrl+0)
+   on FTP server to view custom columns you defined. In addition,
+   you may customize "file panel view modes" using special "column
+   types":
+   #C0#: Access mode
+   #C1#: File owner
+   #C2#: File group
+   #C3#: Real destination name for file links
+
+
+
+  ~Go to main screen~@Contents@
+
+@dlgAbout
+$ #ProxyFtp - About#
+  In this dialog box possible to find some information on the program
+and on its author. All wish and offer you may send to:
+
+     e-mail:  #proxykit@@newmail.ru#
+
+       fido:  #2:5004/18.32@@fidonet.org#
+
+        ICQ:  #17217849#
+
+  Home page:  #http://www.angelfire.com/me/vmoshninov#
+
+
+
+  ~Go to main screen~@Contents@
+
+@dlgConnection
+$ #ProxyFtp - Connection options#
+  This dialogue is intended for configuring of network connection between
+the client and FTP server. Here available the following options:
+
+  #Log file name#     Full path with filename of log file.
+
+  #Create log file#   Set this option if you want to create log file.
+  #Log file level#    Set level for log file:
+                    0 - Minimal level, 3 - Maximal level
+                      
+  #Connection#        Timeout (in seconds) on any socket operation
+  #timeout#           (connecting to server, receiving and sending
+                    data). After timeout expired, ProxyFtp will break
+                    operation, try reconnect and resume operation.
+                                            
+  #Idle timeout#      Timeout (in seconds), after which client will
+                    send on the server "empty" command for preventing
+                    a disconnecting.
+
+  #Quick logout#      In this mode plugin does not wait for reply on
+                    logout.
+
+  #Write ftp cache#   All cached dirs on ftp servers can be stored to
+  #to disk#           your hard drive for future use. When you are
+                    connected to the server in the next time, all cached
+                    dirs will be restored.                         
+
+  All attempts of connecting (or reconnecting) are divided into groups.
+You may adjust several parameters to indicate how ProxyFtp must be connected
+to the server.
+
+  #Maximum Retries#   Retries count before ProxyFtp will display error
+  #count#             message (0 - never expired)
+
+  #Timeout between#   This parameter define timeout between two groups
+  #two Retries group# of attempts of connecting to the server
+
+  #Retries count in#  Retries count in group of attempts of connecting.
+  #group#
+
+  #Retries timeout#   Retries timeout in group of attempts of
+  #in group#          connecting.
+
+
+
+  ~Go to main screen~@Contents@
+
+@dlgProxy
+$ #ProxyFtp - Proxy options#
+  This dialog box allows configure your client to functioning through FTP
+or HTTP Proxy server. The following parameters are available:
+
+  #Proxy server#      Will here be assigned address and port of Proxy
+                    in the format #[user@@]proxy[:port]# Address of
+                    server #proxy# is an obligatory parameter, all rest
+                    are optioonal.
+
+  #Password#          Password for HTTP Proxy server.
+
+  #Proxy style#       Set your Proxy server style.
+                                              
+  #Do HTTP basic#     Set this option if your HTTP proxy requires that
+  #authorization#     you were registered.
+
+  #Use HTTP cache#    Set this option if you want that your HTTP
+                      proxy uses cache.
+
+  #HTTP Proxy type#   Select type of your http proxy. Now available:
+                    #Microsoft Proxy server#
+                    #WinGate proxy server#
+                    #Novell BorderManager#
+                    #SquId proxy server#
+                    #Netscape proxy server#
+                    #WinProxy#
+
+
+
+  ~Go to main screen~@Contents@
+
+@dlgDefault
+$ #ProxyFtp - Default options#
+  In this dialogue you will assign parameters, which are used when connecting
+either from ~Command line~@ftpConnect@ or through ~Hosts panel~@HostPanel@.
+
+  #User name#         Will assign an user name, which is sent on FTP
+                    server when connecting, unless given main.
+
+  Values of rest parameters comply with values of similar parameters from
+dialogue ~Host configuration~@dlgEdit@.
+
+
+
+  ~Go to main screen~@Contents@
+
+@dlgEdit
+$ #ProxyFtp - Editing FTP server#
+  This dialogue is intended for entering and adjustment information on FTP
+server. Here you may assign the following parameters:
+
+  #Server#            Here you will assign an address FTP server.
+
+  #Password#          Password for FTP server, if it necessary.
+
+  #Account#           If for connecting to your FTP server it is
+                    necessary to indicate a resource, you may assign
+                    its here.
+
+  #Description#       Small description of FTP server.
+
+  #Ask password#      When installing this options a password dialog 
+  #before connection# will be called before the connection.
+
+  #Passive mode#      Work with FTP server in "passive" mode.
+
+  #ASCII mode#        Use ASCII Transfer mode for files. (Text files)
+
+  #Use proxy#         Set this option if are required to use Proxy
+                    server for this host.
+
+  #Chracter table#    Select character table for this host.
+                                                                
+  #FTP server type#   Select type of FTP server. In some cases
+                    ProxyFtp can't recognize server automatically and
+                    you must define this parameter manually. This
+                    parameter uses for parsing FTP server listings.
+
+
+
+  ~Go to main screen~@Contents@
+
+@ftpStruct
+$ #ProxyFtp - Special file#
+  This file is used for keeping information about FTP server on the local disk
+and presents textual .ini file from itself. Looks such file approximately as
+follows:
+
+ [ProxyFTP]
+ URL=ftp://rwntug.quarta.msk.ru/winutil/rar/farplugin
+ Description=FAR plugins
+ Account=
+ Ask password=0
+ Password=
+ Passive mode=0
+ Ascii mode=0
+ Use proxy=1
+ TableID=-4
+ SystemId=206
+
+  You may edit this file in the standard text editor, write such file on
+~Hosts panel~@HostPanel@ or connect to FTP server by pressing ENTER on such
+file.
+
+
+
+  ~Go to main screen~@Contents@
+
+@S2S
+$ #ProxyFtp - "Server To Server" transfer mode#
+  Interaction Scheme with FTP server looks as follows:
+
+     +--------+     Control connection     +--------+
+     | Client | <------------------------> | Server |
+     +--------+                            +--------+
+          ^---------  Data connection  --------^
+
+  #Control connection# stays to be openned during the whole session of
+functioning with FTP server and uses for the sending of commands and
+receiving of answers. #Data connection# is openned for the transmission/receiving
+the files only and is then closed newly. Under simultaneous functioning with
+two FTP servers possible to organizine a #Server to server transfer mode#. In
+this case interaction scheme looks as follows:
+
+     +--------+       Data connection      +--------+
+     | Server | <------------------------> | Server |
+     +--------+                            +--------+
+          |             +--------+             |
+          +------------ | Client | ------------+
+     Control            +--------+            Control
+     connection                            connection
+
+  Such scheme suitable in that event, if channel between servers of quicker
+channel from the server to client.
+
+
+
+  ~Go to main screen~@Contents@
+
+@AlphaList                                  
+$ #ProxyFtp - Alphabetical list#
+
+  ~About ProxyFtp~@dlgAbout@
+  ~Advanced interface options~@dlgIntAdv@
+  ~Advanced copy/move/delete mode~@dlgAdvanced@
+  ~Configuring FTP client~@mnuConfigure@
+  ~Connection options~@dlgConnection@
+  ~Connection to FTP server~@ftpConnect@
+  ~Default options~@dlgDefault@
+  ~Download queue~@DnQueue@
+  ~Group connection~@GrpLogin@
+  ~Host configuration~@dlgEdit@
+  ~Interface options~@dlgInterface@
+  ~Rename files~@dlgRename@
+  ~Private hosts and public hosts~@HostsTypes@
+  ~Proxy options~@dlgProxy@
+  ~ProxyFTP special file~@ftpStruct@
+  ~ProxyFtp - Synchronization~@Synchronization@
+  ~Server To Server transfer mode~@S2S@
+  ~Work with FTP server~@ftpCommands@
+  ~Work with Hosts panel~@HostPanel@
+
+
+
+  ~Go to main screen~@Contents@
+
+@dlgAdvanced
+$ #ProxyFtp - Advanced copy/move/delete mode#
+
+  In this mode you can process files with specified mask (#Include mask#),
+skip some files from operation (#Exclude mask#) or decode/encode group of files
+"on the fly".
+
+ #Remote character table# is the charset of files on FTP server.
+ #Local character table#  is the charset of files on local machine.
+
+
+
+  ~Go to main screen~@Contents@
+
+@dlgRename
+$ #ProxyFtp - Rename files#
+
+ #Use quick renaming for folders# - in this mode a client will use for
+folders renaming of command RNFR/RNTO. Otherwise will use recursive
+renaming for each subfolders and files in this folder.
+
+
+
+  ~Go to main screen~@Contents@
+
+@HostsTypes
+$ #ProxyFtp - Private hosts and public hosts#
+
+ By default in root of ~Hosts panel~@HostPanel@ you have two directory:
+#Private hosts# and #Public hosts#. All entries, created in 'Private hosts'
+will be stored in separate (private) key of registry and not copied with
+standard SaveSettings.bat and RestoreSettings.bat FAR batch files.
+If you don't want to use 'Private hosts', you must disable "Show 'Private Hosts'
+in Hosts panel" in ~Interface options~@dlgInterface@.
+
+
+
+  ~Go to main screen~@Contents@
+
+@DnQueue
+$ #ProxyFtp - Download queue#
+ You may use #Download queue# for storing files for copying instead of
+real downloading from FTP server. When you mark all files for copying, you may
+switch to 'Download queue' and start downloading. To add files in
+'Download queue' you may press #ALT+F5# or press #[Queue]# button in 'Copy'
+dialogue. #CTRL+SHIFT+F5# will switch between normal FTP mode and
+Download queue. In Download queue you mau use #F8# for deleting files from
+queue, #F5#/#F6# for start downloading.
+#F6 will move files only from queue, not from FTP server!#.
+
+
+
+  ~Go to main screen~@Contents@
+
+@GrpLogin
+$ #ProxyFtp - Group connection#
+ When you have selected files in ~Hosts panel~@HostPanel@ and press #CTRL+G#, ProxyFtp
+begin attempt to connect to first free server from group. If first server
+from group fails, ProxyFtp will try second, then third, e.t.c When last server
+fails, ProxyFtp go to first server and will try again.
+
+
+
+  ~Go to main screen~@Contents@
+
+@Synchronization
+$ #ProxyFtp - Synchronization#
+  If you on local disk and select this item, ProxyFtp will scan for
+~proxyftp.mnu~@ftpStruct@ file in current directory and all above. If
+file exists, ProxyFtp will read from this file information about ftp
+servers, connect to the server (if many - will appear menu) and
+go to the same folder as local dir. Current directory will appear
+on another panel. Folder with 'proxyftp.mnu' file will 'root'.    
+  After you connected to the server, you may synchronize active and
+inactive panels by calling this menuitem again. Path on inactive panel
+will synchronize with path on active panel.
+
+Special thanks to PAF (Alexander Petrosyan) for idea.
+
+
+  ~Go to main screen~@Contents@

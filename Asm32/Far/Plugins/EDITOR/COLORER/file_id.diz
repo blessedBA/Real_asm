@@ -1,0 +1,18 @@
+
+ colorer - syntax highlighting library
+    Cail Lomecb <ruiv@uic.nnov.ru>
+          version 'forever'
+                            18.03.2001
+   Colorer - syntax parsing library
+ in source codes, supports unlimited
+ languages, free syntax. Scheme
+ concept, regexps, virtual scheme
+ mechanism, pair structures matches,
+ functions/errors lists.
+   HRC language - supports more than
+ 90 languages, partial load. Compiled
+ executables for color generating
+ texts, simple viewer, hrd editor,
+   FAR plugin version
+
+         - colorer 4ever -

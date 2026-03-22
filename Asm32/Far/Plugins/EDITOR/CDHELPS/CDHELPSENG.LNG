@@ -1,0 +1,36 @@
+.Language=English,English
+
+"Context help"
+"Context help"
+"Choose help file"
+
+"&?  Current help"
+"&!  Previous topic"
+
+// Internet prefix activator (only for selected text)
+// Information on needed application get from registry
+//   HKEY_CLASSES_ROOT\PROTOCOL\shell\open\command
+"mailto:"
+"http:"
+"https:"
+"ftp:"
+"gopher:"
+"news:"
+"nntp:"
+"file:"
+"telnet:"
+""
+
+"&Add to Disks menu"
+"Disks menu &hotkey ('1'-'9'). Leave empty to autoassign"
+
+"Your operating system does not support CHM-help files!"
+"Insufficient memory for operation"
+
+"Ok"
+"Cancel"
+"Abort"
+"Retry"
+"Ignore"
+"Yes"
+"No"

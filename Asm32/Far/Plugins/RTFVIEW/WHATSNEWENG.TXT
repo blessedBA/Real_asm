@@ -1,0 +1,20 @@
+
+                               RTF View
+
+
+[!] Important
+[+] New
+[-] Fixed error
+[*] Changes
+
+
+Version 0.3.4, 31/08/2005 - 06:21:20UTC
+--------------------------------------
+[-] If .rtf file is saved with use of unicode symbols, unicode were
+    duplicated by symbols of ANSI on which place quite often editor
+    programs put a sign of a question.
+
+
+Version 0.3.3, 28/08/2005 - 14:37:38UTC
+--------------------------------------
+First public version.

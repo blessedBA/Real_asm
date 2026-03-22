@@ -1,0 +1,72 @@
+ฺฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤท
+ณ"Unicode Wizard" - life and developmentบ ฺฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤท
+ิอออออออออออออออออออออออออออออออหอออออออผ ณ        L E G E N D :       บ
+                                ศอออออออออต+ added in current version  บ
+ฺฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤท     ณ- deleted in current versionบ
+ณAuthor:  Ivan Sintyurin AKA Spinozaบ     ณ* changed in current versionบ
+ณWWW:  http://www.moris.ru/~spinoza วฤฤฤฤฤด! bug fixed                 บ
+ณE-mail:      spinoza@mail.ru       บ     ิออออออออออออออออออออออออออออผ
+ิอออออออออออออออออออออออออออออออออออผ
+
+   If you want to support program's development, please donate some
+money.  My  purses  in  WebMoney.ru  (www.wmtransfer.com)   system:
+Z787475721790 (for USD), E876273527569  (for  Euro),  R538290555814
+(for RUR).
+
+
+ฺฤฤฤฤฤฤฤฤฤฤฤฤฤฤท
+ณ1.6/26.01.2006บ
+ิออออออออออออออผ
+ ! Autodetection.
+ * License: EMAILWARE -> DONATIONWARE.
+ * FAQ
+
+ฺฤฤฤฤฤฤฤฤฤฤฤฤฤฤท
+ณ1.5/10.12.2003บ
+ิออออออออออออออผ
+ + Slovak  translation   of   help   and   messages   (by   majvan:
+   om3tn@psg.sk, http://www.majvan.host.sk).
+ + Prefix for autodetection in command line: UWA
+ * uwizard.ini/settings/UTF-8_MASK
+ * FAQ
+
+ฺฤฤฤฤฤฤฤฤฤฤฤฤฤฤท
+ณ1.4/28.09.2003บ
+ิออออออออออออออผ
+ * LICENSE
+ ! Editor: error of encoding in UTF-8.
+ + Czech  translation  of   help  and  messages  (by  Pavel  Rezny:
+   rezny@email.cz, http://groups.yahoo.com/group/easyctl).
+
+ฺฤฤฤฤฤฤฤฤฤฤฤฤฤฤท
+ณ1.3/29.03.2003บ
+ิออออออออออออออผ
+ ! Editor's menu error.
+
+ฺฤฤฤฤฤฤฤฤฤฤฤฤฤฤท
+ณ1.2/24.03.2003บ
+ิออออออออออออออผ
+ * uwizard.ini/settings/UTF-8_MASK
+ + You can manually specify Unicode Big Endian in panels and in the
+   command  line  (the  syntax  of  uwizard.ini/Prefix   also   was
+   changed).
+ * FAQ
+
+ฺฤฤฤฤฤฤฤฤฤฤฤฤฤฤท
+ณ1.1/09.11.2002บ
+ิออออออออออออออผ
+ * License
+ + UTF-7   support  (the  syntax  of  uwizard.ini/Prefix  also  was
+   changed).
+ + uwizard.ini/AddToPanelMenu.
+ * dll size increased from 28672 to 32768.
+
+ฺฤฤฤฤฤฤฤฤฤฤฤฤฤฤท
+ณ1.0/20.07.2002บ
+ิออออออออออออออผ
+ - Superfluous transformation of a tabulation symbol (uwizard.uni).
+ ! Rare error of registry reading.
+
+ฺฤฤฤท
+ณEOFบ
+ิอออผ

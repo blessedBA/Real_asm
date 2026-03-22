@@ -1,0 +1,66 @@
+.Language=English,English
+
+"Configure ADC Viewer"
+
+" Open "
+"Reading index file..."
+" Open "
+"Updating index file..."
+
+" Read "
+"Reading archive..."
+
+"ADC viewer v%i.%i (%s)"
+"&Free memory"
+"&Treat archives as folders"
+"&Create IDX files"
+"&Startup mode:"
+"Thousands sep:"
+"Ok"
+"Cancel"
+
+" Catalog info "
+" Disk info "
+" File/folder info "
+" Comments "
+"Comments"
+"Total disks"
+"Name"
+"Root dir"
+"Serial #"
+"Type"
+"Folders"
+"Files"
+"Size"
+"Free"
+"File/folder deleted"
+"File is archive"
+"File is inside archive"
+
+"Category"
+
+"<None>"
+
+"Removable"
+"HDD"
+"Network"
+"CD-ROM"
+
+"Removable disks"
+"HDD disks"
+"Network disks"
+"CD disks"
+"Other disks"
+
+"Info V"
+"Info E"
+
+" Shareware warning "
+" "
+"This is shareware version of ADC viewer"
+"It has limited abilities."
+"You may use it free for period of 30 days"
+"On details how obtain full version of ADC viewer,"
+"please press F1"
+" "
+"Ok"

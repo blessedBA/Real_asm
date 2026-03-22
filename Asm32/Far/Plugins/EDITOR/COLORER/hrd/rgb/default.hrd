@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="Windows-1251"?>
+<!DOCTYPE hrd SYSTEM "../hrd.dtd">
+
+<hrd>
+
+  <assign value="2" fore="#000000" back="#ffffff" descr="default text [dText]"/>
+  <assign value="3" fore="#ffffff" back="#000000" descr="current row [dRow]"/>
+  <assign value="4" fore="#ffffff" back="#000000" descr="current column [dColumn]"/>
+  <assign value="5" type="#1" descr="syntax check region [dSyntax]"/>
+
+  <assign value="10" fore="#008c00" descr="default number [dNumber]"/>
+  <assign value="11" fore="#008c00" descr="decimal number [dNumDec]"/>
+  <assign value="12" fore="#008000" descr="hex number [dNumHex]"/>
+  <assign value="13" fore="#005b00" descr="binary number [dNumBin]"/>
+  <assign value="14" fore="#008c00" descr="octal number [dNumOct]"/>
+  <assign value="15" fore="#008000" descr="float number [dNumFloat]"/>
+  <assign value="16" fore="#006600" descr="number suffixes or prefixes [dNumSuffix]"/>
+
+  <assign value="20" fore="#e60000" descr="default string [dString]"/>
+  <assign value="21" fore="#ff690f" descr="string in string - metastring [dString2]"/>
+  <assign value="22" fore="#730080" descr="string edges [dStringQuote]"/>
+  <assign value="23" fore="#ff7d7d" descr="another string edges [dStringQuote2]"/>
+  <assign value="24" fore="#800000" descr="simple character [dCharacter]"/>
+  <assign value="25" fore="#cc0000" descr="metacharacter [dCharacter2]"/>
+
+  <assign value="30" fore="#696969" type="#1" descr="comment [dComment]"/>
+  <assign value="31" fore="#a88566" descr="metacomment [dComment2]"/>
+  <assign value="32" fore="#656565" descr="block comment [dBlockComment]"/>
+  <assign value="33" fore="#606060" descr="single line comment [dLineComment]"/>
+  <assign value="34" fore="#92bdc0" descr="intext documentation (extended comments) [dPod]"/>
+
+  <assign value="40" fore="#008080" descr="symbol, operator [dSymbol]"/>
+  <assign value="41" fore="#800080" descr="language base, logic symbol [dSymbol2]"/>
+  <assign value="42" fore="#dddd00" descr="prefix [dPrefix]"/>
+
+  <assign value="50" fore="#dddd00" descr="operator [dOperator]"/>
+
+  <assign value="60" fore="#000080" descr="keyword [dKeyword]"/>
+  <assign value="61" fore="#7779bb" descr="other keywords [dKeyword2]"/>
+  <assign value="62" fore="#848400" descr="type name [dType]"/>
+
+  <assign value="70" type="#2" descr="function - for list processing [dFunction]"/>
+  <assign value="71" fore="#800000" descr="machine register [dRegister]"/>
+  <assign value="72" fore="#457d00" descr="constant [dConstant]"/>
+  <assign value="73" fore="#754d0f" descr="boolean constant [dBoolean]"/>
+
+  <assign value="80" descr="variable [dVar]"/>
+  <assign value="81" fore="#977900" descr="other variable [dVar2]"/>
+  <assign value="82" fore="#d25f00" descr="identifier [dIdentifier]"/>
+
+  <assign value="90" fore="#434a00" descr="compiler directive [dDirective]"/>
+  <assign value="91" fore="#6b7700" descr="metadirective [dDirective2]"/>
+
+  <assign value="100" fore="#264707" descr="parameter [dParam]"/>
+  <assign value="101" fore="#65c012" descr="metaparameter [dParam2]"/>
+
+  <assign value="110" fore="#25303f" descr="html-like tag [dTag]"/>
+  <assign value="111" fore="#0057a6" descr="open tag [dOpenTag]"/>
+  <assign value="112" fore="#0057a6" descr="close tag [dCloseTag]"/>
+
+  <assign value="120" fore="#dc4ae3" descr="label [dLabel]"/>
+  <assign value="121" fore="#000000" back="#00a8a8" descr="high contrast label [dInverseLabel]"/>
+
+  <assign value="130" fore="#000000" back="#a4ffff" descr="insertion text (code in code) [dInsert]"/>
+  <assign value="131" fore="#000080" back="#a4ffff" descr="insertion start [dInsertStart]"/>
+  <assign value="132" fore="#000080" back="#a4ffff" descr="insertion end [dInsertEnd]"/>
+
+  <assign value="140" fore="#ffffff" back="#0000dd" type="#3" descr="syntax error [dError]"/>
+  <assign value="141" fore="#ee00ee" descr="possibly bad text [dErrorText]"/>
+  <assign value="142" fore="#ffffff" back="#008080" type="#3" descr="todo notes [dTODO]"/>
+  <assign value="143" fore="#fdab80" back="#847000" type="#3" descr="debug notes [dDebug]"/>
+
+  <assign value="150" fore="#5a0140" descr="file path [dPath]"/>
+  <assign value="151" fore="#cc0000" descr="URL address [dURL]"/>
+  <assign value="152" fore="#c40071" descr="email address [dEMail]"/>
+
+  <assign value="160" fore="#979700" descr="date [dDate]"/>
+  <assign value="161" fore="#a04587" descr="time [dTime]"/>
+
+  <assign value="170" fore="#880088" back="#00ffff" type="#100" descr="pair struct start [dpOpenStruct]"/>
+  <assign value="171" fore="#880088" back="#00ffff" type="#101" descr="pair struct end [dpCloseStruct]"/>
+  <assign value="172" fore="#880088" back="#11b0a9" type="#100" descr="block pair start [dpOpenTag]"/>
+  <assign value="173" fore="#880088" back="#11b0a9" type="#101" descr="block pair end [dpCloseTag]"/>
+
+  <assign value="180" fore="#ffff00" back="#000000" descr="editor selection [deSelection]"/>
+  <assign value="181" fore="#6666aa" back="#dddddd" descr="editor border [deSelMargin]"/>
+  <assign value="182" fore="#0000ff" back="#000000" descr="error line [deCurError]"/>
+  <assign value="183" fore="#ffffff" back="#118811" descr="bookmark line [deBookmark]"/>
+
+  <assign value="190" fore="#000000" back="#ffffff" descr="memory window [dwMemory]"/>
+  <assign value="191" fore="#000000" back="#ffffff" descr="disassembly window [dwAssembly]"/>
+  <assign value="192" fore="#000000" back="#ffffff" descr="watch window [dwWatch]"/>
+  <assign value="193" fore="#000000" back="#ffffff" descr="calls (stack) window [dwCalls]"/>
+  <assign value="194" fore="#000000" back="#ffffff" descr="values window [dwValues]"/>
+  <assign value="195" fore="#000000" back="#ffffff" descr="variables window [dwVariables]"/>
+
+</hrd>

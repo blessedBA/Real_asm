@@ -1,0 +1,126 @@
+.Language=English,English
+.PluginContents=colorer
+
+@Contents
+$^#colorer library. version 4ever
+
+    it is not enough here.
+
+    ~plugin setup.~@Config@
+
+    ~plugin's menues.~@menu@
+
+    ~about author.~@Author@
+
+    all other information about using colorer read in plugin and library
+documentation files.
+
+@Config
+$^#colorer's settings.#
+
+  #[x] turn off colorer#
+     turns off Colorer - really...
+
+  #[x] log errors (c:\_colorer.log)#
+     turns on HRC bases compiling log in #c:\_colorer.log#
+
+  #[x] don't locate hrc directory changes#
+     don't use hrc changes autodetection.
+
+  #[x] Cross    [x] Pairs    [x] Syntax#
+     turns on/off corresponding features in editor.
+
+  #base file:#
+     full file path sets default base file for colorer.
+     Leave empty this field shows colorer to search file's
+     path in registry.
+
+  #assigns file:#
+     path to colors assign file (*.hrd). Works as previous.
+     You can set here only filename (without path).
+
+  #[ Reload ]#
+     this button reloads hrc base
+
+  #[ Reload all ]#
+     this button reloads all hrc base
+
+  #[ Ok ]#
+     close dialog
+
+    Really, colorer's formats can reload themself with any
+changes in its directory automatically.
+
+
+@add
+$#Menues...
+    Here you see list of founded functions or syntax errors. Choosing any line
+lets you to go to corresponding line in text.
+
+
+@menu
+$#Colorer operation menues
+
+  #1 List types#          ~Alt-L~
+    Lists menu with all supported file types. You can choose any of
+them to use with current file in editor.
+
+  #2 Match pair#          ~Alt-[~
+    Finds paired bracket (or any other pair structure) to the current under cursor
+and jumps there.
+
+  #3 Select block#        ~Alt-]~
+    Moves cursor to start of block and selects it all. You can call this
+function as on block limits as inside it. In second case colorer will find
+start and end of nearest block automatically.
+
+  #4 Select pair#         ~Alt-P~
+    Selects pair block - but don't selects pair structures at start and end.
+
+  #5 List functions#      ~Alt-;~
+    Searches for functional regions in current file and shows them in menu.
+There you can choose and jump into any of them, also you can use there any
+alphabetic symbols for creating masks.
+
+  #6 Find errors#         ~Alt-'~
+    As previous - but shows all errors in text.
+
+  #*# All these features are depend on content of corresponding HRC files.
+All information is taken from syntax regions analyse.
+
+  #7 Select region#       ~Alt-K~
+    Selects current color region under cursor.
+
+  #C Configuration#
+    Calls colorer ~configuration menu~@Config@.
+
+
+@Hee
+$^#Hoo...#
+   What's a lazy people!
+
+
+@Ring
+$^#PlugWriters WebRing#
+    Just now FAR PlugRing Project was started.
+    Now our project growing up - and you can take part in it's discussions in
+    #http://www.uic.nnov.ru/~~ruiv/plugring/#
+
+
+@Author
+$^#Colorer library. FAR Manager plugin. version forever.#
+    #Igor Ruskih#(Cail Lomecb). copyright (c) 1999-2001.
+    I've wrote this program for you and myself; because it I doesn't
+set any difficult limitation for using colorer. You just need to
+send me registration form (doc/\w+/regform.txt).
+
+                   Shakhunia. Nizhegorodskiy region. 606910
+                   Chapaeva str. 3-15
+                     tel. (831-52) 2-16-56.
+                   Nizhniy Novgorod
+                     tel. (8312) 24-26-62.
+                   EMail  :  ruiv@@uic.nnov.ru
+                             lomecb@@chat.ru
+                   Web    :  ~http://www.uic.nnov.ru/~~ruiv/~@Hee@
+                             http://www.chat.ru/~~lomecb/
+                             ~http://www.uic.nnov.ru/~~ruiv/plugring/~@Ring@

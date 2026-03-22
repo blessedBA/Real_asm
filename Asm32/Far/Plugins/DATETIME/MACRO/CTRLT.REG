@@ -1,0 +1,7 @@
+REGEDIT4
+
+[HKEY_CURRENT_USER\Software\Far\KeyMacros\Editor\CtrlT]
+"Sequence"="F11 d t 0 % X AltI Enter"
+"DisableOutput"=dword:00000001
+"Description"=""
+

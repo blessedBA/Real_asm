@@ -1,0 +1,12 @@
+FAR plugin module - shell file and folder link support 
+
+Version 1.15 (Tempora mutantur) 05.09.99
+
+Creates shell link to an object selected in FAR panel on desktop
+or in another panel current folder.
+Resolves shell link to a folder and changes current panel folder
+to linked one.
+
+(c) Oscar Sacaev
+FidoNet: 2:5000/72.511@fidonet
+ E-mail: oos@chat.ru

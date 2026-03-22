@@ -1,0 +1,48 @@
+Tree Copy 1.2 - plugin for Total Commander (former Windows Commander)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+(c) Valentine Shtronda, Kyiv, Ukraine, valiko_ua@yahoo.com
+
+Allows you to copy/move files from the Search result list and
+from Branch View mode list, retaining the tree structure.
+This is temporary workaround for Total Commander's
+inability to do this or to use a complex filter while copying.
+Hope soon we'll be able to get rid of my plugin... :)
+
+Installation
+~~~~~~~~~~~~
+1. Unzip the TreeCopy.wcx to any directory
+   (usually where you store other plugins).
+2. In Total Commander choose
+   Configuration|Packer|Configure packer extension DLLs.
+3. Type any extension (you'll never actually use it), e.g. "TreeCopy".
+4. Click 'New type', and select the TreeCopy.wcx.
+5. Click OK. Click OK.
+
+How to use
+~~~~~~~~~~
+1. Select files and/or folders (in either usual list,
+   Search Results list (Search -> Feed to listbox)
+   or Branch View list).
+2. Select destination directory in opposite panel.
+3. Press Pack (Alt+F5). Select this packer from drop-down combobox.
+   Name of the archive will be ignored. Only path to it will be
+   used as a destination.
+4. You can also use the option "Move to archive".
+5. Press OK. Files have been (successfully) copied/moved!
+
+Error messages
+~~~~~~~~~~~~~~
+While copying/moving the following error messages can be displayed:
+ "Cannot create directory? Do you want to continue with other files?"
+ "Cannot copy file? Do you want to continue with other files?"
+ "Cannot move file? Do you want to continue with other files?"
+Press Yes to continue with other files, or No to break operation.
+
+Versions
+~~~~~~~~
+1.0  11/10/2002  The first version (and hope the last). :)
+1.1  14/10/2002  Better error handling.
+                 Error messages more detailed.
+                 Added confirmations on overwrite.
+                 Hope this version is really last. :)
+1.2  ??/11/2002  Some syntax errors corrected ("Windows" replaced with "Total"). :)

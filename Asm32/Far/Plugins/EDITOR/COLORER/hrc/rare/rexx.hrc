@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="Windows-1251"?>
+<!DOCTYPE hrc SYSTEM "../hrc.dtd">
+<?xml-stylesheet type="text/xsl" href="../hrc.xsl"?>
+<!--
+    REXX Syntax 4ever
+    3dcraze version was made by Vladimir Komarov <doublew@iname.com>
+
+    Upgrade for Colorer4u and 4ever Igor Paikin <exemok@mail.ru>
+                with help of Vladimir Komarov <doublew@iname.com>:
+    1) adding some more keywords
+    2) do .. end works as brackets
+    3) also added (modified?) odinary brackets - [..] and (..)
+    4) Nested comments support (is it really works?)
+    5) Unneeded end's are in error color
+    6) Inserted functions - thanks to Vladimir Komarov
+
+    Thanks to:
+    IBM - for that stupid language REXX
+    Eugene Roshal and Far group - for FAR
+    cail lomecb - for colorer and some help in writing of this file
+    Vladimir Komarov <doublew@iname.com> - author of 3dcraze version of REXX syntax
+                                           and soauthor of 4u and 4ever version
+    You - that are use (or read, modify and send me notes) this hrc file
+-->
+<hrc>
+
+<define name="rString"   value="dString"/>
+<define name="rComment"  value="dComment"/>
+<define name="rSymb"     value="dSymbol"/>
+<define name="rWord"     value="dKeyword"/>
+<define name="rWord2"    value="dKeyword"/>
+<define name="rFunc"     value="dKeyword"/>
+
+<scheme name="REXX">
+   <!-- Comments -->
+   <inherit scheme="CNestComm"/>
+   <!-- Strings -->
+   <regexp match="/('(.*?[^\'])??'x*)/" region0="rString"/>
+   <regexp match='/(\"(.*?[^\"])??\")/' region0="rString"/>
+   <!-- Numbers  -->
+   <inherit scheme="mFloatNumb"/>
+   <inherit scheme="mDecNumb"/>
+   <!-- begins and ends -->
+   <block start="/\b((do)|(select))\B/i" end="/\b(end)\B/i" scheme="REXX"
+          region00="rWord2" region10="rWord2"
+          region01="dpOpenStruct" region11="dpCloseStruct"/>
+   <!-- Brackets -->
+   <block start="/(\()/" end="/(\))/" scheme="REXX"
+          region00="rSymb" region01="dpOpenStruct"
+          region10="rSymb" region11="dpCloseStruct"/>
+   <block start="/(\[)/" end="/(\])/" scheme="REXX"
+          region00="rSymb" region01="dpOpenStruct"
+          region10="rSymb" region11="dpCloseStruct"/>
+   <keywords ignorecase="ignorecase" region="dError">
+     <word name="end"/> <!--no begin for this end -->
+     <word name="*/"/> <!-- no open comment for this close comment -->
+   </keywords>
+   <!-- Symbols -->
+   <keywords region="rSymb">
+      <symb name="("/><symb name=")"/>
+      <symb name="["/><symb name="]"/>
+      <symb name="+"/><symb name="-"/><symb name="*"/><symb name="/"/>
+      <symb name=","/><symb name="."/><symb name=";"/>
+      <symb name="="/><symb name="!"/><symb name="|"/>
+   </keywords>
+   <!-- Words -->
+   <keywords ignorecase="ignorecase" region="rWord">
+     <word name="address"/>
+     <word name="arg"/>
+     <word name="call"/>
+     <word name="drop"/>
+     <word name="else"/>
+     <word name="error"/>
+     <word name="exit"/>
+     <word name="expose"/>
+     <word name="forever"/>
+     <word name="if"/>
+     <word name="interpret"/>
+     <word name="iterate"/>
+     <word name="leave"/>
+     <word name="otherwise"/>
+     <word name="parse"/>
+     <word name="procedure"/>
+     <word name="pull"/>
+     <word name="push"/>
+     <word name="queue"/>
+     <word name="return"/>
+     <word name="say"/>
+     <word name="signal"/>
+     <word name="source"/>
+     <word name="syntax"/>
+     <word name="then"/>
+     <word name="to"/>
+     <word name="until"/>
+     <word name="upper"/>
+     <word name="value"/>
+     <word name="var"/>
+     <word name="when"/>
+     <word name="while"/>
+   </keywords>
+
+   <keywords ignorecase="ignorecase" region="rFunc">
+     <word name="abbrev"/>
+     <word name="abs"/>
+     <word name="bitand"/>
+     <word name="bitor"/>
+     <word name="bitxor"/>
+     <word name="center"/>
+     <word name="centre"/>
+     <word name="changestr"/>
+     <word name="charin"/>
+     <word name="charout"/>
+     <word name="chars"/>
+     <word name="compare"/>
+     <word name="condition"/>
+     <word name="copies"/>
+     <word name="countstr"/>
+     <word name="datatype"/>
+     <word name="date"/>
+     <word name="delstr"/>
+     <word name="delword"/>
+     <word name="digits"/>
+     <word name="errortext"/>
+     <word name="form"/>
+     <word name="format"/>
+     <word name="fuzz"/>
+     <word name="insert"/>
+     <word name="lastpos"/>
+     <word name="left"/>
+     <word name="length"/>
+     <word name="linein"/>
+     <word name="lineout"/>
+     <word name="lines"/>
+     <word name="max"/>
+     <word name="min"/>
+     <word name="max"/>
+     <word name="overlay"/>
+     <word name="pos"/>
+     <word name="queued"/>
+     <word name="random"/>
+     <word name="reverse"/>
+     <word name="right"/>
+     <word name="sign"/>
+     <word name="sourceline"/>
+     <word name="space"/>
+     <word name="stream"/>
+     <word name="strip"/>
+     <word name="substr"/>
+     <word name="subword"/>
+     <word name="symbol"/>
+     <word name="time"/>
+     <word name="translate"/>
+     <word name="trunc"/>
+     <word name="verify"/>
+     <word name="word"/>
+     <word name="wordindex"/>
+     <word name="wordlength"/>
+     <word name="wordpos"/>
+     <word name="words"/>
+     <word name="xrange"/>
+   </keywords>
+
+   <regexp match="/\b \M \w+ \:/x" region0="dFunction"/>
+
+</scheme>
+
+</hrc>

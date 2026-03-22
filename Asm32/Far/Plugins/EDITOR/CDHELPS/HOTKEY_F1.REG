@@ -1,0 +1,17 @@
+REGEDIT4
+
+[HKEY_CURRENT_USER\Software\Far\KeyMacros\Editor\CtrlF1]
+"Description"="Context Help - Invoke"
+"Sequence"="F11 ? ?"
+"DisableOutput"=dword:00000001
+
+[HKEY_CURRENT_USER\Software\Far\KeyMacros\Editor\AltF1]
+"Description"="Context Help - Prev"
+"Sequence"="F11 ? !"
+"DisableOutput"=dword:00000001
+
+[HKEY_CURRENT_USER\Software\Far\KeyMacros\Editor\ShiftF1]
+"Description"="Context Help"
+"Sequence"="F11 ?"
+"DisableOutput"=dword:00000001
+

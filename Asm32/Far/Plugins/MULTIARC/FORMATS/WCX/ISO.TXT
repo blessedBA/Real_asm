@@ -1,0 +1,55 @@
+iso plugin for Total Commander (read CD-ROM images) version 1.6.2
+
+installation:
+
+1. unzip the iso.wcx to your Total Commander installation directory
+2. choose the menu configuration - options
+3. choose the packer tab
+4. click the configure packer extension dlls button
+5. type ISO as new extension
+6. click new type, and select iso.wcx
+7. click ok
+8. repeat steps 2-7 for BIN, IMG and NRG extensions
+
+Author: Sergey Oblomov <hoopoepg@mail.ru>
+ICQ 12411939
+
+===================================================================
+
+Changes:
+2002.03.20  Support for WinOnCD c2d image format. Author: Oliver von Bueren
+2003.04.06  Added support for:
+            - BIN/CUE images
+            - IMG (CloneCD) images
+            - NRG (Nero) images
+            - Large (>4GB) images (that is, DVD images with ISO Bridge format)
+            - Open by Content (Ctrl+PgDn) enabled
+            - File Search enabled
+            - Mode2/Form2 (S/VCD & XCD) extraction (emulates Windows behaviour)
+            Author: DeXT
+2003.07.23  version 1.5
+            - redesign of code
+            - now plugin works MUCH faster
+2003.08.19  version 1.5.2 (Oliver von Bueren)
+            - changed detection function for VolumeDescriptor, tested with
+              c2d (WinOnCD 3.8) and nrg (Nero 6.x) files, should work with
+              most other formats without changes.
+2003.09.17  version 1.5.2
+            - fixed bug with reading last file or folder in directory (it was nor read
+              if length of name was 1 symbol)
+2003.10.09  version 1.5.4
+            - fixed bug with reading .iso images without Jouliet extention:
+              in some cases files were named like "filename.ext;1" instead
+              of "filename.ext"
+2003.29.10  version 1.6
+            - added supporting boot images: now boot images may be extracted from
+              iso image as regular file
+            - updated algorithm for scanning signature of CD images
+            - unfortunately i lost most of test images, so, if you found some
+              degradation of plugin - let me know (if possible, with link to file)
+2003.31.10  version 1.6.1
+            - fixed potential bug in detecting size of sector
+            - fixed critical bug with reading large images
+            - special thanks vmb2003 and SoBal(sobal@cdrinfo.pl)
+2003.03.11  version 1.6.2
+            - fixed minor bug: on some images boot image was not detected

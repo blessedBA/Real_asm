@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<renewal>
+	<plugin guid="{BC9E641B-74DF-47FC-BD48-8A0BDE79B8BA}">
+		<url arch="any">http://code.google.com/p/farplugs/downloads/list</url>
+		<home arch="any">http://code.google.com/p/farplugs</home>
+		<changelog arch="any">http://farplugs.googlecode.com/svn/trunk/ImageInfo/dist/ChangeLog</changelog>
+		<regex arch="x64">//farplugs.googlecode.com/files/FarImageInfo_(\d+)\.(\d+)_x64\.zip</regex>
+		<regex arch="x86">//farplugs.googlecode.com/files/FarImageInfo_(\d+)\.(\d+)_x86\.zip</regex>
+		<srcpath arch="any">ImageInfo</srcpath>
+	</plugin>
+</renewal>

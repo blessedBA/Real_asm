@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="Windows-1251"?>
+<!DOCTYPE hrc SYSTEM "../hrc.dtd">
+<?xml-stylesheet type="text/xsl" href="../hrc.xsl"?>
+<!--
+    Ada Syntax (for Colorer 4ever)
+With help of:
+    Eugene Kotlyarov 2:5058/26.9@fidonet.org
+-->
+<hrc>
+<define name="AdaString"   value="dString"/>
+<define name="AdaComment"  value="dComment"/>
+<define name="AdaDirective" value="dDirective2"/>
+<define name="AdaSymb"     value="dSymbol"/>
+<define name="AdaWord"     value="dKeyword"/>
+<define name="AdaAsm"      value="dParam"/>
+<define name="AdaNumb"     value="dNumber"/>
+
+<include name="base/asm.hrc"/>
+
+<scheme name="ada">
+   <!-- Comments -->
+   <regexp match="/(--.*$)/" region0="AdaComment"/>
+   <!-- paired -->
+   <block start="/(\()/" end="/(\))/" scheme="Ada"
+          region00="AdaSymb" region01="dpOpenStruct"
+          region10="AdaSymb" region11="dpCloseStruct"/>
+   <block start="/(\[)/" end="/(\])/" scheme="Ada"
+          region00="AdaSymb" region01="dpOpenStruct"
+          region10="AdaSymb" region11="dpCloseStruct"/>
+
+   <regexp match="/^ \s* \M (procedure)|(function) \s+ ([_\w]+)/ix" region3="dFunction"/>
+   <block  start="/\b(ASM)$|\W/i" end="/^|\s(END)/i" scheme="Asm"
+           region="AdaAsm" region00="AdaWord" region01="dpOpenStruct"
+           region10="AdaWord" region11="dpCloseStruct"/>
+   <!-- Strings -->
+   <regexp match="/('.*?')/" region0="AdaString"/>
+   <regexp match='/(".*?")/' region0="AdaString"/>
+   <!-- CHAR  -->
+   <regexp match="/\b(\d[\da-fA-F]+X)\B/" region0="AdaString"/>
+   <!-- Numbers  -->
+   <regexp match="/\b(\d[\da-fA-F]+H)\B/" region0="AdaNumb"/>
+   <regexp match="/\b([0-9.]+(E|D[\-+]?\d+)?)\B/" region0="AdaNumb"/>
+   <!-- Symbols -->
+   <keywords region="AdaSymb">
+      <symb name="&lt;="/><symb name=">="/><symb name="^"/><symb name="+"/>
+      <symb name="#"/><symb name="&amp;"/><symb name="~"/><symb name="|"/>
+      <symb name="-"/><symb name="*"/><symb name="/"/><symb name=";"/>
+      <symb name=":"/><symb name=":="/><symb name="="/><symb name="("/>
+      <symb name="#"/><symb name=")"/><symb name="["/><symb name="]"/>
+      <symb name=","/><symb name="."/><symb name=">"/><symb name="&lt;"/>
+      <symb name="}"/><symb name="{"/>
+   </keywords>
+   <!-- Common words -->
+   <keywords ignorecase="ignorecase" region="AdaWord">
+     <word name="abort"/>
+     <word name="abs"/>
+     <word name="abstract"/>
+     <word name="accept"/>
+     <word name="access"/>
+     <word name="aliased"/>
+     <word name="all"/>
+     <word name="and"/>
+     <word name="array"/>
+     <word name="at"/>
+     <word name="begin"/>
+     <word name="body"/>
+     <word name="case"/>
+     <word name="constant"/>
+     <word name="declare"/>
+     <word name="delay"/>
+     <word name="delta"/>
+     <word name="digits"/>
+     <word name="do"/>
+     <word name="else"/>
+     <word name="elsif"/>
+     <word name="end"/>
+     <word name="entry"/>
+     <word name="exception"/>
+     <word name="exit"/>
+     <word name="for"/>
+     <word name="function"/>
+     <word name="generic"/>
+     <word name="goto"/>
+     <word name="if"/>
+     <word name="in"/>
+     <word name="limited"/>
+     <word name="loop"/>
+     <word name="mod"/>
+     <word name="new"/>
+     <word name="not"/>
+     <word name="or"/>
+     <word name="others"/>
+     <word name="out"/>
+     <word name="package"/>
+     <word name="pragma"/>
+     <word name="private"/>
+     <word name="procedure"/>
+     <word name="protected"/>
+     <word name="is"/>
+     <word name="raise"/>
+     <word name="range"/>
+     <word name="record"/>
+     <word name="rem"/>
+     <word name="renames"/>
+     <word name="requeue"/>
+     <word name="return"/>
+     <word name="reverse"/>
+     <word name="select"/>
+     <word name="separate"/>
+     <word name="null"/>
+     <word name="of"/>
+     <word name="subtype"/>
+     <word name="tagged"/>
+     <word name="task"/>
+     <word name="terminate"/>
+     <word name="then"/>
+     <word name="type"/>
+     <word name="when"/>
+     <word name="with"/>
+     <word name="until"/>
+     <word name="use"/>
+     <word name="while"/>
+     <word name="xor"/>
+   </keywords>
+</scheme>
+</hrc>

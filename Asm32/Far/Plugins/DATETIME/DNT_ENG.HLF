@@ -1,0 +1,793 @@
+.Language=English,English
+.PluginContents=Date-n-Time
+@Contents
+$# Date-n-Time v2.03#
+
+    Version 2.03.
+    This plugin was designed for using Date and Time in
+  various formats. It can insert current date/time in
+  any format to clipboard, edited text, command line.
+
+    See about plugin:
+
+  ~About plugin~@About@
+  ~General menu~@Menu@
+  ~Calendar~@Calendar@
+  ~Configuration~@Config@
+  ~Dialogs~@Dialogs@
+  ~Format specifications~@Format@
+  ~Dialog API~@API
+  ~RegExp and text parsing~@Misc
+
+  ~About Author~@Author
+@Author
+$# Some words about the Author and this plugin#
+
+   If you find some bugs , please write me message about it.
+
+ Semenov Alexey.
+ E-mail: #griphon25@@hotmail.com#
+
+ ~Back~@Contents
+
+@About
+$# About#
+    Sometimes you want to insert current date or time to
+  edited text. Or you want to create folder or archive with
+  name using current date (for example to handle a project
+  or source history). 
+    Now, thanks to Eugene Roshal, you may use this plugin
+  to do it.
+
+  ~Back~@Contents
+
+@Config
+$# Configuration#
+
+    You may configure all modes of this plugin by pressing
+  F4 on chosen main menu plugin item.
+
+    To read about configuration dialogs:
+  
+  ~Auto mode configuration~@AutoDialog
+  ~Menu mode configuration~@MenuDialog
+  ~Indicator configuration~@IndDialog
+  ~Calendar configuration~@CalDialog
+
+  ~Back~@Contents
+
+@Dialogs
+$# Using dialogs#
+
+  ~Auto mode configuration~@AutoDialog
+  ~Menu mode configuration~@MenuDialog
+  ~Indicator configuration~@IndDialog
+  ~Calendar configuration~@CalDialog
+
+  ~Back~@Contents
+
+@Calendar
+$# Calendar#
+
+   There are 4 calendar design:
+
+ ÉÍ[ş]ÍÍÍÍÍ Calendar ÍÍÍÍÍ(*)Í»    - Days - horizontal
+ º  < 1999 >   <    May    >  º    - week from monday
+ ÇÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¶
+ º Mo  Tu  We  Th  Fr  Sa  Su º
+ º                      1   2 º
+ º  3   4   5   6   7   8   9 º
+ º 10  11  12  13  14  15  16 º
+ º 17  18  19  20  21  22  23 º
+ º 24  25  26  27  28  29  30 º
+ º 31                         º
+ ÈÍÍÍÍÍÍÍÍÍ[ Cancel ]ÍÍÍÍÍÍÍÍÍ¼
+
+ ÉÍ[ş]ÍÍÍÍÍ Calendar ÍÍÍÍÍ(*)Í»    - Days - vertical
+ º  < 1999 >   <    May    >  º    - week from monday
+ ÇÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¶    
+ º Mo       3  10  17  24  31 º
+ º Tu       4  11  18  25     º
+ º We       5  12  19  26     º
+ º Th       6  13  20  27     º
+ º Fr       7  14  21  28     º
+ º Sa   1   8  15  22  29     º
+ º Su   2   9  16  23  30     º
+ ÈÍÍÍÍÍÍÍÍÍ[ Cancel ]ÍÍÍÍÍÍÍÍÍ¼
+
+ ÉÍ[ş]ÍÍÍÍÍ Calendar ÍÍÍÍÍ(*)Í»    - Days - horizontal  
+ º  < 1999 >   <    May    >  º    - week from sunday
+ ÇÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¶    
+ º Su  Mo  Tu  We  Th  Fr  Sa º    
+ º                          1 º    
+ º  2   3   4   5   6   7   8 º
+ º  9  10  11  12  13  14  15 º
+ º 16  17  18  19  20  21  22 º
+ º 23  24  25  26  27  28  29 º
+ º 30  31                     º
+ ÈÍÍÍÍÍÍÍÍÍ[ Cancel ]ÍÍÍÍÍÍÍÍÍ¼
+
+ ÉÍ[ş]ÍÍÍÍÍ Calendar ÍÍÍÍÍ(*)Í»    - Days - vertical
+ º  < 1999 >   <    June   >  º    - week from sunday
+ ÇÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¶        
+ º Su       6  13  20  27     º
+ º Mo       7  14  21  28     º
+ º Tu   1   8  15  22  29     º
+ º We   2   9  16  23  30     º
+ º Th   3  10  17  24         º
+ º Fr   4  11  18  25         º
+ º Sa   5  12  19  26         º
+ ÈÍÍÍÍÍÍÍÍÍ[ Cancel ]ÍÍÍÍÍÍÍÍÍ¼
+
+  #*#     - current date
+  #<#,#># - prev/next year or month
+  #year#   - select year
+
+             ÉÍ[ş]Í    Year  ÍÍÍÍÍÍ»
+             º                     º
+             º <  ş  >   [1999   ]º
+             º                     º
+             È[  OK  ]ÍÍ[ Cancel ]Í¼
+
+  #month#- select month
+             ÉÍ[ş] Set Month ÍÍÍÍÍ»
+             º    <   ş   >       º
+             ÇÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¶
+             º  ( ) January       º
+             º  ( ) February      º
+             º  ( ) March         º
+             º  ( ) April         º
+             º  () May           º
+             º  ( ) June          º
+             º  ( ) July          º
+             º  ( ) August        º
+             º  ( ) Sentember     º
+             º  ( ) October       º
+             º  ( ) November      º
+             º  ( ) December      º
+             ÇÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¶
+             º[  OK  ]  [ Cancel ]º
+             ÈÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ¼
+
+  Selected date will be inserted to edited text/command line, put to
+  clipboard, or insertion will be skiped. It depends of configuration
+  settings.
+
+
+  ~Back~@Contents
+
+
+@AutoDialog
+$# Auto mode configuration#
+
+  
+          ÉÍÍÍÍÍÍÍÍ Date-n-Time (Auto) ÍÍÍÍÍÍÍÍ»
+          º() Use default                     º
+          º( ) Set user format                 º
+          ºFormat:                             º
+          º[.................................]º
+          ÇÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¶
+          º        [  OK  ]  [ Cancel ]        º
+          ÈÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ¼
+
+   #Use default       # -Use default format from 
+                         (from .lng file)
+   #Set user format   # -Use custom format 
+                          
+   #Format            # -Set custom format 
+                          
+
+  ~Back~@Contents
+@MenuDialog
+$# Menu mode configuration#
+
+        ÉÍÍÍÍÍÍÍÍ Date-n-Time (Menu) ÍÍÍÍÍÍÍÍ»
+        º( ) Use default                     º
+        º() Set user format                 º
+        ºFormat:                             º
+        º[.................................]º
+        ÇÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¶
+        º        [  OK  ]  [ Cancel ]        º
+        ÈÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ¼
+
+   #Use default       # -Use default format from 
+                         (from .lng file)
+   #Set user format   # -Use custom format 
+                          
+   #Format            # -Set custom format 
+
+  PS. It is not used now.
+   If you think it may be useful - write me.
+
+  ~Back~@Contents
+@IndDialog
+$# Indicator configuration#
+
+          ÉÍÍÍÍÍ Date-n-Time (Indicator) ÍÍÍÍÍÍ»
+          º() Use default                     º
+          º( ) Set user format                 º
+          º[x] Control Keys      Pause 4500    º
+          º[x] Switch Mode       Xÿpos 6       º
+          º[x] Use Title         Yÿpos 0       º
+          ÇÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¶
+          ºFormat:                             º
+          º%d.%b.%Y                           º
+          ÇÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¶
+          º  [  OK  ]  [ Color ]  [ Cancel ]   º
+          ÈÍÍÍÍÍÍÍÍÍÍ DG Ver: 1.0b ÍÍÍÍÍÍÍÍÍÍÍÍ¼
+
+   #Use default       # -Use default format from 
+                         (from .lng file)
+   #Set user format   # -Use custom format 
+                          
+   #Format            # -Set custom format 
+
+   #Control Keys      # - In this mode if any control key
+                         that was pressed on indicator start
+                         is released then indicator will be
+                         turned off.
+                          But this feature is working only
+                         under Windows NT.
+
+   #Switch Mode       # -If you start indicator once more
+                         indicator will be turned off.
+
+   #Use Title         # - Use console window title.
+
+   #Pause             # -Time duration of indicator.
+   #Xÿpos             # -Position from right side.
+   #Yÿpos             # -Position from top.
+   #Color             # -Choose indicator color.
+
+  ~Back~@Contents
+
+@CalDialog
+$# Calendar configuration#
+
+
+
+     ÉÍÍÍÍÍÍÍÍÍÍ  Date-n-Time  ÍÍÍÍÍÍÍÍÍÍÍ»
+     º ( ) Insert string  [ ] no Use      º
+     º () Clipboard                      º
+     ÇÄName: ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¶
+     ºCalendar test                      º
+     º Format:                            º
+     º%d.%b.%Y                           º
+     ÇÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¶
+     º  [  OK  ]  [  Save  ]  [ Cancel ]  º
+     ÈÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ¼
+
+ #Insert string# - if plugin opened from editor - insert
+                 result at current cursor position.
+                 In other case - copy to clipboard or
+                 command line.
+
+ #Clipboard#     - Copy result string to clipboard.
+
+ #no Use#       - Skip any insertion.
+
+ #Name#          - Title for format.
+
+ #Format#        - Format string. You may use format symbols
+                 and any text.
+
+ #Ok#            - Start work or save on editing.
+ #Save#          - Save current format specification.
+ #Cancel#        - Don't start work.
+
+
+  ~Back~@Contents
+
+
+@Misc
+$# Misc#
+
+   Dialog API additionaly export #sparse#-function to parse
+  text. Though, it's not a "regexp" but rather powerful tool
+  for many cases. 
+
+   #sparse# parse source and save processed result in output buffer.
+   #parseNum# return the number of terms in buffer.
+   #parseGetStr# return term from buffer with given number.
+   #parseGet# - work as previous function but memory for result string
+                is allocated by function. Free it manualy later.
+
+  ~int sparse(char *source, char *format, char * dest, int len)~@sparse
+  ~int parseNum(char *str)~@parseNum
+  ~char *parseGetStr(char *str, char *dst, int num)~@parseGetStr
+  ~char *parseGet(char *str, int num)~@parseGet
+
+  ~Dialog API~@API
+  ~Back~@Contents
+
+@parseGet
+$# parseGet#
+
+  #char *parseGet(char *str, int num)#
+   #str# - string-output of #sparse#-function.
+   #num# - item number (starting from 0).
+
+   Return pointer to result string. Memory for result is allocated
+   on request. Free memory manualy after using.
+
+  ~Dialog API~@API
+  ~Back~@Contents
+
+@parseGetStr
+$# parseGetStr#
+
+  #char *parseGetStr(char *str, char *dst, int num)#
+   #str# - string-output of #sparse#-function.
+   #dst# - result string.
+   #num# - item number (starting from 0).
+
+  Fill dst with result and return pointer to dst.
+
+  ~Dialog API~@API
+  ~Back~@Contents
+
+@parseNum
+$# parseNum#
+
+  #int parseNum(char *str)#
+   #str# - string-output of #sparse#-function.
+   Return number of item in str.
+
+  ~Dialog API~@API
+  ~Back~@Contents
+@sparse
+$# sparse#
+
+  #int sparse(char *source, char *format, char * dest, int len)#
+   #source# - string to parse
+   #format# - parse format
+   #dest  # - buffer to output result
+   #len   # - buffer size
+  This function is very similar to #sscanf#.
+  Return the number of treated terms (specifications and
+  non-spaces sequences).
+
+  #format# - consists of white-spaces, non-spaces and format
+            specifications .
+             When a space is encountered - all consecutive
+            spaces in the source will be skiped.
+             Non-spaces (exept '%') - will be matched with
+            the source symbols.
+            Non successful match will led to break function.
+             Format specifications are used to read and
+            save specific terms from the source.
+            Specification starts from '%' :
+            #% [+|*] [size] [case] type [~~default~~]#
+            #[+|*] #  - #+# - "append" readed term with
+                           next term
+                      #*# - treate term but not save it
+            #[size]#  - maximum length of term
+            #[case]#  - symbols case treatment
+                        #l# - "lowercase" before match
+                        #u# - "uppercase" before match
+                        #n# - non-case matching
+            #[~~default~~]# - if term is not matched
+                          symbols beetwen ~~~~ used
+                          as a result.
+                          Example: #S:" asdfg" - F:" %d~~0~~"#
+                          that is: read number if not result
+                          is #"0"#.
+            #type#   - term type.
+                       #c#        - read symbol
+                       #t#        - read all symbols up to the
+                                    end of the source
+                       #s#        - read string
+                       #d#        - read number
+                       #[pattern]# - read symbols if they present
+                                    in a pattern.
+                                    If pattern start from
+                                    #"^"# - that symbols are readed
+                                    that not present in the pattern.
+                       #{}#       - all symbols between #{}#
+                                    are saved as a result.
+                       #[S][q](s1[-]s2)# - read symbols that are
+                                    enclosed between s1 and s2.
+                                    If #"-"# exist nested
+                                    matching is used.
+                                    #q# - save enclosing symbols too.
+                                    #S# - read string if no enclosing
+                                    symbols are exist.
+                                    Example:
+                                      #S:" (a+(b-c))"-F:" %S((-))"#
+                                    that is: read item that is
+                                    enclosed by nested brackets.
+                                    If no brackets read string. 
+                                    Result: "a+(b-c)".
+                                    if case:
+                                     #S:" a+(b -c))"-F:" %S((-))"#
+                                    Result: "a+(b".
+   Exapmle:
+  Dialog item description is parsed as follow:
+  #"%us %s %d %d %d %d %uc %Sq(\"\") %uS(()) %uc %u(%%)~~TXT~~ "#
+  #"%u(%%)~~HKCU~~ %S(\"\")~~NULL~~ %S(\"\")~~NULL~~"#
+
+  You may use format to use case conversation before matching
+  non-space symbols.
+  Format: #%{l|u|n}' '# - space after format is important
+  to differ from format specification.
+  Example: S:" AsD" - F:" %l asd"
+  Result : "lowercase" source before matching. Matching successful.
+
+   There is another "pseudo-specification" :#%[size]f#.
+  Example : #%2f#. Its role is to flush output buffer if any error
+  in mathing occured. "Size" - give the threshold, if count of
+  treated terms is less then this size buffer will be flushed.
+
+  ~Dialog API~@API
+  ~Back~@Contents
+@Menu
+$# General menu#
+  You have 4 main commands for it:
+
+  #Date-n-Time (Auto)#      This command use default date
+                           format and autodetect destination.
+                           In editor      - result is inserted
+                                            at current line
+                                            and position.
+                           In file panel  - insert in command
+                                            line
+                           In other cases - result is copied
+                                            to clipboard.
+                           
+
+  #Date-n-Time (Menu)#      Here you may select needed format
+                           from menu and edit formats as you wish.
+                            In menu :
+                           Ins - for new format,
+                           F4  - for editing,
+                           Del - for deleting,
+                           Enter, 0-9 - to select item.
+
+  #Date-n-Time (Indicator)# This command write current date at the
+                           right upper corner (near time indicator)
+                           for a short time.
+
+  #Calendar#                 Calendar with current month will be
+                           showed. You may change month, year
+                           and insert selected date to editor,
+                           command line or clipboard.
+
+^#Menu#
+
+  You may select needed item or edit it.
+  To edit:
+   #Ins# - Create new item.
+   #F4 # - If item exist Edit it, in other case Create new.
+   #Del# - Delete item, no message will be shown.
+
+  To select:
+   #Enter# - select current item.
+   #0-9  # - select item with such number.
+
+
+  ~Main dialog description~@MainDialog
+
+  ~Back~@Contents
+
+@MainDialog
+$# Main dialog#
+
+   ÉÍÍÍÍÍÍÍÍÍÍ  Date-n-Time  ÍÍÍÍÍÍÍÍÍÍÍ» 
+   º () Insert string  [ ] Skip Dialog º 
+   º ( ) Clipboard                      º 
+   ÇÄ Name: ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¶ 
+   º[                                 ] º 
+   º  Format:                           º 
+   º[%a %d %b %X %Y                   ]º 
+   ÇÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¶ 
+   º  [  OK  ]  [ Save ]  [  Cancel  ]  º 
+   ÈÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ¼ 
+ 
+ #Insert string# - if plugin opened from editor - insert
+                 result at current cursor position.
+                 In other case - copy to clipboard.
+
+ #Clipboard#     - Copy result string to clipboard.
+
+ #Skip Dialog#   - No dialog will be showed if selected.
+
+ #Name#          - Title for format.
+
+ #Format#        - Format string. You may use format symbols
+                 and any text.
+
+ #Ok#            - Start work or save on editing.
+ #Save#          - Save current format specification.
+ #Cancel#        - Don't start work.
+
+
+  ~Back~@Contents
+
+@Format
+$# Format specification#
+^#Format#
+
+ #%a %A #- Week day abbr / FULL
+ #%b %B #- Month    abbr / FULL
+ #%c    #- Data and Time
+ #%d    #- Day 01-31
+ #%H    #- Hour 00-23
+ #%I    #- Hour 01-12
+ #%j    #- day of year 001-356
+ #%m    #- month num 01-12
+ #%M    #- Minute 00-59
+ #%p    #- AM / PM
+ #%S    #- Seconds 00-59
+ #%U    #- Week num (Sunday first) 00-53
+ #%w    #- Weekday (Sunday first) 0-6
+ #%W    #- Week num (Monday first) 00-53
+ #%x    #- Data
+ #%X    #- Time
+ #%y %Y #- Year (without century 00-99) / (WITH CENTURY)
+
+  ~Back~@Contents
+@API
+$#Dialog API#
+  
+   To use dialog API you must use
+   Dialog.gen - dll with API
+   Dialog.h   - C header with API defenition
+
+   You may use DEF - file to link API at compilation.
+   In that case use ##define DIALOG_LINK  before include.
+
+  ~General functions~@General
+  ~Get/Set functions~@GetSet
+  ~Advanced functions~@AdvAPI
+  ~Full list   ~@All
+  ~Dialog file structure~@Structure
+  ~Dialog using example~@Example
+  ~RegExp and text parsing~@Misc
+
+  ~Back~@Contents
+@General
+$# General functions#
+
+ #int DialogInit(HANDLE hDll, struct  PluginStartupInfo Info )#
+                 Dialog API initialization.
+                 Must be use before any other Dialog API function.
+                 #hDll  # - Handle plugin Dll.
+                 #Info  # - FAR plugin API 
+                  Return dialog handler (#Dialog#).
+                 hDll may be NULL, but then for FAR 1.60
+                 Dialog.gen have to be located in a system folder
+                 ( Windows, WINNT, ...), or in folder included
+                 in PATH variable, or in folder with Far.exe .
+                 
+
+ #DWORD LoadDialog(HMODULE hDll,char* File,char* DialogName)#
+                 Dialog loading. 
+                 #hDll      # - Handle plugin Dll.
+                 #File      # - Dialog file name.
+                 #DialogName# - Dialog name.
+                 hDll may be NULL, but then you have tu use
+                 full file name with path.
+
+ #char* EnumDialog(HMODULE hDll,char* File,char* DialogName)#
+                 Dialogs enumeration.
+                 #hDll      # - Handle plugin Dll.
+                 #File      # - Dialog file name.
+                 #DialogName# - Dialog name.
+                                If DialogName = "" (no NULL)
+                                result is first dialog name.
+                                Else result is next dialog name
+                                after DialogName.
+                                 Resulted name is copied to
+                                DialogName and returned by
+                                function.
+
+                 hDll may be NULL, but then you have tu use
+                 full file name with path.
+
+ #int   ShowDialog(DWORD Dialog);#
+                 Dialog show.
+                 #Dialog    # - Dialog handler that was
+                                returned by #LoadDialog#.
+
+ #void  FreeDialog(DWORD Dialog);#
+                 Dialog deletion.
+                 #Dialog    # - Dialog handler.
+
+  ~Dialog API~@API
+
+@GetSet
+$# Get/Set functions#
+ 
+ #int   GetItemStatus(DWORD Dialog, int Id)#
+                    Return dialog item status.
+
+ #void  SetItemStatus(DWORD Dialog, int Id, int Value)#
+                    Set dialog item status.
+
+ #int   GetRadioStatus(DWORD Dialog, int Id)#
+                    Return Id of dialog item of radio-group
+                    that have status>0. Argument Id 
+                    must be member of group.
+
+ #void  SetRadioStatus(DWORD Dialog, int Id, int Id2)#
+                    Id - member of this group.
+                    Set in group with Id (Id - member of
+                    group) Id2 dialog item to status = 1.
+
+
+ #char *GetItemData(DWORD Dialog, int Id)#
+                    Return pointer to Data field of
+                    dialog item.
+
+ #void  SetItemColor(DWORD Dialog, int Id, int Color)#
+                    Set color for dialog item Id.
+
+  ~Dialog API~@API
+
+@AdvAPI
+$# Advanced functions#
+
+ #struct FarDialogItem * GetItemAddr(DWORD Dialog, int Id)#
+                     Return pointer to dialog item record.
+
+ #int   DialogGeneratorVersion(void)#
+                     Return Dialog Generator version number.
+                     F.e. 0x100  - for version 1.00 .
+
+ #void  HideItem(DWORD Dialog, int Id)#
+                     Hide dialog item (used last 5 byte of Data)
+
+ #void  RestoreItem(DWORD Dialog, int Id)#
+                     Restore hided dialog item.
+
+ #void  *GetItemNULL(void)#
+                     Return pointer to #DG_ITEM_NULL#
+                     structure. It not need to be used.
+                     It called on initialization.
+
+  ~Dialog API~@API
+@All
+$# Full list#
+
+ ~int DialogInit(HANDLE hDll, struct  PluginStartupInfo Info )~@General
+ ~void  DG_Init(struct  PluginStartupInfo )~@AdvAPI
+ ~DWORD LoadDialog(HMODULE ,char * ,char * )~@General
+ ~char *EnumDialog(HMODULE hDll,char * fname,char * dname)~@General
+ ~void  FreeDialog(DWORD )~@General
+ ~int   GetNumById(DWORD , int )~@AdvAPI
+ ~int   GetItemStatus(DWORD , int )~@GetSet
+ ~int   ShowDialog(DWORD )~@General
+ ~char *GetItemData(DWORD Data, int )~@GetSet
+ ~struct FarDialogItem * GetItemAddr(DWORD , int )~@AdvAPI
+ ~int   GetRadioStatus(DWORD , int )~@GetSet
+ ~int   DialogGeneratorVersion(void)~@AdvAPI
+ ~void  SetItemColor(DWORD , int , int )~@GetSet
+ ~void  SetItemStatus(DWORD , int , int )~@GetSet
+ ~void  SetRadioStatus(DWORD , int , int )~@GetSet
+ ~void  HideItem(DWORD , int )~@AdvAPI
+ ~void  RestoreItem(DWORD , int )~@AdvAPI
+ ~void  *GetItemNULL(void)~@AdvAPI
+
+ ~int   parseNum(char *str)~@Misc
+ ~char *parseGetStr(char *str, char *dst, int num)~@Misc
+ ~char *parseGet(char *str, int num)~@Misc
+ ~int   sparse(char *source, char *format, char * dest, int len)~@Misc
+
+  ~Dialog API~@API
+  ~Back~@Contents
+
+@Structure
+$# Dialog file structure#
+
+  File consist of constant declaration and dialog
+  definition. All lines beginning with ';' is
+  comments.
+   Format of constant declaration is C-like:
+
+  #enum { [ _name_[=_value_],...] }#
+
+  dialog defenition consist of:
+  #name " _name_of_dialog_ "#        - name of dialog
+  #help " _name_of_help_contents_ "# - name of help topic.
+                                     "Contents" by default.
+
+  Dialog items:
+  #name id x1 y1 x2 y2 focus selected Flags DefButton Data#
+  £¤¥
+   #name#         - type of item
+   #id#           - Id of dialog item
+   #x1 y1 x2 y2#  - left top coord., width, height
+   #focus#        - F/T/0/1 - input focus for item
+   #selected#     - F/T number or constant (.lng) / "string"
+                  number and sring may be used for History.
+   #Flags#        - item  features flags and color
+   #DefButton#    - F/T/0/1 - default button 
+   #Data#         - Data field of item.
+                  Data may have a reference form.
+                   Format:
+                  #%LNG% _constant name_# - reference to lng-file.
+                  #[%TXT%] " _text_ "#    - Text.%TXT%-may be omitted.
+                  #%REG% [%HKCU% | %HKLM%] "_reg key_" _default_#
+                       #default = [%DEF% "_value_"]#
+                       - Data from registry. By default used HKCU.
+                         If registry key can not be read then
+                         default value used.
+                         #"_reg key_"# - is subkey from
+                         software\far\plugins\ .
+                  #%VER%# - generator version.
+
+   Item types:
+
+   #Types   {"TEXT","VTEXT","SINGLEBOX","DOUBLEBOX",#
+            #"EDIT","PSWEDIT","FIXEDIT","BUTTON",#
+            #"CHECKBOX","RADIOBUTTON"};#
+
+   Flags (features):
+
+   #Flag    {"DIF_COLORMASK","DIF_SETCOLOR","DIF_BOXCOLOR",#
+            #"DIF_GROUP","DIF_LEFTTEXT","DIF_MOVESELECT",#
+            #"DIF_SHOWAMPERSAND","DIF_CENTERGROUP",#
+            #"DIF_NOBRACKETS","DIF_SEPARATOR","DIF_EDITOR",#
+            #"DIF_HISTORY"};#
+
+   #Colors   {"BLACK","BLUE","GREEN","CYAN","RED","MAGENTA",#
+             #"BROWN","LIGHTGRAY","DARKGRAY","LIGHTBLUE",#
+             #"LIGHTGREEN","LIGHTCYAN","LIGHTRED",#
+             #"LIGHTMAGENTA","YELLOW","WHITE"};#
+
+   #BkColors  {"BK_BLACK","BK_BLUE","BK_GREEN","BK_CYAN","BK_RED",#
+             #"BK_MAGENTA","BK_BROWN","BK_LIGHTGRAY","BK_DARKGRAY",#
+             #"BK_LIGHTBLUE","BK_LIGHTGREEN","BK_LIGHTCYAN",#
+             #"BK_LIGHTRED","BK_LIGHTMAGENTA","BK_YELLOW","BK_WHITE"};#
+
+
+  ~Dialog API~@API
+  ~Back~@Contents
+@Example
+$# Dialog using example#
+
+  Color select dialog using.
+ This dialog was created as single file so it may be
+ used as example and for real plugins.
+
+         ...
+         #DialogInit(hndDll,Info);#
+          // init generator
+          // using plugin dll handle and FAR API structure.
+
+         #dlg=LoadDialog(hndDll,"color.dlg","Color Select");#
+          // Loading dialog "Color Select" from 
+          // file "color.dlg"
+
+         #SetRadioStatus(dlg,1,col1);#
+         #SetRadioStatus(dlg,16,col2);#
+          // Set current colors.
+          // dlg- dialog handler,
+          // Id - group member to select group,
+          // Id - item to select.
+
+         #do{#
+             #SetItemColor(dlg,243,col1+col2);#
+              // Set color for "text example"
+              // dlg- dialog handler,
+              // Id - all items with this Id 
+              // will be changed color
+             #res=ShowDialog(dlg);#
+              // Show dialog.
+             #col1=GetRadioStatus(dlg,1);#
+             #col2=GetRadioStatus(dlg,16);#
+              // Get selected colors
+              // Id - item select group
+           #}while(res!=242 && res!=-1);#
+              // repeat while dialog is not accepted 
+              // or canceled.
+              // 242 - Id "Ok" button.
+              // -1  - Id "Cancel" button
+
+         #if(res!=-1) color=col1+col2;#
+              // if dialog was accepted
+              // use new colors
+          ...
+
+  ~Dialog API~@API
+  ~Back~@Contents

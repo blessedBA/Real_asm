@@ -1,0 +1,7 @@
+FAR Resource Browser Plugin v1.00 Beta 5
+----------------------------------------
+- Extracting and updating resources
+  in executable files.
+  Supported resources: Bitmap, Icon,
+  Cursor, String, Menu, Version_Info,
+  Dialog, Group_Icon, Group_Cursor.

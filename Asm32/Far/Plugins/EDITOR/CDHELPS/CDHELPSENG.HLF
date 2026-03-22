@@ -1,0 +1,200 @@
+.Language=English,English
+.PluginContents=Context-dependent help
+
+@Contents
+$^#Context-dependent help for Far Manager 1.6x. Version 1.5.0, 20 Mar 2000.#
+$^#Copyright (c) 1999-2000 Valentin Skirdin#.
+ This Plugin Works with Far's Editor (basically), and Is shell around calling the functions #WinHelp# and #HtmlHelp#. Plugin Activation outside of the editor (from the disk menu or plugin menu) allows to cause only contents of help or topic, which was caused last.
+
+ Why, ask You - answer. This possibility I did not get in editor (provided that ambience of development is FAR and command line, naturally except FoxPro :-). But to look a help, I was to start IDE or... in any event exit editor.
+
+ Plugin in the same way remembers last parameters: keyword and number of file of help.
+
+ Plugin in the same way is an ~activator~@Activator@ for calling URL-applications.
+
+ ~What new?~@whatnew@
+ ~How to install plugin?~@SetUp@
+ ~How to work with plugin?~@Working@
+ ~That is a WORD?~@IsWord@
+ ~Благодарности~@Thank@
+ ~About Author~@Author@
+
+@whatnew
+$^#What new?#
+ - Entered notion "#Filename of help#" (that must be displayed in menu of choice of help)
+
+ - Ways to files of help "have moved" from LNG-files in `cdHelps.msg
+
+ ───
+ ~Contents~@Contents
+
+@SetUp
+$^#How to install plugin?#
+ 1. Create in folder far\plugins\editor catalogue cdHelps
+ 2. Unpacked there archive
+ 3. Exit from FAR, file find in explorer ~HotKey_F1.reg~@HotKey_F1reg@, Double-Click mouse on this file...
+ 4. Start FAR
+ 5. ~Begin to edit file~@Working@
+
+ In `cdHelps.msg' file conducted 20 positions for writing a full way to HLP- and CHM-files. Write all that you needed and get an enjoyment... :-)
+
+
+ ───
+ ~Contents~@Contents
+
+@HotKey_F1reg
+$^#HotKey_F1.reg#
+ Here is this and be #HotKey_F1.reg#:
+
+ REGEDIT4
+
+ ; Context-dependent help
+ [HKEY_CURRENT_USER\Software\Far\KeyMacros\Editor\CtrlF1]
+ "Sequence"="F11 ? ?"
+ "DisableOutput"=dword:00000001
+
+ ; Previous topic
+ [HKEY_CURRENT_USER\Software\Far\KeyMacros\Editor\AltF1]
+ "Sequence"="F11 ? !"
+ "DisableOutput"=dword:00000001
+
+ ; Choise Help
+ [HKEY_CURRENT_USER\Software\Far\KeyMacros\Editor\ShiftF1]
+ "Sequence"="F11 ?"
+ "DisableOutput"=dword:00000001
+
+ You may change this macro on its. On the taste and colour, how speak...
+
+
+ ───
+ ~Contents~@Contents
+
+@Activator
+$^#Activator of URL-applications#
+ Plugin supports in the same way possibility of calling URL-applications from the editor. Under URL-applications are understood such applications, which support following protocols:
+
+ ■ Protocol of access to files
+   #file:#//C:\Program Files\Far\License.xUSSR.txt
+ ■ FTP Protocol
+   #ftp:#//ftp.kgb.ru/WinUtil/Rar/
+ ■ HTTP Protocol
+   #http:#//www.uic.nnov.ru/~~ruiv/plugring/
+ ■ MailTo Protocol
+   #mailto:#vskirdin@@mail.ru
+ ■ News Protocol
+   #news:#//fido7.far.support
+ ■ Telnet Protocol
+   #telnet:#//fido7.far.support
+ ■ ...
+
+
+ 10 positions in LNG-files intended for these whole. Information for starting concrete exhibit get from roll ("HKEY_CLASSES_ROOT\#PROTOCOL#\shell\open\command").
+
+ For activations URL-applications it is necessary to select block (together with prefix of protocol, naturally) and press ~Ctrl-F1~@HotKey_F1reg@.
+
+
+ ───
+ ~Contents~@Contents
+
+@Working
+$^#How to work with plugin "cdHelps"?#
+ If You will use file ~HotKey_F1.reg~@HotKey_F1reg@, will be able to use following keys:
+
+ ■ #Ctrl-F1#  - shows context-dependent help for current help file
+ ■ #Alt-F1#   - shows section, which You called last
+ ■ #Shift-F1# - allows to choose necessary HLP-file from list
+
+ Plugin Can work in two modes:
+
+ - set cursor on needed word and press #Ctrl-F1#. What Is A "WORD" in notions of plugin read ~here~@IsWord@.
+ - select block (for instance <#stdio.h#>) and press #Ctrl-F1#;
+
+ Having selected, for instance, line #mailto:Valentin Skirdin <vskirdin@@mail.ru>?Subject=cdHelps#, You will be able to actuate EMail client (See also ~Activator of URL-applications~@Activator@)
+
+ ───
+ ~Contents~@Contents
+
+@IsWord
+$^#That is a WORD?#
+ Ops! Complex question. All think on different. Plugin always considers word as a collection of numerals, latin letters and symbol of underlining '_': #0-9#, #A-Z#, #a-z#, '#_#'. But You may assign additional symbols.
+
+ In `cdHelps.msg' are two sections, have charge of logic of recognitions of words:
+
+ #CharWordAdd# - That is considered by the word.
+    If needed expand a notion "Word", sufficiently prescribe
+    necessary symbols and overload FAR Manager.
+
+ #IsSkipNoWord# - If this field = "1", then act rule
+    #"Skip all symbols, not refering on word"#
+    i.e. space and etc., and get to word.
+    Default - 1. Set the "0" You hereunder close this
+    possibility.
+
+ ───
+ ~Contents~@Contents
+
+@CHMHelp
+$^#CHM-файлы помощи#
+@+
+ CHM-files of help - a fashionable innovation of last years. Short - collected
+in one file (with the extension .CHM) several HTML-files and named #HTML-based help#.
+
+ If You installed by MSIE >= 4-й versions or You once upon a time installing
+#HTML Help Workshop#, Your Windows capable to display like files of help.
+
+ If plugin not show a topic from such files of help, here possible only 2 variants of
+deciding a problem:
+
+ a) in Your operating system not installed support for "HTML-based help"
+
+ b) installing such support was "crooked"
+
+ As be?
+
+ For the event "a" You install MSIE >= 4.0 or "Microsoft HTML Help Workshop".
+For the event "b" try to install "Microsoft HTML Help Workshop".
+Logic of functioning a plugin at the show of topic from CHM-a file such a that
+if it (plugin) does not find in the registry of record with the key
+#CLSID\{ADB880A6-D8FF-11CF-9377-00AA003B7A11}#, or specified in this key of
+file does not exist (not on the place it), is considered that not supports a
+CHM-files!
+
+ "Microsoft HTML Help Workshop" possible load with Web-site Microsoft companies.
+
+ On my computer: hhctrl.ocx 4.74.8702 (InternalName - HHCtrl 1.3), so, if what bugs - inform me.
+
+ ───
+ ~Contents~@Contents
+
+@Ring
+$^#PlugWriters WebRing#
+ Just now Far PlugRing Project was Started.
+ Now our project growing up - and you can take part in it's discussions in
+ #http://www.uic.nnov.ru/~~ruiv/plugring/#
+
+
+ ───
+ ~Contents~@Contents
+
+@Thank
+$^#Thanks#
+ Особую признательность хочу выразить Ивану Синтюрину <#spinoza@@mail.ru#> за модуль локализации. Данный модуль позволяет менять параметры, которые вступают в силу немедля, без перезагрузки FAR Manager (технически - отсутствует кеширование строк, что оправдывает себя...).
+
+ ───
+ ~Contents~@Contents
+
+
+@Author
+$^#Context-dependent help for Far Manager 1.6x. Version 1.5.0, 20 Mar 2000.#
+ Author - #Valentin Skirdin#. Copyright (c) 1999-2000. All Rights Reserved.
+
+ You may use this plugin liberally and without hindrance.
+
+             Voronezh
+             Email:  #vskirdin@@mail.ru#
+             Web  :  #http://www.halyava.ru/skirda/#
+                     ~http://www.uic.nnov.ru/~~ruiv/plugring/~@Ring@
+             FIDO :  #2:5025/3.69#
+ ───
+ ~Contents~@Contents
+

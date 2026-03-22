@@ -1,0 +1,28 @@
+              WLX2FAR
+               0.1.6
+            With  Sources
+            13.06.2006
+         FAR 1.70 b5 plugin
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Author: Shynkarenka Ivan aka 4ekucT
+E-Mail: at 4enet.by / 4ekucT
+Home page: http://depth.belmt.com/
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+English:
+This plugin is intended for support
+TotalCommander WLX  plugins in FAR.
+This tool supports only  "real" WLX
+plugins.  The "real" are understood
+as what  fairly create new  window,
+instead of  deceive lister with new
+process creating.
+-----------------------------------
+Русский:
+Данный   плагин   предназначен  для
+поддержки    TotalCommander     WLX
+плагинов  в  FARе.  Данное средство
+поддерживает только "настоящие" WLX
+плагины.  Под настоящими понимаются
+те,  которые  честно  создают навое
+окно,  а   не  обманывают   листер,
+подгружая процесс.

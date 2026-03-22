@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="Windows-1251"?>
+<!DOCTYPE hrc SYSTEM "../hrc.dtd">
+<?xml-stylesheet type="text/xsl" href="../hrc.xsl"?>
+<!--
+    Assembler Syntax v2.0
+With help of:
+    KiLL Zlotnikoff <e1a29df@quake.ru>
+    Ilgar Veliev <sigma@ntgres.pssr.ru>
+    Dmitriy Volkov <werewolf@atnet.ru>
+    Timur Safin <timur@lanit.ru>
+    cail: rearranged with schemes, added
+    cyrix, amd, NASM (Netwide Assembler) features.
+    Nosov Konstantin <k_nosov@chat.ru>
+    NASM has a WWW page at http://www.cryogen.com/Nasm
+    Alexander Voronenko <Alexander.Voronenko@p47.f100.n452.z2.fidonet.org>
+-->
+<hrc>
+
+<include name="base/baseasm.hrc"/>
+
+<scheme name="asm">
+  <!-- Comments -->
+  <regexp match="/;\!\!.*$/" region0="asmToDo"/>
+  <regexp match="/;\?\?.*$/" region0="asmToDo"/>
+  <regexp match="/;.*$/" region0="asmComment"/>
+  <!-- Primitive directives -->
+  <regexp match="/^\[.*?\]/" region0="asmDirective"/>
+
+  <block start="/(COMMENT) (.)/i" end="/\y2/" scheme="Comment"
+         region="asmComment" region01="asmDefinition" region02="asmDefinition"
+         region00="dpOpenStruct" region10="dpCloseStruct"/>
+  <inherit scheme="baseasm"/>
+  <inherit scheme="asm_tasm"/>
+  <inherit scheme="asm_nasm"/>
+  <!-- NASM macros -->
+  <block start="/^\s*(%i?macro)\s+(\w+)([^;]*)/" end="/^\s*(%endm(acro)?)/"
+         scheme="nasm_mac" region="dInsert"
+         region01="dDirective2" region02="asmMnemonics" region03="asmLabel"
+         region11="dDirective2"
+         region00="dpOpenStruct" region10="dpCloseStruct"/>
+  <block start="/^\s*\M(%endm)?!%\w+/" end="/$/" scheme="nasm_prepr"
+         region="dDirective"/>
+</scheme>
+
+<scheme name="nasm_kw">
+  <regexp match="/(\%\d+)/" region0="dDirective2"/>
+  <regexp match="/(\%\{\d+?\})/" region0="dDirective2"/>
+  <regexp match="/(\%\%|\$[\w\$\#\@\~\.\?]+)/" region0="dDirective2"/>
+  <keywords ignorecase="ignorecase" region="dDirective2">
+      <word name="%assign"/>
+      <word name="%bin"/>
+      <word name="%conds"/>
+      <word name="%cref"/>
+      <word name="%crefall"/>
+      <word name="%crefref"/>
+      <word name="%crefuref"/>
+      <word name="%ctls"/>
+      <word name="%define"/>
+      <word name="%depth"/>
+      <word name="%elif"/>
+      <word name="%elifctx"/>
+      <word name="%elifdef"/>
+      <word name="%elifid"/>
+      <word name="%elifidn"/>
+      <word name="%elifidni"/>
+      <word name="%elifnctx"/>
+      <word name="%elifndef"/>
+      <word name="%elifnid"/>
+      <word name="%elifnidn"/>
+      <word name="%elifnidni"/>
+      <word name="%elifnnum"/>
+      <word name="%elifnstr"/>
+      <word name="%elifnum"/>
+      <word name="%elifstr"/>
+      <word name="%else"/>
+      <word name="%endif"/>
+      <word name="%endrep"/>
+      <word name="%error"/>
+      <word name="%exitrep"/>
+      <word name="%if"/>
+      <word name="%ifctx"/>
+      <word name="%ifdef"/>
+      <word name="%ifid"/>
+      <word name="%ifidn"/>
+      <word name="%ifidni"/>
+      <word name="%ifnctx"/>
+      <word name="%ifndef"/>
+      <word name="%ifnid"/>
+      <word name="%ifnidn"/>
+      <word name="%ifnidni"/>
+      <word name="%ifnnum"/>
+      <word name="%ifnstr"/>
+      <word name="%ifnum"/>
+      <word name="%ifstr"/>
+      <word name="%incl"/>
+      <word name="%include"/>
+      <word name="%linum"/>
+      <word name="%list"/>
+      <word name="%macs"/>
+      <word name="%newpage"/>
+      <word name="%noconds"/>
+      <word name="%nocref"/>
+      <word name="%noctls"/>
+      <word name="%noincl"/>
+      <word name="%nolist"/>
+      <word name="%nomacs"/>
+      <word name="%nosyms"/>
+      <word name="%notoc"/>
+      <word name="%notrunc"/>
+      <word name="%out"/>
+      <word name="%pagesize"/>
+      <word name="%pcnt"/>
+      <word name="%pop"/>
+      <word name="%poplctl"/>
+      <word name="%push"/>
+      <word name="%pushlctl"/>
+      <word name="%rep"/>
+      <word name="%repl"/>
+      <word name="%rotate"/>
+      <word name="%subttl"/>
+      <word name="%syms"/>
+      <word name="%tabsize"/>
+      <word name="%text"/>
+      <word name="%title"/>
+      <word name="%toc"/>
+      <word name="%trunc"/>
+      <word name="%undef"/>
+  </keywords>
+</scheme>
+
+<scheme name="nasm_mac">
+  <regexp match="/(;.*$)/" region0="asmComment"/>
+   <!-- Macro locals & parameters -->
+  <inherit scheme="nasm_kw"/>
+  <inherit scheme="asm"/>
+</scheme>
+
+<scheme name="nasm_prepr">
+  <regexp match="/(;.*$)/" region0="asmComment"/>
+  <inherit scheme="nasm_kw"/>
+</scheme>
+
+</hrc>

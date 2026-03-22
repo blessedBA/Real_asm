@@ -1,0 +1,13 @@
+REGEDIT4
+
+[HKEY_CURRENT_USER\Software\Far\KeyMacros\Shell\RCtrl]
+"Sequence"="F11 D i"
+"DisableOutput"=dword:00000001
+
+[HKEY_CURRENT_USER\Software\Far\KeyMacros\Editor\RCtrl]
+"Sequence"="F11 D i"
+"DisableOutput"=dword:00000001
+
+[HKEY_CURRENT_USER\Software\Far\KeyMacros\Viewer\RCtrl]
+"Sequence"="F11 D i"
+"DisableOutput"=dword:00000001

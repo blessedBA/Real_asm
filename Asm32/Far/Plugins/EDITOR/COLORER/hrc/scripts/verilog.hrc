@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="Windows-1251"?>
+<!DOCTYPE hrc SYSTEM "../hrc.dtd">
+<?xml-stylesheet type="text/xsl" href="../hrc.xsl"?>
+<!--
+    Verilog - VHDL
+With help of:
+    Loktev Nikola <loktev@niisi.msk.ru>
+-->
+
+<hrc>
+
+<define name="verString"   value="dString"/>
+<define name="verComment"  value="dComment"/>
+<define name="verWord"     value="dKeyword"/>
+<define name="verNumb"     value="dNumber"/>
+<define name="verExpr"     value="dDirective"/>
+<define name="verTask"     value="dString"/>
+
+<scheme name="Verilog">
+   <!-- Numbers -->
+   <regexp match="/\b\d+`x[\da-fA-F]+\B/" region0="verNumb"/>
+   <regexp match="/\b\d+`o[0-7]+\B/"      region0="verNumb"/>
+   <regexp match="/\b\d+`b[01]+\B/"       region0="verNumb"/>
+   <regexp match="/\b[\d\.]+(e|E[\-+]?\d+)?\B/" region0="verNumb"/>
+   <!-- Strings -->
+   <regexp match='/"((\\.)|[^\\"])*?"/' region0="verString"/>
+   <regexp match="/'..??'/" region0="verString"/>
+   <!-- Linear Comments -->
+   <regexp match="/\/\/.*$/" region0="verComment"/>
+   <block start="/\/\*/" end="/\*\//" scheme="Comment"
+          region="verComment" region00="dpOpenStruct" region10="dpCloseStruct"/>
+
+   <regexp match="/\bmodule\s+(\w+)/"    region0="dFunction"/>
+   <regexp match="/\bfunction\s+(\w+)/"  region0="dFunction"/>
+   <regexp match="/\btask\s+(\w+)/"      region0="dFunction"/>
+
+   <!-- System tasks -->
+   <regexp match='/\$.*?[\(;]/'     region0="verTask"/>
+   <regexp match='/`.*?[\\\]\);:]/' region0="verTask"/>
+
+   <keywords region="verWord" >
+      <symb name="{"/><symb name="}"/>
+      <symb name="["/><symb name="]"/>
+      <symb name="("/><symb name=")"/>
+      <symb name=","/>
+   </keywords>
+   <keywords  region="verWord">
+      <word name="tri1"/>
+      <word name="tri0"/>
+      <word name="wire"/>
+      <word name="parameter"/>
+      <word name="input"/>
+      <word name="output"/>
+      <word name="inout"/>
+      <word name="reg"/>
+      <word name="assign"/>
+      <word name="endmodule"/>
+      <word name="case"/>
+      <word name="default"/>
+      <word name="endcase"/>
+      <word name="begin"/>
+      <word name="end"/>
+      <word name="while"/>
+      <word name="fork"/>
+      <word name="join"/>
+      <word name="initial"/>
+      <word name="always"/>
+      <word name="wait"/>
+      <word name="repeat"/>
+      <word name="integer"/>
+      <word name="posedge"/>
+      <word name="negedge"/>
+      <word name="table"/>
+      <word name="endtable"/>
+      <word name="primitive"/>
+      <word name="endprimitive"/>
+      <word name="define"/>
+      <word name="include"/>
+      <word name="endfunction"/>
+      <word name="if"/>
+      <word name="then"/>
+      <word name="else"/>
+      <word name="endtask"/>
+      <word name="$display"/>
+      <word name="$fdisplay"/>
+      <word name="$fwrite"/>
+      <word name="$shm_probe"/>
+      <word name="$fopen"/>
+      <word name="$fclose"/>
+      <word name="$stop"/>
+      <word name="$finish"/>
+      <word name="endtask"/>
+   </keywords>
+</scheme>
+
+</hrc>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="Windows-1251"?>
+<!DOCTYPE hrc SYSTEM "../hrc.dtd">
+<?xml-stylesheet type="text/xsl" href="../hrc.xsl"?>
+<!--
+  *.info (for NTEvent plugin) colouring rules.
+  Designed for "Colorer 4ever".
+  Add these lines into colorer.hrc:
+  ==========================================================
+  <type descr="Events" name="evt" exts="/\.info$/i">
+    <load name="_addons\evtinfo.hrc"/>
+    <scheme name="EvtInfo"/>
+  </type>
+  ==========================================================
+-->
+<hrc version="4ever">
+
+<define name="eiCategory" value="dKeyword"/>
+<define name="eiText"     value="dParam"/>
+<define name="eiDate"     value="dDate"/>
+<define name="eiTime"     value="dTime"/>
+<define name="eiError"    value="dError"/>
+<define name="eiWarning"  value="dTodo"/>
+<define name="eiOther"    value="eiText"/>
+
+<scheme name="other_stuff"> <!--include here whatever you want-->
+   <inherit scheme="mPath"/>
+   <inherit scheme="mNetAddresses"/>
+   <inherit scheme="mStdStr"/>
+   <inherit scheme="mCHexNumb"/>
+</scheme>
+<scheme name="MultiLine">
+   <block start="/^\M./" end="/$/" scheme="other_stuff" region="eiText"/>
+</scheme>
+
+<scheme name="EvtInfo">
+   <regexp match="/\M^([\w\s]+):(.*)$/" region1="dFunction"/>
+   <regexp match="/^(Date):\s+(.*)$/" region1="eiCategory" region2="eiDate"/>
+   <regexp match="/^(Time):\s+(.*)$/" region1="eiCategory" region2="eiTime"/>
+   <regexp match="/^(User):\s+(.*)$/" region1="eiCategory" region2="eiText"/>
+   <regexp match="/^(Computer):\s+(.*)$/" region1="eiCategory" region2="eiText"/>
+   <regexp match="/^(Event ID):\s+(.*)$/" region1="eiCategory" region2="eiText"/>
+   <regexp match="/^(Source):\s+(.*)$/" region1="eiCategory" region2="eiText"/>
+   <regexp match="/^(Type):\s+((Error)|(Warning)|(.*))$/" region1="eiCategory"
+           region3="eiError" region4="eiWarning" region5="eiOther"/>
+   <regexp match="/^(Category):\s+(.*)$/" region1="eiCategory" region2="eiText"/>
+   <regexp match="/^(Product):\s+(.*)$/" region1="eiCategory" region2="eiText"/>
+
+   <block start="/(Description):/" end="/^$/" scheme="MultiLine"
+          region01="eiCategory"/>
+
+   <block start="/(Data):/" end="/^$/" scheme="MultiLine"
+          region01="eiCategory"/>
+</scheme>
+</hrc>

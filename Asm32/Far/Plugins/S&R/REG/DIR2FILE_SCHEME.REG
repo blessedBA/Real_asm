@@ -1,0 +1,255 @@
+REGEDIT4
+
+[HKEY_CURRENT_USER\Software\Far\Plugins\S_And_R\SRP\Dir2File\Scheme]
+"total"=dword:00000006
+
+[HKEY_CURRENT_USER\Software\Far\Plugins\S_And_R\SRP\Dir2File\Scheme\0]
+"searchmode"=dword:00000000
+"mask"="*"
+"Directory"=""
+"ProcessSubDir"=dword:00000000
+"ZC"=dword:00000001
+"Name"="html generator [1]"
+"Extended"=dword:00000000
+"PSize"=dword:00000000
+"MinSize"=dword:00000000
+"MaxSize"=dword:00000000
+"TimeFlag"=dword:00000002
+"TimeAfter"=dword:00000000
+"TimeBefore"=dword:00000000
+"After"="01.01.1601"
+"Before"="01.01.1601"
+"Attributes"=dword:00444444
+"FName"="index.html"
+"1Line"="<html>\\n<head>\\n<meta name=Generator content=\"Dir2File\">\\n<title>FileList [\\D{D}.\\D{M}.\\D{Y}]</title>\\n</head>\\n<body>\\n<pre>\\n"
+"LLine"="</pre>\\n</body>\\n</html>\\n"
+"Masks00"="*.url"
+"Search00"=""
+"Replace00"="<a href=\"$i\">\\f{n}</a>\\n"
+"Masks01"="*.jpg,*.jpeg,*.gif,*.bmp,*.png"
+"Search01"=""
+"Replace01"="<img src=\"\\f\" alt=\"\\f\">\\n\\f-{l,23} \\S\\n"
+"Masks02"="*.exe,*.dll,*.ocx,*.vxd,*.drv,*.acm,*.fnt,*.ttf,*.fon,*.vbx,*.386,*.sys,*.bav,*.srp,*.srs,*.ax"
+"Search02"=""
+"Replace02"="<a href=\"\\f\">\\f-{l,23}</a> \\s\\n\\t\\t\\tCompanyName     : \\v{0}\\n\\t\\t\\tFileDescription : \\v{1}\\n\\t\\t\\tFileVersion     : \\v{2} [\\v{E}]\\n\\t\\t\\tInternalName    : \\v{3}\\n\\t\\t\\tLegalCopyright  : \\v{4}\\n\\t\\t\\tOriginalFilename: \\v{5}\\n\\t\\t\\tProductName     : \\v{6}\\n\\t\\t\\tProductVersion  : \\v{7} [\\v{F}]\\n\\t\\t\\tComments        : \\v{8}\\n\\t\\t\\tLegalTrademarks : \\v{9}\\n\\t\\t\\tLanguage        : \\v{a}\\n\\t\\t\\tFileType        : \\v{b}\\n\\t\\t\\tFileOS&Flags    : \\v{c} \\v{d}\\n"
+"Search03"=""
+"Replace03"="<a href=\"\\f\">\\f-{l,23}</a> \\s\\n"
+"CP"=dword:00000001
+"TN"=dword:00000000
+"CC"=dword:00000001
+"Masks03"="*"
+"Search04"=""
+"Replace04"="<a href=\"\\f\">\\f-{l,23}</a> \\s\\n"
+"ExD"=""
+"Target"=dword:00000002
+"MinSH"=dword:00000000
+"MaxSH"=dword:00000000
+"TimeType"=dword:00000002
+
+[HKEY_CURRENT_USER\Software\Far\Plugins\S_And_R\SRP\Dir2File\Scheme\1]
+"searchmode"=dword:00000001
+"mask"="*"
+"Directory"=""
+"ProcessSubDir"=dword:00000001
+"ZC"=dword:00000001
+"Name"="html generator [2]"
+"Extended"=dword:00000000
+"PSize"=dword:00000000
+"MinSize"=dword:00000000
+"MaxSize"=dword:00000000
+"TimeFlag"=dword:00000002
+"TimeAfter"=dword:00000000
+"TimeBefore"=dword:00000000
+"After"="01.01.1601"
+"Before"="01.01.1601"
+"Attributes"=dword:00444444
+"FName"="index.html"
+"1Line"="<html>\\n<head>\\n<meta name=Generator content=\"Dir2File\">\\n<title>FileList [\\D{D}.\\D{M}.\\D{Y}]</title>\\n</head>\\n<body>\\n<pre>\\n"
+"LLine"="</pre>\\n</body>\\n</html>\\n"
+"Masks00"="*.url"
+"Search00"=""
+"Replace00"="<a href=\"$i\">\\f{n}</a>\\n"
+"Masks01"="*.jpg,*.jpeg,*.gif,*.bmp,*.png"
+"Search01"=""
+"Replace01"="<img src=\"\\p{r}\\f\" alt=\"\\p{r}\\f\">\\n\\p{r}\\f-{l,23} \\S\\n"
+"Masks02"="*.exe,*.dll,*.ocx,*.vxd,*.drv,*.acm,*.fnt,*.ttf,*.fon,*.vbx,*.386,*.sys,*.bav,*.srp,*.srs,*.ax"
+"Search02"=""
+"Replace02"="<a href=\"\\p{r}\\f\">\\p{r}\\f-{l,23}</a> \\s\\n\\t\\t\\tCompanyName     : \\v{0}\\n\\t\\t\\tFileDescription : \\v{1}\\n\\t\\t\\tFileVersion     : \\v{2} [\\v{E}]\\n\\t\\t\\tInternalName    : \\v{3}\\n\\t\\t\\tLegalCopyright  : \\v{4}\\n\\t\\t\\tOriginalFilename: \\v{5}\\n\\t\\t\\tProductName     : \\v{6}\\n\\t\\t\\tProductVersion  : \\v{7} [\\v{F}]\\n\\t\\t\\tComments        : \\v{8}\\n\\t\\t\\tLegalTrademarks : \\v{9}\\n\\t\\t\\tLanguage        : \\v{a}\\n\\t\\t\\tFileType        : \\v{b}\\n\\t\\t\\tFileOS&Flags    : \\v{c} \\v{d}\\n"
+"Masks03"="*"
+"Search03"=""
+"Replace03"="<a href=\"\\p{r}\\f\">\\p{r}\\f-{l,23}</a> \\s\\n"
+"Search04"=""
+"Replace04"="<a href=\"\\p{r}\\f\">\\p{r}\\f-{l,23}</a> \\s\\n"
+"CP"=dword:00000001
+"TN"=dword:00000000
+"CC"=dword:00000001
+"ExD"=""
+"Target"=dword:00000002
+"MinSH"=dword:00000000
+"MaxSH"=dword:00000000
+"TimeType"=dword:00000002
+
+[HKEY_CURRENT_USER\Software\Far\Plugins\S_And_R\SRP\Dir2File\Scheme\2]
+"searchmode"=dword:00000000
+"mask"="*"
+"Directory"=""
+"ProcessSubDir"=dword:00000000
+"ZC"=dword:00000001
+"Name"="lfn backup"
+"Extended"=dword:00000000
+"PSize"=dword:00000000
+"MinSize"=dword:00000000
+"MaxSize"=dword:00000000
+"TimeFlag"=dword:00000002
+"TimeAfter"=dword:00000000
+"TimeBefore"=dword:00000000
+"After"="01.01.1601"
+"Before"="01.01.1601"
+"Attributes"=dword:00444444
+"FName"="lfn-save.txt"
+"1Line"=""
+"LLine"=""
+"Masks00"=""
+"Search00"=""
+"Replace00"=""
+"Masks01"=""
+"Search01"=""
+"Replace01"=""
+"Masks02"=""
+"Search02"=""
+"Replace02"=""
+"Masks03"="*"
+"Search03"=""
+"Replace03"="\\f{f,s}\\t\\f\\n"
+"Search04"=""
+"Replace04"="\\f{f,s}\\t\\f\\n"
+"CP"=dword:00000000
+"TN"=dword:00000000
+"CC"=dword:00000001
+"Target"=dword:00000002
+"MinSH"=dword:00000000
+"MaxSH"=dword:00000000
+"TimeType"=dword:00000002
+"ExD"=""
+
+[HKEY_CURRENT_USER\Software\Far\Plugins\S_And_R\SRP\Dir2File\Scheme\3]
+"Name"="extract (rar, zip)"
+"searchmode"=dword:00000000
+"mask"="*"
+"Directory"=""
+"ProcessSubDir"=dword:00000000
+"ZC"=dword:00000001
+"Extended"=dword:00000000
+"PSize"=dword:00000000
+"MinSize"=dword:00000000
+"MaxSize"=dword:00000000
+"TimeFlag"=dword:00000002
+"TimeAfter"=dword:00000000
+"TimeBefore"=dword:00000000
+"After"=""
+"Before"=""
+"Attributes"=dword:00000000
+"ExD"=""
+"FName"="extract.bat"
+"1Line"="@echo off$$"
+"LLine"=""
+"Masks00"="*.rar"
+"Search00"=""
+"Replace00"="md \"\\f{n,l}\"$$rar x \"\\f\" * \"\\f{n,l}\"$$"
+"Masks01"="*.zip"
+"Search01"=""
+"Replace01"="md \"\\f{n,l}\"$$pkzip25 -ext -dir -over=all -nozip -mask=none \"\\f\" \"\\f{n,l}\" *$$"
+"Masks02"=""
+"Search02"=""
+"Replace02"=""
+"Masks03"=""
+"Search03"=""
+"Replace03"=""
+"Search04"=""
+"Replace04"=""
+"CP"=dword:00000000
+"TN"=dword:00000000
+"CC"=dword:00000001
+
+[HKEY_CURRENT_USER\Software\Far\Plugins\S_And_R\SRP\Dir2File\Scheme\4]
+"searchmode"=dword:00000000
+"mask"="*"
+"Directory"=""
+"ProcessSubDir"=dword:00000000
+"ZC"=dword:00000001
+"Name"="compress (rar)"
+"Extended"=dword:00000000
+"PSize"=dword:00000000
+"MinSize"=dword:00000000
+"MaxSize"=dword:00000000
+"TimeFlag"=dword:00000002
+"TimeAfter"=dword:00000000
+"TimeBefore"=dword:00000000
+"After"="01.01.1601"
+"Before"="01.01.1601"
+"Attributes"=dword:00444444
+"ExD"=""
+"FName"="compress.bat"
+"1Line"="@echo off$$"
+"LLine"=""
+"Masks00"="*"
+"Search00"=""
+"Replace00"="rar a -m5 -md4096 -rr \"\\f.rar\" \"\\f\"$$"
+"Masks01"=""
+"Search01"=""
+"Replace01"=""
+"Masks02"=""
+"Search02"=""
+"Replace02"=""
+"Masks03"=""
+"Search03"=""
+"Replace03"=""
+"Search04"=""
+"Replace04"="cd \"\\f\"$$rar a -r0 -m5 -md4096 -rr -s \"..\\\\\\f.rar\" \"*\"$$cd ..$$"
+"CP"=dword:00000000
+"TN"=dword:00000000
+"CC"=dword:00000001
+"Target"=dword:00000002
+"MinSH"=dword:00000000
+"MaxSH"=dword:00000000
+"TimeType"=dword:00000002
+
+[HKEY_CURRENT_USER\Software\Far\Plugins\S_And_R\SRP\Dir2File\Scheme\5]
+"searchmode"=dword:00000000
+"mask"="*"
+"Directory"=""
+"ProcessSubDir"=dword:00000000
+"ZC"=dword:00000001
+"Name"="Rename FileName.Ext.Bak to FileName.Ext"
+"Extended"=dword:00000000
+"PSize"=dword:00000000
+"MinSize"=dword:00000000
+"MaxSize"=dword:00000000
+"TimeFlag"=dword:00000002
+"TimeAfter"=dword:00000000
+"TimeBefore"=dword:00000000
+"After"="01.01.1601"
+"Before"="01.01.1601"
+"Attributes"=dword:00444444
+"ExD"=""
+"FName"="ren_bak_to_original.bat"
+"1Line"="@echo off$$"
+"LLine"=""
+"Masks00"="*.bak"
+"Search00"=""
+"Replace00"="del \"\\f{n,l}\"$$ren \"\\f\" \"\\f{n,l}$$"
+"Masks01"=""
+"Search01"=""
+"Replace01"=""
+"Masks02"=""
+"Search02"=""
+"Replace02"=""
+"Masks03"=""
+"Search03"=""
+"Replace03"=""
+"Search04"=""
+"Replace04"=""
+"CP"=dword:00000000
+"TN"=dword:00000000
+"CC"=dword:00000001
+

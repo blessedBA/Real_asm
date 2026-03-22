@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="Windows-1251"?>
+<!DOCTYPE hrc SYSTEM "../hrc.dtd">
+<?xml-stylesheet type="text/xsl" href="../hrc.xsl"?>
+<!--
+    xsl syntax
+    derived from xml
+-->
+<hrc>
+
+<include name="xml/xml.hrc"/>
+
+<scheme name="xslTags">
+   <keywords region="xmlOpenTag">
+     <word name="apply-imports"/>
+     <word name="apply-templates"/>
+     <word name="attribute"/>
+     <word name="attribute-set"/>
+     <word name="call-template"/>
+     <word name="choose"/>
+     <word name="comment"/>
+     <word name="copy"/>
+     <word name="copy-of"/>
+     <word name="decimal-format"/>
+     <word name="element"/>
+     <word name="fallback"/>
+     <word name="for-each"/>
+     <word name="if"/>
+     <word name="import"/>
+     <word name="include"/>
+     <word name="key"/>
+     <word name="message"/>
+     <word name="namespace-alias"/>
+     <word name="number"/>
+     <word name="otherwise"/>
+     <word name="output"/>
+     <word name="param"/>
+     <word name="preserve-space"/>
+     <word name="processing-instruction"/>
+     <word name="script"/>
+     <word name="sort"/>
+     <word name="strip-space"/>
+     <word name="stylesheet"/>
+     <word name="template"/>
+     <word name="text"/>
+     <word name="transform"/>
+     <word name="value-of"/>
+     <word name="variable"/>
+     <word name="when"/>
+     <word name="with-param"/>
+   </keywords>
+</scheme>
+<scheme name="foTags">
+   <keywords region="xmlOpenTag">
+     <word name="bidi-override"/>
+     <word name="block"/>
+     <word name="block-container"/>
+     <word name="character"/>
+     <word name="color-profile"/>
+     <word name="conditional-page-master-reference"/>
+     <word name="conditional-page-master-references"/>
+     <word name="declarations"/>
+     <word name="element"/>
+     <word name="external-graphic"/>
+     <word name="float"/>
+     <word name="flow"/>
+     <word name="foonote"/>
+     <word name="footnote"/>
+     <word name="footnote-body"/>
+     <word name="initial-property-set"/>
+     <word name="inline"/>
+     <word name="inline-container"/>
+     <word name="instream-foreign-object"/>
+     <word name="layout-master-set"/>
+     <word name="leader"/>
+     <word name="leaders"/>
+     <word name="list-block"/>
+     <word name="list-blocks"/>
+     <word name="list-item"/>
+     <word name="list-item-body"/>
+     <word name="list-item-label"/>
+     <word name="list-items"/>
+     <word name="marker"/>
+     <word name="markers"/>
+     <word name="multi-case"/>
+     <word name="multi-properties"/>
+     <word name="multi-property-set"/>
+     <word name="multi-property-sets"/>
+     <word name="multi-switch"/>
+     <word name="multi-toggle"/>
+     <word name="page-master"/>
+     <word name="page-number"/>
+     <word name="page-number-citation"/>
+     <word name="page-sequence"/>
+     <word name="page-sequence-master"/>
+     <word name="page-sequences"/>
+     <word name="region-after"/>
+     <word name="region-before"/>
+     <word name="region-body"/>
+     <word name="region-end"/>
+     <word name="region-start"/>
+     <word name="repeatable-page-master"/>
+     <word name="repeatable-page-master-alternatives"/>
+     <word name="repeatable-page-master-reference"/>
+     <word name="retrieve-marker"/>
+     <word name="root"/>
+     <word name="simple-link"/>
+     <word name="simple-page-master"/>
+     <word name="single-page-master-reference"/>
+     <word name="static-content"/>
+     <word name="static-flow"/>
+     <word name="table"/>
+     <word name="table-and-caption"/>
+     <word name="table-body"/>
+     <word name="table-caption"/>
+     <word name="table-cell"/>
+     <word name="table-column"/>
+     <word name="table-footer"/>
+     <word name="table-header"/>
+     <word name="table-row"/>
+     <word name="title"/>
+     <word name="wrapper"/>
+   </keywords>
+</scheme>
+
+<scheme name="xslTagList">
+   <block start="/\b(xsl)(\:) \M [\w\-]+/ix" end="/~[\w\-]+\m/" scheme="xslTags"
+          region01="xmlNameSpace"/>
+   <block start="/\b(fo)(\:) \M [\w\-]+/ix" end="/~[\w\-]+\m/" scheme="foTags"
+          region01="xmlNameSpace"/>
+   <inherit scheme="xmlTagList"/>
+</scheme>
+<scheme name="xslParamList">
+   <keywords region="xmlParam">
+      <word name="encoding"/>
+      <word name="href"/>
+      <word name="id"/>
+      <word name="lang"/>
+      <word name="match"/>
+      <word name="mode"/>
+      <word name="name"/>
+      <word name="select"/>
+      <word name="terminate"/>
+      <word name="test"/>
+      <word name="use-attribute-sets"/>
+      <word name="xmlns:xsl"/>
+      <word name="xsl:version"/>
+      <word name="data-type"/>
+      <word name="order"/>
+   </keywords>
+   <inherit scheme="xmlParamList"/>
+</scheme>
+
+<scheme name="xsl">
+  <inherit scheme="xml">
+    <virtual scheme="xmlTagList" subst="xslTagList"/>
+    <virtual scheme="xmlParamList" subst="xslParamList"/>
+  </inherit>
+</scheme>
+
+</hrc>

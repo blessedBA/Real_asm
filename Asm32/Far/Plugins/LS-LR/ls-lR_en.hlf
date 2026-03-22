@@ -1,0 +1,12 @@
+.Language=English,English
+.PluginContents=ls-lR
+
+@Contents
+$ #ls-lR#
+  This plugin displays contents of #dir [/s]# and #ls -l[R]# files as virtual archive.
+
+@Settings
+$ #ls-lR parameters#
+
+#Plugin is used by default#
+ Plugin is allowed to enter #dir [/s]# and #ls -l[R]# files.

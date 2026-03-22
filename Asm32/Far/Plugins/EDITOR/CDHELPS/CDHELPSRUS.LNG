@@ -1,0 +1,36 @@
+.Language=Russian,Russian (Русский)
+
+"Контекстно-зависимая помощь"
+"Контекстно-зависимая помощь -&?-"
+"Выбирайте активный Help-файл"
+
+"Текущий Help&?"
+"Предыдущая тема&!"
+
+// Internet prefix activator (only for selected text)
+// Information on needed application get from registry
+//   HKEY_CLASSES_ROOT\PROTOCOL\shell\open\command
+"mailto:"
+"http:"
+"https:"
+"file:"
+"ftp:"
+"gopher:"
+"news:"
+"nntp:"
+"telnet:"
+""
+
+"&Добавить к меню дисков"
+"&Клавиша доступа ('1'-'9'). Если не введена, назначается сама"
+
+"Ваша операционная система не поддерживает CHM-файлы помощи!"
+"Недостаточно памяти для нормальной работы плагина"
+
+"Ok"
+"Отменить"
+"Прервать"
+"Повторить"
+"Игнорировать"
+"Да"
+"Нет"

@@ -1,0 +1,27 @@
+
+Advanced file select v1.51
+컴컴컴컴컴컴컴컴컴컴컴컴컴
+
+	To install an "Advanced File Select" plugin:
+
+        1. Go to  $(FAR)\Plugins\  folder
+        2. Create "AdvSel" folder (or something else)
+        3. Copy all files from archive into this folder
+        4. Restart FAR manager
+        5. Have a nice plugin :-)
+
+
+
+Vladimir Tarasov / TSoft Group
+	Thu 23 Dec 21:27:22 1999
+
+Comments and bug reports are welcome to:
+
+	tsoftgroup@ors.kirov.ru
+	tsoftgroup@chat.ru
+	2:5056/10.77@fidonet
+	ICQ: 11754666
+
+Don't forget to visit our site:
+
+	WWW: http://i.am/tsoft  

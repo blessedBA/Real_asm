@@ -1,0 +1,56 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<title>colorer's hrd format rules</title>
+<link rel="stylesheet" type="text/css" href="../core/styles.css">
+</head>
+<body>
+
+<h1>colorer's hrd format rules</h1>
+
+<p>
+All files in directory <code>/colorer/hrd/</code> (*.hrd) are used to
+assign real colors to syntax regions in colorer library.
+Each file defines colors for all regions, defined in `hrc/regions.hrc'.
+These colors can has free numeric format - its interpretation depends
+on target client program, which uses colorer library.
+</p>
+<p>Predefined set contains:
+<pre>
+  console hrd's (console/*.hrd)         - 16 colors schemes
+  full color hrd's (rgb/*.hrd)          - full 24bit rgb schemes
+  text generator hrd's (textgen/*.hrd)  - html & ansi format description
+</pre>
+</p>
+
+
+<p>&lt;assign .../> tag's parameters:
+
+<pre>
+  value         - assigned target region.
+  fore, back    - foreground and  background region color. They could be
+                  empty - it means color inheritance from  parent block.
+  stext, etext  - region  text  substitutes   (they  are  used  in  text
+                  generator versions of colorer library).
+  sback, eback  - regions with background substitutes.
+  descr         - optional  region  description  to  show to target user
+                  (in setup dialogs for example).
+  type          - additional region attributes. means:
+                    0 - simple region - these regions must be
+                        substituted with real colors;
+                    1 - syntax check region;
+                    2 - function definition (really list expression).
+                    3 - error expression.
+                  regions with   <code>type > #FF</code>  must be  ignored in  normal
+                  syntax processing:
+                    #100 - highlighting structure start;
+                    #101 - highlighting structure end;
+</pre>
+
+<p>This format has support in colorer library as independent CAssign
+class (cassign.cpp and cassign.h files). This class can load, save and
+modify these lists of assigns. Also this class connected with clr*
+methods (regions support).
+
+</body>
+</html>

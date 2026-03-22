@@ -1,0 +1,105 @@
+.Language=English,English
+.PluginContents=Append Block
+
+
+@Contents
+$^#Append block 2.0 beta 1
+$^#Copyright (c) 1995-1999 Tomasz Szkudlarek
+
+    This  plugin  allows  you  to  save  current  Far editor
+    selection  to  specified  file, or insert specified file
+    to current edited file.
+
+    To  save  block,  you  should  select  block, and choose
+    ~Append block~@AppendDialog@ command from menu.
+
+    If you want insert file, you should choose ~Insert file~@InsertDialog@
+    command from menu.
+
+
+@AppendDialog
+$^#Append Block#
+    This  command  allows  you  to  save  current Far editor
+    selection to specified file.
+
+    If  you  want  to  save block, just select it and launch
+    Append Block command.
+
+    In dialog box you may find following buttons:
+
+    #[ Append ]#       Append block to specified file
+
+    #[ Rewrite ]#      Rewrite specified file and save block
+
+    #[ Temp ]#         Inserts temporary folder name
+
+    #[ Device ]#       Open Device menu
+
+    #[ Cancel ]#       Cancel operation
+
+    As file name you can specify special device, for example, if you
+    want to print block, you can specify as filename "PRN" or choose
+    device from #Device menu#.
+
+
+ #Warning#
+    Sometimes Far may crash when you will try to append block to
+    not existing or not ready device.
+
+ 
+    ~Insert file command~@InsertDialog@
+    ~About Append Block plugin~@about@
+
+
+@InsertDialog
+$^#Insert file#
+
+    This   command  allows  you  to  insert  specified  file
+    to current edited file.
+
+    When  you  want  to  use  this command you should choose
+    Insert  file  command and specify file or browse it from
+    your disk by pressing #Browse# button
+
+    In dialog box you may find following buttons:
+
+    #[ Insert ]#       Insert specified file
+
+    #[ Browse ]#       Browse file by
+                     ~Open file dialog~@Openfile
+
+    #[ Temp ]#         Inserts temporary folder name
+
+    #[ Cancel ]#       Cancel operation
+
+
+    ~Append block command~@AppendDialog
+    ~About Append Block plugin~@about@
+
+@QDirs
+$^#Quick dirs
+
+    Quick dirs allows you to remember your favorite folders.
+
+    #"+"#      Store dir
+    #"-"#      Remove dir
+    #<ENTER>#  Choose dir
+
+
+@Openfile
+$^#Open file dialog
+
+    Shortcuts:
+
+    #<ENTER>#      Choose file/Enter folder
+    #<BackSpace>#  Up folder
+    #F2#           Change disk
+    #F4#           ~Quick dirs~@QDirs@
+
+@About
+$^#About Append Block plugin
+    If you enjoy using this plugin (or not) please write to:
+
+    Tomasz Szkudlarek
+    email: tomekszk@@kki.net.pl
+    UIN: 33657440
