@@ -15,7 +15,12 @@ _start:
                 
 ;----------------------------------------------------------------------
 ; Print string to stdout
-; Expect: rdi - adress of string; rcx - length of string
+; Expect: rdi - adress of string; 
+;         rcx - length of string
+;         arg1 - 1st argument
+;         arg2 - 2nd argument
+;         ...
+;         arg6 - 6th argument
 ; Destr:  rdi, rcx, rdx
 ;----------------------------------------------------------------------
 my_printf:       
@@ -25,8 +30,17 @@ my_printf:
                 push r8
 
 next_char:      
+                mov al, '%'
+                cmp al, [rdi]
+                je test_procent
+                
+print_cur_char:
+
                 mov rax, 0x01
                 lea rsi, [rel rdi]
+
+short_print_cur_char:
+
                 mov rbx, rdi
                 mov rdi, 1
                 mov rdx, 1
@@ -37,15 +51,38 @@ next_char:
                 mov rdi, rbx
                 inc rdi
                 loop next_char
+                jmp end_printf
 
+test_procent:   
+                cmp al, [rdi + 1]
+                je print_cur_char
+
+                inc rdi
+                dec rcx
+                mov al, 'c'
+                cmp al, [rdi]
+                je process_char
+                jmp print_cur_char    ; you need to add parsing of error or full output %<wrong specificator>
+
+process_char:   
+                mov rax, 0x01
+                lea rsi, arg1
+                jmp short_print_cur_char 
                 
-
-                pop r8
-end_printf:     pop rbx
+end_printf:     pop r8
+                pop rbx
                 pop rax
                 ret
 
+
 section .data
 
-string: db "hello world!", 0xa
-str_length equ $ - string
+            arg1 db 'Q'
+            arg2 db 0
+            arg3 db 0
+            arg4 db 0
+            arg5 db 0
+            arg6 db 0
+
+            string: db "hello world! %cdlkfj", 0xa
+            str_length equ $ - string
