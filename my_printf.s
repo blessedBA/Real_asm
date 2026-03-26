@@ -35,8 +35,8 @@
 %endmacro
 
 section .text
-
-;global _start
+global _start
+default rel
 
 global my_printf
 
@@ -112,15 +112,10 @@ increment_rdi:
 
 char_not_percent:
                 inc rdi
-                mov al, 'c'
-                cmp al, [rdi]
-                je process_char
-                mov al, 's'
-                cmp al, [rdi]
-                je process_string
-                mov al, 'x'
-                cmp al, [rdi]
-                je process_hex_value
+                lea r11, [jmp_table]
+                xor r12, r12
+                mov r12b, [rdi]
+                jmp [r11 + (r12 - 'b') * 8]
                 jmp print_cur_char    ; you need to add parsing of error or full output %<wrong specificator>
 
 process_char:   
@@ -153,7 +148,7 @@ carry_proc_str:
                 inc rcx
                 jmp carry_proc_str
 
-process_hex_value:             
+process_hex:             
 
                 xor r12, r12    ; r12 - flag UZ
 
@@ -162,7 +157,7 @@ process_hex_value:
                 inc r10
                 mov r11, [rsp + r10*8]
                 mov [var2], r11
-                mov rcx, 0x0f    ; start from zero shift because little endian
+                mov rcx, 0x0f    ; we start shift from 15 digits
 print_hex_loop:
                 mov r9, rcx         ; save loop counter
                 mov r8, rcx
@@ -213,6 +208,117 @@ end_proc_hex:
                 inc rdi
                 jmp next_char
 
+process_bin:
+                xor r12, r12
+                inc r10
+
+                mov r11, [rsp + r10*8]
+                mov [var2], r11
+                mov rcx, 63    ; we start shift from 15 digits
+print_bin_loop:
+                mov r9, rcx             ; save loop counter
+                mov cl, r9b             ; shift count must be in cl
+                mov r11, [var2]
+                shr r11, cl
+                mov rcx, r9             ; restore loop counter
+
+                and r11, 1
+                jz check_flag2_UZ        ; flag UZ - flag Useless Zeros (there are useless zeros or not in hex value)
+                mov r12, 1
+carry_proc_bin:
+                add r11b, '0'
+                jmp print_binary
+
+check_flag2_UZ:
+                test r12, 1
+                jnz carry_proc_bin
+                dec rcx                 ; if there is useless zero -> just skip digit
+                cmp rcx, 0
+                jnl print_bin_loop
+                jmp end_proc_bin
+
+print_binary:
+                mov rax, 0x01
+                mov [var3], r11
+                lea rsi, [var3]
+                mov rbx, rdi
+                mov rdi, 1
+                mov rdx, 1
+                mov [var1], rcx
+                syscall
+
+                mov rdi, rbx
+                mov rcx, [var1]
+                dec rcx
+                mov r11, [var2]
+                cmp rcx, 0
+                jnl print_bin_loop
+
+end_proc_bin:
+                inc rdi
+                jmp next_char
+
+                
+process_oct:             
+;
+;                xor r12, r12    ; r12 - flag UZ
+;
+;                call print_start_oct_value
+;
+;                inc r10
+;                mov r11, [rsp + r10*8]
+;                mov [var2], r11
+;                mov rcx, 0x0f    ; we start shift from 15 digits
+;print_oct_loop:
+;                mov r9, rcx         ; save loop counter
+;                mov r8, rcx
+;                shl r8, 2              ; multiply by 4 for nibble shift
+;                mov cl, r8b            ; shift count must be in cl
+;                mov r11, [var2]
+;                shr r11, cl
+;                mov rcx, r9            ; restore loop counter
+;                and r11, 7             ; nulling all digits except essential
+;                
+;                cmp r11b, 0
+;                jz check_flag3_UZ        ; flag UZ - flag Useless Zeros (there are useless zeros or not in hex value)
+;                mov r12, 1
+;carry_proc_oct:
+;                add r11b, '0'
+;                jmp print_oct
+;
+;check_flag3_UZ:
+;                test r12, 1
+;                jnz carry_proc_oct
+;                dec rcx                 ; if there is useless zero -> just skip digit
+;                cmp rcx, 0
+;                jnl print_oct_loop
+;                jmp end_proc_oct
+;
+;print_oct:
+;                mov rax, 0x01
+;                mov [var3], r11
+;                lea rsi, [var3]
+;                mov rbx, rdi
+;                mov rdi, 1
+;                mov rdx, 1
+;                mov [var1], rcx
+;                syscall
+;
+;                mov rdi, rbx
+;                mov rcx, [var1]
+;                dec rcx
+;                mov r11, [var2]
+;                cmp rcx, 0
+;                jnl print_oct_loop
+;end_proc_oct:
+;                inc rdi
+;                jmp next_char
+
+
+process_dec:
+skip_place:
+
+
 end_printf:
                 POP_ARGS_ABI
                 POP_REGS_ABI
@@ -221,7 +327,7 @@ end_printf:
 ;--------------------------------------------------------------
 ; Print start of hex value = "0x" (indicator of hex value)
 ; Expect: nothing
-;Destr:   nothing
+; Destr:  nothing
 ;--------------------------------------------------------------
 print_start_hex_value:
 
@@ -247,6 +353,36 @@ print_start_hex_value:
 
                 ret
 
+;-------------------------------------------------------------
+; Print start of every octal value - zero
+; Expect - nothing
+; Destr  - nothing
+;-------------------------------------------------------------
+print_start_oct_value:
+                
+                push rax
+                push rdi
+                push rsi
+                push rdx
+                push r11
+                push rcx
+                
+                mov rax, 0x01
+                lea rsi, [start_oct_value]
+                mov rdi, 1
+                mov rdx, 1 
+                syscall
+
+                pop rcx
+                pop r11
+                pop rdx
+                pop rsi
+                pop rdi
+                pop rax
+
+                ret
+
+
 section .data
 
             curr_arg dq 0
@@ -262,9 +398,19 @@ section .data
             var2 dq 0
             var3 dq 0
 
-            table dq process_char, process_string, process_hex_value
+            jmp_table:
+                dq process_bin
+                dq process_char
+                dq process_dec
+                times ('o' - 'd' -1) dq skip_place
+                dq process_oct
+                times ('s' - 'o' - 1) dq skip_place
+                dq process_string
+                times ('x' - 's' - 1) dq skip_place
+                dq process_hex
 
             string: db "hello world! %c %s", 0xa
             str_length equ $ - string
             start_hex_value db "0x"
             len_start_hex_value equ $ - start_hex_value
+            start_oct_value db '0'
