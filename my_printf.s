@@ -57,7 +57,7 @@ global my_printf
 ;         rsi - 2nd argument
 ;         ...
 ;         r9  - 6th argument
-; Destr:  rcx, rdx, rax, r10, r11
+; Destr:  rcx, rdx, rax, r10, r11, r8, r9
 ;----------------------------------------------------------------------
 ;----------------------------------------------------------------------
 ;       TRUMPLINE
@@ -74,7 +74,7 @@ my_printf_main:
 next_char:
                 mov al, '%'
                 cmp al, [rdi]
-                je test_procent
+                je test_percent
                 
 print_cur_char:
 
@@ -99,10 +99,18 @@ carry_processing_2:
                 jne next_char
                 jmp end_printf
 
-test_procent:   
+test_percent:   
                 cmp al, [rdi + 1]
-                je print_cur_char
+                je increment_rdi
+                jmp char_not_percent 
+carry_proc_percent:
+                jmp print_cur_char
 
+increment_rdi:
+                inc rdi
+                jmp carry_proc_percent
+
+char_not_percent:
                 inc rdi
                 mov al, 'c'
                 cmp al, [rdi]
@@ -110,13 +118,15 @@ test_procent:
                 mov al, 's'
                 cmp al, [rdi]
                 je process_string
+                mov al, 'x'
+                cmp al, [rdi]
+                je process_hex_value
                 jmp print_cur_char    ; you need to add parsing of error or full output %<wrong specificator>
 
 process_char:   
                 inc r10
                 mov rax, 0x01
-                mov r11, [rsp + r10*8]
-                lea rsi, [rel r11]
+                lea rsi, [rsp + r10*8]
                 jmp short_print_cur_char 
                 
 process_string:
@@ -143,11 +153,99 @@ carry_proc_str:
                 inc rcx
                 jmp carry_proc_str
 
+process_hex_value:             
+
+                xor r12, r12    ; r12 - flag UZ
+
+                call print_start_hex_value
+
+                inc r10
+                mov r11, [rsp + r10*8]
+                mov [var2], r11
+                mov rcx, 0x0f    ; start from zero shift because little endian
+print_hex_loop:
+                mov r9, rcx         ; save loop counter
+                mov r8, rcx
+                shl r8, 2              ; multiply by 4 for nibble shift
+                mov cl, r8b            ; shift count must be in cl
+                mov r11, [var2]
+                shr r11, cl
+                mov rcx, r9            ; restore loop counter
+                and r11, 0x0f          ; nulling all digits except essential
+                cmp r11b, 0xA
+                jb  print_digit
+                add r11b, 'A' - 10
+                jmp print_store
+
+print_digit:
+                cmp r11b, 0
+                jz check_flag_UZ        ; flag UZ - flag Useless Zeros (there are useless zeros or not in hex value)
+                mov r12, 1
+carry_proc_hex:
+                add r11b, '0'
+                jmp print_store
+
+check_flag_UZ:
+                test r12, 1
+                jnz carry_proc_hex
+                dec rcx                 ; if there is useless zero -> just skip digit
+                cmp rcx, 0
+                jnl print_hex_loop
+                jmp end_proc_hex
+
+print_store:
+                mov rax, 0x01
+                mov [var3], r11
+                lea rsi, [var3]
+                mov rbx, rdi
+                mov rdi, 1
+                mov rdx, 1
+                mov [var1], rcx
+                syscall
+
+                mov rdi, rbx
+                mov rcx, [var1]
+                dec rcx
+                mov r11, [var2]
+                cmp rcx, 0
+                jnl print_hex_loop
+end_proc_hex:
+                inc rdi
+                jmp next_char
+
 end_printf:
                 POP_ARGS_ABI
                 POP_REGS_ABI
                 ret
 
+;--------------------------------------------------------------
+; Print start of hex value = "0x" (indicator of hex value)
+; Expect: nothing
+;Destr:   nothing
+;--------------------------------------------------------------
+print_start_hex_value:
+
+                push rax
+                push rdi
+                push rsi
+                push rdx
+                push r11
+                push rcx
+                
+                mov rax, 0x01
+                lea rsi, [start_hex_value]
+                mov rdi, 1
+                mov rdx, len_start_hex_value 
+                syscall
+
+                pop rcx
+                pop r11
+                pop rdx
+                pop rsi
+                pop rdi
+                pop rax
+
+                ret
 
 section .data
 
@@ -162,8 +260,11 @@ section .data
             
             var1 dq 0
             var2 dq 0
+            var3 dq 0
 
-            table dq process_char, process_string
+            table dq process_char, process_string, process_hex_value
 
             string: db "hello world! %c %s", 0xa
             str_length equ $ - string
+            start_hex_value db "0x"
+            len_start_hex_value equ $ - start_hex_value
