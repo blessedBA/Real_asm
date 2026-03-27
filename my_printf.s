@@ -260,61 +260,77 @@ end_proc_bin:
 
                 
 process_oct:             
-;
-;                xor r12, r12    ; r12 - flag UZ
-;
-;                call print_start_oct_value
-;
-;                inc r10
-;                mov r11, [rsp + r10*8]
-;                mov [var2], r11
-;                mov rcx, 0x0f    ; we start shift from 15 digits
-;print_oct_loop:
-;                mov r9, rcx         ; save loop counter
-;                mov r8, rcx
-;                shl r8, 2              ; multiply by 4 for nibble shift
-;                mov cl, r8b            ; shift count must be in cl
-;                mov r11, [var2]
-;                shr r11, cl
-;                mov rcx, r9            ; restore loop counter
-;                and r11, 7             ; nulling all digits except essential
-;                
-;                cmp r11b, 0
-;                jz check_flag3_UZ        ; flag UZ - flag Useless Zeros (there are useless zeros or not in hex value)
-;                mov r12, 1
-;carry_proc_oct:
-;                add r11b, '0'
-;                jmp print_oct
-;
-;check_flag3_UZ:
-;                test r12, 1
-;                jnz carry_proc_oct
-;                dec rcx                 ; if there is useless zero -> just skip digit
-;                cmp rcx, 0
-;                jnl print_oct_loop
-;                jmp end_proc_oct
-;
-;print_oct:
-;                mov rax, 0x01
-;                mov [var3], r11
-;                lea rsi, [var3]
-;                mov rbx, rdi
-;                mov rdi, 1
-;                mov rdx, 1
-;                mov [var1], rcx
-;                syscall
-;
-;                mov rdi, rbx
-;                mov rcx, [var1]
-;                dec rcx
-;                mov r11, [var2]
-;                cmp rcx, 0
-;                jnl print_oct_loop
-;end_proc_oct:
-;                inc rdi
-;                jmp next_char
 
+                xor r12, r12    ; r12 - flag UZ
 
+                call print_start_oct_value
+
+                inc r10
+                mov r11, [rsp + r10*8]
+                mov [var2], r11
+                jmp print_first_oct_bit
+carry_proc_oct2:
+                mov rcx, 60    ; we start shift from 15 digits
+print_oct_loop:
+                mov r11, [var2]
+                shr r11, cl
+                and r11, 7             ; nulling all digits except essential
+                
+                cmp r11b, 0
+                jz check_flag3_UZ        ; flag UZ - flag Useless Zeros (there are useless zeros or not in hex value)
+                mov r12, 1
+carry_proc_oct:
+                add r11b, '0'
+                jmp print_oct
+
+check_flag3_UZ:
+                test r12, 1
+                jnz carry_proc_oct
+                sub rcx, 3                 ; if there is useless zero -> just skip digit
+                cmp rcx, 0
+                jnl print_oct_loop
+                jmp end_proc_oct
+
+print_oct:
+                mov rax, 0x01
+                mov [var3], r11
+                lea rsi, [var3]
+                mov rbx, rdi
+                mov rdi, 1
+                mov rdx, 1
+                mov [var1], rcx
+                syscall
+
+                mov rdi, rbx
+                mov rcx, [var1]
+                sub rcx, 3
+                mov r11, [var2]
+                cmp rcx, 0
+                jnl print_oct_loop
+end_proc_oct:
+                inc rdi
+                jmp next_char
+
+print_first_oct_bit:
+                mov rcx, 63
+                mov r11, [var2]
+                shr r11, cl
+
+                and r11, 1
+                jnz print_old_bit
+                jmp carry_proc_oct2
+
+print_old_bit:
+                mov ax, 0x01
+                mov [var3], byte 1
+                lea rsi, [var3]
+                mov rbx, rdi
+                mov rdi, 1
+                mov rdx, 1
+                syscall
+
+                mov rdi, rbx
+                jmp carry_proc_oct2
 process_dec:
 skip_place:
 
