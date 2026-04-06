@@ -72,6 +72,9 @@ my_printf_main:
                 xor r10, r10           ; r10 - count processed arguments
                 mov rdi, [rsp + r10]  ; load adress of main string in rdi
 next_char:
+                cmp byte [rdi], 0
+                je end_printf
+
                 mov al, '%'
                 cmp al, [rdi]
                 je test_percent
@@ -331,7 +334,87 @@ print_old_bit:
 
                 mov rdi, rbx
                 jmp carry_proc_oct2
+
 process_dec:
+
+                inc r10
+                mov rax, [rsp + r10*8]
+
+                cmp rax, 32767
+                jng carry_proc_dec_2
+                mov [var3], byte '-'
+
+                mov rbx, rdi
+                mov r8, rax
+                mov rax, 0x01
+                lea rsi, [var3]
+                mov rdi, 1
+                mov rdx, 1
+                syscall
+
+                mov rax, r8
+                mov rdi, rbx
+                
+                neg eax
+
+carry_proc_dec_2:
+
+                xor rcx, rcx             ; counter of digits
+                mov r12, 10
+
+                ; if the value is zero
+                test rax, rax
+                jne carry_proc_dec
+
+                mov rdx, '0'
+                push rdx
+                inc rcx
+                jmp print_dec
+
+carry_proc_dec:
+
+                xor rdx, rdx
+                cmp rax, 0
+                je print_dec
+
+                div r12
+                add dl, '0'
+                push rdx
+                inc rcx
+
+                jmp carry_proc_dec
+
+
+print_dec:
+                mov r11, 0           ; count of printed digits
+carry_print_dec:
+                cmp r11, rcx
+                je  end_proc_dec
+
+                mov rax, 0x01 
+                lea rsi, [rsp + r11 * 8] 
+                mov rbx, rdi
+                mov rdi, 1
+                mov rdx, 1
+                mov r8, rcx
+                mov r9, r11
+                syscall
+ 
+                mov rcx, r8
+                mov r11, r9
+                mov rdi, rbx
+                inc r11
+                jmp carry_print_dec
+
+end_proc_dec:
+                mov rcx, r11
+carry_pop_digits:
+                pop r11
+                loop carry_pop_digits
+                inc rdi
+                jmp next_char
+
+
 skip_place:
 
 
